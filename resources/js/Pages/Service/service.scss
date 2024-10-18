@@ -1,0 +1,32 @@
+.services_list {
+    .service_item {
+        text-decoration: none;
+        border-top: 3px solid #03396c;
+        border-left: 0 solid transparent;
+        transition: 300ms ease;
+        text-decoration: none;
+        &:last-child {
+            border-bottom: 3px solid #03396c;
+        }
+        &:hover {
+            border-left: 6px solid #ff844f;
+            background-color: rgba(230, 230, 230, 0.35);
+            svg {
+                right: -10px;
+            }
+        }
+        p {
+            color: #005b96;
+            line-height: 1.2em;
+            letter-spacing: 0.009em;
+            font-size: 1.3125rem;
+            text-decoration: none;
+        }
+
+        svg {
+            position: relative;
+            right: 0;
+            transition: 300ms ease;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+.article_body {
+    p,
+    a,
+    li,
+    i,
+    strong,
+    h1,
+    h2,
+    h3,
+    h4 {
+        margin: 0;
+        font-size: 1.4813rem;
+        line-height: 1.41665486em;
+        text-align: left;
+        letter-spacing: 0.009em;
+        overflow-wrap: break-word;
+        @media (max-width: 480px) {
+            font-size: 1.125rem;
+        }
+    }
+    p,
+    a,
+    li,
+    i {
+        color: #005b96;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    strong {
+        color: #03396c;
+    }
+
+    img,
+    table {
+        width: 100%;
+    }
+}
