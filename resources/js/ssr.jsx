@@ -4,7 +4,7 @@ import createServer from "@inertiajs/react/server";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { route } from "../../vendor/tightenco/ziggy";
 import { ThemeProvider, createTheme } from "@mui/material";
-import "bootstrap/scss/bootstrap.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/sass/index.scss";
 
 import "@/utils/i18next";

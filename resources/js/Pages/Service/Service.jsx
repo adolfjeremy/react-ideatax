@@ -1,5 +1,5 @@
-import { Box, Typography, useTheme } from "@mui/material";
-// import EastIcon from "@mui/icons-material/East";
+import { Box, Typography, useTheme, Link } from "@mui/material";
+import { IoIosArrowRoundForward } from "react-icons/io";
 import serviceBg from "../../assets/images/service-bg.png";
 import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
@@ -61,7 +61,13 @@ function Service() {
                             </Typography>
                         </div>
                         <div className="col-12 col-md-8 services_list mt-5">
-                            <a
+                            <Link
+                                sx={{
+                                    svg: {
+                                        fontSize: "2.5rem",
+                                        color: theme.palette.custom.darkBlue,
+                                    },
+                                }}
                                 href="#"
                                 className="col-12 service_item d-flex align-items-center justify-content-between p-2"
                             >
@@ -75,9 +81,15 @@ function Service() {
                                 >
                                     Tax and Customs Compliances
                                 </Typography>
-                                {/* <EastIcon /> */}
-                            </a>
-                            <a
+                                <IoIosArrowRoundForward />
+                            </Link>
+                            <Link
+                                sx={{
+                                    svg: {
+                                        fontSize: "2.5rem",
+                                        color: theme.palette.custom.darkBlue,
+                                    },
+                                }}
                                 href="#"
                                 className="col-12 service_item d-flex align-items-center justify-content-between p-2"
                             >
@@ -91,8 +103,8 @@ function Service() {
                                 >
                                     Tax and Customs Compliances
                                 </Typography>
-                                {/* <EastIcon /> */}
-                            </a>
+                                <IoIosArrowRoundForward />
+                            </Link>
                         </div>
                     </div>
                 </div>

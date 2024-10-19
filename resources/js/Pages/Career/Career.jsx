@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme, Link } from "@mui/material";
 import { useTranslation } from "react-i18next";
-// import EastIcon from "@mui/icons-material/East";
+import { IoIosArrowRoundForward } from "react-icons/io";
 import Guest from "@/Layout/Guest";
 import hero from "@/assets/images/career.png";
 
@@ -76,10 +76,13 @@ function Career() {
                                         justifyContent: "flex-start",
                                         fontWeight: "600",
                                         gap: 1,
+                                        svg: {
+                                            fontSize: "2rem",
+                                        },
                                     }}
                                 >
                                     {t("careerButton")}
-                                    {/* <EastIcon /> */}
+                                    <IoIosArrowRoundForward />
                                 </Typography>
                             </Link>
                         </Box>

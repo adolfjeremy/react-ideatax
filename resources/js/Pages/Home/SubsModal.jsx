@@ -9,7 +9,8 @@ import {
     useTheme,
     TextField,
 } from "@mui/material";
-// import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
+
+import { IoIosArrowRoundForward } from "react-icons/io";
 
 const style = {
     position: "absolute",
@@ -42,8 +43,14 @@ function SubsModal({ buttonText }) {
                     justifyContent: "center",
                     textTransform: "none",
                     gap: "5px",
+                    svg: {
+                        fontSize: "3.2rem",
+                    },
                     [theme.breakpoints.down("sm")]: {
                         fontSize: "1.75rem",
+                        svg: {
+                            fontSize: "2.2rem",
+                        },
                     },
                     "&:hover": {
                         gap: "15px",
@@ -52,7 +59,7 @@ function SubsModal({ buttonText }) {
                 onClick={handleOpen}
             >
                 {buttonText}
-                {/* <TrendingFlatIcon sx={{ fontSize: "2.125rem" }} /> */}
+                <IoIosArrowRoundForward />
             </Button>
             <Modal
                 aria-labelledby="transition-modal-title"
@@ -73,8 +80,9 @@ function SubsModal({ buttonText }) {
                             id="transition-modal-title"
                             variant="h6"
                             component="h2"
+                            sx={{ textAlign: "center" }}
                         >
-                            Text in a modal
+                            Subscribe To Ideatax News and Articles
                         </Typography>
                         <form className="compro_form mt-3">
                             <TextField
@@ -87,7 +95,7 @@ function SubsModal({ buttonText }) {
                                 label="Email"
                                 variant="outlined"
                             />
-                            <Button variant="contained">Submit</Button>
+                            <Button variant="contained">Subscribe</Button>
                         </form>
                     </Box>
                 </Fade>

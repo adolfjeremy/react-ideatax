@@ -10,8 +10,10 @@ import {
 } from "@mui/material";
 import Guest from "@/Layout/Guest";
 import ConsultationButton from "@/Components/ConsultationButton";
-// import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-// import LinkIcon from "@mui/icons-material/Link";
+import { FaWhatsapp } from "react-icons/fa";
+import { IoMdLink } from "react-icons/io";
+import { FaLinkedin } from "react-icons/fa";
+import { FiSend } from "react-icons/fi";
 // import LinkedInIcon from "@mui/icons-material/LinkedIn";
 // import SendIcon from "@mui/icons-material/Send";
 
@@ -178,13 +180,14 @@ function ArticleDetail() {
                                 aria-haspopup="true"
                                 aria-expanded={open ? "true" : undefined}
                                 onClick={handleClick}
-                            >
-                                {/* <SendIcon
-                                    sx={{
-                                        fontSize: "3.3706rem",
+                                sx={{
+                                    svg: {
+                                        fontSize: "2rem",
                                         color: theme.palette.custom.lightBlue,
-                                    }}
-                                /> */}
+                                    },
+                                }}
+                            >
+                                <FiSend />
                             </IconButton>
                             <Menu
                                 id="basic-menu"
@@ -212,14 +215,13 @@ function ArticleDetail() {
                                         flexDirection: "column",
                                         gap: 1,
                                         paddingTop: 2,
+                                        svg: {
+                                            color: "#25D366",
+                                            fontSize: "1.8rem",
+                                        },
                                     }}
                                 >
-                                    {/* <WhatsAppIcon
-                                        sx={{
-                                            color: "#25D366",
-                                            fontSize: "2rem",
-                                        }}
-                                    /> */}
+                                    <FaWhatsapp />
                                     <Typography sx={{ fontSize: "1rem" }}>
                                         Whatsapp
                                     </Typography>
@@ -232,10 +234,13 @@ function ArticleDetail() {
                                         flexDirection: "column",
                                         gap: 1,
                                         paddingTop: 2,
+                                        svg: {
+                                            fontSize: "1.8rem",
+                                        },
                                     }}
                                     onClick={() => handleCopy()}
                                 >
-                                    {/* <LinkIcon sx={{ fontSize: "2rem" }} /> */}
+                                    <IoMdLink />
                                     <Typography sx={{ fontSize: "1rem" }}>
                                         Copy Link
                                     </Typography>
@@ -245,13 +250,14 @@ function ArticleDetail() {
                                 href="https://www.linkedin.com/company/89691805/admin/feed/posts/"
                                 target="_blank"
                                 aria-label="delete"
-                            >
-                                {/* <LinkedInIcon
-                                    sx={{
-                                        fontSize: "3.3706rem",
+                                sx={{
+                                    svg: {
+                                        fontSize: "2rem",
                                         color: theme.palette.custom.lightBlue,
-                                    }}
-                                /> */}
+                                    },
+                                }}
+                            >
+                                <FaLinkedin />
                             </IconButton>
                         </div>
                     </div>
