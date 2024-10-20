@@ -4,14 +4,14 @@ import { usePage } from "@inertiajs/react";
 import HeaderBar from "@/Components/HeaderBar";
 import { changeLanguage } from "i18next";
 
-function Guest({ children }) {
+function Guest({ children, en, id, jp }) {
     const { locale } = usePage().props;
     useEffect(() => {
-        changeLanguage(locale.current);
-    }, [locale.current]);
+        changeLanguage(locale);
+    }, [locale]);
     return (
         <>
-            <HeaderBar />
+            <HeaderBar en={en} id={id} jp={jp} />
             <Box component="main" sx={{ minHeight: "100vh", width: "100%" }}>
                 {children}
             </Box>

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Inertia\Inertia;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Inertia::share('locale', function () {
+            return App::getLocale();  // Set locale sebagai shared data
+        });
     }
 }

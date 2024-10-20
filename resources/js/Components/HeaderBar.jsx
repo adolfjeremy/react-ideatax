@@ -9,17 +9,22 @@ import {
     MenuItem,
     Button,
 } from "@mui/material";
+import { usePage } from "@inertiajs/react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineClose } from "react-icons/ai";
 import { MdOutlineArrowDropDown } from "react-icons/md";
+import LangChange from "./LangChange";
+import checkLang from "@/utils/checkLang";
 import logo from "@/assets/images/logo.png";
 import logoClear from "@/assets/images/logo-clear.png";
 
-function HeaderBar() {
+function HeaderBar({ en, id, jp }) {
+    const { locale } = usePage().props;
     const theme = useTheme();
     const [anchorEl, setAnchorEl] = useState(null);
     const [state, setState] = useState(false);
     const [navbarStatus, setNavbarStatus] = useState(false);
+    const [currentRoute, setCurrentRoute] = useState(false);
     const open = Boolean(anchorEl);
 
     const handleClick = (event) => {
@@ -48,6 +53,18 @@ function HeaderBar() {
             window.removeEventListener("scroll", null);
         };
     }, []);
+
+    const checkRoute = () => {
+        if (
+            !route().current("team") ||
+            !route().current("team.id") ||
+            !route().current("team.id")
+        ) {
+            setCurrentRoute(true);
+        } else {
+            setCurrentRoute(false);
+        }
+    };
     return (
         <Box
             component="header"
@@ -55,7 +72,11 @@ function HeaderBar() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: `${
-                    !route().current("team") ? "space-between" : "flex-end"
+                    !route().current("team") &&
+                    !route().current("team.id") &&
+                    !route().current("team.id")
+                        ? "space-between"
+                        : "flex-end"
                 }`,
                 padding: `${navbarStatus ? "1.5rem 6% 0 6%" : "3rem 6% 0 6%"}`,
                 position: "fixed",
@@ -69,21 +90,40 @@ function HeaderBar() {
                 transition: "all ease 350ms",
             }}
         >
-            {!route().current("team") && (
-                <Link
-                    sx={{
-                        img: {
-                            width: "160px",
-                        },
-                    }}
-                    href={route("home")}
-                >
-                    <img
-                        src={route().current("home") ? logoClear : logo}
-                        alt="Ideatax"
-                    />
-                </Link>
-            )}
+            {(() => {
+                if (
+                    !route().current("team") &&
+                    !route().current("team.id") &&
+                    !route().current("team.id")
+                ) {
+                    return (
+                        <Link
+                            sx={{
+                                img: {
+                                    width: "160px",
+                                },
+                            }}
+                            href={checkLang(
+                                locale,
+                                route("home"),
+                                route("home.id"),
+                                route("home.jp")
+                            )}
+                        >
+                            <img
+                                src={
+                                    route().current("home") ||
+                                    route().current("home.id") ||
+                                    route().current("home.jp")
+                                        ? logoClear
+                                        : logo
+                                }
+                                alt="Ideatax"
+                            />
+                        </Link>
+                    );
+                }
+            })()}
             <IconButton
                 onClick={toggleDrawer()}
                 aria-label="open side menu"
@@ -131,7 +171,12 @@ function HeaderBar() {
                     }}
                 >
                     <Link
-                        href={route("home")}
+                        href={checkLang(
+                            locale,
+                            route("home"),
+                            route("home.id"),
+                            route("home.jp")
+                        )}
                         className={route().current("home") ? "active" : ""}
                         sx={{
                             fontSize: "1.7rem",
@@ -148,7 +193,12 @@ function HeaderBar() {
                         Home
                     </Link>
                     <Link
-                        href={route("team")}
+                        href={checkLang(
+                            locale,
+                            route("team"),
+                            route("team.id"),
+                            route("team.jp")
+                        )}
                         className={
                             route().current("team") ||
                             route().current("team-detail")
@@ -170,7 +220,12 @@ function HeaderBar() {
                         Team
                     </Link>
                     <Link
-                        href={route("service")}
+                        href={checkLang(
+                            locale,
+                            route("service"),
+                            route("service.id"),
+                            route("service.jp")
+                        )}
                         className={
                             route().current("service") ||
                             route().current("service-detail")
@@ -208,7 +263,12 @@ function HeaderBar() {
                         Updates
                     </Link>
                     <Link
-                        href={route("articles")}
+                        href={checkLang(
+                            locale,
+                            route("articles"),
+                            route("articles.id"),
+                            route("articles.jp")
+                        )}
                         className={
                             route().current("articles") ||
                             route().current("article-detail")
@@ -274,7 +334,12 @@ function HeaderBar() {
                     >
                         <MenuItem>
                             <Link
-                                href={route("career")}
+                                href={checkLang(
+                                    locale,
+                                    route("career"),
+                                    route("career.id"),
+                                    route("career.jp")
+                                )}
                                 className={
                                     route().current("career") ? "active" : ""
                                 }
@@ -295,7 +360,12 @@ function HeaderBar() {
                         </MenuItem>
                         <MenuItem>
                             <Link
-                                href={route("life-at-ideatax")}
+                                href={checkLang(
+                                    locale,
+                                    route("life-at-ideatax"),
+                                    route("life-at-ideatax.id"),
+                                    route("life-at-ideatax.jp")
+                                )}
                                 className={
                                     route().current("life-at-ideatax")
                                         ? "active"
@@ -318,7 +388,12 @@ function HeaderBar() {
                         </MenuItem>
                     </Menu>
                     <Link
-                        href={route("contact")}
+                        href={checkLang(
+                            locale,
+                            route("contact"),
+                            route("contact.id"),
+                            route("contact.jp")
+                        )}
                         className={route().current("contact") ? "active" : ""}
                         sx={{
                             fontSize: "1.7rem",
@@ -334,6 +409,7 @@ function HeaderBar() {
                     >
                         Contact Us
                     </Link>
+                    <LangChange en={en} id={id} jp={jp} />
                 </Box>
             </Drawer>
         </Box>

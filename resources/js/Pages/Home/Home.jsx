@@ -31,7 +31,7 @@ function Home() {
     const { t } = useTranslation();
     const theme = useTheme();
     return (
-        <Guest>
+        <Guest en={route("home")} id={route("home.id")} jp={route("home.jp")}>
             <Box
                 component="section"
                 sx={{

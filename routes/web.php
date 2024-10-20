@@ -1,15 +1,17 @@
 <?php
 
-use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\CareerController;
-use App\Http\Controllers\ContactController;
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TeamController;
+use App\Http\Controllers\CareerController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\TeamController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+use App\Http\Controllers\LocalizationController;
+use App\Http\Middleware\ChangeLocal;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,8 @@ use Inertia\Inertia;
 //     ]);
 // });
 
+Route::get('lang/{lang}', [LocalizationController::class, 'switchLang'])->name('switchLang');
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/our-team', [TeamController::class, 'index'])->name('team');
 Route::get('/our-team/detail', [TeamController::class, 'detail'])->name('team-detail');
@@ -42,6 +46,40 @@ Route::get('/careers', [CareerController::class, 'index'])->name('career');
 Route::get('/careers/detail', [CareerController::class, 'detail'])->name('career-detail');
 Route::get('/careers/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+Route::prefix('id')
+    ->middleware(ChangeLocal::class)
+    ->group(function () {
+        Route::get('/', [HomeController::class, 'index'])->name('home.id');
+        Route::get('/our-team', [TeamController::class, 'index'])->name('team.id');
+        Route::get('/our-team/detail', [TeamController::class, 'detail'])->name('team-detail.id');
+        Route::get('/our-services', [ServiceController::class, 'index'])->name('service.id');
+        Route::get('/our-services/detail', [ServiceController::class, 'detail'])->name('service-detail.id');
+        Route::get('/articles', [ArticleController::class, 'index'])->name('articles.id');
+        Route::get('/articles/detail', [ArticleController::class, 'detail'])->name('article-detail.id');
+        Route::get('/careers', [CareerController::class, 'index'])->name('career.id');
+        Route::get('/careers/detail', [CareerController::class, 'detail'])->name('career-detail.id');
+        Route::get('/careers/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax.id');
+        Route::get('/contact', [ContactController::class, 'index'])->name('contact.id');
+});
+
+Route::prefix('jp')
+    ->middleware(ChangeLocal::class)
+    ->group(function () {
+        Route::get('/', [HomeController::class, 'index'])->name('home.jp');
+        Route::get('/our-team', [TeamController::class, 'index'])->name('team.jp');
+        Route::get('/our-team/detail', [TeamController::class, 'detail'])->name('team-detail.jp');
+        Route::get('/our-services', [ServiceController::class, 'index'])->name('service.jp');
+        Route::get('/our-services/detail', [ServiceController::class, 'detail'])->name('service-detail.jp');
+        Route::get('/articles', [ArticleController::class, 'index'])->name('articles.jp');
+        Route::get('/articles/detail', [ArticleController::class, 'detail'])->name('article-detail.jp');
+        Route::get('/careers', [CareerController::class, 'index'])->name('career.jp');
+        Route::get('/careers/detail', [CareerController::class, 'detail'])->name('career-detail.jp');
+        Route::get('/careers/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax.jp');
+        Route::get('/contact', [ContactController::class, 'index'])->name('contact.jp');
+});
+
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
