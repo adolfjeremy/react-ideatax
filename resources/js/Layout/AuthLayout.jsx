@@ -21,6 +21,7 @@ import {
 import { RxHamburgerMenu } from "react-icons/rx";
 import { GrHeroku } from "react-icons/gr";
 import { IoIosStats } from "react-icons/io";
+import { FaSuitcase } from "react-icons/fa";
 import Spinner from "@/Components/Spinner";
 import AlertBar from "@/Components/AlertBar";
 
@@ -87,6 +88,20 @@ function AuthLayout({ children, sectionHeading }) {
                             <IoIosStats />
                         </ListItemIcon>
                         <ListItemText primary="Statistic" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem
+                    disablePadding
+                    onClick={() => router.visit(route("services.index"))}
+                    className={`${
+                        route().current("services*") ? "active" : ""
+                    }`}
+                >
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <FaSuitcase />
+                        </ListItemIcon>
+                        <ListItemText primary="Services" />
                     </ListItemButton>
                 </ListItem>
             </List>

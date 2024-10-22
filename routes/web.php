@@ -12,6 +12,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Middleware\ChangeLocal;
 
@@ -85,6 +86,7 @@ Route::prefix('admin')
     ->group(function () {
         Route::resource('hero', HeroController::class);
         Route::resource('stat', StatController::class);
+        Route::resource('services', AdminServiceController::class);
 });
 
 
