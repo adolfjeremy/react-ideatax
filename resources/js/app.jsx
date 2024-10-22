@@ -8,6 +8,8 @@ import { hydrateRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { ThemeProvider, createTheme } from "@mui/material";
+import SpinnerContextProvider from "./Context/SpinnerContext";
+import AlertContextProvider from "./Context/AlertContext";
 import "@/utils/i18next";
 
 const theme = createTheme({
@@ -37,7 +39,11 @@ createInertiaApp({
         hydrateRoot(
             el,
             <ThemeProvider theme={theme}>
-                <App {...props} />
+                <SpinnerContextProvider>
+                    <AlertContextProvider>
+                        <App {...props} />
+                    </AlertContextProvider>
+                </SpinnerContextProvider>
             </ThemeProvider>
         );
     },

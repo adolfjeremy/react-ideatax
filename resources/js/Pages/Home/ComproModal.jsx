@@ -66,7 +66,7 @@ function ComproModal({ buttonText }) {
                             variant="h6"
                             component="h2"
                         >
-                            Text in a modal
+                            Download Company Profile
                         </Typography>
                         <form className="compro_form mt-3">
                             <TextField

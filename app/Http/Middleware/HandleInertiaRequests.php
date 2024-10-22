@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tighten\Ziggy\Ziggy;
+use Illuminate\Support\Facades\Session;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -39,9 +40,10 @@ class HandleInertiaRequests extends Middleware
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],
-            // "locale"=> [
-            //     'current' => app()->getLocale()
-            // ]
+            'flashMessage' => [
+                'message' => Session::get('message'),
+                'type' => Session::get('type')
+            ],
         ];
     }
 }

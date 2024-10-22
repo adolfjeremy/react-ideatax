@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\HeroController;
+use App\Http\Controllers\Admin\StatController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
@@ -77,6 +79,12 @@ Route::prefix('jp')
         Route::get('/careers/detail', [CareerController::class, 'detail'])->name('career-detail.jp');
         Route::get('/careers/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax.jp');
         Route::get('/contact', [ContactController::class, 'index'])->name('contact.jp');
+});
+
+Route::prefix('admin')
+    ->group(function () {
+        Route::resource('hero', HeroController::class);
+        Route::resource('stat', StatController::class);
 });
 
 

@@ -1,4 +1,5 @@
 import { Box, Typography, useTheme, Link } from "@mui/material";
+import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import Guest from "@/Layout/Guest";
@@ -25,11 +26,13 @@ import audit from "../../assets/images/icons/audit.svg";
 import refund from "../../assets/images/icons/refund.svg";
 import transfer from "../../assets/images/icons/transfer.svg";
 import compliance from "../../assets/images/icons/compliance.svg";
+import checkLang from "@/utils/checkLang";
 import "./home.scss";
 
 function Home() {
     const { t } = useTranslation();
     const theme = useTheme();
+    const { locale, heroes, stats } = usePage().props;
     return (
         <Guest en={route("home")} id={route("home.id")} jp={route("home.jp")}>
             <Box
@@ -48,27 +51,18 @@ function Home() {
                     data-bs-ride="carousel"
                 >
                     <div className="carousel-inner">
-                        <div className="carousel-item active">
-                            <img
-                                src={hero}
-                                className="d-block w-100"
-                                alt="..."
-                            />
-                        </div>
-                        <div className="carousel-item">
-                            <img
-                                src={hero}
-                                className="d-block w-100"
-                                alt="..."
-                            />
-                        </div>
-                        <div className="carousel-item">
-                            <img
-                                src={hero}
-                                className="d-block w-100"
-                                alt="..."
-                            />
-                        </div>
+                        {heroes.map((hero, i) => (
+                            <div
+                                className={`carousel-item ${
+                                    i === 0 ? "active" : ""
+                                }`}
+                            >
+                                <img
+                                    src={`/storage/${hero.hero}`}
+                                    className="d-block w-100"
+                                />
+                            </div>
+                        ))}
                     </div>
                 </div>
                 <Box
@@ -139,72 +133,39 @@ function Home() {
                         </div>
                     </div>
                     <div className="row">
-                        <Box
-                            className="col-3"
-                            sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "start",
-                                flexDirection: "column",
-                            }}
-                        >
-                            <p
-                                style={{ color: theme.palette.custom.darkBlue }}
-                                className="stat m-0"
+                        {stats.map((stat) => (
+                            <Box
+                                className="col-3"
+                                sx={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "start",
+                                    flexDirection: "column",
+                                }}
                             >
-                                465+
-                            </p>
-                            <p
-                                style={{ color: theme.palette.custom.orange }}
-                                className="stat_head m-0"
-                            >
-                                Projects
-                            </p>
-                        </Box>
-                        <Box
-                            className="col-3"
-                            sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "start",
-                                flexDirection: "column",
-                            }}
-                        >
-                            <p
-                                style={{ color: theme.palette.custom.darkBlue }}
-                                className="stat m-0"
-                            >
-                                200+
-                            </p>
-                            <p
-                                style={{ color: theme.palette.custom.orange }}
-                                className="stat_head m-0"
-                            >
-                                Clients
-                            </p>
-                        </Box>
-                        <Box
-                            className="col-3"
-                            sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "start",
-                                flexDirection: "column",
-                            }}
-                        >
-                            <p
-                                style={{ color: theme.palette.custom.darkBlue }}
-                                className="stat m-0"
-                            >
-                                20+
-                            </p>
-                            <p
-                                style={{ color: theme.palette.custom.orange }}
-                                className="stat_head m-0"
-                            >
-                                Years Of Partner Experience
-                            </p>
-                        </Box>
+                                <p
+                                    style={{
+                                        color: theme.palette.custom.darkBlue,
+                                    }}
+                                    className="stat m-0"
+                                >
+                                    {stat.value}+
+                                </p>
+                                <p
+                                    style={{
+                                        color: theme.palette.custom.orange,
+                                    }}
+                                    className="stat_head m-0"
+                                >
+                                    {checkLang(
+                                        locale,
+                                        stat.head_eng,
+                                        stat.head,
+                                        stat.head_jpn
+                                    )}
+                                </p>
+                            </Box>
+                        ))}
                         <Box
                             className="col-3"
                             sx={{
