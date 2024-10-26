@@ -1,8 +1,11 @@
+import { usePage } from "@inertiajs/react";
 import arrowIcon from "../assets/images/icons/arrow.svg";
 import { useTranslation } from "react-i18next";
 
 function ConsultationButton({ center = false }) {
     const { t } = useTranslation();
+
+    const { locale } = usePage().props;
     return (
         <div className="container consultation_cta">
             <div className="row py-4">
@@ -13,7 +16,15 @@ function ConsultationButton({ center = false }) {
                             : ""
                     }`}
                 >
-                    <a href="#">
+                    <a
+                        href={
+                            locale == "en"
+                                ? route("contact")
+                                : locale == "id"
+                                ? route("contact.id")
+                                : route("contact.jp")
+                        }
+                    >
                         {t("consult")}
                         <img src={arrowIcon} alt="Consultation Now" />
                     </a>

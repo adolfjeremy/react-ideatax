@@ -1,16 +1,23 @@
 import { Box, Typography, useTheme, Link } from "@mui/material";
+import { usePage } from "@inertiajs/react";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import serviceBg from "../../assets/images/service-bg.png";
 import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
+import checkLang from "@/utils/checkLang";
 
 import "./service.scss";
 
 function Service() {
     const { t } = useTranslation();
+    const { locale, services } = usePage().props;
     const theme = useTheme();
     return (
-        <Guest>
+        <Guest
+            en={route("service")}
+            id={route("service.id")}
+            jp={route("service.jp")}
+        >
             <Box
                 className="py-5"
                 component="section"
@@ -61,50 +68,52 @@ function Service() {
                             </Typography>
                         </div>
                         <div className="col-12 col-md-8 services_list mt-5">
-                            <Link
-                                sx={{
-                                    svg: {
-                                        fontSize: "2.5rem",
-                                        color: theme.palette.custom.darkBlue,
-                                    },
-                                }}
-                                href="#"
-                                className="col-12 service_item d-flex align-items-center justify-content-between p-2"
-                            >
-                                <Typography
+                            {services.map((service) => (
+                                <Link
+                                    href={
+                                        locale == "en"
+                                            ? route(
+                                                  "service-detail",
+                                                  service.slug_eng
+                                              )
+                                            : locale == "id"
+                                            ? route(
+                                                  "service-detail.id",
+                                                  service.slug
+                                              )
+                                            : route(
+                                                  "service-detail.jp",
+                                                  service.slug_jpn
+                                              )
+                                    }
+                                    key={service.id}
                                     sx={{
-                                        fontSize: "1.3125rem",
-                                        letterSpacing: "0.009em",
-                                        lineHeight: "1.2em",
-                                        color: theme.palette.custom.blue,
+                                        svg: {
+                                            fontSize: "2rem",
+                                            color: theme.palette.custom
+                                                .darkBlue,
+                                        },
                                     }}
+                                    className="col-12 service_item d-flex align-items-center justify-content-between p-2"
                                 >
-                                    Tax and Customs Compliances
-                                </Typography>
-                                <IoIosArrowRoundForward />
-                            </Link>
-                            <Link
-                                sx={{
-                                    svg: {
-                                        fontSize: "2.5rem",
-                                        color: theme.palette.custom.darkBlue,
-                                    },
-                                }}
-                                href="#"
-                                className="col-12 service_item d-flex align-items-center justify-content-between p-2"
-                            >
-                                <Typography
-                                    sx={{
-                                        fontSize: "1.3125rem",
-                                        letterSpacing: "0.009em",
-                                        lineHeight: "1.2em",
-                                        color: theme.palette.custom.blue,
-                                    }}
-                                >
-                                    Tax and Customs Compliances
-                                </Typography>
-                                <IoIosArrowRoundForward />
-                            </Link>
+                                    <Typography
+                                        sx={{
+                                            fontSize: "1.3125rem",
+                                            letterSpacing: "0.009em",
+                                            lineHeight: "1.2em",
+                                            color: theme.palette.custom.blue,
+                                        }}
+                                    >
+                                        {checkLang(
+                                            locale,
+                                            service.title_eng,
+                                            service.title,
+                                            service.title_jpn
+                                        )}
+                                    </Typography>
+                                    <IoIosArrowRoundForward />
+                                </Link>
+                            ))}
                         </div>
                     </div>
                 </div>

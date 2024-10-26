@@ -30,6 +30,7 @@ i18next
                     serviceFourDesc:
                         "Companies need to automate tax processes to stay compliant with regulations. Ideatax offers a solution with automation and expert support, minimizing risk and freeing your time to focus on running your business.",
                     read: "Read More",
+                    articleHead: "Articles",
                     consult: "Consultation Now",
                     value: "Core Value",
                     valueOne: "Professional",
@@ -92,6 +93,7 @@ i18next
                     serviceFourDesc:
                         "Perushaan perlu mengotomatiskan proses pajak agar tetap patuh terhadap peraturan. Ideatax menawarkan solusi dengan otomatisasi dan dukungan ahli, sehingga dapat meminimalkan risiko dan membebaskan waktu Anda untuk fokus menjalankan bisnis.",
                     read: "Baca Selengkapnya",
+                    articleHead: "Artikel",
                     consult: "Konsultasi Sekarang ",
                     value: "Core Value",
                     valueOne: "Professional",
@@ -154,6 +156,7 @@ i18next
                     serviceFourDesc:
                         "Companies need to automate tax processes to stay compliant with regulations. Ideatax offers a solution with automation and expert support, minimizing risk and freeing your time to focus on running your business.",
                     read: "詳細",
+                    articleHead: "アーティクルズ",
                     consult: "相談受付中",
                     value: "コア・バリュー",
                     valueOne: "プロフェッショナル",

@@ -25,7 +25,13 @@ function Service() {
             field: "actions",
             headerName: "Actions",
             type: "actions",
-            renderCell: (params) => <ActionButton param={params} />,
+            renderCell: (params) => (
+                <ActionButton
+                    param={params}
+                    destination={route("services.edit", params.row.id)}
+                    deleteRoute={route("services.destroy", params.row.id)}
+                />
+            ),
             headerAlign: "center",
             align: "center",
         },

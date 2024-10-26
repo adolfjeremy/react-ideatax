@@ -42,7 +42,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/our-team', [TeamController::class, 'index'])->name('team');
 Route::get('/our-team/detail', [TeamController::class, 'detail'])->name('team-detail');
 Route::get('/our-services', [ServiceController::class, 'index'])->name('service');
-Route::get('/our-services/detail', [ServiceController::class, 'detail'])->name('service-detail');
+Route::get('/our-services/{slug_eng}', [ServiceController::class, 'detail'])->name('service-detail');
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 Route::get('/articles/detail', [ArticleController::class, 'detail'])->name('article-detail');
 Route::get('/careers', [CareerController::class, 'index'])->name('career');
@@ -57,7 +57,7 @@ Route::prefix('id')
         Route::get('/our-team', [TeamController::class, 'index'])->name('team.id');
         Route::get('/our-team/detail', [TeamController::class, 'detail'])->name('team-detail.id');
         Route::get('/our-services', [ServiceController::class, 'index'])->name('service.id');
-        Route::get('/our-services/detail', [ServiceController::class, 'detail'])->name('service-detail.id');
+        Route::get('/our-services/{slug}', [ServiceController::class, 'detail'])->name('service-detail.id');
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.id');
         Route::get('/articles/detail', [ArticleController::class, 'detail'])->name('article-detail.id');
         Route::get('/careers', [CareerController::class, 'index'])->name('career.id');
@@ -73,7 +73,7 @@ Route::prefix('jp')
         Route::get('/our-team', [TeamController::class, 'index'])->name('team.jp');
         Route::get('/our-team/detail', [TeamController::class, 'detail'])->name('team-detail.jp');
         Route::get('/our-services', [ServiceController::class, 'index'])->name('service.jp');
-        Route::get('/our-services/detail', [ServiceController::class, 'detail'])->name('service-detail.jp');
+        Route::get('/our-services/{slug_jpn}', [ServiceController::class, 'detail'])->name('service-detail.jp');
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.jp');
         Route::get('/articles/detail', [ArticleController::class, 'detail'])->name('article-detail.jp');
         Route::get('/careers', [CareerController::class, 'index'])->name('career.jp');

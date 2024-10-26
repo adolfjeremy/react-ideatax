@@ -32,7 +32,7 @@ import "./home.scss";
 function Home() {
     const { t } = useTranslation();
     const theme = useTheme();
-    const { locale, heroes, stats } = usePage().props;
+    const { locale, heroes, stats, services } = usePage().props;
     return (
         <Guest en={route("home")} id={route("home.id")} jp={route("home.jp")}>
             <Box
@@ -53,6 +53,7 @@ function Home() {
                     <div className="carousel-inner">
                         {heroes.map((hero, i) => (
                             <div
+                                key={hero.id}
                                 className={`carousel-item ${
                                     i === 0 ? "active" : ""
                                 }`}
@@ -600,67 +601,69 @@ function Home() {
                             </Typography>
                         </div>
                         <div className="col-12 col-md-7 services_list">
-                            <Link
-                                sx={{
-                                    svg: {
-                                        fontSize: "2rem",
-                                        color: theme.palette.custom.darkBlue,
-                                    },
-                                }}
-                                href="#"
-                                className="col-12 service_item d-flex align-items-center justify-content-between p-2"
-                            >
-                                <Typography
+                            {services.map((service) => (
+                                <Link
+                                    key={service.id}
+                                    href={
+                                        locale == "en"
+                                            ? route(
+                                                  "service-detail",
+                                                  service.slug_eng
+                                              )
+                                            : locale == "id"
+                                            ? route(
+                                                  "service-detail.id",
+                                                  service.slug
+                                              )
+                                            : route(
+                                                  "service-detail.jp",
+                                                  service.slug_jpn
+                                              )
+                                    }
                                     sx={{
-                                        fontSize: "1.3125rem",
-                                        letterSpacing: "0.009em",
-                                        lineHeight: "1.2em",
-                                        color: theme.palette.custom.blue,
+                                        svg: {
+                                            fontSize: "2rem",
+                                            color: theme.palette.custom
+                                                .darkBlue,
+                                        },
                                     }}
+                                    className="col-12 service_item d-flex align-items-center justify-content-between p-2"
                                 >
-                                    Tax and Customs Compliances
-                                </Typography>
-                                <IoIosArrowRoundForward />
-                            </Link>
-                            <Link
-                                sx={{
-                                    svg: {
-                                        fontSize: "2rem",
-                                        color: theme.palette.custom.darkBlue,
-                                    },
-                                }}
-                                href="#"
-                                className="col-12 service_item d-flex align-items-center justify-content-between p-2"
-                            >
-                                <Typography
-                                    sx={{
-                                        fontSize: "1.3125rem",
-                                        letterSpacing: "0.009em",
-                                        lineHeight: "1.2em",
-                                        color: theme.palette.custom.blue,
-                                    }}
-                                >
-                                    Tax and Customs Compliances
-                                </Typography>
-                                <IoIosArrowRoundForward />
-                            </Link>
+                                    <Typography
+                                        sx={{
+                                            fontSize: "1.3125rem",
+                                            letterSpacing: "0.009em",
+                                            lineHeight: "1.2em",
+                                            color: theme.palette.custom.blue,
+                                        }}
+                                    >
+                                        {checkLang(
+                                            locale,
+                                            service.title_eng,
+                                            service.title,
+                                            service.title_jpn
+                                        )}
+                                    </Typography>
+                                    <IoIosArrowRoundForward />
+                                </Link>
+                            ))}
                         </div>
-                    </div>
-                    <div className="row mt-5">
-                        <div className="col-12">
-                            <Typography
-                                sx={{
-                                    color: theme.palette.custom.orange,
-                                    lineHeight: "1.18641819em",
-                                    fontSize: "3.5625rem",
-                                    letterSpacing: "0.009em",
-                                    [theme.breakpoints.down("sm")]: {
-                                        fontSize: "2.4189rem",
-                                    },
-                                }}
-                            >
-                                {t("teamHead")}
-                            </Typography>
+                        <div className="row mt-5">
+                            <div className="col-12">
+                                <Typography
+                                    sx={{
+                                        color: theme.palette.custom.orange,
+                                        lineHeight: "1.18641819em",
+                                        fontSize: "3.5625rem",
+                                        letterSpacing: "0.009em",
+                                        [theme.breakpoints.down("sm")]: {
+                                            fontSize: "2.4189rem",
+                                        },
+                                    }}
+                                >
+                                    {t("teamHead")}
+                                </Typography>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -671,6 +674,21 @@ function Home() {
             <ConsultationButton />
             <Box component="section" sx={{ py: "3.5rem" }}>
                 <div className="container">
+                    <div className="row">
+                        <div className="col-12 text-center">
+                            <Typography
+                                sx={{
+                                    fontSize: "1.9375rem",
+                                    lineHeight: "1.43749551em",
+                                    color: theme.palette.custom.lightBlue,
+                                    textAlign: "center",
+                                }}
+                                as="h2"
+                            >
+                                {t("articleHead")}
+                            </Typography>
+                        </div>
+                    </div>
                     <div className="row">
                         <RoundedArticle
                             title="Getting to Know the Automatic Exchange of Information for Tax Purposes"

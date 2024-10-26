@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { router } from "@inertiajs/react";
 import { IconButton, Menu, MenuItem } from "@mui/material";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { SpinnerContext } from "@/Context/SpinnerContext";
+import { AlertContext } from "@/Context/AlertContext";
 
-function ActionButton({ param }) {
+function ActionButton({ destination, deleteRoute }) {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+
+    const { toggleSpinner } = useContext(SpinnerContext);
+    const { toggleAlert } = useContext(AlertContext);
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -13,7 +19,18 @@ function ActionButton({ param }) {
         setAnchorEl(null);
     };
 
-    console.log(param);
+    const handleDelete = () =>
+        router.delete(deleteRoute, {
+            onBefore: () =>
+                confirm("Are you sure you want to delete this Service?"),
+            onStart: () => {
+                toggleSpinner(true);
+            },
+            onSuccess: () => {
+                toggleSpinner(false);
+                toggleAlert(true);
+            },
+        });
 
     return (
         <div>
@@ -35,18 +52,10 @@ function ActionButton({ param }) {
                     "aria-labelledby": "basic-button",
                 }}
             >
-                <MenuItem
-                    onClick={() => router.visit("services.edit", param.row.id)}
-                >
+                <MenuItem onClick={() => router.visit(destination)}>
                     Edit
                 </MenuItem>
-                <MenuItem
-                    onClick={() =>
-                        router.visit("services.destroy", param.row.id)
-                    }
-                >
-                    Delete
-                </MenuItem>
+                <MenuItem onClick={handleDelete}>Delete</MenuItem>
             </Menu>
         </div>
     );

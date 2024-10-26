@@ -1,19 +1,22 @@
 import { Box, Typography, useTheme } from "@mui/material";
+import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
 import ConsultationButton from "@/Components/ConsultationButton";
+import checkLang from "@/utils/checkLang";
 
 function ServiceDetail() {
     const { t } = useTranslation();
     const theme = useTheme();
+    const { locale, item } = usePage().props;
     return (
-        <Guest>
+        <Guest
+            en={route("service-detail", item.slug_eng)}
+            id={route("service-detail.id", item.slug)}
+            jp={route("service-detail.jp", item.slug_jpn)}
+        >
             <Box className="position-relative">
-                <img
-                    src="https://ideatax.id/storage/service/SH2RN2RV4R6tsivPXQvTeGFxsKml4uGPn0tho46r.png"
-                    alt=""
-                    className="w-100"
-                />
+                <img src={`/storage/${item.image}`} alt="" className="w-100" />
                 <Box
                     sx={{
                         position: "absolute",
@@ -56,14 +59,12 @@ function ServiceDetail() {
                                     textAlign: "center",
                                 }}
                             >
-                                Taxation and customs automation are a matter of
-                                urgency for companies to achieve a formal and
-                                material compliance towards the legislations and
-                                minimum system requirements. Ideatax is ready to
-                                answer your compliance needs in preventing risks
-                                that could happen. Our professional talents will
-                                make sure those needs are met, so you can focus
-                                on running your business.
+                                {checkLang(
+                                    locale,
+                                    item.description_eng,
+                                    item.description,
+                                    item.description_jpn
+                                )}
                             </Typography>
                         </div>
                     </div>
