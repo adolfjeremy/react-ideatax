@@ -27,12 +27,13 @@ import refund from "../../assets/images/icons/refund.svg";
 import transfer from "../../assets/images/icons/transfer.svg";
 import compliance from "../../assets/images/icons/compliance.svg";
 import checkLang from "@/utils/checkLang";
+import formatDate from "@/utils/formatDate";
 import "./home.scss";
 
 function Home() {
     const { t } = useTranslation();
     const theme = useTheme();
-    const { locale, heroes, stats, services } = usePage().props;
+    const { locale, heroes, stats, services, articles } = usePage().props;
     return (
         <Guest en={route("home")} id={route("home.id")} jp={route("home.jp")}>
             <Box
@@ -690,30 +691,36 @@ function Home() {
                         </div>
                     </div>
                     <div className="row">
-                        <RoundedArticle
-                            title="Getting to Know the Automatic Exchange of Information for Tax Purposes"
-                            category="PPN"
-                            timeStamp="26 Aug, 2024 15:07 WIB"
-                            img="https://ideatax.id/storage/article/RPQuiYd2fYkP60FxOLvCP3uYInqI9M7GQbiW3uZH.png"
-                        />
-                        <RoundedArticle
-                            title="Getting to Know the Automatic Exchange of Information for Tax Purposes"
-                            category="PPN"
-                            timeStamp="26 Aug, 2024 15:07 WIB"
-                            img="https://ideatax.id/storage/article/RPQuiYd2fYkP60FxOLvCP3uYInqI9M7GQbiW3uZH.png"
-                        />
-                        <RoundedArticle
-                            title="Getting to Know the Automatic Exchange of Information for Tax Purposes"
-                            category="PPN"
-                            timeStamp="26 Aug, 2024 15:07 WIB"
-                            img="https://ideatax.id/storage/article/RPQuiYd2fYkP60FxOLvCP3uYInqI9M7GQbiW3uZH.png"
-                        />
-                        <RoundedArticle
-                            title="Getting to Know the Automatic Exchange of Information for Tax Purposes"
-                            category="PPN"
-                            timeStamp="26 Aug, 2024 15:07 WIB"
-                            img="https://ideatax.id/storage/article/RPQuiYd2fYkP60FxOLvCP3uYInqI9M7GQbiW3uZH.png"
-                        />
+                        {articles.map((article) => (
+                            <RoundedArticle
+                                key={article.id}
+                                title={checkLang(
+                                    locale,
+                                    article.title_eng,
+                                    article.title,
+                                    article.title_jpn
+                                )}
+                                category="PPN"
+                                timeStamp={formatDate(article.created_at)}
+                                img={`/storage/${article.thumbnail}`}
+                                detail={
+                                    locale == "en"
+                                        ? route(
+                                              "article-detail",
+                                              article.slug_eng
+                                          )
+                                        : locale == "id"
+                                        ? route(
+                                              "article-detail.id",
+                                              article.slug
+                                          )
+                                        : route(
+                                              "article-detail.jp",
+                                              article.slug_jpn
+                                          )
+                                }
+                            />
+                        ))}
                     </div>
                 </div>
             </Box>

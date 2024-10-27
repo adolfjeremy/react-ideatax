@@ -8,18 +8,20 @@ import {
     MenuItem,
     IconButton,
 } from "@mui/material";
+import { usePage } from "@inertiajs/react";
 import Guest from "@/Layout/Guest";
 import ConsultationButton from "@/Components/ConsultationButton";
 import { FaWhatsapp } from "react-icons/fa";
 import { IoMdLink } from "react-icons/io";
 import { FaLinkedin } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
-// import LinkedInIcon from "@mui/icons-material/LinkedIn";
-// import SendIcon from "@mui/icons-material/Send";
+import checkLang from "@/utils/checkLang";
+import RichText from "@/Components/RichText";
 
 import "../article.scss";
 
 function ArticleDetail() {
+    const { locale, item } = usePage().props;
     const theme = useTheme();
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -34,7 +36,11 @@ function ArticleDetail() {
         handleClose();
     };
     return (
-        <Guest>
+        <Guest
+            en={route("article-detail", item.slug_eng)}
+            id={route("article-detail.id", item.slug)}
+            jp={route("article-detail.jp", item.slug_jpn)}
+        >
             <Box
                 component="section"
                 sx={{
@@ -45,15 +51,11 @@ function ArticleDetail() {
                     },
                 }}
             >
-                <div
-                    id="carouselExampleSlidesOnly"
-                    className="carousel slide"
-                    data-bs-ride="carousel"
-                >
+                <div>
                     <div className="carousel-inner">
                         <div className="carousel-item active">
                             <img
-                                src="https://ideatax.id/storage/article/WYSAb70JXlFvUHHmMPSLkOnxxsjdgQNACFWyEVCc.png"
+                                src={`/storage/${item.photo}`}
                                 className="d-block w-100"
                                 alt="title"
                             />
@@ -131,45 +133,16 @@ function ArticleDetail() {
                 <div className="container">
                     <div className="row px-md-5">
                         <div className="col-12 px-md-4 mt-5 article_body">
-                            <p>
-                                The Directorate General of Taxes announced that
-                                as of April 2024, 112 tax jurisdictions have
-                                participated in the Automatic Exchange of
-                                Information (AEOI) cooperation with Indonesia.
-                                Among these tax jurisdictions are Albania,
-                                Andora, Australia, the Bahamas, Bermuda,
-                                Gibraltar, Portugal, Qatar, and so on. This
-                                number has increased by two jurisdictions
-                                compared to April 2023.
-                            </p>
-                            <p>
-                                In addition, in its official release, the
-                                Directorate General of Taxes also announced that
-                                there are 83 countries for reporting Indonesian
-                                tax information, including Croatia, Finland,
-                                France, Malta, Mauritius, and so on. The
-                                countries participating in Indonesia's
-                                information exchange and reporting destinations
-                                are as follows:
-                            </p>
-                            <p>
-                                It should be noted that the automatic exchange
-                                of data for tax purposes is a tax standard that
-                                regulates how tax authorities participate in the
-                                exchange of information with the tax authorities
-                                of other countries (EFG 2024). According to the
-                                OECD (2015), the initiation of the Automatic
-                                Exchange of Information (AEOI) occurred in 2012.
-                                At that time, there was a political will among
-                                the leaders of the G20 countries to exchange tax
-                                information. In 2013, the Finance Ministers of
-                                the G20 countries agreed to encourage the
-                                automatic exchange of information as a new
-                                standard. This was followed by the commitment of
-                                G8 leaders, who approved the OECD Secretary
-                                General's report entitled “A Step Change in Tax
-                                Transparency” (OECD 2015).
-                            </p>
+                            {
+                                <RichText
+                                    htmlContent={checkLang(
+                                        locale,
+                                        item.body_eng,
+                                        item.body,
+                                        item.body_jpn
+                                    )}
+                                />
+                            }
                         </div>
                     </div>
                     <div className="row mt-5">

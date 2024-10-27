@@ -22,6 +22,8 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { GrHeroku } from "react-icons/gr";
 import { IoIosStats } from "react-icons/io";
 import { FaSuitcase } from "react-icons/fa";
+import { RiArticleLine } from "react-icons/ri";
+import { BiSolidCategory } from "react-icons/bi";
 import Spinner from "@/Components/Spinner";
 import AlertBar from "@/Components/AlertBar";
 
@@ -102,6 +104,36 @@ function AuthLayout({ children, sectionHeading }) {
                             <FaSuitcase />
                         </ListItemIcon>
                         <ListItemText primary="Services" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem
+                    disablePadding
+                    onClick={() => router.visit(route("articles.index"))}
+                    className={`${
+                        route().current("articles*") ? "active" : ""
+                    }`}
+                >
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <RiArticleLine />
+                        </ListItemIcon>
+                        <ListItemText primary="Articles" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem
+                    disablePadding
+                    onClick={() =>
+                        router.visit(route("article-category.index"))
+                    }
+                    className={`${
+                        route().current("article-category*") ? "active" : ""
+                    }`}
+                >
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <BiSolidCategory />
+                        </ListItemIcon>
+                        <ListItemText primary="Articles Category" />
                     </ListItemButton>
                 </ListItem>
             </List>

@@ -1,11 +1,11 @@
 import { Button, useTheme } from "@mui/material";
 
-function ReadMoreButton() {
+function ReadMoreButton({ desctination }) {
     const theme = useTheme();
     return (
         <Button
             variant="contained"
-            href="#"
+            href={desctination}
             size="small"
             sx={{
                 backgroundColor: "#000",

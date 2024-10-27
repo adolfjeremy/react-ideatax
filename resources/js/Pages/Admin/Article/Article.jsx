@@ -4,8 +4,9 @@ import AuthLayout from "@/Layout/AuthLayout";
 import TableList from "@/Components/TableList";
 import ActionButton from "@/Components/ActionButton";
 
-function Service() {
-    const { services } = usePage().props;
+function Article() {
+    const { articles } = usePage().props;
+
     const columns = [
         {
             field: "title_eng",
@@ -28,17 +29,16 @@ function Service() {
             renderCell: (params) => (
                 <ActionButton
                     param={params}
-                    destination={route("services.edit", params.row.id)}
-                    deleteRoute={route("services.destroy", params.row.id)}
+                    destination={route("articles.edit", params.row.id)}
+                    deleteRoute={route("articles.destroy", params.row.id)}
                 />
             ),
             headerAlign: "center",
             align: "center",
         },
     ];
-
     return (
-        <AuthLayout sectionHeading="Services">
+        <AuthLayout sectionHeading="Articles">
             <div className="container">
                 <div className="row">
                     <div className="col-12 d-flex align-items-center justify-content-end">
@@ -48,19 +48,19 @@ function Service() {
                                 fontSize: "0.8rem",
                                 fontWeight: 500,
                             }}
-                            href={route("services.create")}
+                            href={route("articles.create")}
                             variant="contained"
                         >
-                            Create new service
+                            Create new Article
                         </Button>
                     </div>
                 </div>
                 <div className="row mt-5">
-                    <TableList rows={services} columns={columns} />
+                    <TableList rows={articles} columns={columns} />
                 </div>
             </div>
         </AuthLayout>
     );
 }
 
-export default Service;
+export default Article;

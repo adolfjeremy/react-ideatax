@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminArticleController;
+use App\Http\Controllers\Admin\ArticleCategoryController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\StatController;
 use Inertia\Inertia;
@@ -44,7 +46,7 @@ Route::get('/our-team/detail', [TeamController::class, 'detail'])->name('team-de
 Route::get('/our-services', [ServiceController::class, 'index'])->name('service');
 Route::get('/our-services/{slug_eng}', [ServiceController::class, 'detail'])->name('service-detail');
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
-Route::get('/articles/detail', [ArticleController::class, 'detail'])->name('article-detail');
+Route::get('/articles/{slug_eng}', [ArticleController::class, 'detail'])->name('article-detail');
 Route::get('/careers', [CareerController::class, 'index'])->name('career');
 Route::get('/careers/detail', [CareerController::class, 'detail'])->name('career-detail');
 Route::get('/careers/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax');
@@ -59,7 +61,7 @@ Route::prefix('id')
         Route::get('/our-services', [ServiceController::class, 'index'])->name('service.id');
         Route::get('/our-services/{slug}', [ServiceController::class, 'detail'])->name('service-detail.id');
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.id');
-        Route::get('/articles/detail', [ArticleController::class, 'detail'])->name('article-detail.id');
+        Route::get('/articles/{slug}', [ArticleController::class, 'detail'])->name('article-detail.id');
         Route::get('/careers', [CareerController::class, 'index'])->name('career.id');
         Route::get('/careers/detail', [CareerController::class, 'detail'])->name('career-detail.id');
         Route::get('/careers/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax.id');
@@ -75,7 +77,7 @@ Route::prefix('jp')
         Route::get('/our-services', [ServiceController::class, 'index'])->name('service.jp');
         Route::get('/our-services/{slug_jpn}', [ServiceController::class, 'detail'])->name('service-detail.jp');
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.jp');
-        Route::get('/articles/detail', [ArticleController::class, 'detail'])->name('article-detail.jp');
+        Route::get('/articles/{slug_jpn}', [ArticleController::class, 'detail'])->name('article-detail.jp');
         Route::get('/careers', [CareerController::class, 'index'])->name('career.jp');
         Route::get('/careers/detail', [CareerController::class, 'detail'])->name('career-detail.jp');
         Route::get('/careers/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax.jp');
@@ -83,10 +85,13 @@ Route::prefix('jp')
 });
 
 Route::prefix('admin')
+    ->middleware('auth')
     ->group(function () {
         Route::resource('hero', HeroController::class);
         Route::resource('stat', StatController::class);
         Route::resource('services', AdminServiceController::class);
+        Route::resource('articles', AdminArticleController::class);
+        Route::resource('article-category', ArticleCategoryController::class);
 });
 
 

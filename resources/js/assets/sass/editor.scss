@@ -1,0 +1,12 @@
+[data-placeholder]:empty:before {
+    color: rgba(0, 0, 0, 0.6);
+    content: attr(data-placeholder);
+    font-size: 1.125rem;
+}
+
+.form_div {
+    min-height: 200px;
+    max-height: 350px;
+    border: none;
+    outline: none;
+}

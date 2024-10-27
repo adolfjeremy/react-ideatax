@@ -6,7 +6,6 @@ import { changeLanguage } from "i18next";
 
 function Guest({ children, en, id, jp }) {
     const { locale } = usePage().props;
-    console.log(en);
     useEffect(() => {
         changeLanguage(locale);
     }, [locale]);

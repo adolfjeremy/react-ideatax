@@ -21,8 +21,7 @@ function ActionButton({ destination, deleteRoute }) {
 
     const handleDelete = () =>
         router.delete(deleteRoute, {
-            onBefore: () =>
-                confirm("Are you sure you want to delete this Service?"),
+            onBefore: () => confirm("Are you sure you want to delete this?"),
             onStart: () => {
                 toggleSpinner(true);
             },

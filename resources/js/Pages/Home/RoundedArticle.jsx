@@ -1,6 +1,6 @@
 import { useTheme, Box, Typography, Link } from "@mui/material";
 
-function RoundedArticle({ img, title, category, timeStamp }) {
+function RoundedArticle({ img, title, category, timeStamp, detail }) {
     const theme = useTheme();
     return (
         <div className="col-12 col-md-6 ps-0 d-flex align-items-center mt-5">
@@ -12,6 +12,8 @@ function RoundedArticle({ img, title, category, timeStamp }) {
                     overflow: "hidden",
                     img: {
                         height: "110px",
+                        width: "auto",
+                        maxWidth: "none",
                     },
                 }}
             >
@@ -36,6 +38,7 @@ function RoundedArticle({ img, title, category, timeStamp }) {
                     {category} - {timeStamp}
                 </Typography>
                 <Link
+                    href={detail}
                     sx={{
                         fontSize: "1.6rem",
                         color: theme.palette.custom.lightBlue,
@@ -50,7 +53,6 @@ function RoundedArticle({ img, title, category, timeStamp }) {
                             fontSize: "1.06259rem",
                         },
                     }}
-                    href="#"
                     underline="none"
                 >
                     {title}

@@ -19,8 +19,6 @@ function HeroEdit({ hero }) {
         oldImage: hero.hero,
     });
 
-    console.log(data);
-
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
