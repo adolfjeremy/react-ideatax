@@ -103,8 +103,15 @@ class TaxEventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TaxEvent $taxEvent)
+    public function destroy($id)
     {
-        //
+        $item = TaxEvent::findOrFail($id);
+        Storage::delete($item->photo);
+        $item->delete();
+
+        return redirect()->route('tax-event.index')->with([
+            'message' => "Tax Event deleted successfully",
+            'type' => 'success'
+        ]);;
     }
 }

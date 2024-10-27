@@ -76,8 +76,14 @@ class ArticleCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ArticleCategory $articleCategory)
+    public function destroy($id)
     {
-        //
+        $item = ArticleCategory::findOrFail($id);
+        $item->delete();
+
+        return redirect()->route('article-category.index')->with([
+            'message' => "Category deleted successfully",
+            'type' => 'success'
+        ]);;
     }
 }
