@@ -24,6 +24,7 @@ import { IoIosStats } from "react-icons/io";
 import { FaSuitcase } from "react-icons/fa";
 import { RiArticleLine } from "react-icons/ri";
 import { BiSolidCategory } from "react-icons/bi";
+import { MdEventAvailable } from "react-icons/md";
 import Spinner from "@/Components/Spinner";
 import AlertBar from "@/Components/AlertBar";
 
@@ -134,6 +135,20 @@ function AuthLayout({ children, sectionHeading }) {
                             <BiSolidCategory />
                         </ListItemIcon>
                         <ListItemText primary="Articles Category" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem
+                    disablePadding
+                    onClick={() => router.visit(route("tax-event.index"))}
+                    className={`${
+                        route().current("tax-event*") ? "active" : ""
+                    }`}
+                >
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <MdEventAvailable />
+                        </ListItemIcon>
+                        <ListItemText primary="Tax Event" />
                     </ListItemButton>
                 </ListItem>
             </List>

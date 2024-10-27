@@ -98,12 +98,12 @@ class AdminArticleController extends Controller
 
         if($request->file('photo'))
         {
-            // Storage::delete($request->oldPhoto);
+            Storage::delete($request->oldPhoto);
             $data['photo'] = $request->file('photo')->store('article');
         }
         if($request->file('thumbnail'))
         {
-            // Storage::delete($request->oldThumbnail);
+            Storage::delete($request->oldThumbnail);
             $data['thumbnail'] = $request->file('thumbnail')->store('article');
         }         
 

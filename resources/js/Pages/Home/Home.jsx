@@ -33,7 +33,9 @@ import "./home.scss";
 function Home() {
     const { t } = useTranslation();
     const theme = useTheme();
-    const { locale, heroes, stats, services, articles } = usePage().props;
+    const { locale, heroes, stats, services, articles, events } =
+        usePage().props;
+    console.log(events);
     return (
         <Guest en={route("home")} id={route("home.id")} jp={route("home.jp")}>
             <Box
@@ -778,210 +780,64 @@ function Home() {
                         </div>
                     </div>
                     <div className="row">
-                        <Link
-                            underline="none"
-                            href="#"
-                            className="col-6 col-md-3 d-flex flex-column event_item mt-4"
-                            sx={{
-                                cursor: "pointer",
-                                "&:hover": {
-                                    h3: {
-                                        color: theme.palette.custom.orange,
-                                    },
-                                },
-                            }}
-                        >
-                            <img
-                                src="https://ideatax.id/storage/event/Akk1n4qSxKM6TSHxN6ZFt90JewJoersmrykSm5G4.jpg"
-                                alt="title"
-                                className="w-100"
-                            />
-                            <Typography
+                        {events.map((item) => (
+                            <Link
+                                key={item.id}
+                                underline="none"
+                                href="#"
+                                className="col-6 col-md-3 d-flex flex-column event_item mt-4"
                                 sx={{
-                                    fontSize: "1.48125rem",
-                                    color: theme.palette.custom.darkBlue,
-                                    lineHeight: "1.42967633em",
-                                    letterSpacing: "0.009em",
-                                    fontWeight: "600",
-                                    marginTop: "10px",
-                                    transition: "all 300ms  e-in-out",
-                                    [theme.breakpoints.down("sm")]: {
-                                        fontSize: "1.875rem",
+                                    cursor: "pointer",
+                                    "&:hover": {
+                                        h3: {
+                                            color: theme.palette.custom.orange,
+                                        },
                                     },
                                 }}
                             >
-                                Sep, 30 2024
-                            </Typography>
-                            <Typography
-                                as="h3"
-                                sx={{
-                                    fontSize: "1.48125rem",
-                                    color: theme.palette.custom.lightkBlue,
-                                    lineHeight: "1.42967633em",
-                                    letterSpacing: "0.009em",
-                                    transition: "all 300ms ease-in-out",
-                                    [theme.breakpoints.down("sm")]: {
-                                        fontSize: "0.9rem",
-                                    },
-                                }}
-                            >
-                                Accurate Financial Statements: The Key to
-                                Corporate Income Tax (PPh Badan) Filing Success
-                            </Typography>
-                        </Link>
-                        <Link
-                            underline="none"
-                            href="#"
-                            className="col-6 col-md-3 d-flex flex-column event_item mt-4"
-                            sx={{
-                                cursor: "pointer",
-                                "&:hover": {
-                                    h3: {
-                                        color: theme.palette.custom.orange,
-                                    },
-                                },
-                            }}
-                        >
-                            <img
-                                src="https://ideatax.id/storage/event/Akk1n4qSxKM6TSHxN6ZFt90JewJoersmrykSm5G4.jpg"
-                                alt="title"
-                                className="w-100"
-                            />
-                            <Typography
-                                sx={{
-                                    fontSize: "1.48125rem",
-                                    color: theme.palette.custom.darkBlue,
-                                    lineHeight: "1.42967633em",
-                                    letterSpacing: "0.009em",
-                                    fontWeight: "600",
-                                    marginTop: "10px",
-                                    transition: "all 300ms ease-in-out",
-                                    [theme.breakpoints.down("sm")]: {
-                                        fontSize: "1.875rem",
-                                    },
-                                }}
-                            >
-                                Sep, 30 2024
-                            </Typography>
-                            <Typography
-                                as="h3"
-                                sx={{
-                                    fontSize: "1.48125rem",
-                                    color: theme.palette.custom.lightkBlue,
-                                    lineHeight: "1.42967633em",
-                                    letterSpacing: "0.009em",
-                                    transition: "all 300ms ease-in-out",
-                                    [theme.breakpoints.down("sm")]: {
-                                        fontSize: "0.9rem",
-                                    },
-                                }}
-                            >
-                                Accurate Financial Statements: The Key to
-                                Corporate Income Tax (PPh Badan) Filing Success
-                            </Typography>
-                        </Link>
-                        <Link
-                            underline="none"
-                            href="#"
-                            className="col-6 col-md-3 d-flex flex-column event_item mt-4"
-                            sx={{
-                                cursor: "pointer",
-                                "&:hover": {
-                                    h3: {
-                                        color: theme.palette.custom.orange,
-                                    },
-                                },
-                            }}
-                        >
-                            <img
-                                src="https://ideatax.id/storage/event/Akk1n4qSxKM6TSHxN6ZFt90JewJoersmrykSm5G4.jpg"
-                                alt="title"
-                                className="w-100"
-                            />
-                            <Typography
-                                sx={{
-                                    fontSize: "1.48125rem",
-                                    color: theme.palette.custom.darkBlue,
-                                    lineHeight: "1.42967633em",
-                                    letterSpacing: "0.009em",
-                                    fontWeight: "600",
-                                    marginTop: "10px",
-                                    transition: "all 300ms ease-in-out",
-                                    [theme.breakpoints.down("sm")]: {
-                                        fontSize: "1.875rem",
-                                    },
-                                }}
-                            >
-                                Sep, 30 2024
-                            </Typography>
-                            <Typography
-                                as="h3"
-                                sx={{
-                                    fontSize: "1.48125rem",
-                                    color: theme.palette.custom.lightkBlue,
-                                    lineHeight: "1.42967633em",
-                                    letterSpacing: "0.009em",
-                                    transition: "all 300ms ease-in-out",
-                                    [theme.breakpoints.down("sm")]: {
-                                        fontSize: "0.9rem",
-                                    },
-                                }}
-                            >
-                                Accurate Financial Statements: The Key to
-                                Corporate Income Tax (PPh Badan) Filing Success
-                            </Typography>
-                        </Link>
-                        <Link
-                            underline="none"
-                            href="#"
-                            className="col-6 col-md-3 d-flex flex-column event_item mt-4"
-                            sx={{
-                                cursor: "pointer",
-                                "&:hover": {
-                                    h3: {
-                                        color: theme.palette.custom.orange,
-                                    },
-                                },
-                            }}
-                        >
-                            <img
-                                src="https://ideatax.id/storage/event/Akk1n4qSxKM6TSHxN6ZFt90JewJoersmrykSm5G4.jpg"
-                                alt="title"
-                                className="w-100"
-                            />
-                            <Typography
-                                sx={{
-                                    fontSize: "1.48125rem",
-                                    color: theme.palette.custom.darkBlue,
-                                    lineHeight: "1.42967633em",
-                                    letterSpacing: "0.009em",
-                                    fontWeight: "600",
-                                    marginTop: "10px",
-                                    transition: "all 300ms ease-in-out",
-                                    [theme.breakpoints.down("sm")]: {
-                                        fontSize: "1.875rem",
-                                    },
-                                }}
-                            >
-                                Sep, 30 2024
-                            </Typography>
-                            <Typography
-                                as="h3"
-                                sx={{
-                                    fontSize: "1.48125rem",
-                                    color: theme.palette.custom.lightkBlue,
-                                    lineHeight: "1.42967633em",
-                                    letterSpacing: "0.009em",
-                                    transition: "all 300ms ease-in-out",
-                                    [theme.breakpoints.down("sm")]: {
-                                        fontSize: "0.9rem",
-                                    },
-                                }}
-                            >
-                                Accurate Financial Statements: The Key to
-                                Corporate Income Tax (PPh Badan) Filing Success
-                            </Typography>
-                        </Link>
+                                <img
+                                    src={`/storage/${item.photo}`}
+                                    alt={item.title}
+                                    className="w-100"
+                                />
+                                <Typography
+                                    sx={{
+                                        fontSize: "1.48125rem",
+                                        color: theme.palette.custom.darkBlue,
+                                        lineHeight: "1.42967633em",
+                                        letterSpacing: "0.009em",
+                                        fontWeight: "600",
+                                        marginTop: "10px",
+                                        transition: "all 300ms  e-in-out",
+                                        [theme.breakpoints.down("sm")]: {
+                                            fontSize: "1.875rem",
+                                        },
+                                    }}
+                                >
+                                    {formatDate(item.created_at, true)}
+                                </Typography>
+                                <Typography
+                                    as="h3"
+                                    sx={{
+                                        fontSize: "1.48125rem",
+                                        color: theme.palette.custom.lightkBlue,
+                                        lineHeight: "1.42967633em",
+                                        letterSpacing: "0.009em",
+                                        transition: "all 300ms ease-in-out",
+                                        [theme.breakpoints.down("sm")]: {
+                                            fontSize: "0.9rem",
+                                        },
+                                    }}
+                                >
+                                    {checkLang(
+                                        locale,
+                                        item.title_eng,
+                                        item.title,
+                                        item.title_jpn
+                                    )}
+                                </Typography>
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </Box>

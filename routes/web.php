@@ -15,6 +15,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
+use App\Http\Controllers\Admin\TaxEventController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Middleware\ChangeLocal;
 
@@ -92,6 +93,7 @@ Route::prefix('admin')
         Route::resource('services', AdminServiceController::class);
         Route::resource('articles', AdminArticleController::class);
         Route::resource('article-category', ArticleCategoryController::class);
+        Route::resource('tax-event', TaxEventController::class);
 });
 
 
