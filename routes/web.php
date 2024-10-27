@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminArticleController;
+use App\Http\Controllers\Admin\AdminTeamController;
 use App\Http\Controllers\Admin\ArticleCategoryController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\StatController;
@@ -94,6 +95,7 @@ Route::prefix('admin')
         Route::resource('articles', AdminArticleController::class);
         Route::resource('article-category', ArticleCategoryController::class);
         Route::resource('tax-event', TaxEventController::class);
+        Route::resource('team', AdminTeamController::class);
 });
 
 
