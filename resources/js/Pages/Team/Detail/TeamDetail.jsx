@@ -11,7 +11,11 @@ function TeamDetail() {
     const theme = useTheme();
     const { t } = useTranslation();
     return (
-        <Guest>
+        <Guest
+            en={route("team-detail", item.slug)}
+            id={route("team-detail.id", item.slug)}
+            jp={route("team-detail.jp", item.slug)}
+        >
             <Box className="position-relative">
                 <img
                     src={`/storage/${item.profile_picture}`}
