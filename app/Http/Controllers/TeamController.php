@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Team;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 
@@ -9,11 +10,17 @@ class TeamController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Team/Team');
+        $teams = Team::all();
+        return Inertia::render('Team/Team', [
+            "teams" => $teams
+        ]);
     }
 
-    public function detail()
+    public function detail($id)
     {
-        return Inertia::render('Team/Detail/TeamDetail');
+        $item = Team::where('slug', $id)->firstOrFail();
+        return Inertia::render('Team/Detail/TeamDetail', [
+            "item" => $item
+        ]);
     }
 }

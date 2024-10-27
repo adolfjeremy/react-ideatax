@@ -1,4 +1,5 @@
 import { Box, Typography, useTheme } from "@mui/material";
+import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
 import TeamItem from "./TeamItem";
@@ -7,8 +8,9 @@ import hero from "../../assets/images/team-hero.webp";
 function Team() {
     const theme = useTheme();
     const { t } = useTranslation();
+    const { locale, teams } = usePage().props;
     return (
-        <Guest>
+        <Guest en={route("team")} id={route("team.id")} jp={route("team.jp")}>
             <Box className="position-relative">
                 <img src={hero} alt="" className="w-100" />
                 <Box
@@ -34,8 +36,20 @@ function Team() {
             <Box>
                 <div className="container-fluid">
                     <div className="row align-items-center justify-content-center">
-                        {[1, 2, 3, 4].map((num, i) => (
-                            <TeamItem i={i} key={i} />
+                        {teams.map((item) => (
+                            <TeamItem
+                                key={item.id}
+                                image={`/storage/${item.photo}`}
+                                name={item.name}
+                                position={item.position}
+                                destination={
+                                    locale == "en"
+                                        ? route("team-detail", item.slug)
+                                        : locale == "id"
+                                        ? route("team-detail.id", item.slug)
+                                        : route("team-detail.jp", item.slug)
+                                }
+                            />
                         ))}
                     </div>
                 </div>

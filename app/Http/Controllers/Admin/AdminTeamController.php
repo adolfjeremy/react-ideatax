@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Team;
 use Inertia\Inertia;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TeamRequest;
+use Illuminate\Support\Facades\Storage;
 
 class AdminTeamController extends Controller
 {
@@ -25,7 +28,7 @@ class AdminTeamController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Admin/Team/TeamCreate');
     }
 
     /**
@@ -33,7 +36,25 @@ class AdminTeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $data['slug'] = Str::slug($request->name);
+
+        if($request->file('photo'))
+        {
+            $data['photo'] = $request->file('photo')->store('team');
+        }
+        if($request->file('profile_picture'))
+        {
+            $data['profile_picture'] = $request->file('profile_picture')->store('team');
+        }         
+
+        Team::create($data);
+
+        return redirect()->route('team.index')->with([
+            'message' => "Team created successfully",
+            'type' => 'success'
+        ]);;
     }
 
     /**
@@ -47,24 +68,56 @@ class AdminTeamController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Team $team)
+    public function edit($id)
     {
-        //
+        $item = Team::findOrFail($id);
+        return Inertia::render('Admin/Team/TeamEdit', [
+            "item" => $item
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Team $team)
+    public function update(TeamRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        $item = Team::findOrFail($id);
+
+        $data['slug'] = Str::slug($request->name);
+
+        if($request->file('photo'))
+        {
+            Storage::delete($request->oldPhoto);
+            $data['photo'] = $request->file('photo')->store('team');
+        }
+        if($request->file('profile_picture'))
+        {
+            Storage::delete($request->oldProfilePicture);
+            $data['profile_picture'] = $request->file('profile_picture')->store('team');
+        }         
+
+        $item->update($data);
+
+        return redirect()->route('team.index')->with([
+            'message' => "Team Updated successfully",
+            'type' => 'success'
+        ]);;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Team $team)
+    public function destroy($id)
     {
-        //
+        $item = Team::findOrFail($id);
+        Storage::delete($item->photo);
+        Storage::delete($item->profile_picture);
+        $item->delete();
+
+        return redirect()->route('team.index')->with([
+            'message' => "Team deleted successfully",
+            'type' => 'success'
+        ]);;
     }
 }

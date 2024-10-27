@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('position');
             $table->string('linkedin')->nullable();
             $table->string('email')->nullable();
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->string('profile_picture');
             $table->string('photo');
             $table->longText('biography');

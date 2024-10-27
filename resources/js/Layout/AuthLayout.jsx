@@ -25,6 +25,7 @@ import { FaSuitcase } from "react-icons/fa";
 import { RiArticleLine } from "react-icons/ri";
 import { BiSolidCategory } from "react-icons/bi";
 import { MdEventAvailable } from "react-icons/md";
+import { RiTeamFill } from "react-icons/ri";
 import Spinner from "@/Components/Spinner";
 import AlertBar from "@/Components/AlertBar";
 
@@ -149,6 +150,18 @@ function AuthLayout({ children, sectionHeading }) {
                             <MdEventAvailable />
                         </ListItemIcon>
                         <ListItemText primary="Tax Event" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem
+                    disablePadding
+                    onClick={() => router.visit(route("team.index"))}
+                    className={`${route().current("team*") ? "active" : ""}`}
+                >
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <RiTeamFill />
+                        </ListItemIcon>
+                        <ListItemText primary="Team" />
                     </ListItemButton>
                 </ListItem>
             </List>

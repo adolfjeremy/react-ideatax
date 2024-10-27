@@ -1,17 +1,21 @@
 import { Box, Typography, useTheme, Breadcrumbs, Link } from "@mui/material";
+import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
 import ConsultationButton from "@/Components/ConsultationButton";
+import checkLang from "@/utils/checkLang";
+import RichText from "@/Components/RichText";
 
 function TeamDetail() {
+    const { locale, item } = usePage().props;
     const theme = useTheme();
     const { t } = useTranslation();
     return (
         <Guest>
             <Box className="position-relative">
                 <img
-                    src="https://ideatax.id/storage/team-pp/WLNwJ9Srm0oOZXOfBRm5hrkLJh6K0QMIzZ8iEtN4.png"
-                    alt=""
+                    src={`/storage/${item.profile_picture}`}
+                    alt={item.name}
                     className="w-100"
                 />
                 <Box
@@ -43,7 +47,7 @@ function TeamDetail() {
                             },
                         }}
                     >
-                        Jonathan Nainggolan
+                        {item.name}
                     </Typography>
                     <Typography
                         as="h1"
@@ -61,7 +65,7 @@ function TeamDetail() {
                             },
                         }}
                     >
-                        Managing Partner
+                        {item.position}
                     </Typography>
                 </Box>
             </Box>
@@ -73,7 +77,13 @@ function TeamDetail() {
                                 <Link
                                     underline="hover"
                                     color="inherit"
-                                    href={route("team")}
+                                    href={
+                                        locale == "en"
+                                            ? route("team")
+                                            : locale == "id"
+                                            ? route("team.id")
+                                            : route("team.jp")
+                                    }
                                     sx={{
                                         color: theme.palette.custom.darkBlue,
                                         fontSize: "1.5636rem",
@@ -91,7 +101,7 @@ function TeamDetail() {
                                         lineHeight: "line-height",
                                     }}
                                 >
-                                    Breadcrumbs
+                                    {item.name}
                                 </Typography>
                             </Breadcrumbs>
                         </div>
@@ -125,31 +135,16 @@ function TeamDetail() {
                             }}
                             className="col-12"
                         >
-                            <p>
-                                Jonathan is Ideatax's partner with 10 years of
-                                experience in several tax-related fields. He is
-                                an alumnus of Sekolah Tinggi Akuntansi Negara
-                                (STAN), who eventually continued his education
-                                to University of Indonesia. He later pursued his
-                                education in Universitas Bung Karno, majoring in
-                                law.
-                            </p>
-                            <p>
-                                Prior to establishing Ideatax, he had been
-                                working in a natural resource company and moved
-                                to various Tax Consulting Firms. Then, Jonathan
-                                worked for 8 years straight in Tax Authorities
-                                where he was assigned to Oil and Gas Taxes
-                                Office, Jakarta Madya Tax Office, as well as in
-                                the Head Office of Directorate General of Taxes.
-                                His latest career is in Setiabudi Tax Office
-                                with the role of Strategic Account
-                                Representative, whose tasks include managing
-                                various business sectors such as coal and nickel
-                                mining, fintech, manufacture, e-commerce,
-                                trading and dealing with business conglomerates
-                                in Indonesia.
-                            </p>
+                            {
+                                <RichText
+                                    htmlContent={checkLang(
+                                        locale,
+                                        item.biography_eng,
+                                        item.biography,
+                                        item.biography_jpn
+                                    )}
+                                />
+                            }
                         </Box>
                         <div className="col-12 text-center">
                             <Typography
@@ -179,31 +174,16 @@ function TeamDetail() {
                             }}
                             className="col-12"
                         >
-                            <p>
-                                Jonathan is Ideatax's partner with 10 years of
-                                experience in several tax-related fields. He is
-                                an alumnus of Sekolah Tinggi Akuntansi Negara
-                                (STAN), who eventually continued his education
-                                to University of Indonesia. He later pursued his
-                                education in Universitas Bung Karno, majoring in
-                                law.
-                            </p>
-                            <p>
-                                Prior to establishing Ideatax, he had been
-                                working in a natural resource company and moved
-                                to various Tax Consulting Firms. Then, Jonathan
-                                worked for 8 years straight in Tax Authorities
-                                where he was assigned to Oil and Gas Taxes
-                                Office, Jakarta Madya Tax Office, as well as in
-                                the Head Office of Directorate General of Taxes.
-                                His latest career is in Setiabudi Tax Office
-                                with the role of Strategic Account
-                                Representative, whose tasks include managing
-                                various business sectors such as coal and nickel
-                                mining, fintech, manufacture, e-commerce,
-                                trading and dealing with business conglomerates
-                                in Indonesia.
-                            </p>
+                            {
+                                <RichText
+                                    htmlContent={checkLang(
+                                        locale,
+                                        item.area_of_expertise_eng,
+                                        item.area_of_expertise,
+                                        item.area_of_expertise_jpn
+                                    )}
+                                />
+                            }
                         </Box>
                     </div>
                 </div>

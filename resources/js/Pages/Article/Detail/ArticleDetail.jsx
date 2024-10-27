@@ -17,11 +17,13 @@ import { FaLinkedin } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import checkLang from "@/utils/checkLang";
 import RichText from "@/Components/RichText";
+import formatDate from "@/utils/formatDate";
 
 import "../article.scss";
 
 function ArticleDetail() {
     const { locale, item } = usePage().props;
+    console.log(item);
     const theme = useTheme();
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -90,8 +92,12 @@ function ArticleDetail() {
                                     }}
                                     variant="h1"
                                 >
-                                    Keeping Cash Flow Fair with Accelerated
-                                    Restitution
+                                    {checkLang(
+                                        locale,
+                                        item.title_eng,
+                                        item.title,
+                                        item.title_jpn
+                                    )}
                                 </Typography>
                                 <Link
                                     sx={{
@@ -107,7 +113,7 @@ function ArticleDetail() {
                                     }}
                                     href="#"
                                 >
-                                    PPN
+                                    {item.article_category.title}
                                 </Link>
                                 <Typography
                                     sx={{
@@ -122,7 +128,7 @@ function ArticleDetail() {
                                         letterSpacing: "0.009em",
                                     }}
                                 >
-                                    15 Aug, 2024 16:08 WIB
+                                    {formatDate(item.created_at)}
                                 </Typography>
                             </Box>
                         </div>
@@ -132,7 +138,17 @@ function ArticleDetail() {
             <Box component="article">
                 <div className="container">
                     <div className="row px-md-5">
-                        <div className="col-12 px-md-4 mt-5 article_body">
+                        <Box
+                            sx={{
+                                ol: {
+                                    listStyle: "auto",
+                                },
+                                ul: {
+                                    listStyle: "auto",
+                                },
+                            }}
+                            className="col-12 px-md-4 mt-5 article_body"
+                        >
                             {
                                 <RichText
                                     htmlContent={checkLang(
@@ -143,7 +159,7 @@ function ArticleDetail() {
                                     )}
                                 />
                             }
-                        </div>
+                        </Box>
                     </div>
                     <div className="row mt-5">
                         <div className="col-12 gap-4 d-flex align-items-center justify-content-center">

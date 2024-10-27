@@ -8,8 +8,8 @@ function Team() {
     const { teams } = usePage().props;
     const columns = [
         {
-            field: "title_eng",
-            headerName: "Title",
+            field: "name",
+            headerName: "Name",
             flex: 0.6,
             headerAlign: "center",
             align: "center",

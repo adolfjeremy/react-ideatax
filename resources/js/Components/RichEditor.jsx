@@ -19,11 +19,10 @@ function RichEditor({ handleInput, value, placeholder }) {
                 className="form_div"
                 data-placeholder={`${placeholder}. Paste your content here`}
                 contentEditable
-                onInput={handleInput}
+                onBlur={handleInput}
                 value={value}
-            >
-                {value}
-            </div>
+                dangerouslySetInnerHTML={{ __html: value }}
+            ></div>
         </Box>
     );
 }
