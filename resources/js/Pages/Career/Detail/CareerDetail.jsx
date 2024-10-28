@@ -136,7 +136,7 @@ function CareerDetail() {
                                             margin: 0,
                                         }}
                                         for="resume"
-                                        class="form-label"
+                                        className="form-label"
                                     >
                                         {t("formResume")}
                                     </Typography>

@@ -65,63 +65,75 @@ function Contact() {
                         </div>
                     </div>
                     <div className="row mt-4">
-                        <div class="col-12 col-md-6 col-lg-4">
+                        <div className="col-12 col-md-6 col-lg-4">
                             <div className="mb-3">
-                                <label for="name" class="form-label fw-bold">
+                                <label
+                                    for="name"
+                                    className="form-label fw-bold"
+                                >
                                     {t("contactName")}
                                 </label>
                                 <input
                                     type="text"
                                     name="name"
-                                    class="form-control"
+                                    className="form-control"
                                     id="name"
                                     required
                                 />
                             </div>
                             <div className="mb-3">
-                                <label for="email" class="form-label fw-bold">
+                                <label
+                                    for="email"
+                                    className="form-label fw-bold"
+                                >
                                     {t("contactEmail")}
                                 </label>
                                 <input
                                     type="email"
                                     name="email"
-                                    class="form-control"
+                                    className="form-control"
                                     id="email"
                                     required
                                 />
                             </div>
                             <div>
-                                <label for="tel" class="form-label fw-bold">
+                                <label for="tel" className="form-label fw-bold">
                                     {t("contactNumber")}
                                 </label>
                                 <input
                                     type="tel"
                                     name="phone"
-                                    class="form-control"
+                                    className="form-control"
                                     id="tel"
                                     required
                                 />
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-4">
+                        <div className="col-12 col-md-6 col-lg-4">
                             <div className="mb-3">
-                                <label for="company" class="form-label fw-bold">
+                                <label
+                                    for="company"
+                                    className="form-label fw-bold"
+                                >
                                     {t("contactCompany")}
                                 </label>
                                 <input
                                     type="text"
                                     name="company"
-                                    class="form-control"
+                                    className="form-control"
                                     id="company"
                                     required
                                 />
                             </div>
                             <div className="mb-3">
-                                <label for="email" class="form-label fw-bold">
+                                <label
+                                    for="email"
+                                    className="form-label fw-bold"
+                                >
                                     {t("contactService")}
                                 </label>
                                 <select
-                                    class="form-select form-select-md mb-3"
+                                    className="form-select form-select-md mb-3"
                                     name="service_id"
                                     id="need"
                                     required
@@ -136,29 +148,29 @@ function Contact() {
                             <div>
                                 <label
                                     for="schedule"
-                                    class="form-label fw-bold"
+                                    className="form-label fw-bold"
                                 >
                                     {t("contactDate")}
                                 </label>
                                 <input
                                     type="datetime-local"
                                     name="schedule"
-                                    class="form-control"
+                                    className="form-control"
                                     id="schedule"
                                     required
                                 />
                             </div>
                         </div>
-                        <div class="col-12 col-lg-4">
+                        <div className="col-12 col-lg-4">
                             <div className="mb-3">
                                 <label
                                     for="description"
-                                    class="form-label fw-bold"
+                                    className="form-label fw-bold"
                                 >
                                     {t("contactIssue")}
                                 </label>
                                 <textarea
-                                    class="form-control"
+                                    className="form-control"
                                     id="description"
                                     name="description"
                                     rows="6"
