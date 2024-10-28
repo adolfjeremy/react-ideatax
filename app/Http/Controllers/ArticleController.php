@@ -11,7 +11,7 @@ class ArticleController extends Controller
     public function index()
     {
         $latest = Article::latest()->take(5)->get();
-        $articles = Article::latest()->get();
+        $articles = Article::latest()->simplePaginate(15);
         return Inertia::render('Article/Article', [
             "latest" => $latest,
             "articles" => $articles

@@ -5,9 +5,11 @@ import ReadMoreButton from "./ReadMoreButton";
 import ArticleItem from "./ArticleItem";
 import checkLang from "@/utils/checkLang";
 import TruncateRichText from "@/Components/TruncateRichText";
+import Pagination from "@/Components/Pagination";
 
 function Article() {
     const { locale, latest, articles } = usePage().props;
+    console.log(articles);
     const theme = useTheme();
     return (
         <Guest
@@ -130,7 +132,7 @@ function Article() {
                         </div>
                     </div>
                     <div className="row">
-                        {articles.map((item) => (
+                        {articles.data.map((item) => (
                             <ArticleItem
                                 key={item.id}
                                 title={checkLang(
@@ -174,6 +176,12 @@ function Article() {
                                 }
                             />
                         ))}
+                    </div>
+                    <div className="row mt-5">
+                        <Pagination
+                            prev={articles.prev_page_url}
+                            next={articles.next_page_url}
+                        />
                     </div>
                 </div>
             </Box>
