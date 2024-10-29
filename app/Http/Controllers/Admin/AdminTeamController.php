@@ -46,7 +46,7 @@ class AdminTeamController extends Controller
         }
         if($request->file('profile_picture'))
         {
-            $data['profile_picture'] = $request->file('profile_picture')->store('team');
+            $data['profile_picture'] = $request->file('profile_picture')->store('team-pp');
         }         
 
         Team::create($data);
@@ -94,7 +94,7 @@ class AdminTeamController extends Controller
         if($request->file('profile_picture'))
         {
             Storage::delete($request->oldProfilePicture);
-            $data['profile_picture'] = $request->file('profile_picture')->store('team');
+            $data['profile_picture'] = $request->file('profile_picture')->store('team-pp');
         }         
 
         $item->update($data);
