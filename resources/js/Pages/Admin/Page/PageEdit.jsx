@@ -8,59 +8,43 @@ import a11yProps from "@/Components/a11yProps";
 import { SpinnerContext } from "@/Context/SpinnerContext";
 import { AlertContext } from "@/Context/AlertContext";
 
-function ServiceEdit() {
+function PageEdit() {
     const [value, setValue] = useState(0);
     const { toggleSpinner } = useContext(SpinnerContext);
     const { toggleAlert } = useContext(AlertContext);
-
     const { item } = usePage().props;
 
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const { data, setData, put, processing, errors, reset } = useForm({
         title: item.title,
-        title_eng: item.title_eng,
-        title_jpn: item.title_jpn,
-        slug: item.slug,
-        slug_eng: item.slug_eng,
-        slug_jpn: item.slug_jpn,
-        description: item.description,
-        description_eng: item.description_eng,
-        description_jpn: item.description_jpn,
         SEO_title: item.SEO_title,
         SEO_title_eng: item.SEO_title_eng,
         SEO_title_jpn: item.SEO_title_jpn,
-        meta_description: item.meta_description,
-        meta_description_eng: item.meta_description_eng,
-        meta_description_jpn: item.meta_description_jpn,
-        oldImage: item.image,
-        _method: "put",
+        description: item.description,
+        description_eng: item.description_eng,
+        description_jpn: item.description_jpn,
     });
 
     const onHandleSubmit = (e) => {
         e.preventDefault();
-        post(
-            route("services.update", item.id),
-            {
-                onStart: () => {
-                    toggleSpinner(true);
-                },
-                onSuccess: () => {
-                    reset();
-                    toggleSpinner(false);
-                    toggleAlert(true);
-                },
-                onError: (error) => {
-                    toggleSpinner(false);
-                    console.log(error);
-                },
+        put(route("page.update", item.id), {
+            onStart: () => {
+                toggleSpinner(true);
             },
-            { forceFormData: true }
-        );
+            onSuccess: () => {
+                reset();
+                toggleSpinner(false);
+                toggleAlert(true);
+            },
+            onError: (error) => {
+                toggleSpinner(false);
+                console.log(error);
+            },
+        });
     };
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
     return (
         <AuthLayout sectionHeading="Edit Services">
             <div className="container">
@@ -81,18 +65,6 @@ function ServiceEdit() {
                         </Box>
                         <CustomTabPanel value={value} index={0}>
                             <TextField
-                                id="title_eng"
-                                value={data.title_eng}
-                                onChange={(e) =>
-                                    setData("title_eng", e.target.value)
-                                }
-                                label="Title English"
-                                variant="outlined"
-                                sx={{ width: "100%", mb: 2 }}
-                                required
-                            />
-
-                            <TextField
                                 id="SEO_title_eng"
                                 value={data.SEO_title_eng}
                                 onChange={(e) =>
@@ -103,7 +75,6 @@ function ServiceEdit() {
                                 sx={{ width: "100%", mb: 2 }}
                                 required
                             />
-
                             <TextField
                                 id="outlined-multiline-static"
                                 label="Description English"
@@ -116,35 +87,8 @@ function ServiceEdit() {
                                 sx={{ width: "100%", mb: 2 }}
                                 required
                             />
-                            <TextField
-                                id="outlined-multiline-static"
-                                label="Meta Description English"
-                                multiline
-                                rows={4}
-                                value={data.meta_description_eng}
-                                onChange={(e) =>
-                                    setData(
-                                        "meta_description_eng",
-                                        e.target.value
-                                    )
-                                }
-                                sx={{ width: "100%", mb: 2 }}
-                                required
-                            />
                         </CustomTabPanel>
                         <CustomTabPanel value={value} index={1}>
-                            <TextField
-                                id="title"
-                                value={data.title}
-                                onChange={(e) =>
-                                    setData("title", e.target.value)
-                                }
-                                label="Title Indonesia"
-                                variant="outlined"
-                                sx={{ width: "100%", mb: 2 }}
-                                required
-                            />
-
                             <TextField
                                 id="SEO_title"
                                 value={data.SEO_title}
@@ -169,32 +113,8 @@ function ServiceEdit() {
                                 sx={{ width: "100%", mb: 2 }}
                                 required
                             />
-                            <TextField
-                                id="outlined-multiline-static"
-                                label="Meta Description Indonesia"
-                                multiline
-                                rows={4}
-                                value={data.meta_description}
-                                onChange={(e) =>
-                                    setData("meta_description", e.target.value)
-                                }
-                                sx={{ width: "100%", mb: 2 }}
-                                required
-                            />
                         </CustomTabPanel>
                         <CustomTabPanel value={value} index={2}>
-                            <TextField
-                                id="title_jpn"
-                                value={data.title_jpn}
-                                onChange={(e) =>
-                                    setData("title_jpn", e.target.value)
-                                }
-                                label="Title Japan"
-                                variant="outlined"
-                                sx={{ width: "100%", mb: 2 }}
-                                required
-                            />
-
                             <TextField
                                 id="SEO_title_jpn"
                                 value={data.SEO_title_jpn}
@@ -219,32 +139,18 @@ function ServiceEdit() {
                                 sx={{ width: "100%", mb: 2 }}
                                 required
                             />
-                            <TextField
-                                id="outlined-multiline-static"
-                                label="Meta Description Japan"
-                                multiline
-                                rows={4}
-                                value={data.meta_description_jpn}
-                                onChange={(e) =>
-                                    setData(
-                                        "meta_description_jpn",
-                                        e.target.value
-                                    )
-                                }
-                                sx={{ width: "100%", mb: 2 }}
-                                required
-                            />
                         </CustomTabPanel>
                         <Box px={3}>
-                            <label htmlFor="image">Image</label>
                             <TextField
-                                id="image"
-                                type="file"
+                                id="title"
+                                value={data.title}
                                 onChange={(e) =>
-                                    setData("image", e.target.files[0])
+                                    setData("title", e.target.value)
                                 }
+                                label="Page Name"
                                 variant="outlined"
-                                sx={{ width: "100%", mt: 1 }}
+                                sx={{ width: "100%", mb: 2 }}
+                                required
                             />
                             <Box
                                 sx={{
@@ -270,4 +176,4 @@ function ServiceEdit() {
     );
 }
 
-export default ServiceEdit;
+export default PageEdit;

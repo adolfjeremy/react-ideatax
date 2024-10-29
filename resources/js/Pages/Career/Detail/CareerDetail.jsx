@@ -1,8 +1,12 @@
 import { Box, Typography, useTheme, Button, TextField } from "@mui/material";
+import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
+import TruncateRichText from "@/Components/TruncateRichText";
+import checkLang from "@/utils/checkLang";
 
 function CareerDetail() {
+    const { locale, item } = usePage().props;
     const theme = useTheme();
     const { t } = useTranslation();
     return (
@@ -21,28 +25,56 @@ function CareerDetail() {
                                     color: theme.palette.custom.darkBlue,
                                 }}
                             >
-                                ASSISTANT MANAGER TAX CONSULTANT
+                                {checkLang(
+                                    locale,
+                                    item.title_eng,
+                                    item.title,
+                                    item.title_jpn
+                                )}
                             </Typography>
                         </div>
                     </div>
                     <div className="row mt-4">
                         <div className="col-12 col-lg-7 mt-5">
-                            <div className="col-12">
-                                <Typography
-                                    variant="h2"
-                                    sx={{
-                                        fontSize: "30px",
-                                        fontWeight: "700",
-                                        lineHeight: "38px",
-                                        margin: "0 0 23px 0",
-                                        padding: "10px 0 0 0",
-                                        color: theme.palette.custom.darkBlue,
+                            {item.jobdesc_eng && (
+                                <div className="col-12">
+                                    <Typography
+                                        variant="h2"
+                                        sx={{
+                                            fontSize: "30px",
+                                            fontWeight: "700",
+                                            lineHeight: "38px",
+                                            margin: "0 0 23px 0",
+                                            padding: "10px 0 0 0",
+                                            color: theme.palette.custom
+                                                .darkBlue,
+                                        }}
+                                    >
+                                        {t("careerJobDesc")}
+                                    </Typography>
+                                </div>
+                            )}
+                            <div className="col-12 career_desc">
+                                <TruncateRichText
+                                    style={{
+                                        color: theme.palette.custom.lightBlue,
+                                        fontSize: "0.8939rem",
+                                        [theme.breakpoints.down("sm")]: {
+                                            fontSize: "0.8939rem",
+                                        },
+                                        lineHeight: "1.17857248em",
+                                        letterSpacing: "0.009em",
+                                        padding: 0,
+                                        margin: 0,
                                     }}
-                                >
-                                    {t("careerJobDesc")}
-                                </Typography>
+                                    htmlContent={checkLang(
+                                        locale,
+                                        item.jobdesc_eng,
+                                        item.jobdesc,
+                                        item.jobdesc_jpn
+                                    )}
+                                />
                             </div>
-                            <div className="col-12 career_desc"></div>
                             <div className="col-12">
                                 <Typography
                                     variant="h2"

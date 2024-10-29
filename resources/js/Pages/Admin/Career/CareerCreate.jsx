@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useForm, usePage } from "@inertiajs/react";
+import { useForm } from "@inertiajs/react";
 import { Box, Tabs, Tab, Button } from "@mui/material";
 import AuthLayout from "@/Layout/AuthLayout";
 import { TextField } from "@mui/material";
@@ -7,62 +7,59 @@ import CustomTabPanel from "@/Components/CustomTabPanel";
 import a11yProps from "@/Components/a11yProps";
 import { SpinnerContext } from "@/Context/SpinnerContext";
 import { AlertContext } from "@/Context/AlertContext";
+import RichEditor from "@/Components/RichEditor";
 
-function ServiceEdit() {
+function CareerCreate() {
     const [value, setValue] = useState(0);
     const { toggleSpinner } = useContext(SpinnerContext);
     const { toggleAlert } = useContext(AlertContext);
-
-    const { item } = usePage().props;
-
     const { data, setData, post, processing, errors, reset } = useForm({
-        title: item.title,
-        title_eng: item.title_eng,
-        title_jpn: item.title_jpn,
-        slug: item.slug,
-        slug_eng: item.slug_eng,
-        slug_jpn: item.slug_jpn,
-        description: item.description,
-        description_eng: item.description_eng,
-        description_jpn: item.description_jpn,
-        SEO_title: item.SEO_title,
-        SEO_title_eng: item.SEO_title_eng,
-        SEO_title_jpn: item.SEO_title_jpn,
-        meta_description: item.meta_description,
-        meta_description_eng: item.meta_description_eng,
-        meta_description_jpn: item.meta_description_jpn,
-        oldImage: item.image,
-        _method: "put",
+        title: "",
+        title_eng: "",
+        title_jpn: "",
+        slug: "",
+        slug_eng: "",
+        slug_jpn: "",
+        jobdesc: "",
+        jobdesc_eng: "",
+        jobdesc_jpn: "",
+        qualification: "",
+        qualification_eng: "",
+        qualification_jpn: "",
+        skill: "",
+        skill_eng: "",
+        skill_jpn: "",
+        SEO_title: "",
+        SEO_title_eng: "",
+        SEO_title_jpn: "",
+        description: "",
+        description_eng: "",
+        description_jpn: "",
     });
 
     const onHandleSubmit = (e) => {
         e.preventDefault();
-        post(
-            route("services.update", item.id),
-            {
-                onStart: () => {
-                    toggleSpinner(true);
-                },
-                onSuccess: () => {
-                    reset();
-                    toggleSpinner(false);
-                    toggleAlert(true);
-                },
-                onError: (error) => {
-                    toggleSpinner(false);
-                    console.log(error);
-                },
+        post(route("career.store"), {
+            onStart: () => {
+                toggleSpinner(true);
             },
-            { forceFormData: true }
-        );
+            onSuccess: () => {
+                reset();
+                toggleSpinner(false);
+                toggleAlert(true);
+            },
+            onError: (error) => {
+                toggleSpinner(false);
+                console.log(error);
+            },
+        });
     };
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
     return (
-        <AuthLayout sectionHeading="Edit Services">
+        <AuthLayout sectionHeading="Create Career">
             <div className="container">
                 <div className="row">
                     <form onSubmit={onHandleSubmit} className="col-12 border-1">
@@ -74,9 +71,9 @@ function ServiceEdit() {
                                 textColor="inherit"
                                 aria-label="basic tabs example"
                             >
-                                <Tab label="Service En" {...a11yProps(0)} />
-                                <Tab label="Service Id" {...a11yProps(1)} />
-                                <Tab label="Service Jp" {...a11yProps(2)} />
+                                <Tab label="Career En" {...a11yProps(0)} />
+                                <Tab label="Career Id" {...a11yProps(1)} />
+                                <Tab label="Career Jp" {...a11yProps(2)} />
                             </Tabs>
                         </Box>
                         <CustomTabPanel value={value} index={0}>
@@ -103,30 +100,38 @@ function ServiceEdit() {
                                 sx={{ width: "100%", mb: 2 }}
                                 required
                             />
-
-                            <TextField
-                                id="outlined-multiline-static"
-                                label="Description English"
-                                multiline
-                                rows={4}
-                                value={data.description_eng}
-                                onChange={(e) =>
-                                    setData("description_eng", e.target.value)
+                            <RichEditor
+                                placeholder="Job Desc English"
+                                value={data.jobdesc_eng}
+                                handleInput={(e) =>
+                                    setData("jobdesc_eng", e.target.innerHTML)
                                 }
-                                sx={{ width: "100%", mb: 2 }}
-                                required
+                            />
+                            <RichEditor
+                                placeholder="Qualification English"
+                                value={data.qualification_eng}
+                                handleInput={(e) =>
+                                    setData(
+                                        "qualification_eng",
+                                        e.target.innerHTML
+                                    )
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Skill English"
+                                value={data.skill_eng}
+                                handleInput={(e) =>
+                                    setData("skill_eng", e.target.innerHTML)
+                                }
                             />
                             <TextField
                                 id="outlined-multiline-static"
                                 label="Meta Description English"
                                 multiline
-                                rows={4}
-                                value={data.meta_description_eng}
+                                rows={3}
+                                value={data.description_eng}
                                 onChange={(e) =>
-                                    setData(
-                                        "meta_description_eng",
-                                        e.target.value
-                                    )
+                                    setData("description_eng", e.target.value)
                                 }
                                 sx={{ width: "100%", mb: 2 }}
                                 required
@@ -156,27 +161,35 @@ function ServiceEdit() {
                                 sx={{ width: "100%", mb: 2 }}
                                 required
                             />
-
-                            <TextField
-                                id="outlined-multiline-static"
-                                label="Description Indonesia"
-                                multiline
-                                rows={4}
-                                value={data.description}
-                                onChange={(e) =>
-                                    setData("description", e.target.value)
+                            <RichEditor
+                                placeholder="Job Desc Indonesia"
+                                value={data.jobdesc}
+                                handleInput={(e) =>
+                                    setData("jobdesc", e.target.innerHTML)
                                 }
-                                sx={{ width: "100%", mb: 2 }}
-                                required
+                            />
+                            <RichEditor
+                                placeholder="Qualification Indonesia"
+                                value={data.qualification}
+                                handleInput={(e) =>
+                                    setData("qualification", e.target.innerHTML)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Skill Indonesia"
+                                value={data.skill}
+                                handleInput={(e) =>
+                                    setData("skill", e.target.innerHTML)
+                                }
                             />
                             <TextField
                                 id="outlined-multiline-static"
                                 label="Meta Description Indonesia"
                                 multiline
-                                rows={4}
-                                value={data.meta_description}
+                                rows={3}
+                                value={data.description}
                                 onChange={(e) =>
-                                    setData("meta_description", e.target.value)
+                                    setData("description", e.target.value)
                                 }
                                 sx={{ width: "100%", mb: 2 }}
                                 required
@@ -206,12 +219,35 @@ function ServiceEdit() {
                                 sx={{ width: "100%", mb: 2 }}
                                 required
                             />
-
+                            <RichEditor
+                                placeholder="Job Desc Japan"
+                                value={data.jobdesc_jpn}
+                                handleInput={(e) =>
+                                    setData("jobdesc_jpn", e.target.innerHTML)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Qualification Japan"
+                                value={data.qualification_jpn}
+                                handleInput={(e) =>
+                                    setData(
+                                        "qualification_jpn",
+                                        e.target.innerHTML
+                                    )
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Skill Japan"
+                                value={data.skill_jpn}
+                                handleInput={(e) =>
+                                    setData("skill_jpn", e.target.innerHTML)
+                                }
+                            />
                             <TextField
                                 id="outlined-multiline-static"
-                                label="Description Japan"
+                                label="Meta Description Japan"
                                 multiline
-                                rows={4}
+                                rows={3}
                                 value={data.description_jpn}
                                 onChange={(e) =>
                                     setData("description_jpn", e.target.value)
@@ -219,33 +255,8 @@ function ServiceEdit() {
                                 sx={{ width: "100%", mb: 2 }}
                                 required
                             />
-                            <TextField
-                                id="outlined-multiline-static"
-                                label="Meta Description Japan"
-                                multiline
-                                rows={4}
-                                value={data.meta_description_jpn}
-                                onChange={(e) =>
-                                    setData(
-                                        "meta_description_jpn",
-                                        e.target.value
-                                    )
-                                }
-                                sx={{ width: "100%", mb: 2 }}
-                                required
-                            />
                         </CustomTabPanel>
                         <Box px={3}>
-                            <label htmlFor="image">Image</label>
-                            <TextField
-                                id="image"
-                                type="file"
-                                onChange={(e) =>
-                                    setData("image", e.target.files[0])
-                                }
-                                variant="outlined"
-                                sx={{ width: "100%", mt: 1 }}
-                            />
                             <Box
                                 sx={{
                                     display: "flex",
@@ -270,4 +281,4 @@ function ServiceEdit() {
     );
 }
 
-export default ServiceEdit;
+export default CareerCreate;

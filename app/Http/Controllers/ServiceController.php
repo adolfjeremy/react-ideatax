@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Page;
 use Inertia\Inertia;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -10,9 +11,11 @@ class ServiceController extends Controller
 {
     public function index()
     {
+        $page = Page::findOrFail(3);
         $services = Service::select('id', 'title', 'title_eng', 'title_jpn', 'slug', 'slug_eng', 'slug_jpn')->get();
         return Inertia::render('Service/Service', [
-            "services" => $services
+            "services" => $services,
+            "page" => $page
         ]);
     }
     public function Detail($id)

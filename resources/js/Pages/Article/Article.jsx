@@ -8,14 +8,31 @@ import TruncateRichText from "@/Components/TruncateRichText";
 import Pagination from "@/Components/Pagination";
 
 function Article() {
-    const { locale, latest, articles } = usePage().props;
-    console.log(articles);
+    const { locale, page, latest, articles } = usePage().props;
     const theme = useTheme();
     return (
         <Guest
             en={route("articles")}
             id={route("articles.id")}
             jp={route("articles.jp")}
+            description={checkLang(
+                locale,
+                page.description_eng,
+                page.description,
+                page.description_jpn
+            )}
+            seo_title={checkLang(
+                locale,
+                page.SEO_title_eng,
+                page.SEO_title,
+                page.SEO_title_jpn
+            )}
+            href={checkLang(
+                locale,
+                route("articles"),
+                route("articles.id"),
+                route("articles.jp")
+            )}
         >
             <Box
                 component="section"
@@ -104,7 +121,24 @@ function Article() {
                                             item.body_jpn
                                         )}
                                     />
-                                    <ReadMoreButton />
+                                    <ReadMoreButton
+                                        desctination={
+                                            locale == "en"
+                                                ? route(
+                                                      "article-detail",
+                                                      item.slug_eng
+                                                  )
+                                                : locale == "id"
+                                                ? route(
+                                                      "article-detail.id",
+                                                      item.slug
+                                                  )
+                                                : route(
+                                                      "article-detail.jp",
+                                                      item.slug_jpn
+                                                  )
+                                        }
+                                    />
                                 </Box>
                             </div>
                         ))}

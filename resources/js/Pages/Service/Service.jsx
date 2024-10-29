@@ -10,13 +10,31 @@ import "./service.scss";
 
 function Service() {
     const { t } = useTranslation();
-    const { locale, services } = usePage().props;
+    const { locale, page, services } = usePage().props;
     const theme = useTheme();
     return (
         <Guest
             en={route("service")}
             id={route("service.id")}
             jp={route("service.jp")}
+            description={checkLang(
+                locale,
+                page.description_eng,
+                page.description,
+                page.description_jpn
+            )}
+            seo_title={checkLang(
+                locale,
+                page.SEO_title_eng,
+                page.SEO_title,
+                page.SEO_title_jpn
+            )}
+            href={checkLang(
+                locale,
+                route("service"),
+                route("service.id"),
+                route("service.jp")
+            )}
         >
             <Box
                 className="py-5"

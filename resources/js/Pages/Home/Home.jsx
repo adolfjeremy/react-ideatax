@@ -33,11 +33,32 @@ import "./home.scss";
 function Home() {
     const { t } = useTranslation();
     const theme = useTheme();
-    const { locale, heroes, stats, services, articles, events } =
+    const { locale, page, heroes, stats, services, articles, events } =
         usePage().props;
-    console.log(events);
     return (
-        <Guest en={route("home")} id={route("home.id")} jp={route("home.jp")}>
+        <Guest
+            en={route("home")}
+            id={route("home.id")}
+            jp={route("home.jp")}
+            description={checkLang(
+                locale,
+                page.description_eng,
+                page.description,
+                page.description_jpn
+            )}
+            seo_title={checkLang(
+                locale,
+                page.SEO_title_eng,
+                page.SEO_title,
+                page.SEO_title_jpn
+            )}
+            href={checkLang(
+                locale,
+                route("home"),
+                route("home.id"),
+                route("home.jp")
+            )}
+        >
             <Box
                 component="section"
                 sx={{

@@ -6,7 +6,14 @@ function TableList({ columns, rows }) {
             columns={columns}
             rows={rows}
             getRowId={(row) => row.id}
-            pageSize={10}
+            initialState={{
+                pagination: {
+                    paginationModel: {
+                        pageSize: 10,
+                    },
+                },
+            }}
+            pageSizeOptions={[5, 10, 20]}
             getRowClassName={(params) =>
                 params.indexRelativeToCurrentPage % 2 === 0 ? "even" : "odd"
             }

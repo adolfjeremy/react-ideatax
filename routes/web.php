@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminArticleController;
+use App\Http\Controllers\Admin\AdminCareerController;
 use App\Http\Controllers\Admin\AdminTeamController;
 use App\Http\Controllers\Admin\ArticleCategoryController;
 use App\Http\Controllers\Admin\HeroController;
+use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\StatController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
@@ -50,7 +52,7 @@ Route::get('/our-services/{slug_eng}', [ServiceController::class, 'detail'])->na
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 Route::get('/articles/{slug_eng}', [ArticleController::class, 'detail'])->name('article-detail');
 Route::get('/careers', [CareerController::class, 'index'])->name('career');
-Route::get('/careers/detail', [CareerController::class, 'detail'])->name('career-detail');
+Route::get('/careers/{slug_eng}', [CareerController::class, 'detail'])->name('career-detail');
 Route::get('/careers/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
@@ -65,7 +67,7 @@ Route::prefix('id')
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.id');
         Route::get('/articles/{slug}', [ArticleController::class, 'detail'])->name('article-detail.id');
         Route::get('/careers', [CareerController::class, 'index'])->name('career.id');
-        Route::get('/careers/detail', [CareerController::class, 'detail'])->name('career-detail.id');
+        Route::get('/careers/{slug}', [CareerController::class, 'detail'])->name('career-detail.id');
         Route::get('/careers/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax.id');
         Route::get('/contact', [ContactController::class, 'index'])->name('contact.id');
 });
@@ -81,7 +83,7 @@ Route::prefix('jp')
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.jp');
         Route::get('/articles/{slug_jpn}', [ArticleController::class, 'detail'])->name('article-detail.jp');
         Route::get('/careers', [CareerController::class, 'index'])->name('career.jp');
-        Route::get('/careers/detail', [CareerController::class, 'detail'])->name('career-detail.jp');
+        Route::get('/careers/{slug_jpn}', [CareerController::class, 'detail'])->name('career-detail.jp');
         Route::get('/careers/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax.jp');
         Route::get('/contact', [ContactController::class, 'index'])->name('contact.jp');
 });
@@ -96,6 +98,8 @@ Route::prefix('admin')
         Route::resource('article-category', ArticleCategoryController::class);
         Route::resource('tax-event', TaxEventController::class);
         Route::resource('team', AdminTeamController::class);
+        Route::resource('page', PageController::class);
+        Route::resource('career', AdminCareerController::class);
 });
 
 

@@ -26,6 +26,8 @@ import { RiArticleLine } from "react-icons/ri";
 import { BiSolidCategory } from "react-icons/bi";
 import { MdEventAvailable } from "react-icons/md";
 import { RiTeamFill } from "react-icons/ri";
+import { RiPagesFill } from "react-icons/ri";
+import { MdWork } from "react-icons/md";
 import Spinner from "@/Components/Spinner";
 import AlertBar from "@/Components/AlertBar";
 
@@ -66,6 +68,18 @@ function AuthLayout({ children, sectionHeading }) {
                     },
                 }}
             >
+                <ListItem
+                    disablePadding
+                    onClick={() => router.visit(route("page.index"))}
+                    className={`${route().current("page*") ? "active" : ""}`}
+                >
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <RiPagesFill />
+                        </ListItemIcon>
+                        <ListItemText primary="Page" />
+                    </ListItemButton>
+                </ListItem>
                 <ListItem
                     disablePadding
                     onClick={() => router.visit(route("hero.index"))}
@@ -162,6 +176,18 @@ function AuthLayout({ children, sectionHeading }) {
                             <RiTeamFill />
                         </ListItemIcon>
                         <ListItemText primary="Team" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem
+                    disablePadding
+                    onClick={() => router.visit(route("career.index"))}
+                    className={`${route().current("career*") ? "active" : ""}`}
+                >
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <MdWork />
+                        </ListItemIcon>
+                        <ListItemText primary="Career" />
                     </ListItemButton>
                 </ListItem>
             </List>

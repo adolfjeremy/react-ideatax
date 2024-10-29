@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Box, Typography, useTheme, Button, TextField } from "@mui/material";
+import { usePage } from "@inertiajs/react";
+import { Box, Typography, useTheme } from "@mui/material";
 import { RowsPhotoAlbum } from "react-photo-album";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
@@ -9,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
 import "react-photo-album/rows.css";
 import "yet-another-react-lightbox/styles.css";
+import checkLang from "@/utils/checkLang";
 
 import one from "@/assets/images/1.webp";
 import two from "@/assets/images/2.webp";
@@ -16,6 +18,7 @@ import three from "@/assets/images/3.webp";
 import four from "@/assets/images/4.webp";
 
 function LifeAtIdeatax() {
+    const { locale, page } = usePage().props;
     const theme = useTheme();
     const { t } = useTranslation();
 
@@ -64,7 +67,29 @@ function LifeAtIdeatax() {
 
     const [index, setIndex] = useState(-1);
     return (
-        <Guest>
+        <Guest
+            en={route("life-at-ideatax")}
+            id={route("life-at-ideatax.id")}
+            jp={route("life-at-ideatax.jp")}
+            description={checkLang(
+                locale,
+                page.description_eng,
+                page.description,
+                page.description_jpn
+            )}
+            seo_title={checkLang(
+                locale,
+                page.SEO_title_eng,
+                page.SEO_title,
+                page.SEO_title_jpn
+            )}
+            href={checkLang(
+                locale,
+                route("life-at-ideatax"),
+                route("life-at-ideatax.id"),
+                route("life-at-ideatax.jp")
+            )}
+        >
             <Box sx={{ paddingTop: "120px" }}>
                 <div className="container">
                     <div className="row">

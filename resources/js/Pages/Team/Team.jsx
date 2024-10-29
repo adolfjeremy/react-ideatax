@@ -8,9 +8,31 @@ import hero from "../../assets/images/team-hero.webp";
 function Team() {
     const theme = useTheme();
     const { t } = useTranslation();
-    const { locale, teams } = usePage().props;
+    const { locale, page, teams } = usePage().props;
     return (
-        <Guest en={route("team")} id={route("team.id")} jp={route("team.jp")}>
+        <Guest
+            en={route("team")}
+            id={route("team.id")}
+            jp={route("team.jp")}
+            description={checkLang(
+                locale,
+                page.description_eng,
+                page.description,
+                page.description_jpn
+            )}
+            seo_title={checkLang(
+                locale,
+                page.SEO_title_eng,
+                page.SEO_title,
+                page.SEO_title_jpn
+            )}
+            href={checkLang(
+                locale,
+                route("team"),
+                route("team.id"),
+                route("team.jp")
+            )}
+        >
             <Box className="position-relative">
                 <img src={hero} alt="" className="w-100" />
                 <Box

@@ -7,7 +7,29 @@ function Contact() {
     const theme = useTheme();
     const { t } = useTranslation();
     return (
-        <Guest>
+        <Guest
+            en={route("career")}
+            id={route("career.id")}
+            jp={route("career.jp")}
+            description={checkLang(
+                locale,
+                page.description_eng,
+                page.description,
+                page.description_jpn
+            )}
+            seo_title={checkLang(
+                locale,
+                page.SEO_title_eng,
+                page.SEO_title,
+                page.SEO_title_jpn
+            )}
+            href={checkLang(
+                locale,
+                route("career"),
+                route("career.id"),
+                route("career.jp")
+            )}
+        >
             <Box
                 sx={{
                     backgroundImage: `url(${wall})`,
