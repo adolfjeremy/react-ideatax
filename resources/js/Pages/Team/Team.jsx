@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
 import TeamItem from "./TeamItem";
 import hero from "../../assets/images/team-hero.webp";
+import checkLang from "@/utils/checkLang";
 
 function Team() {
     const theme = useTheme();
