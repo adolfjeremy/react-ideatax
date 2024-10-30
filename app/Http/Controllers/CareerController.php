@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Career;
 use App\Models\Page;
+use App\Models\PhotoGalery;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 
@@ -34,8 +35,10 @@ class CareerController extends Controller
     public function life()
     {
         $page = Page::findOrFail(8);
+        $galeries = PhotoGalery::latest()->get();
         return Inertia::render('Career/Life/LifeAtIdeatax', [
-            "page" => $page
+            "page" => $page,
+            "galeries" => $galeries
         ]);
     }
 }

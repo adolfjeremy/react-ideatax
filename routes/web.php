@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminTeamController;
 use App\Http\Controllers\Admin\ArticleCategoryController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\PhotoGaleryController;
 use App\Http\Controllers\Admin\StatController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
@@ -53,7 +54,7 @@ Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 Route::get('/articles/{slug_eng}', [ArticleController::class, 'detail'])->name('article-detail');
 Route::get('/careers', [CareerController::class, 'index'])->name('career');
 Route::get('/careers/{slug_eng}', [CareerController::class, 'detail'])->name('career-detail');
-Route::get('/careers/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax');
+Route::get('/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 Route::prefix('id')
@@ -100,6 +101,7 @@ Route::prefix('admin')
         Route::resource('team', AdminTeamController::class);
         Route::resource('page', PageController::class);
         Route::resource('career', AdminCareerController::class);
+        Route::resource('photo-galery', PhotoGaleryController::class);
 });
 
 

@@ -18,52 +18,18 @@ import three from "@/assets/images/3.webp";
 import four from "@/assets/images/4.webp";
 
 function LifeAtIdeatax() {
-    const { locale, page } = usePage().props;
+    const { locale, page, galeries } = usePage().props;
     const theme = useTheme();
     const { t } = useTranslation();
 
-    const photos = [
-        {
-            src: one,
-            width: 1600,
-            height: 1200,
-        },
-        {
-            src: two,
-            width: 1600,
-            height: 1200,
-        },
-        {
-            src: three,
-            width: 1600,
-            height: 1200,
-        },
-        {
-            src: four,
-            width: 1600,
-            height: 1200,
-        },
-        {
-            src: one,
-            width: 1600,
-            height: 1200,
-        },
-        {
-            src: two,
-            width: 1600,
-            height: 1200,
-        },
-        {
-            src: three,
-            width: 1600,
-            height: 1200,
-        },
-        {
-            src: four,
-            width: 1600,
-            height: 1200,
-        },
-    ];
+    const photos = galeries.map((item) => {
+        return {
+            src: `/storage/${item.image}`,
+            ...item,
+        };
+    });
+
+    console.log(photos);
 
     const [index, setIndex] = useState(-1);
     return (

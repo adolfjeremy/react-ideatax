@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { router } from "@inertiajs/react";
+import { router, Head } from "@inertiajs/react";
 import { SpinnerContext } from "@/Context/SpinnerContext";
 import { AlertContext } from "@/Context/AlertContext";
 import {
@@ -28,6 +28,7 @@ import { MdEventAvailable } from "react-icons/md";
 import { RiTeamFill } from "react-icons/ri";
 import { RiPagesFill } from "react-icons/ri";
 import { MdWork } from "react-icons/md";
+import { FaStarOfLife } from "react-icons/fa";
 import Spinner from "@/Components/Spinner";
 import AlertBar from "@/Components/AlertBar";
 
@@ -190,6 +191,20 @@ function AuthLayout({ children, sectionHeading }) {
                         <ListItemText primary="Career" />
                     </ListItemButton>
                 </ListItem>
+                <ListItem
+                    disablePadding
+                    onClick={() => router.visit(route("photo-galery.index"))}
+                    className={`${
+                        route().current("photo-galery*") ? "active" : ""
+                    }`}
+                >
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <FaStarOfLife />
+                        </ListItemIcon>
+                        <ListItemText primary="Life at Ideatax" />
+                    </ListItemButton>
+                </ListItem>
             </List>
             <Divider />
         </div>
@@ -198,6 +213,9 @@ function AuthLayout({ children, sectionHeading }) {
     return (
         <Box sx={{ display: "flex" }}>
             <CssBaseline />
+            <Head>
+                <title>Admin Page - Ideatax</title>
+            </Head>
             <AppBar
                 position="fixed"
                 sx={{
