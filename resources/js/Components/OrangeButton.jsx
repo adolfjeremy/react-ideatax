@@ -1,6 +1,6 @@
 import { Button, useTheme, useMediaQuery } from "@mui/material";
 
-function OrangeButton({ children }) {
+function OrangeButton({ children, href }) {
     const theme = useTheme();
     const matches = useMediaQuery("(min-width:500px)");
     return (
@@ -17,7 +17,7 @@ function OrangeButton({ children }) {
                 },
                 fontWeight: 700,
             }}
-            href="#text-buttons"
+            href={href}
         >
             {children}
         </Button>

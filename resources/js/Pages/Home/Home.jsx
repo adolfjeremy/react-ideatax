@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from "react";
 import { Box, Typography, useTheme, Link } from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
@@ -31,10 +32,29 @@ import formatDate from "@/utils/formatDate";
 import "./home.scss";
 
 function Home() {
+    const containerRef = useRef(null);
+    const [visible, setIsVisible] = useState(false);
+    const callbackFunction = (entries) => {
+        const [entry] = entries;
+        setIsVisible(entry.isIntersecting);
+    };
+    const options = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 1.0,
+    };
     const { t } = useTranslation();
     const theme = useTheme();
     const { locale, page, heroes, stats, services, articles, events } =
         usePage().props;
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(callbackFunction, options);
+        if (containerRef.current) observer.observe(containerRef.current);
+        return () => {
+            if (containerRef.current) observer.unobserve(containerRef.current);
+        };
+    }, [containerRef, options]);
     return (
         <Guest
             en={route("home")}
@@ -131,7 +151,17 @@ function Home() {
                             >
                                 {t("hero")}
                             </Typography>
-                            <OrangeButton>{t("heroButton")}</OrangeButton>
+                            <OrangeButton
+                                href={
+                                    locale == "en"
+                                        ? route("contact")
+                                        : locale == "id"
+                                        ? route("contact.id")
+                                        : route("contact.jp")
+                                }
+                            >
+                                {t("heroButton")}
+                            </OrangeButton>
                         </Box>
                     </Box>
                 </Box>
@@ -157,9 +187,10 @@ function Home() {
                             </Typography>
                         </div>
                     </div>
-                    <div className="row">
+                    <div ref={containerRef} className="row">
                         {stats.map((stat) => (
                             <Box
+                                key={stat.id}
                                 className="col-3"
                                 sx={{
                                     display: "flex",
@@ -168,16 +199,16 @@ function Home() {
                                     flexDirection: "column",
                                 }}
                             >
-                                <p
-                                    style={{
+                                <Typography
+                                    sx={{
                                         color: theme.palette.custom.darkBlue,
                                     }}
                                     className="stat m-0"
                                 >
                                     {stat.value}+
-                                </p>
-                                <p
-                                    style={{
+                                </Typography>
+                                <Typography
+                                    sx={{
                                         color: theme.palette.custom.orange,
                                     }}
                                     className="stat_head m-0"
@@ -188,7 +219,7 @@ function Home() {
                                         stat.head,
                                         stat.head_jpn
                                     )}
-                                </p>
+                                </Typography>
                             </Box>
                         ))}
                         <Box
