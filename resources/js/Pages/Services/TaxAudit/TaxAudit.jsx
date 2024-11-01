@@ -48,7 +48,14 @@ function TaxAudit() {
                 route("tax-audit.jp")
             )}
         >
-            <Box className="position-relative">
+            <Box
+                sx={{
+                    [theme.breakpoints.down("md")]: {
+                        paddingTop: "100px",
+                    },
+                }}
+                className="position-relative"
+            >
                 <img
                     src={hero}
                     alt="Pemeriksaan Pajak Lancar, Perusahaan Aman"

@@ -334,7 +334,7 @@ function HeaderBar({ en, id, jp }) {
                                 {
                                     backgroundColor: "rgba(0,90,150,.8)",
                                 },
-                            "..css-d1xm6m": {
+                            ".css-d1xm6m": {
                                 backgroundColor: "rgba(0,90,150,.8)",
                             },
                         }}
