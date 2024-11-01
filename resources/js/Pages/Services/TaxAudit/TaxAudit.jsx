@@ -90,7 +90,7 @@ function TaxAudit() {
                                     color: theme.palette.custom.darkBlue,
                                     fontWeight: "600",
                                     [theme.breakpoints.down("sm")]: {
-                                        fontSize: "1.1rem",
+                                        fontSize: "1.25rem",
                                     },
                                 }}
                             >
@@ -106,7 +106,7 @@ function TaxAudit() {
                                     color: theme.palette.custom.lightBlue,
                                     fontSize: "1.4459rem",
                                     [theme.breakpoints.down("sm")]: {
-                                        fontSize: "0.9rem",
+                                        fontSize: "0.7rem",
                                     },
                                     margin: 0,
                                     padding: 0,
@@ -165,7 +165,7 @@ function TaxAudit() {
                                     fontWeight: "400",
                                     mb: 2,
                                     [theme.breakpoints.down("sm")]: {
-                                        fontSize: "1.1rem",
+                                        fontSize: "1.25rem",
                                     },
                                 }}
                             >
@@ -336,7 +336,7 @@ function TaxAudit() {
                                     fontWeight: "400",
                                     mb: 2,
                                     [theme.breakpoints.down("sm")]: {
-                                        fontSize: "1.1rem",
+                                        fontSize: "1.25rem",
                                     },
                                 }}
                             >
@@ -353,7 +353,7 @@ function TaxAudit() {
                         <div className="col-12">
                             <Typography
                                 sx={{
-                                    fontSize: "1.1rem",
+                                    fontSize: "1.25rem",
                                     letterSpacing: "0.009em",
                                     lineHeight: "1.2em",
                                     color: theme.palette.custom.darkBlue,
@@ -421,7 +421,7 @@ function TaxAudit() {
                                             fontWeight: "400",
                                             mb: 2,
                                             [theme.breakpoints.down("sm")]: {
-                                                fontSize: "1.1rem",
+                                                fontSize: "1.25rem",
                                             },
                                         }}
                                     >
@@ -501,7 +501,7 @@ function TaxAudit() {
                                             fontWeight: "400",
                                             mb: 2,
                                             [theme.breakpoints.down("sm")]: {
-                                                fontSize: "1.1rem",
+                                                fontSize: "1.25rem",
                                             },
                                         }}
                                     >
@@ -581,7 +581,7 @@ function TaxAudit() {
                                             fontWeight: "400",
                                             mb: 2,
                                             [theme.breakpoints.down("sm")]: {
-                                                fontSize: "1.1rem",
+                                                fontSize: "1.25rem",
                                             },
                                         }}
                                     >
@@ -695,7 +695,7 @@ function TaxAudit() {
                                     fontWeight: "400",
                                     mb: 2,
                                     [theme.breakpoints.down("sm")]: {
-                                        fontSize: "1.1rem",
+                                        fontSize: "1.25rem",
                                     },
                                 }}
                             >
@@ -733,7 +733,7 @@ function TaxAudit() {
                                             fontWeight: "400",
                                             mb: 2,
                                             [theme.breakpoints.down("sm")]: {
-                                                fontSize: "1.1em",
+                                                fontSize: "1.25em",
                                             },
                                         }}
                                     >
@@ -800,7 +800,7 @@ function TaxAudit() {
                                             fontWeight: "400",
                                             mb: 2,
                                             [theme.breakpoints.down("sm")]: {
-                                                fontSize: "1.1rem",
+                                                fontSize: "1.25rem",
                                             },
                                         }}
                                     >
@@ -867,7 +867,7 @@ function TaxAudit() {
                                             fontWeight: "400",
                                             mb: 2,
                                             [theme.breakpoints.down("sm")]: {
-                                                fontSize: "1.1rem",
+                                                fontSize: "1.25rem",
                                             },
                                         }}
                                     >
@@ -1005,7 +1005,7 @@ function TaxAudit() {
                                                 .darkBlue,
                                             fontWeight: "400",
                                             [theme.breakpoints.down("sm")]: {
-                                                fontSize: "1.1rem",
+                                                fontSize: "1.25rem",
                                             },
                                         }}
                                     >
