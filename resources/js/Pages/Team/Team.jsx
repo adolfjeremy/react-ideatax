@@ -50,6 +50,12 @@ function Team() {
                             letterSpacing: "0.009em",
                             lineHeight: "1.18641911em",
                             color: theme.palette.custom.white,
+                            [theme.breakpoints.down(";g")]: {
+                                fontSize: "2.265rem",
+                            },
+                            [theme.breakpoints.down("md")]: {
+                                fontSize: "1rem",
+                            },
                         }}
                     >
                         {t("teamHead")}

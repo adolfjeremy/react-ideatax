@@ -15,7 +15,14 @@ function ServiceDetail() {
             id={route("service-detail.id", item.slug)}
             jp={route("service-detail.jp", item.slug_jpn)}
         >
-            <Box className="position-relative">
+            <Box
+                sx={{
+                    [theme.breakpoints.down("md")]: {
+                        paddingTop: "100px",
+                    },
+                }}
+                className="position-relative"
+            >
                 <img src={`/storage/${item.image}`} alt="" className="w-100" />
                 <Box
                     sx={{

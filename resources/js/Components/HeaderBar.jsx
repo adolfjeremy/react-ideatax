@@ -149,7 +149,11 @@ function HeaderBar({ en, id, jp }) {
                         background:
                             "linear-gradient(90deg,rgba(165,114,240,0),rgba(0,90,150,.72),#005b96 90%)",
                         width: "50vw",
+
                         boxShadow: "none",
+                        [theme.breakpoints.down("md")]: {
+                            width: "75vw",
+                        },
                     },
                 }}
                 anchor="right"
@@ -246,7 +250,7 @@ function HeaderBar({ en, id, jp }) {
                     >
                         Our Services
                     </Link>
-                    <Link
+                    {/* <Link
                         href={route("team")}
                         sx={{
                             fontSize: "1.7rem",
@@ -261,7 +265,7 @@ function HeaderBar({ en, id, jp }) {
                         }}
                     >
                         Updates
-                    </Link>
+                    </Link> */}
                     <Link
                         href={checkLang(
                             locale,
@@ -330,6 +334,9 @@ function HeaderBar({ en, id, jp }) {
                                 {
                                     backgroundColor: "rgba(0,90,150,.8)",
                                 },
+                            "..css-d1xm6m": {
+                                backgroundColor: "rgba(0,90,150,.8)",
+                            },
                         }}
                     >
                         <MenuItem>

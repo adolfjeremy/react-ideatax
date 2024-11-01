@@ -41,7 +41,11 @@ function ArticleDetail() {
         <Guest
             en={route("article-detail", item.slug_eng)}
             id={route("article-detail.id", item.slug)}
-            jp={route("article-detail.jp", item.slug_jpn)}
+            jp={
+                item.slug_jpn
+                    ? route("article-detail.jp", item.slug_jpn)
+                    : route("article-detail", item.slug_eng)
+            }
         >
             <Box
                 component="section"
@@ -50,6 +54,9 @@ function ArticleDetail() {
                     [theme.breakpoints.up("md")]: {
                         maxHeight: "100vh",
                         overflow: "hidden",
+                    },
+                    [theme.breakpoints.down("md")]: {
+                        paddingTop: "100px",
                     },
                 }}
             >

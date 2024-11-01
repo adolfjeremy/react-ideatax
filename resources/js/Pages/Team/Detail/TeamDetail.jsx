@@ -16,7 +16,14 @@ function TeamDetail() {
             id={route("team-detail.id", item.slug)}
             jp={route("team-detail.jp", item.slug)}
         >
-            <Box className="position-relative">
+            <Box
+                sx={{
+                    [theme.breakpoints.down("md")]: {
+                        paddingTop: "100px",
+                    },
+                }}
+                className="position-relative"
+            >
                 <img
                     src={`/storage/${item.profile_picture}`}
                     alt={item.name}
@@ -33,6 +40,9 @@ function TeamDetail() {
                         justifyContent: "center",
                         flexDirection: "column",
                         padding: "0 12px",
+                        [theme.breakpoints.down("md")]: {
+                            paddingTop: "100px",
+                        },
                     }}
                 >
                     <Typography
@@ -110,7 +120,7 @@ function TeamDetail() {
                             </Breadcrumbs>
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row mt-5">
                         <div className="col-12 text-center">
                             <Typography
                                 as="h2"

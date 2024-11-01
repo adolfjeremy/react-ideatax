@@ -34,12 +34,19 @@ function Career() {
                 route("career.jp")
             )}
         >
-            <Box className="position-relative">
+            <Box
+                sx={{
+                    [theme.breakpoints.down("md")]: {
+                        paddingTop: "100px",
+                    },
+                }}
+                className="position-relative"
+            >
                 <img src={hero} alt="" className="w-100" />
                 <Box
                     sx={{
                         position: "absolute",
-                        bottom: "50%",
+                        bottom: "calc(50% - 100px)",
                         left: "50%",
                         transform: "translate(-50%)",
                         padding: "0 12px",

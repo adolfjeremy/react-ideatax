@@ -1,9 +1,12 @@
 import { Box, Typography, useTheme, Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { usePage } from "@inertiajs/react";
 import Guest from "@/Layout/Guest";
 import wall from "@/assets/images/wall.webp";
+import checkLang from "@/utils/checkLang";
 
 function Contact() {
+    const { locale, page } = usePage().props;
     const theme = useTheme();
     const { t } = useTranslation();
     return (
