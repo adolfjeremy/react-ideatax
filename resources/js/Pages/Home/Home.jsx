@@ -9,7 +9,6 @@ import ComproModal from "./ComproModal";
 import ConsultationButton from "@/Components/ConsultationButton";
 import SubsModal from "./SubsModal";
 import RoundedArticle from "./RoundedArticle";
-import hero from "../../assets/images/hero.png";
 import serviceBg from "../../assets/images/service-bg.png";
 import teamImg from "../../assets/images/team-img.webp";
 import subs from "../../assets/images/subscribe.webp";
@@ -118,11 +117,14 @@ function Home() {
                         alignItems: "center",
                         justifyContent: "start",
                         padding: "0 4rem",
+                        [theme.breakpoints.down("md")]: {
+                            padding: "0 2rem",
+                        },
                     }}
                 >
                     <Box className="row">
                         <Box
-                            className="col-8"
+                            className="col-12 col-md-8"
                             sx={{
                                 display: "flex",
                                 flexDirection: "column",
@@ -135,6 +137,7 @@ function Home() {
                                     color: theme.palette.custom.white,
                                     [theme.breakpoints.down("md")]: {
                                         fontSize: "1.2em",
+                                        mt: 7,
                                     },
                                     [theme.breakpoints.up("md")]: {
                                         fontSize: "2.822rem",
@@ -280,7 +283,13 @@ function Home() {
                                 {t("serviceOneDesc")}
                             </Typography>
                             <Link
-                                href="#"
+                                href={
+                                    locale == "en"
+                                        ? route("tax-audit")
+                                        : locale == "id"
+                                        ? route("tax-audit.id")
+                                        : route("tax-audit.jp")
+                                }
                                 underline="none"
                                 sx={{
                                     display: "flex",
@@ -337,7 +346,22 @@ function Home() {
                                 {t("serviceTwoDesc")}
                             </Typography>
                             <Link
-                                href="#"
+                                href={
+                                    locale == "en"
+                                        ? route(
+                                              "service-detail",
+                                              "tax-refund-assistance"
+                                          )
+                                        : locale == "id"
+                                        ? route(
+                                              "service-detail.id",
+                                              "bantuan-pengembalian-pajak"
+                                          )
+                                        : route(
+                                              "service-detail.jp",
+                                              "shui-jin-nohuan-fu-sapoto"
+                                          )
+                                }
                                 underline="none"
                                 sx={{
                                     display: "flex",
@@ -394,7 +418,22 @@ function Home() {
                                 {t("serviceThreeDesc")}
                             </Typography>
                             <Link
-                                href="#"
+                                href={
+                                    locale == "en"
+                                        ? route(
+                                              "service-detail",
+                                              "penyiapan-dokumentasi-transfer-pricing-file-lokal-dan-master"
+                                          )
+                                        : locale == "id"
+                                        ? route(
+                                              "service-detail.id",
+                                              "penyiapan-dokumentasi-transfer-pricing-file-lokal-dan-master"
+                                          )
+                                        : route(
+                                              "service-detail.jp",
+                                              "yi-zhuan-jia-ge-wen-shu-zuo-cheng-rokaruhuairuji-bimasutahuairu"
+                                          )
+                                }
                                 underline="none"
                                 sx={{
                                     display: "flex",
@@ -451,7 +490,22 @@ function Home() {
                                 {t("serviceFourDesc")}
                             </Typography>
                             <Link
-                                href="#"
+                                href={
+                                    locale == "en"
+                                        ? route(
+                                              "service-detail",
+                                              "tax-and-customs-compliances"
+                                          )
+                                        : locale == "id"
+                                        ? route(
+                                              "service-detail.id",
+                                              "otomatisasi-dan-kepatuhan-perpajakan"
+                                          )
+                                        : route(
+                                              "service-detail.jp",
+                                              "shui-wu-shui-guan-konpuraiansu"
+                                          )
+                                }
                                 underline="none"
                                 sx={{
                                     display: "flex",
@@ -524,6 +578,9 @@ function Home() {
                                     fontWeight: "400",
                                     lineHeight: "1.42498753em",
                                     letterSpacing: ".009em",
+                                    [theme.breakpoints.down("md")]: {
+                                        fontSize: "0.8rem",
+                                    },
                                 }}
                             >
                                 {t("valueOne")}
@@ -550,6 +607,9 @@ function Home() {
                                     fontWeight: "400",
                                     lineHeight: "1.42498753em",
                                     letterSpacing: ".009em",
+                                    [theme.breakpoints.down("md")]: {
+                                        fontSize: "0.8rem",
+                                    },
                                 }}
                             >
                                 {t("valueTwo")}
@@ -576,6 +636,9 @@ function Home() {
                                     fontWeight: "400",
                                     lineHeight: "1.42498753em",
                                     letterSpacing: ".009em",
+                                    [theme.breakpoints.down("md")]: {
+                                        fontSize: "0.8rem",
+                                    },
                                 }}
                             >
                                 {t("valueThree")}
@@ -602,6 +665,9 @@ function Home() {
                                     fontWeight: "400",
                                     lineHeight: "1.42498753em",
                                     letterSpacing: ".009em",
+                                    [theme.breakpoints.down("md")]: {
+                                        fontSize: "0.8rem",
+                                    },
                                 }}
                             >
                                 {t("valueFour")}

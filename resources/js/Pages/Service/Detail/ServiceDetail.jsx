@@ -42,7 +42,12 @@ function ServiceDetail() {
                             },
                         }}
                     >
-                        Tax and Customs Compliances
+                        {checkLang(
+                            locale,
+                            item.title_eng,
+                            item.title,
+                            item.title_jpn
+                        )}
                     </Typography>
                 </Box>
             </Box>

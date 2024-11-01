@@ -21,6 +21,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\TaxEventController;
 use App\Http\Controllers\LocalizationController;
+use App\Http\Controllers\TaxAuditController;
 use App\Http\Middleware\ChangeLocal;
 
 /*
@@ -50,6 +51,7 @@ Route::get('/our-team', [TeamController::class, 'index'])->name('team');
 Route::get('/our-team/{slug}', [TeamController::class, 'detail'])->name('team-detail');
 Route::get('/our-services', [ServiceController::class, 'index'])->name('service');
 Route::get('/our-services/{slug_eng}', [ServiceController::class, 'detail'])->name('service-detail');
+Route::get('/our-service/tax-audit-assistance', [TaxAuditController::class, 'detail'])->name('tax-audit');
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 Route::get('/articles/{slug_eng}', [ArticleController::class, 'detail'])->name('article-detail');
 Route::get('/careers', [CareerController::class, 'index'])->name('career');
@@ -65,6 +67,7 @@ Route::prefix('id')
         Route::get('/our-team/{slug}', [TeamController::class, 'detail'])->name('team-detail.id');
         Route::get('/our-services', [ServiceController::class, 'index'])->name('service.id');
         Route::get('/our-services/{slug}', [ServiceController::class, 'detail'])->name('service-detail.id');
+        Route::get('/our-service/bantuan-pemeriksaan-pajak', [TaxAuditController::class, 'detail'])->name('tax-audit.id');
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.id');
         Route::get('/articles/{slug}', [ArticleController::class, 'detail'])->name('article-detail.id');
         Route::get('/careers', [CareerController::class, 'index'])->name('career.id');
@@ -81,6 +84,7 @@ Route::prefix('jp')
         Route::get('/our-team/{slug}', [TeamController::class, 'detail'])->name('team-detail.jp');
         Route::get('/our-services', [ServiceController::class, 'index'])->name('service.jp');
         Route::get('/our-services/{slug_jpn}', [ServiceController::class, 'detail'])->name('service-detail.jp');
+        Route::get('/our-service/zeimu-kansa-sapoto', [TaxAuditController::class, 'detail'])->name('tax-audit.jp');
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.jp');
         Route::get('/articles/{slug_jpn}', [ArticleController::class, 'detail'])->name('article-detail.jp');
         Route::get('/careers', [CareerController::class, 'index'])->name('career.jp');
