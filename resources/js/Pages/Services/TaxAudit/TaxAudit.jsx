@@ -642,15 +642,68 @@ function TaxAudit() {
                                 </Box>
                             </Box>
                         </div>
-                        <Box
-                            sx={{
-                                img: {
-                                    width: "85%",
-                                },
-                            }}
-                            className="col-12 col-md-6 mt-4 mt-md-0 d-flex flex-column justify-content-center align-items-center p-5 gap-5"
-                        >
-                            <img src={ken} alt="Ken Dwijugiasteadi" />
+                        <Box className="col-12 col-md-6 mt-4 mt-md-0 d-flex flex-column justify-content-center align-items-center p-5 gap-5">
+                            <Box
+                                sx={{
+                                    position: "relative",
+                                    img: {
+                                        width: "80%",
+                                        [theme.breakpoints.down("md")]: {
+                                            width: "100%",
+                                        },
+                                    },
+                                }}
+                            >
+                                <img src={ken} alt="Ken Dwijugiasteadi" />
+                                <Box
+                                    sx={{
+                                        backgroundColor: "rgb(212, 240, 252)",
+                                        padding: "7px 25px",
+                                        position: "absolute",
+                                        bottom: "20px",
+                                        left: "110px",
+                                        [theme.breakpoints.down("md")]: {
+                                            left: "30px",
+                                        },
+                                    }}
+                                >
+                                    <Typography
+                                        sx={{
+                                            fontSize: "0.9rem",
+                                            color: "rgb(25, 25, 25)",
+                                            lineHeight: "26px",
+                                            fontWeight: "700",
+                                            textAlign: "center",
+                                            borderBottom: "2px solid grey",
+                                        }}
+                                    >
+                                        Ken Dwijugiasteadi
+                                    </Typography>
+                                    <Typography
+                                        sx={{
+                                            fontSize: "0.9rem",
+                                            color: "rgb(25, 25, 25)",
+                                            fontWeight: "500",
+                                            textAlign: "center",
+                                            mt: "5px",
+                                            whiteSpace: "nowrap",
+                                        }}
+                                    >
+                                        Dirjen Kemenkeu RI Tahun 2015-2017
+                                    </Typography>
+                                    <Typography
+                                        sx={{
+                                            fontSize: "0.9rem",
+                                            color: "rgb(25, 25, 25)",
+                                            fontWeight: "500",
+                                            textAlign: "center",
+                                            whiteSpace: "nowrap",
+                                        }}
+                                    >
+                                        Senior Advisor Ideatax
+                                    </Typography>
+                                </Box>
+                            </Box>
                             <Button
                                 href="https://wa.me/62811195708?text=Hello%20Ideatax"
                                 rel="noopener noreferrer"
