@@ -10,9 +10,6 @@ class TaxAuditController extends Controller
 {
     public function detail()
     {
-        $page = Service::findOrFail(4);
-        return Inertia::render('Services/TaxAudit/TaxAudit', [
-            "page" => $page
-        ]);
+        return Inertia::render('Services/TaxAudit/TaxAudit');
     }
 }

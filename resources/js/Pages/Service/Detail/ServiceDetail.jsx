@@ -45,7 +45,7 @@ function ServiceDetail() {
                             fontWeight: "700",
                             textAlign: "center",
                             [theme.breakpoints.down("sm")]: {
-                                fontSize: "0.8rem",
+                                fontSize: "2rem",
                             },
                         }}
                     >
@@ -69,6 +69,9 @@ function ServiceDetail() {
                                     letterSpacing: ".009em",
                                     color: theme.palette.custom.lightBlue,
                                     textAlign: "center",
+                                    [theme.breakpoints.down("md")]: {
+                                        fontSize: "1.2",
+                                    },
                                 }}
                             >
                                 {checkLang(

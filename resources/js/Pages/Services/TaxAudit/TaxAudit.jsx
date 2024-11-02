@@ -23,7 +23,7 @@ import CountdownTimer from "./CountdownTimer";
 function TaxAudit() {
     const { t } = useTranslation();
     const theme = useTheme();
-    const { locale, page } = usePage().props;
+    const { locale } = usePage().props;
     return (
         <Guest
             en={route("tax-audit")}
@@ -31,15 +31,15 @@ function TaxAudit() {
             jp={route("tax-audit.jp")}
             description={checkLang(
                 locale,
-                page.description_eng,
-                page.description,
-                page.description_jpn
+                "We understand how exhausting the tax audit system can be. There are also many things that could be unfamiliar to you during the process of tax audit. We have a team of professionals who are experienced in tax audit for years, and we would be glad to assist you in it. Our service comprises of assistance prior to the receiving of the notification letter about tax audit process, providing a helping hand during the meeting with tax officer, to preparing the required data in tax audit process as well as providing the feedback of the audit results.",
+                "Kami memahami betapa melelahkannya sistem pemeriksaan pajak. Ada banyak hal yang mungkin tidak Anda kenali selama proses pemeriksaan pajak. Kami memiliki tim profesional yang berpengalaman dalam pemeriksaan pajak selama bertahun-tahun, dan kami akan senang membantu Anda. Layanan kami mencakup bantuan sebelum menerima surat pemberitahuan tentang proses pemeriksaan pajak, memberikan bantuan selama pertemuan dengan petugas pajak, hingga menyiapkan data yang diperlukan dalam proses pemeriksaan pajak serta memberikan umpan balik atas hasil pemeriksaan.",
+                "私たちは、税務調査制度がいかに疲れるものであるかを理解しています。また、税務調査の過程では不慣れなことも多々あるかと思います。当事務所には、税務調査に長年携わってきた専門家チームがおり、喜んで税務調査のお手伝いをさせていただきます。私たちのサービスは、税務調査の通知書を受け取る前のサポートから、税務官との面談時のサポート、税務調査に必要な資料の作成、調査結果のフィードバックまで、多岐にわたります。"
             )}
             seo_title={checkLang(
                 locale,
-                page.SEO_title_eng,
-                page.SEO_title,
-                page.SEO_title_jpn
+                "Tax Audit Assistance Service Ideatax Tax Consultant",
+                "Layanan Bantuan Pemeriksaan Audit Pajak Ideatax Konsultan Pajan",
+                "税務調査支援サービス Ideatax Tax Consultant"
             )}
             href={checkLang(
                 locale,
