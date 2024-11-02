@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
+import { Typography, useTheme } from "@mui/material";
 
-const Counter = ({ target, duration = 2000 }) => {
+const Counter = ({ target, duration = 4000 }) => {
+    const theme = useTheme();
     const [count, setCount] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
     const counterRef = useRef(null);
@@ -42,7 +44,25 @@ const Counter = ({ target, duration = 2000 }) => {
         return () => clearInterval(interval);
     }, [isVisible, target, duration]);
 
-    return <div ref={counterRef}>{Math.floor(count)}</div>;
+    return (
+        <div ref={counterRef}>
+            <Typography
+                sx={{
+                    color: theme.palette.custom.darkBlue,
+                    fontSize: "3.9502rem",
+                    lineHeight: "1.390625em",
+                    textAlign: "center",
+                    fontWeight: "800",
+                    [theme.breakpoints.down("md")]: {
+                        fontSize: "1.125rem",
+                    },
+                }}
+                className="stat m-0"
+            >
+                {Math.floor(count)} +
+            </Typography>
+        </div>
+    );
 };
 
 export default Counter;

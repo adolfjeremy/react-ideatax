@@ -28,6 +28,7 @@ import transfer from "../../assets/images/icons/transfer.svg";
 import compliance from "../../assets/images/icons/compliance.svg";
 import checkLang from "@/utils/checkLang";
 import formatDate from "@/utils/formatDate";
+import Counter from "./Counter";
 import "./home.scss";
 
 function Home() {
@@ -202,17 +203,16 @@ function Home() {
                                     flexDirection: "column",
                                 }}
                             >
-                                <Typography
-                                    sx={{
-                                        color: theme.palette.custom.darkBlue,
-                                    }}
-                                    className="stat m-0"
-                                >
-                                    {stat.value}+
-                                </Typography>
+                                <Counter target={stat.value} />
+
                                 <Typography
                                     sx={{
                                         color: theme.palette.custom.orange,
+                                        fontSize: "1.25rem",
+                                        lineHeight: "1.390625em",
+                                        textAlign: "center",
+                                        fontWeight: "500",
+                                        textTransform: "capitalize",
                                     }}
                                     className="stat_head m-0"
                                 >
@@ -549,6 +549,9 @@ function Home() {
                                     lineHeight: "1.43749551em",
                                     color: theme.palette.custom.lightBlue,
                                     textAlign: "center",
+                                    [theme.breakpoints.down("md")]: {
+                                        fontSize: "0.5",
+                                    },
                                 }}
                                 as="h2"
                             >
