@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminArticleController;
 use App\Http\Controllers\Admin\AdminCareerController;
 use App\Http\Controllers\Admin\AdminTeamController;
 use App\Http\Controllers\Admin\ArticleCategoryController;
+use App\Http\Controllers\Admin\CompanyProfileController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PhotoGaleryController;
@@ -47,6 +48,7 @@ use App\Http\Middleware\ChangeLocal;
 Route::get('lang/{lang}', [LocalizationController::class, 'switchLang'])->name('switchLang');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::post('/', [HomeController::class, 'store'])->name('home-store');
 Route::get('/our-team', [TeamController::class, 'index'])->name('team');
 Route::get('/our-team/{slug}', [TeamController::class, 'detail'])->name('team-detail');
 Route::get('/our-services', [ServiceController::class, 'index'])->name('service');
@@ -106,6 +108,7 @@ Route::prefix('admin')
         Route::resource('page', PageController::class);
         Route::resource('career', AdminCareerController::class);
         Route::resource('photo-galery', PhotoGaleryController::class);
+        Route::resource('company-profile', CompanyProfileController::class);
 });
 
 

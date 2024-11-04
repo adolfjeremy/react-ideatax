@@ -1,12 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { Box } from "@mui/material";
 import { usePage, Head } from "@inertiajs/react";
 import HeaderBar from "@/Components/HeaderBar";
 import Footer from "@/Components/Footer";
 import { changeLanguage } from "i18next";
+import { SpinnerContext } from "@/Context/SpinnerContext";
+import { AlertContext } from "@/Context/AlertContext";
+import AlertBar from "@/Components/AlertBar";
+import Spinner from "@/Components/Spinner";
 
 function Guest({ children, en, id, jp, description, seo_title, href }) {
     const { locale } = usePage().props;
+    const { spinnerState } = useContext(SpinnerContext);
+    const { alertState } = useContext(AlertContext);
     useEffect(() => {
         changeLanguage(locale);
     }, [locale]);
@@ -21,6 +27,8 @@ function Guest({ children, en, id, jp, description, seo_title, href }) {
             </Head>
             <HeaderBar en={en} id={id} jp={jp} />
             <Box component="main" sx={{ minHeight: "100vh", width: "100%" }}>
+                {/* {alertState && <AlertBar />} */}
+                {spinnerState && <Spinner />}
                 {children}
             </Box>
             <Footer />

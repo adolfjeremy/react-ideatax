@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useForm } from "@inertiajs/react";
+import ReCAPTCHA from "react-google-recaptcha";
 import {
     Backdrop,
     Box,
@@ -9,6 +11,8 @@ import {
     useTheme,
     TextField,
 } from "@mui/material";
+import { SpinnerContext } from "@/Context/SpinnerContext";
+import { AlertContext } from "@/Context/AlertContext";
 
 const style = {
     position: "absolute",
@@ -26,7 +30,36 @@ function ComproModal({ buttonText }) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const { toggleSpinner } = useContext(SpinnerContext);
+    const { toggleAlert } = useContext(AlertContext);
     const theme = useTheme();
+    const { data, setData, post, processing, errors, reset } = useForm({
+        name: "",
+        email: "",
+        tel: "",
+        company: "",
+    });
+
+    const onHandleSubmit = (e) => {
+        e.preventDefault();
+        post(route("home-store"), {
+            onStart: () => {
+                toggleSpinner(true);
+            },
+            onSuccess: () => {
+                reset();
+                toggleSpinner(false);
+                toggleAlert(true);
+                handleClose();
+                reset();
+            },
+            onError: (error) => {
+                toggleSpinner(false);
+                console.log(error);
+            },
+        });
+    };
+
     return (
         <div>
             <Button
@@ -34,6 +67,7 @@ function ComproModal({ buttonText }) {
                 size="large"
                 sx={{
                     backgroundColor: theme.palette.custom.orange,
+                    textTransform: "none",
                     [theme.breakpoints.down("md")]: {
                         fontSize: "0.8rem",
                     },
@@ -68,28 +102,49 @@ function ComproModal({ buttonText }) {
                         >
                             Download Company Profile
                         </Typography>
-                        <form className="compro_form mt-3">
+                        <form
+                            onSubmit={onHandleSubmit}
+                            className="compro_form mt-3"
+                        >
                             <TextField
                                 sx={{ width: "100%" }}
                                 label="Name"
                                 variant="outlined"
+                                onChange={(e) =>
+                                    setData("name", e.target.value)
+                                }
                             />
                             <TextField
                                 sx={{ width: "100%" }}
                                 label="Email"
                                 variant="outlined"
+                                onChange={(e) =>
+                                    setData("email", e.target.value)
+                                }
                             />
                             <TextField
                                 sx={{ width: "100%" }}
                                 label="Handphone Number"
                                 variant="outlined"
+                                onChange={(e) => setData("tel", e.target.value)}
                             />
                             <TextField
                                 sx={{ width: "100%" }}
                                 label="Company"
                                 variant="outlined"
+                                onChange={(e) =>
+                                    setData("company", e.target.value)
+                                }
                             />
-                            <Button variant="contained">Submit</Button>
+                            <ReCAPTCHA
+                                sitekey="6LdOR3MqAAAAABkVDJKT1AHdDEi0CcEAMEJq4J9l" // Masukkan site key dari Google reCAPTCHA
+                                onChange={(e) =>
+                                    setData("captchaVerified", true)
+                                }
+                            />
+                            <Button variant="contained" type="submit">
+                                Submit
+                            </Button>
                         </form>
                     </Box>
                 </Fade>

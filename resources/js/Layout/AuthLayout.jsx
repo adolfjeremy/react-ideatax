@@ -29,6 +29,7 @@ import { RiTeamFill } from "react-icons/ri";
 import { RiPagesFill } from "react-icons/ri";
 import { MdWork } from "react-icons/md";
 import { FaStarOfLife } from "react-icons/fa";
+import { RiProfileFill } from "react-icons/ri";
 import Spinner from "@/Components/Spinner";
 import AlertBar from "@/Components/AlertBar";
 
@@ -203,6 +204,20 @@ function AuthLayout({ children, sectionHeading }) {
                             <FaStarOfLife />
                         </ListItemIcon>
                         <ListItemText primary="Life at Ideatax" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem
+                    disablePadding
+                    onClick={() => router.visit(route("company-profile.index"))}
+                    className={`${
+                        route().current("company-profile*") ? "active" : ""
+                    }`}
+                >
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <RiProfileFill />
+                        </ListItemIcon>
+                        <ListItemText primary="Company Profile" />
                     </ListItemButton>
                 </ListItem>
             </List>
