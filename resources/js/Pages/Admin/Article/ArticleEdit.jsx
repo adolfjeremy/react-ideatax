@@ -117,8 +117,8 @@ function ArticleEdit() {
                             <RichEditor
                                 placeholder="Article Body English"
                                 value={data.body_eng}
-                                handleInput={(e) =>
-                                    setData("body_eng", e.target.innerHTML)
+                                handleInput={(data) =>
+                                    setData("body_eng", data)
                                 }
                             />
                             <TextField
@@ -164,9 +164,7 @@ function ArticleEdit() {
                             <RichEditor
                                 placeholder="Article Body Indonesia"
                                 value={data.body}
-                                handleInput={(e) =>
-                                    setData("body", e.target.innerHTML)
-                                }
+                                handleInput={(data) => setData("body", data)}
                             />
                             <TextField
                                 id="outlined-multiline-static"
@@ -208,8 +206,8 @@ function ArticleEdit() {
                             <RichEditor
                                 placeholder="Article Body Japan"
                                 value={data.body_jpn}
-                                handleInput={(e) =>
-                                    setData("body_jpn", e.target.innerHTML)
+                                handleInput={(data) =>
+                                    setData("body_jpn", data)
                                 }
                             />
                             <TextField

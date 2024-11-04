@@ -11,4 +11,7 @@ export default defineConfig({
         }),
         react(),
     ],
+    ssr: {
+        noExternal: ["@ckeditor/ckeditor5-react", "ckeditor5"],
+    },
 });

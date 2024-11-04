@@ -85,18 +85,15 @@ function TeamEdit() {
                             <RichEditor
                                 placeholder="Biography English"
                                 value={data.biography_eng}
-                                handleInput={(e) =>
-                                    setData("biography_eng", e.target.innerHTML)
+                                handleInput={(data) =>
+                                    setData("biography_eng", data)
                                 }
                             />
                             <RichEditor
                                 placeholder="Area of Expertise English"
                                 value={data.area_of_expertise_eng}
-                                handleInput={(e) =>
-                                    setData(
-                                        "area_of_expertise_eng",
-                                        e.target.innerHTML
-                                    )
+                                handleInput={(data) =>
+                                    setData("area_of_expertise_eng", data)
                                 }
                             />
                             <TextField
@@ -127,18 +124,15 @@ function TeamEdit() {
                             <RichEditor
                                 placeholder="Biography Indonesia"
                                 value={data.biography}
-                                handleInput={(e) =>
-                                    setData("biography", e.target.innerHTML)
+                                handleInput={(data) =>
+                                    setData("biography", data)
                                 }
                             />
                             <RichEditor
                                 placeholder="Area of Expertise Indonesia"
                                 value={data.area_of_expertise}
-                                handleInput={(e) =>
-                                    setData(
-                                        "area_of_expertise",
-                                        e.target.innerHTML
-                                    )
+                                handleInput={(data) =>
+                                    setData("area_of_expertise", data)
                                 }
                             />
                             <TextField
@@ -169,18 +163,15 @@ function TeamEdit() {
                             <RichEditor
                                 placeholder="Biography Japan"
                                 value={data.biography_jpn}
-                                handleInput={(e) =>
-                                    setData("biography_jpn", e.target.innerHTML)
+                                handleInput={(data) =>
+                                    setData("biography_jpn", data)
                                 }
                             />
                             <RichEditor
                                 placeholder="Area of Expertise Japan"
                                 value={data.area_of_expertise_jpn}
-                                handleInput={(e) =>
-                                    setData(
-                                        "area_of_expertise_jpn",
-                                        e.target.innerHTML
-                                    )
+                                handleInput={(data) =>
+                                    setData("area_of_expertise_jpn", data)
                                 }
                             />
                             <TextField
