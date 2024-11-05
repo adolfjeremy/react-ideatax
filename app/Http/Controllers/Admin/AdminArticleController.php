@@ -18,7 +18,7 @@ class AdminArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::latest()->get();
+        $articles = Article::latest()->select('id', 'SEO_title_eng', 'title_eng')->get();
         return Inertia::render('Admin/Article/Article', [
             "articles" => $articles
         ]);

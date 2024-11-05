@@ -13,7 +13,7 @@ class ArticleController extends Controller
     {
         $page = Page::findOrFail(5);
         $latest = Article::latest()->take(5)->get();
-        $articles = Article::latest()->simplePaginate(15);
+        $articles = Article::latest()->simplePaginate(9);
         return Inertia::render('Article/Article', [
             "latest" => $latest,
             "articles" => $articles,
