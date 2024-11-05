@@ -43,14 +43,10 @@ class HomeController extends Controller
     {
         $data = $request->all();     
         $compro = CompanyProfile::orderBy('updated_at', 'desc')->first();
-        $url = Storage::url($compro->compro);
+        $path = asset("storage/" . $compro->compro);
         // dd($url);
         ComproDownloader::create($data);       
-        return redirect()->to($url)->withHeaders([
-            'Access-Control-Allow-Origin' => '*',
-            'Access-Control-Allow-Methods' => 'POST, GET, OPTIONS, DELETE',
-            'Access-Control-Allow-Headers' => 'Content-Type, X-Auth-Token, Origin, Authorization',
-        ]);  
+        return redirect()->to($path);  
     }
 
     public function openPdf()

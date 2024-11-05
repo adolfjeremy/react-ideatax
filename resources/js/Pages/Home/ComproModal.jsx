@@ -40,8 +40,6 @@ function ComproModal({ buttonText }) {
         company: "",
     });
 
-    console.log(data);
-
     const onHandleSubmit = (e) => {
         e.preventDefault();
         post(route("home-store"), {
