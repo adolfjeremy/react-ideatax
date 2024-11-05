@@ -48,7 +48,8 @@ use App\Http\Middleware\ChangeLocal;
 Route::get('lang/{lang}', [LocalizationController::class, 'switchLang'])->name('switchLang');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-// Route::post('/', [HomeController::class, 'store'])->name('home-store');
+Route::post('/', [HomeController::class, 'store'])->name('home-store')->middleware(\Illuminate\Http\Middleware\HandleCors::class);;
+Route::get('/compro', [HomeController::class, 'openPdf'])->name('home-compro');
 Route::get('/our-team', [TeamController::class, 'index'])->name('team');
 Route::get('/our-team/{slug}', [TeamController::class, 'detail'])->name('team-detail');
 Route::get('/our-services', [ServiceController::class, 'index'])->name('service');

@@ -1,6 +1,5 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { useForm } from "@inertiajs/react";
-import ReCAPTCHA from "react-google-recaptcha";
 import {
     Backdrop,
     Box,
@@ -33,12 +32,15 @@ function ComproModal({ buttonText }) {
     const { toggleSpinner } = useContext(SpinnerContext);
     const { toggleAlert } = useContext(AlertContext);
     const theme = useTheme();
+    const recaptcha = useRef();
     const { data, setData, post, processing, errors, reset } = useForm({
         name: "",
         email: "",
         tel: "",
         company: "",
     });
+
+    console.log(data);
 
     const onHandleSubmit = (e) => {
         e.preventDefault();
@@ -134,12 +136,6 @@ function ComproModal({ buttonText }) {
                                 variant="outlined"
                                 onChange={(e) =>
                                     setData("company", e.target.value)
-                                }
-                            />
-                            <ReCAPTCHA
-                                sitekey="6LdOR3MqAAAAABkVDJKT1AHdDEi0CcEAMEJq4J9l" // Masukkan site key dari Google reCAPTCHA
-                                onChange={(e) =>
-                                    setData("captchaVerified", true)
                                 }
                             />
                             <Button variant="contained" type="submit">

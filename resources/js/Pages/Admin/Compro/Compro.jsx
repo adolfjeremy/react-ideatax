@@ -18,7 +18,7 @@ import { AlertContext } from "@/Context/AlertContext";
 import { FaTrash } from "react-icons/fa";
 
 function Compro() {
-    const { compro } = usePage().props;
+    const { compro, comproDownloader } = usePage().props;
     const theme = useTheme();
     const { toggleSpinner } = useContext(SpinnerContext);
     const { toggleAlert } = useContext(AlertContext);
@@ -66,27 +66,42 @@ function Compro() {
 
     const columns = [
         {
-            field: "title_eng",
-            headerName: "Title English",
+            field: "name",
+            headerName: "Name",
             flex: 0.6,
             headerAlign: "center",
             align: "center",
         },
         {
-            field: "title",
-            headerName: "Title Indonesia",
+            field: "email",
+            headerName: "Email",
+            flex: 1,
+            headerAlign: "center",
+            align: "center",
+        },
+        {
+            field: "tel",
+            headerName: "Phone",
+            flex: 0.5,
+            headerAlign: "center",
+            align: "center",
+        },
+        {
+            field: "company",
+            headerName: "Company",
             flex: 1,
             headerAlign: "center",
             align: "center",
         },
         {
             field: "actions",
-            headerName: "Actions",
+            headerName: "",
             type: "actions",
+            flex: 0.1,
             renderCell: (params) => (
                 <ActionButton
                     param={params}
-                    destination={route("photo-galery.edit", params.row.id)}
+                    needEdit={false}
                     deleteRoute={route("photo-galery.destroy", params.row.id)}
                 />
             ),
@@ -123,6 +138,7 @@ function Compro() {
                                             textDecoration: "none",
                                         }}
                                         href={`/storage/${compro[0].compro}`}
+                                        target="_blank"
                                     >
                                         Current Company Profile
                                     </Link>
@@ -207,7 +223,14 @@ function Compro() {
                     </div>
                 </div>
                 <div className="row mt-5">
-                    {/* <TableList rows={galeries} columns={columns} /> */}
+                    <div className="col-12 d-flex align-items-center justify-content-start">
+                        <Typography sx={{ fontWeight: "600" }}>
+                            Company Profile Downloader
+                        </Typography>
+                    </div>
+                </div>
+                <div className="row mt-2">
+                    <TableList rows={comproDownloader} columns={columns} />
                 </div>
             </div>
         </AuthLayout>

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Typography, useTheme } from "@mui/material";
 
-const Counter = ({ target, duration = 4000 }) => {
+const Counter = ({ target, duration = 3000 }) => {
     const theme = useTheme();
     const [count, setCount] = useState(0);
     const [isVisible, setIsVisible] = useState(false);

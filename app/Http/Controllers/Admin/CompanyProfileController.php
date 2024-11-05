@@ -8,6 +8,7 @@ use App\Models\CompanyProfile;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CompanyProfileRequest;
+use App\Models\ComproDownloader;
 
 class CompanyProfileController extends Controller
 {
@@ -17,8 +18,10 @@ class CompanyProfileController extends Controller
     public function index()
     {
         $compro = CompanyProfile::latest()->take(1)->get();
+        $comproDownloader = ComproDownloader::latest()->get();
         return Inertia::render('Admin/Compro/Compro', [
-            "compro" => $compro
+            "compro" => $compro,
+            "comproDownloader" => $comproDownloader
         ]);
     }
 

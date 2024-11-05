@@ -5,7 +5,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { SpinnerContext } from "@/Context/SpinnerContext";
 import { AlertContext } from "@/Context/AlertContext";
 
-function ActionButton({ destination, deleteRoute }) {
+function ActionButton({ destination, deleteRoute, needEdit = true }) {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
@@ -51,9 +51,11 @@ function ActionButton({ destination, deleteRoute }) {
                     "aria-labelledby": "basic-button",
                 }}
             >
-                <MenuItem onClick={() => router.visit(destination)}>
-                    Edit
-                </MenuItem>
+                {needEdit && (
+                    <MenuItem onClick={() => router.visit(destination)}>
+                        Edit
+                    </MenuItem>
+                )}
                 <MenuItem onClick={handleDelete}>Delete</MenuItem>
             </Menu>
         </div>
