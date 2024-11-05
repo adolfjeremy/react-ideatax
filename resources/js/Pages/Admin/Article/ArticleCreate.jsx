@@ -42,6 +42,7 @@ function ArticleCreate() {
         meta_description_jpn: "",
         article_categories_id: "",
     });
+    console.log(data);
 
     const onHandleSubmit = (e) => {
         e.preventDefault();
