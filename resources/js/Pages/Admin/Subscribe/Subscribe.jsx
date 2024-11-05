@@ -28,10 +28,7 @@ function Subscribe() {
                 <ActionButton
                     param={params}
                     needEdit={false}
-                    deleteRoute={route(
-                        "consultation-meeting.destroy",
-                        params.row.id
-                    )}
+                    deleteRoute={route("subscriber.destroy", params.row.id)}
                 />
             ),
             headerAlign: "center",

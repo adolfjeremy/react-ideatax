@@ -63,8 +63,14 @@ class SubscribeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Subscribe $subscribe)
+    public function destroy($id)
     {
-        //
+        $item = subscribe::findOrFail($id);
+        $item->delete();
+
+        return redirect()->back()->with([
+            'message' => "Subscriber deleted successfully",
+            'type' => 'success'
+        ]);;
     }
 }
