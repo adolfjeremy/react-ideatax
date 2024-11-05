@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Inertia\Inertia;
-use App\Models\Subscribe;
+use App\Models\subscribe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +14,7 @@ class SubscribeController extends Controller
      */
     public function index()
     {
-        $subs = Subscribe::latest()->get();
+        $subs = subscribe::latest()->get();
         return Inertia::render('Admin/Subscribe/Subscribe', [
             "subs" => $subs,
         ]);
