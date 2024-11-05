@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useForm } from "@inertiajs/react";
 import {
     Backdrop,
     Box,
@@ -9,8 +10,9 @@ import {
     useTheme,
     TextField,
 } from "@mui/material";
-
 import { IoIosArrowRoundForward } from "react-icons/io";
+import { SpinnerContext } from "@/Context/SpinnerContext";
+import { AlertContext } from "@/Context/AlertContext";
 
 const style = {
     position: "absolute",
@@ -29,6 +31,32 @@ function SubsModal({ buttonText }) {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const theme = useTheme();
+    const { toggleSpinner } = useContext(SpinnerContext);
+    const { toggleAlert } = useContext(AlertContext);
+    const { data, setData, post, processing, errors, reset } = useForm({
+        name: "",
+        email: "",
+    });
+    const onHandleSubmit = (e) => {
+        e.preventDefault();
+        post(route("home-subscribe"), {
+            onStart: () => {
+                toggleSpinner(true);
+            },
+            onSuccess: () => {
+                reset();
+                toggleSpinner(false);
+                toggleAlert(true);
+                handleClose();
+                reset();
+            },
+            onError: (error) => {
+                toggleSpinner(false);
+                console.log(error);
+            },
+            preserveScroll: true,
+        });
+    };
     return (
         <div>
             <Button
@@ -84,18 +112,31 @@ function SubsModal({ buttonText }) {
                         >
                             Subscribe To Ideatax News and Articles
                         </Typography>
-                        <form className="compro_form mt-3">
+                        <form
+                            onSubmit={onHandleSubmit}
+                            className="compro_form mt-3"
+                        >
                             <TextField
                                 sx={{ width: "100%" }}
                                 label="Name"
                                 variant="outlined"
+                                value={data.name}
+                                onChange={(e) =>
+                                    setData("name", e.target.value)
+                                }
                             />
                             <TextField
                                 sx={{ width: "100%" }}
                                 label="Email"
                                 variant="outlined"
+                                value={data.email}
+                                onChange={(e) =>
+                                    setData("email", e.target.value)
+                                }
                             />
-                            <Button variant="contained">Subscribe</Button>
+                            <Button variant="contained" type="submit">
+                                Subscribe
+                            </Button>
                         </form>
                     </Box>
                 </Fade>

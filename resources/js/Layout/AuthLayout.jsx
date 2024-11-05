@@ -31,6 +31,7 @@ import { MdWork } from "react-icons/md";
 import { FaStarOfLife } from "react-icons/fa";
 import { RiProfileFill } from "react-icons/ri";
 import { SiGooglemeet } from "react-icons/si";
+import { MdSubscriptions } from "react-icons/md";
 import Spinner from "@/Components/Spinner";
 import AlertBar from "@/Components/AlertBar";
 
@@ -247,6 +248,21 @@ function AuthLayout({ children, sectionHeading }) {
                             <SiGooglemeet />
                         </ListItemIcon>
                         <ListItemText primary="Consultation Meeting" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem
+                    component="a"
+                    disablePadding
+                    href={route("subscriber.index")}
+                    className={`${
+                        route().current("subscriber*") ? "active" : ""
+                    }`}
+                >
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <MdSubscriptions />
+                        </ListItemIcon>
+                        <ListItemText primary="Subscriber" />
                     </ListItemButton>
                 </ListItem>
             </List>

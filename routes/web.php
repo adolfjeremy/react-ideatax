@@ -21,6 +21,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
+use App\Http\Controllers\Admin\SubscribeController;
 use App\Http\Controllers\Admin\TaxEventController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\TaxAuditController;
@@ -50,7 +51,7 @@ Route::get('lang/{lang}', [LocalizationController::class, 'switchLang'])->name('
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/', [HomeController::class, 'store'])->name('home-store')->middleware(\Illuminate\Http\Middleware\HandleCors::class);
-Route::get('/compro', [HomeController::class, 'openPdf'])->name('home-compro');
+Route::post('/subscribe', [HomeController::class, 'subscribe'])->name('home-subscribe');
 Route::get('/our-team', [TeamController::class, 'index'])->name('team');
 Route::get('/our-team/{slug}', [TeamController::class, 'detail'])->name('team-detail');
 Route::get('/our-services', [ServiceController::class, 'index'])->name('service');
@@ -113,6 +114,7 @@ Route::prefix('admin')
         Route::resource('photo-galery', PhotoGaleryController::class);
         Route::resource('company-profile', CompanyProfileController::class);
         Route::resource('consultation-meeting', ConsultationMeetingController::class);
+        Route::resource('subscriber', SubscribeController::class);
 });
 
 
