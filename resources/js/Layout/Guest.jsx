@@ -27,7 +27,7 @@ function Guest({ children, en, id, jp, description, seo_title, href }) {
             </Head>
             <HeaderBar en={en} id={id} jp={jp} />
             <Box component="main" sx={{ minHeight: "100vh", width: "100%" }}>
-                {/* {alertState && <AlertBar />} */}
+                {alertState && <AlertBar />}
                 {spinnerState && <Spinner />}
                 {children}
             </Box>

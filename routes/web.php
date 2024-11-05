@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminCareerController;
 use App\Http\Controllers\Admin\AdminTeamController;
 use App\Http\Controllers\Admin\ArticleCategoryController;
 use App\Http\Controllers\Admin\CompanyProfileController;
+use App\Http\Controllers\Admin\ConsultationMeetingController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PhotoGaleryController;
@@ -48,7 +49,7 @@ use App\Http\Middleware\ChangeLocal;
 Route::get('lang/{lang}', [LocalizationController::class, 'switchLang'])->name('switchLang');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::post('/', [HomeController::class, 'store'])->name('home-store')->middleware(\Illuminate\Http\Middleware\HandleCors::class);;
+Route::post('/', [HomeController::class, 'store'])->name('home-store')->middleware(\Illuminate\Http\Middleware\HandleCors::class);
 Route::get('/compro', [HomeController::class, 'openPdf'])->name('home-compro');
 Route::get('/our-team', [TeamController::class, 'index'])->name('team');
 Route::get('/our-team/{slug}', [TeamController::class, 'detail'])->name('team-detail');
@@ -61,6 +62,7 @@ Route::get('/careers', [CareerController::class, 'index'])->name('career');
 Route::get('/careers/{slug_eng}', [CareerController::class, 'detail'])->name('career-detail');
 Route::get('/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact-store');
 
 Route::prefix('id')
     ->middleware(ChangeLocal::class)
@@ -110,6 +112,7 @@ Route::prefix('admin')
         Route::resource('career', AdminCareerController::class);
         Route::resource('photo-galery', PhotoGaleryController::class);
         Route::resource('company-profile', CompanyProfileController::class);
+        Route::resource('consultation-meeting', ConsultationMeetingController::class);
 });
 
 

@@ -60,7 +60,7 @@ class AdminArticleController extends Controller
         return redirect()->route('articles.index')->with([
             'message' => "Article created successfully",
             'type' => 'success'
-        ]);;
+        ]);
     }
 
     /**

@@ -422,7 +422,7 @@ function Home() {
                                     locale == "en"
                                         ? route(
                                               "service-detail",
-                                              "penyiapan-dokumentasi-transfer-pricing-file-lokal-dan-master"
+                                              "transfer-pricing-documentation-preparation-local-and-master-file"
                                           )
                                         : locale == "id"
                                         ? route(

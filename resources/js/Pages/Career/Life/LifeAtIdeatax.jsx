@@ -29,8 +29,6 @@ function LifeAtIdeatax() {
         };
     });
 
-    console.log(photos);
-
     const [index, setIndex] = useState(-1);
     return (
         <Guest

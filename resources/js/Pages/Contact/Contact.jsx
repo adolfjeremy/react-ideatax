@@ -1,14 +1,54 @@
-import { Box, Typography, useTheme, Button } from "@mui/material";
+import { useContext } from "react";
+import {
+    Box,
+    Typography,
+    useTheme,
+    Button,
+    InputLabel,
+    MenuItem,
+    FormControl,
+    Select,
+} from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { usePage } from "@inertiajs/react";
+import { usePage, useForm } from "@inertiajs/react";
 import Guest from "@/Layout/Guest";
 import wall from "@/assets/images/wall.webp";
 import checkLang from "@/utils/checkLang";
+import { SpinnerContext } from "@/Context/SpinnerContext";
+import { AlertContext } from "@/Context/AlertContext";
 
 function Contact() {
-    const { locale, page } = usePage().props;
+    const { locale, page, services } = usePage().props;
     const theme = useTheme();
     const { t } = useTranslation();
+    const { toggleSpinner } = useContext(SpinnerContext);
+    const { toggleAlert } = useContext(AlertContext);
+    const { data, setData, post, processing, errors, reset } = useForm({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        schedule: "",
+        description: "",
+        service_id: "",
+    });
+    const onHandleSubmit = (e) => {
+        e.preventDefault();
+        post(route("contact-store"), {
+            onStart: () => {
+                toggleSpinner(true);
+            },
+            onSuccess: () => {
+                reset();
+                toggleSpinner(false);
+                toggleAlert(true);
+            },
+            onError: (error) => {
+                toggleSpinner(false);
+                console.log(error);
+            },
+        });
+    };
     return (
         <Guest
             en={route("career")}
@@ -89,11 +129,11 @@ function Contact() {
                             </Typography>
                         </div>
                     </div>
-                    <div className="row mt-4">
+                    <form onSubmit={onHandleSubmit} className="row mt-4">
                         <div className="col-12 col-md-6 col-lg-4">
                             <div className="mb-3">
                                 <label
-                                    for="name"
+                                    htmlFor="name"
                                     className="form-label fw-bold"
                                 >
                                     {t("contactName")}
@@ -103,12 +143,16 @@ function Contact() {
                                     name="name"
                                     className="form-control"
                                     id="name"
+                                    value={data.name}
+                                    onChange={(e) =>
+                                        setData("name", e.target.value)
+                                    }
                                     required
                                 />
                             </div>
                             <div className="mb-3">
                                 <label
-                                    for="email"
+                                    htmlFor="email"
                                     className="form-label fw-bold"
                                 >
                                     {t("contactEmail")}
@@ -118,18 +162,29 @@ function Contact() {
                                     name="email"
                                     className="form-control"
                                     id="email"
+                                    value={data.email}
+                                    onChange={(e) =>
+                                        setData("email", e.target.value)
+                                    }
                                     required
                                 />
                             </div>
                             <div>
-                                <label for="tel" className="form-label fw-bold">
+                                <label
+                                    htmlFor="phone"
+                                    className="form-label fw-bold"
+                                >
                                     {t("contactNumber")}
                                 </label>
                                 <input
                                     type="tel"
                                     name="phone"
                                     className="form-control"
-                                    id="tel"
+                                    id="phone"
+                                    value={data.phone}
+                                    onChange={(e) =>
+                                        setData("phone", e.target.value)
+                                    }
                                     required
                                 />
                             </div>
@@ -137,7 +192,7 @@ function Contact() {
                         <div className="col-12 col-md-6 col-lg-4">
                             <div className="mb-3">
                                 <label
-                                    for="company"
+                                    htmlFor="company"
                                     className="form-label fw-bold"
                                 >
                                     {t("contactCompany")}
@@ -147,32 +202,55 @@ function Contact() {
                                     name="company"
                                     className="form-control"
                                     id="company"
+                                    value={data.company}
+                                    onChange={(e) =>
+                                        setData("company", e.target.value)
+                                    }
                                     required
                                 />
                             </div>
                             <div className="mb-3">
                                 <label
-                                    for="email"
+                                    htmlFor="demo-simple-select"
                                     className="form-label fw-bold"
                                 >
-                                    {t("contactService")}
+                                    Services
                                 </label>
-                                <select
-                                    className="form-select form-select-md mb-3"
-                                    name="service_id"
-                                    id="need"
-                                    required
-                                >
-                                    <option selected>
+                                <FormControl fullWidth>
+                                    <InputLabel id="demo-simple-select-label">
                                         {t("contactService")}
-                                    </option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                </select>
+                                    </InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={data.service_id}
+                                        label="Services"
+                                        onChange={(e) =>
+                                            setData(
+                                                "service_id",
+                                                e.target.value
+                                            )
+                                        }
+                                    >
+                                        {services.map((item) => (
+                                            <MenuItem
+                                                key={item.id}
+                                                value={item.id}
+                                            >
+                                                {checkLang(
+                                                    locale,
+                                                    item.title_eng,
+                                                    item.title,
+                                                    item.title_jpn
+                                                )}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
                             </div>
                             <div>
                                 <label
-                                    for="schedule"
+                                    htmlFor="schedule"
                                     className="form-label fw-bold"
                                 >
                                     {t("contactDate")}
@@ -182,6 +260,10 @@ function Contact() {
                                     name="schedule"
                                     className="form-control"
                                     id="schedule"
+                                    value={data.schedule}
+                                    onChange={(e) =>
+                                        setData("schedule", e.target.value)
+                                    }
                                     required
                                 />
                             </div>
@@ -189,7 +271,7 @@ function Contact() {
                         <div className="col-12 col-lg-4">
                             <div className="mb-3">
                                 <label
-                                    for="description"
+                                    htmlFor="description"
                                     className="form-label fw-bold"
                                 >
                                     {t("contactIssue")}
@@ -199,6 +281,10 @@ function Contact() {
                                     id="description"
                                     name="description"
                                     rows="6"
+                                    value={data.description}
+                                    onChange={(e) =>
+                                        setData("description", e.target.value)
+                                    }
                                     required
                                 />
                             </div>
@@ -206,13 +292,15 @@ function Contact() {
                                 sx={{
                                     backgroundColor:
                                         theme.palette.custom.orange,
+                                    textTransform: "none",
                                 }}
                                 variant="contained"
+                                type="submit"
                             >
                                 {t("contactSubmit")}
                             </Button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </Box>
         </Guest>

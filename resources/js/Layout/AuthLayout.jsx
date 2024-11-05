@@ -30,6 +30,7 @@ import { RiPagesFill } from "react-icons/ri";
 import { MdWork } from "react-icons/md";
 import { FaStarOfLife } from "react-icons/fa";
 import { RiProfileFill } from "react-icons/ri";
+import { SiGooglemeet } from "react-icons/si";
 import Spinner from "@/Components/Spinner";
 import AlertBar from "@/Components/AlertBar";
 
@@ -68,11 +69,15 @@ function AuthLayout({ children, sectionHeading }) {
                     ".active": {
                         backgroundColor: "rgba(0, 0, 0, 0.04)",
                     },
+                    a: {
+                        color: theme.palette.text.primary,
+                    },
                 }}
             >
                 <ListItem
                     disablePadding
-                    onClick={() => router.visit(route("page.index"))}
+                    component="a"
+                    href={route("page.index")}
                     className={`${route().current("page*") ? "active" : ""}`}
                 >
                     <ListItemButton>
@@ -84,7 +89,8 @@ function AuthLayout({ children, sectionHeading }) {
                 </ListItem>
                 <ListItem
                     disablePadding
-                    onClick={() => router.visit(route("hero.index"))}
+                    component="a"
+                    href={route("hero.index")}
                     className={`${
                         route().current("hero.index") ? "active" : ""
                     }`}
@@ -98,7 +104,8 @@ function AuthLayout({ children, sectionHeading }) {
                 </ListItem>
                 <ListItem
                     disablePadding
-                    onClick={() => router.visit(route("stat.index"))}
+                    component="a"
+                    href={route("stat.index")}
                     className={`${
                         route().current("stat.index") ? "active" : ""
                     }`}
@@ -112,7 +119,8 @@ function AuthLayout({ children, sectionHeading }) {
                 </ListItem>
                 <ListItem
                     disablePadding
-                    onClick={() => router.visit(route("services.index"))}
+                    component="a"
+                    href={route("services.index")}
                     className={`${
                         route().current("services*") ? "active" : ""
                     }`}
@@ -126,7 +134,8 @@ function AuthLayout({ children, sectionHeading }) {
                 </ListItem>
                 <ListItem
                     disablePadding
-                    onClick={() => router.visit(route("articles.index"))}
+                    component="a"
+                    href={route("articles.index")}
                     className={`${
                         route().current("articles*") ? "active" : ""
                     }`}
@@ -140,9 +149,8 @@ function AuthLayout({ children, sectionHeading }) {
                 </ListItem>
                 <ListItem
                     disablePadding
-                    onClick={() =>
-                        router.visit(route("article-category.index"))
-                    }
+                    component="a"
+                    href={route("article-category.index")}
                     className={`${
                         route().current("article-category*") ? "active" : ""
                     }`}
@@ -156,7 +164,8 @@ function AuthLayout({ children, sectionHeading }) {
                 </ListItem>
                 <ListItem
                     disablePadding
-                    onClick={() => router.visit(route("tax-event.index"))}
+                    component="a"
+                    href={route("tax-event.index")}
                     className={`${
                         route().current("tax-event*") ? "active" : ""
                     }`}
@@ -170,7 +179,8 @@ function AuthLayout({ children, sectionHeading }) {
                 </ListItem>
                 <ListItem
                     disablePadding
-                    onClick={() => router.visit(route("team.index"))}
+                    component="a"
+                    href={route("team.index")}
                     className={`${route().current("team*") ? "active" : ""}`}
                 >
                     <ListItemButton>
@@ -182,6 +192,8 @@ function AuthLayout({ children, sectionHeading }) {
                 </ListItem>
                 <ListItem
                     disablePadding
+                    component="a"
+                    href={route("career.index")}
                     onClick={() => router.visit(route("career.index"))}
                     className={`${route().current("career*") ? "active" : ""}`}
                 >
@@ -194,7 +206,8 @@ function AuthLayout({ children, sectionHeading }) {
                 </ListItem>
                 <ListItem
                     disablePadding
-                    onClick={() => router.visit(route("photo-galery.index"))}
+                    component="a"
+                    href={route("photo-galery.index")}
                     className={`${
                         route().current("photo-galery*") ? "active" : ""
                     }`}
@@ -208,7 +221,8 @@ function AuthLayout({ children, sectionHeading }) {
                 </ListItem>
                 <ListItem
                     disablePadding
-                    onClick={() => router.visit(route("company-profile.index"))}
+                    component="a"
+                    href={route("company-profile.index")}
                     className={`${
                         route().current("company-profile*") ? "active" : ""
                     }`}
@@ -218,6 +232,21 @@ function AuthLayout({ children, sectionHeading }) {
                             <RiProfileFill />
                         </ListItemIcon>
                         <ListItemText primary="Company Profile" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem
+                    component="a"
+                    disablePadding
+                    href={route("consultation-meeting.index")}
+                    className={`${
+                        route().current("consultation-meeting*") ? "active" : ""
+                    }`}
+                >
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <SiGooglemeet />
+                        </ListItemIcon>
+                        <ListItemText primary="Consultation Meeting" />
                     </ListItemButton>
                 </ListItem>
             </List>
