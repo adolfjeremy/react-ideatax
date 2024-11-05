@@ -1,5 +1,5 @@
 import { useState, useContext, useRef } from "react";
-import { useForm } from "@inertiajs/react";
+import { useForm, usePage } from "@inertiajs/react";
 import {
     Backdrop,
     Box,
@@ -26,13 +26,14 @@ const style = {
 };
 
 function ComproModal({ buttonText }) {
+    const { flashMessage } = usePage().props;
     const [open, setOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const { toggleSpinner } = useContext(SpinnerContext);
     const { toggleAlert } = useContext(AlertContext);
     const theme = useTheme();
-    const recaptcha = useRef();
     const { data, setData, post, processing, errors, reset } = useForm({
         name: "",
         email: "",
@@ -50,8 +51,9 @@ function ComproModal({ buttonText }) {
                 reset();
                 toggleSpinner(false);
                 toggleAlert(true);
-                handleClose();
                 reset();
+                handleClose();
+                setIsOpen(true);
             },
             onError: (error) => {
                 toggleSpinner(false);
@@ -143,6 +145,35 @@ function ComproModal({ buttonText }) {
                     </Box>
                 </Fade>
             </Modal>
+            {isOpen && (
+                <Modal
+                    aria-labelledby="transition-modal-title"
+                    aria-describedby="transition-modal-description"
+                    open={isOpen}
+                    onClose={() => setIsOpen(false)}
+                    closeAfterTransition
+                    slots={{ backdrop: Backdrop }}
+                    slotProps={{
+                        backdrop: {
+                            timeout: 500,
+                        },
+                    }}
+                >
+                    <Fade in={isOpen}>
+                        <Box sx={style}>
+                            <Typography
+                                id="transition-modal-title"
+                                component="h3"
+                            >
+                                Download Company Profile{" "}
+                                <a href={flashMessage.message} target="_blank">
+                                    here
+                                </a>
+                            </Typography>
+                        </Box>
+                    </Fade>
+                </Modal>
+            )}
         </div>
     );
 }

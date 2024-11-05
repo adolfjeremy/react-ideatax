@@ -44,9 +44,11 @@ class HomeController extends Controller
         $data = $request->all();     
         $compro = CompanyProfile::orderBy('updated_at', 'desc')->first();
         $path = asset("storage/" . $compro->compro);
-        // dd($url);
         ComproDownloader::create($data);       
-        return redirect()->to($path);  
+        return redirect()->back()->with([
+            'message' => $path,
+            'type' => 'success'
+        ]);
     }
 
     public function openPdf()
