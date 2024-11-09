@@ -16,7 +16,33 @@ function TaxEventDetail() {
     const { t } = useTranslation();
     const theme = useTheme();
     return (
-        <Guest>
+        <Guest
+            en={route("event-detail", item.slug_eng)}
+            id={route("event-detail.id", item.slug)}
+            jp={
+                item.slug_jpn
+                    ? route("event-detail.jp", item.slug_jpn)
+                    : route("event-detail", item.slug_eng)
+            }
+            description={checkLang(
+                locale,
+                item.description_eng,
+                item.description,
+                item.description_jpn
+            )}
+            seo_title={checkLang(
+                locale,
+                item.SEO_title_eng,
+                item.SEO_title,
+                item.SEO_title_jpn
+            )}
+            href={checkLang(
+                locale,
+                route("event-detail", item.slug_eng),
+                route("event-detail.id", item.slug),
+                route("event-detail.jp", item.slug_jpn)
+            )}
+        >
             <Box
                 sx={{
                     paddingTop: "100px",
@@ -114,7 +140,7 @@ function TaxEventDetail() {
             <Box>
                 <div className="container">
                     <div className="row">
-                        <div className="col-12 col-md-8">
+                        <div className="col-12 col-md-8 mt-4">
                             <Typography
                                 sx={{
                                     color: theme.palette.custom.darkBlue,
