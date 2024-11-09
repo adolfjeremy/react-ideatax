@@ -13,7 +13,7 @@ i18next
             en: {
                 translation: {
                     hero: "Indonesian Tax Expertise, Worldwide Trust.",
-                    heroButton: "Get In Touch",
+                    heroButton: "Consultation Now",
                     about: "We combine a long running experience in tax consulting and tax authority to deliver thorough solutions to our clients. We also present essential approaches with problem-solving capabilities imbued with a full commitment for the most polished quality of service for our clients.",
                     comproButton: "Company Profile",
                     expertise: "Expertise",
@@ -76,7 +76,7 @@ i18next
             id: {
                 translation: {
                     hero: "Pakar Pajak Indonesia, Dipercaya Secara Global.",
-                    heroButton: "Hubungi Kami",
+                    heroButton: "Konsultasi Sekarang",
                     about: "pendekatan penting dengan kemampuan memecahkan masalah yang dijiwai dengan komitmen penuh untuk memberikan kualitas layanan terbaik kepada klien kami.",
                     comproButton: "Company Profile",
                     expertise: "Keahlian",
@@ -94,7 +94,7 @@ i18next
                         "Perushaan perlu mengotomatiskan proses pajak agar tetap patuh terhadap peraturan. Ideatax menawarkan solusi dengan otomatisasi dan dukungan ahli, sehingga dapat meminimalkan risiko dan membebaskan waktu Anda untuk fokus menjalankan bisnis.",
                     read: "Baca Selengkapnya",
                     articleHead: "Artikel",
-                    consult: "Konsultasi Sekarang ",
+                    consult: "Konsultasi Sekarang",
                     value: "Core Value",
                     valueOne: "Professional",
                     valueTwo: "Trustworthy",
@@ -139,7 +139,7 @@ i18next
             jp: {
                 translation: {
                     hero: "インドネシア税務の専門家 , 世界の信頼。",
-                    heroButton: "ご連絡",
+                    heroButton: "相談受付中",
                     about: "私たちは、税務コンサルティングと税務当局の長年の経験を融合させ、クライアントに徹底したソリューションを提供します。また、クライアントのために最も洗練された質の高いサービスを提供することに全力を尽くし、問題解決能力を備えた本質的なアプローチを提示します。",
                     comproButton: "会社案内",
                     expertise: "専門性",

@@ -16,8 +16,8 @@ function Footer() {
                             Consultant@ideatax.id
                         </a>
                         <p className="m-0 mt-1">
-                            <a target="_blank" href="tel:02125196082">
-                                +62 21 2519 6082
+                            <a target="_blank" href="tel:+622127883327">
+                                +62 21 27883327
                             </a>{" "}
                             or{" "}
                             <a target="_blank" href="tel:0811195708">
