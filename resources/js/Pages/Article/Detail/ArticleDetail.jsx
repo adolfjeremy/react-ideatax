@@ -168,7 +168,7 @@ function ArticleDetail() {
                             }
                         </Box>
                     </div>
-                    <div className="row mt-5">
+                    <div className="row mt-2">
                         <div className="col-12 gap-4 d-flex align-items-center justify-content-center">
                             <IconButton
                                 id="basic-button"

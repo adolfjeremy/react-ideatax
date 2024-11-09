@@ -938,7 +938,12 @@ function Home() {
                             <Link
                                 key={item.id}
                                 underline="none"
-                                href="#"
+                                href={checkLang(
+                                    locale,
+                                    route("event-detail", item.slug_eng),
+                                    route("event-detail.id", item.slug),
+                                    route("event-detail.jp", item.slug_jpn)
+                                )}
                                 className="col-6 col-md-3 d-flex flex-column event_item mt-4"
                                 sx={{
                                     cursor: "pointer",
