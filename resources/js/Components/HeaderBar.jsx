@@ -18,6 +18,8 @@ import checkLang from "@/utils/checkLang";
 import logo from "@/assets/images/logo.png";
 import logoClear from "@/assets/images/logo-clear.png";
 
+import "@/assets/sass/header.scss";
+
 function HeaderBar({ en, id, jp }) {
     const { locale } = usePage().props;
     const theme = useTheme();
@@ -326,17 +328,9 @@ function HeaderBar({ en, id, jp }) {
                         anchorEl={anchorEl}
                         open={open}
                         onClose={handleClose}
+                        className="dropdown-react"
                         MenuListProps={{
                             "aria-labelledby": "dropdown-menu",
-                        }}
-                        sx={{
-                            ".css-1xomo8h-MuiPaper-root-MuiPopover-paper-MuiMenu-paper":
-                                {
-                                    backgroundColor: "rgba(0,90,150,.8)",
-                                },
-                            ".css-d1xm6m": {
-                                backgroundColor: "rgba(0,90,150,.8)",
-                            },
                         }}
                     >
                         <MenuItem>

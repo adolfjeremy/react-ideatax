@@ -131,15 +131,6 @@ function LangChange({ en, id, jp }) {
                 MenuListProps={{
                     "aria-labelledby": "basic-button",
                 }}
-                sx={{
-                    ".css-1xomo8h-MuiPaper-root-MuiPopover-paper-MuiMenu-paper":
-                        {
-                            backgroundColor: "rgba(0,90,150,.8)",
-                        },
-                    ".css-d1xm6m": {
-                        backgroundColor: "rgba(0,90,150,.8)",
-                    },
-                }}
             >
                 {locale !== "en" && (
                     <MenuItem
