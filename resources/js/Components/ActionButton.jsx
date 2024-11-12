@@ -5,7 +5,12 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { SpinnerContext } from "@/Context/SpinnerContext";
 import { AlertContext } from "@/Context/AlertContext";
 
-function ActionButton({ destination, deleteRoute, needEdit = true }) {
+function ActionButton({
+    destination,
+    deleteRoute,
+    needEdit = true,
+    method = "delete",
+}) {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
@@ -19,8 +24,22 @@ function ActionButton({ destination, deleteRoute, needEdit = true }) {
         setAnchorEl(null);
     };
 
-    const handleDelete = () =>
+    const handleDelete = (e) => {
+        e.preventDefault();
         router.delete(deleteRoute, {
+            onBefore: () => confirm("Are you sure you want to delete this?"),
+            onStart: () => {
+                toggleSpinner(true);
+            },
+            onSuccess: () => {
+                toggleSpinner(false);
+                toggleAlert(true);
+            },
+            preserveScroll: true,
+        });
+    };
+    const handleDeletePost = () =>
+        router.post(deleteRoute, {
             onBefore: () => confirm("Are you sure you want to delete this?"),
             onStart: () => {
                 toggleSpinner(true);
@@ -56,7 +75,11 @@ function ActionButton({ destination, deleteRoute, needEdit = true }) {
                         Edit
                     </MenuItem>
                 )}
-                <MenuItem onClick={handleDelete}>Delete</MenuItem>
+                {method == "delete" ? (
+                    <MenuItem onClick={handleDelete}>Delete</MenuItem>
+                ) : (
+                    <MenuItem onClick={handleDeletePost}>Delete</MenuItem>
+                )}
             </Menu>
         </div>
     );

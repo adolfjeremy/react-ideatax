@@ -47,7 +47,6 @@ function ArticleEdit() {
         _method: "put",
     });
 
-    console.log(data);
     const onHandleSubmit = (e) => {
         e.preventDefault();
         post(

@@ -13,11 +13,19 @@ function Pagination({ prev, next }) {
                 gap: 1,
             }}
         >
-            <Button href={prev} variant="outlined">
+            <Button
+                href={prev}
+                disabled={prev == "" ? true : false}
+                variant="outlined"
+            >
                 <MdKeyboardDoubleArrowLeft />
                 Previous
             </Button>
-            <Button href={next} variant="outlined">
+            <Button
+                href={next}
+                disabled={next == "" ? true : false}
+                variant="outlined"
+            >
                 Next <MdKeyboardDoubleArrowRight />
             </Button>
         </Box>

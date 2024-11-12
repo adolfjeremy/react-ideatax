@@ -23,9 +23,12 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\SubscribeController;
 use App\Http\Controllers\Admin\TaxEventController;
+use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\TaxAuditController;
 use App\Http\Controllers\TaxEventController as ControllersTaxEventController;
+use App\Http\Controllers\UserLoginController;
+use App\Http\Controllers\UserRegisterController;
 use App\Http\Middleware\ChangeLocal;
 
 /*
@@ -50,6 +53,16 @@ use App\Http\Middleware\ChangeLocal;
 
 Route::get('lang/{lang}', [LocalizationController::class, 'switchLang'])->name('switchLang');
 
+Route::get('guest/login', [UserLoginController::class, 'create'])->name('user-login');
+Route::post('guest/login', [UserLoginController::class, 'store'])->name('user-login-post');
+
+Route::get('guest/register', [UserRegisterController::class, 'create'])->name('user-register');
+Route::post('guest/register', [UserRegisterController::class, 'store'])->name('user-register-post');
+
+Route::get('guest/login/google', [GoogleAuthController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('guest/login/google/callback', [GoogleAuthController::class, 'handleGoogleCallback']);
+Route::post('guest/sign-out', [UserLoginController::class, 'destroy'])->name('user-logout');
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/', [HomeController::class, 'store'])->name('home-store')->middleware(\Illuminate\Http\Middleware\HandleCors::class);
 Route::post('/subscribe', [HomeController::class, 'subscribe'])->name('home-subscribe');
@@ -59,6 +72,8 @@ Route::get('/our-services', [ServiceController::class, 'index'])->name('service'
 Route::get('/our-services/{slug_eng}', [ServiceController::class, 'detail'])->name('service-detail');
 Route::get('/our-service/tax-audit-assistance', [TaxAuditController::class, 'detail'])->name('tax-audit');
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
+Route::post('/articles/comment', [ArticleController::class, 'comment'])->name('articles-comment');
+Route::delete('/articles/comment/delete/{id}', [ArticleController::class, 'destroy'])->name('comment-delete');
 Route::get('/articles/{slug_eng}', [ArticleController::class, 'detail'])->name('article-detail');
 Route::get('/articles/event/{slug_eng}', [ControllersTaxEventController::class, 'detail'])->name('event-detail');
 Route::get('/careers', [CareerController::class, 'index'])->name('career');
@@ -104,7 +119,7 @@ Route::prefix('jp')
 });
 
 Route::prefix('admin')
-    ->middleware('auth')
+    ->middleware('auth', "isAdmin")
     ->group(function () {
         Route::resource('hero', HeroController::class);
         Route::resource('stat', StatController::class);

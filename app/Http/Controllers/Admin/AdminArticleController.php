@@ -128,6 +128,6 @@ class AdminArticleController extends Controller
         return redirect()->route('articles.index')->with([
             'message' => "Article deleted successfully",
             'type' => 'success'
-        ]);;
+        ]);
     }
 }

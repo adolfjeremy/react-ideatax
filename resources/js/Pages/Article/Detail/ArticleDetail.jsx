@@ -1,29 +1,18 @@
 import { useState } from "react";
-import {
-    Box,
-    Typography,
-    useTheme,
-    Link,
-    Menu,
-    MenuItem,
-    IconButton,
-} from "@mui/material";
+import { Box, Typography, useTheme, Link } from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import Guest from "@/Layout/Guest";
-import ConsultationButton from "@/Components/ConsultationButton";
-import { FaWhatsapp } from "react-icons/fa";
-import { IoMdLink } from "react-icons/io";
-import { FaLinkedin } from "react-icons/fa";
-import { FiSend } from "react-icons/fi";
 import checkLang from "@/utils/checkLang";
 import RichText from "@/Components/RichText";
 import formatDate from "@/utils/formatDate";
+import CommentSection from "@/Components/CommentSection";
+import Pagination from "@/Components/Pagination";
 
 import "../article.scss";
 
 function ArticleDetail() {
-    const { locale, item } = usePage().props;
-    console.log(item);
+    const { locale, item, previousArticle, nextArticle, comment } =
+        usePage().props;
     const theme = useTheme();
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -168,98 +157,44 @@ function ArticleDetail() {
                             }
                         </Box>
                     </div>
-                    <div className="row mt-2">
-                        <div className="col-12 gap-4 d-flex align-items-center justify-content-center">
-                            <IconButton
-                                id="basic-button"
-                                aria-controls={open ? "basic-menu" : undefined}
-                                aria-haspopup="true"
-                                aria-expanded={open ? "true" : undefined}
-                                onClick={handleClick}
-                                sx={{
-                                    svg: {
-                                        fontSize: "2rem",
-                                        color: theme.palette.custom.lightBlue,
-                                    },
-                                }}
-                            >
-                                <FiSend />
-                            </IconButton>
-                            <Menu
-                                id="basic-menu"
-                                anchorEl={anchorEl}
-                                open={open}
-                                onClose={handleClose}
-                                sx={{
-                                    ul: {
-                                        display: "flex",
-                                        padding: 0,
-                                    },
-                                }}
-                                MenuListProps={{
-                                    "aria-labelledby": "basic-button",
-                                }}
-                            >
-                                <MenuItem
-                                    component="a"
-                                    href="https://api.whatsapp.com/send?text=https://ideatax.id/articles/getting-to-know-the-automatic-exchange-of-information-for-tax-purposes"
-                                    target="_blank"
-                                    sx={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        flexDirection: "column",
-                                        gap: 1,
-                                        paddingTop: 2,
-                                        svg: {
-                                            color: "#25D366",
-                                            fontSize: "1.8rem",
-                                        },
-                                    }}
-                                >
-                                    <FaWhatsapp />
-                                    <Typography sx={{ fontSize: "1rem" }}>
-                                        Whatsapp
-                                    </Typography>
-                                </MenuItem>
-                                <MenuItem
-                                    sx={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        flexDirection: "column",
-                                        gap: 1,
-                                        paddingTop: 2,
-                                        svg: {
-                                            fontSize: "1.8rem",
-                                        },
-                                    }}
-                                    onClick={() => handleCopy()}
-                                >
-                                    <IoMdLink />
-                                    <Typography sx={{ fontSize: "1rem" }}>
-                                        Copy Link
-                                    </Typography>
-                                </MenuItem>
-                            </Menu>
-                            <IconButton
-                                href="https://www.linkedin.com/company/89691805/admin/feed/posts/"
-                                target="_blank"
-                                aria-label="delete"
-                                sx={{
-                                    svg: {
-                                        fontSize: "2rem",
-                                        color: theme.palette.custom.lightBlue,
-                                    },
-                                }}
-                            >
-                                <FaLinkedin />
-                            </IconButton>
-                        </div>
-                    </div>
                 </div>
             </Box>
-            <ConsultationButton />
+            {/* <ConsultationButton /> */}
+            <Pagination
+                prev={
+                    previousArticle
+                        ? checkLang(
+                              locale,
+                              route("article-detail", previousArticle.slug_eng),
+                              route("article-detail.id", previousArticle.slug),
+                              route(
+                                  "article-detail.jp",
+                                  previousArticle.slug_jpn
+                              )
+                          )
+                        : ""
+                }
+                next={
+                    nextArticle
+                        ? checkLang(
+                              locale,
+                              route("article-detail", nextArticle.slug_eng),
+                              route("article-detail.id", nextArticle.slug),
+                              route("article-detail.jp", nextArticle.slug_jpn)
+                          )
+                        : ""
+                }
+            />
+            <CommentSection
+                article_id={item.id}
+                comment={comment}
+                shareUrl={checkLang(
+                    locale,
+                    route("event-detail", item.slug_eng),
+                    route("event-detail.id", item.slug),
+                    route("event-detail.jp", item.slug_jpn)
+                )}
+            />
         </Guest>
     );
 }
