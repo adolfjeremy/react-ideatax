@@ -60,7 +60,7 @@ function CommentSection({ article_id, comment, shareUrl }) {
         });
     };
     return (
-        <Box>
+        <Box mt={4}>
             <div className="container">
                 <div className="row">
                     <Box
