@@ -143,9 +143,9 @@ i18next
                     about: "私たちは、税務コンサルティングと税務当局の長年の経験を融合させ、クライアントに徹底したソリューションを提供します。また、クライアントのために最も洗練された質の高いサービスを提供することに全力を尽くし、問題解決能力を備えた本質的なアプローチを提示します。",
                     comproButton: "会社案内",
                     expertise: "専門性",
-                    serviceOneHead: "Tax Audit Assistance",
+                    serviceOneHead: "税務監査サポート",
                     serviceOneDesc:
-                        "Our service comprises of assistance prior to the receiving of the notification letter about tax audit process, providing a helping hand during the meeting with tax officer.",
+                        "私たちのサービスは、税務調査の通知書を受け取る前のサポート、そして税務署職員との面談時における支援を含みます。",
                     serviceTwoHead: "税金還付支援",
                     serviceTwoDesc:
                         "Tax refund happens when there is a remaining tax in a tax return year that should be returned to the Taxpayer. Ideatax is ready to help you in submitting and processing refund of tax overpayment.",
