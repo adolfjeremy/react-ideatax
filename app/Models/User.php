@@ -58,5 +58,10 @@ class User extends Authenticatable
             $user->comments()->delete();
         });
     }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 }
 

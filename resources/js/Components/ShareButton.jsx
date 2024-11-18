@@ -15,7 +15,7 @@ import { Box, Typography } from "@mui/material";
 function ShareButton({ shareUrl }) {
     return (
         <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-            <Typography sx={{ fontSize: "0.9375rem", fontWeight: "600", m: 0 }}>
+            <Typography sx={{ fontSize: "0.8125rem", fontWeight: "600", m: 0 }}>
                 Share:
             </Typography>
             <FacebookShareButton url={shareUrl}>

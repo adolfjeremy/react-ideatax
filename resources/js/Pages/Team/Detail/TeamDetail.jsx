@@ -15,6 +15,24 @@ function TeamDetail() {
             en={route("team-detail", item.slug)}
             id={route("team-detail.id", item.slug)}
             jp={route("team-detail.jp", item.slug)}
+            description={checkLang(
+                locale,
+                item.description_eng,
+                item.description,
+                item.description_jpn
+            )}
+            seo_title={checkLang(
+                locale,
+                item.SEO_title_eng,
+                item.SEO_title,
+                item.SEO_title_jpn
+            )}
+            href={checkLang(
+                locale,
+                route("team-detail", item.slug),
+                route("team-detail.id", item.slug),
+                route("team-detail.jp", item.slug)
+            )}
         >
             <Box
                 sx={{

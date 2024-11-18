@@ -25,11 +25,15 @@ class Article extends Model
         'meta_description',
         'meta_description_eng',
         'meta_description_jpn',
-        'article_categories_id'
+        'article_categories_id',
     ];
 
     public function articleCategory()
     {
         return $this->belongsTo(ArticleCategory::class, "article_categories_id", "id");
+    }
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 }

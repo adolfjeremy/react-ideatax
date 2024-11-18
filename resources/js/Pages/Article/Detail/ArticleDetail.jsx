@@ -14,18 +14,7 @@ function ArticleDetail() {
     const { locale, item, previousArticle, nextArticle, comment } =
         usePage().props;
     const theme = useTheme();
-    const [anchorEl, setAnchorEl] = useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-    const handleCopy = () => {
-        navigator.clipboard.writeText(route("article-detail"));
-        handleClose();
-    };
+
     return (
         <Guest
             en={route("article-detail", item.slug_eng)}
@@ -35,6 +24,24 @@ function ArticleDetail() {
                     ? route("article-detail.jp", item.slug_jpn)
                     : route("article-detail", item.slug_eng)
             }
+            description={checkLang(
+                locale,
+                item.description_eng,
+                item.description,
+                item.description_jpn
+            )}
+            seo_title={checkLang(
+                locale,
+                item.SEO_title_eng,
+                item.SEO_title,
+                item.SEO_title_jpn
+            )}
+            href={checkLang(
+                locale,
+                route("article-detail", item.slug_eng),
+                route("article-detail.id", item.slug),
+                route("article-detail.jp", item.slug_jpn)
+            )}
         >
             <Box
                 component="section"
@@ -188,6 +195,7 @@ function ArticleDetail() {
             <CommentSection
                 article_id={item.id}
                 comment={comment}
+                likeCount={item.likes_count}
                 shareUrl={checkLang(
                     locale,
                     route("event-detail", item.slug_eng),

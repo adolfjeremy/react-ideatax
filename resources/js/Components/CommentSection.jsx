@@ -7,12 +7,15 @@ import {
     Button,
     Typography,
     Modal,
+    IconButton,
 } from "@mui/material";
 import CommentItem from "./CommentItem";
 import ShareButton from "./ShareButton";
+import { AiOutlineLike } from "react-icons/ai";
+import { AiOutlineDislike } from "react-icons/ai";
 import { SpinnerContext } from "@/Context/SpinnerContext";
 
-function CommentSection({ article_id, comment, shareUrl }) {
+function CommentSection({ article_id, comment, shareUrl, likeCount }) {
     const { auth } = usePage().props;
     const theme = useTheme();
     const [open, setOpen] = useState(false);
@@ -59,6 +62,24 @@ function CommentSection({ article_id, comment, shareUrl }) {
             preserveScroll: true,
         });
     };
+
+    const onHandleLike = (e) => {
+        e.preventDefault();
+        post(route("articles-like", article_id), {
+            onStart: () => {
+                toggleSpinner(true);
+            },
+            onSuccess: () => {
+                toggleSpinner(false);
+                reset();
+            },
+            onError: (error) => {
+                toggleSpinner(false);
+                console.log(error);
+            },
+            preserveScroll: true,
+        });
+    };
     return (
         <Box mt={4}>
             <div className="container">
@@ -68,11 +89,95 @@ function CommentSection({ article_id, comment, shareUrl }) {
                         className="col-12 col-lg-8 px-5 py-3"
                     >
                         <div className="row">
-                            <div className="col-12 mt-4">
+                            <div className="col-12 mt-4 d-flex align-items-center justify-content-between">
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        gap: 1,
+                                    }}
+                                >
+                                    <Box sx={{ position: "relative" }}>
+                                        {likeCount > 0 && (
+                                            <Box
+                                                sx={{
+                                                    width: "20px",
+                                                    height: "20px",
+                                                    position: "absolute",
+                                                    top: "0",
+                                                    left: "25px",
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    justifyContent: "center",
+                                                    borderRadius: "50%",
+                                                    backgroundColor:
+                                                        theme.palette.custom
+                                                            .white,
+                                                }}
+                                            >
+                                                <Typography
+                                                    sx={{
+                                                        fontSize: "12px",
+                                                    }}
+                                                >
+                                                    {likeCount}
+                                                </Typography>
+                                            </Box>
+                                        )}
+                                        <IconButton
+                                            onClick={onHandleLike}
+                                            sx={{
+                                                svg: {
+                                                    color: theme.palette.custom
+                                                        .darkBlue,
+                                                },
+                                            }}
+                                        >
+                                            <AiOutlineLike />
+                                        </IconButton>
+                                    </Box>
+                                    {/* <Box sx={{ position: "relative" }}>
+                                        <Box
+                                            sx={{
+                                                width: "20px",
+                                                height: "20px",
+                                                position: "absolute",
+                                                top: "0",
+                                                left: "25px",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "center",
+                                                borderRadius: "50%",
+                                                backgroundColor:
+                                                    theme.palette.custom.white,
+                                            }}
+                                        >
+                                            <Typography
+                                                sx={{
+                                                    fontSize: "12px",
+                                                }}
+                                            >
+                                                2
+                                            </Typography>
+                                        </Box>
+
+                                        <IconButton
+                                            sx={{
+                                                svg: {
+                                                    color: theme.palette.custom
+                                                        .darkBlue,
+                                                },
+                                            }}
+                                        >
+                                            <AiOutlineDislike />
+                                        </IconButton>
+                                    </Box> */}
+                                </Box>
                                 <ShareButton shareUrl={shareUrl} />
                             </div>
                             <div className="col-12 mt-4">
-                                <Typography>
+                                <Typography sx={{ fontSize: "1rem" }}>
                                     Comments ({comment.length})
                                 </Typography>
                             </div>

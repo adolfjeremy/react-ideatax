@@ -63,6 +63,11 @@ Route::get('guest/login/google', [GoogleAuthController::class, 'redirectToGoogle
 Route::get('guest/login/google/callback', [GoogleAuthController::class, 'handleGoogleCallback']);
 Route::post('guest/sign-out', [UserLoginController::class, 'destroy'])->name('user-logout');
 
+Route::post('/articles/{id}/like', [ArticleController::class, 'likeArticle'])->middleware('auth')->name('articles-like');
+// Route::post('/articles/{id}/unlike', [ArticleController::class, 'unlikeArticle'])->middleware('auth')->name('articles-dislike');
+Route::post('/articles/comment', [ArticleController::class, 'comment'])->middleware('auth')->name('articles-comment');
+Route::delete('/articles/comment/delete/{id}', [ArticleController::class, 'destroy'])->middleware('auth')->name('comment-delete');
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('/', [HomeController::class, 'store'])->name('home-store')->middleware(\Illuminate\Http\Middleware\HandleCors::class);
 Route::post('/subscribe', [HomeController::class, 'subscribe'])->name('home-subscribe');
@@ -72,8 +77,6 @@ Route::get('/our-services', [ServiceController::class, 'index'])->name('service'
 Route::get('/our-services/{slug_eng}', [ServiceController::class, 'detail'])->name('service-detail');
 Route::get('/our-service/tax-audit-assistance', [TaxAuditController::class, 'detail'])->name('tax-audit');
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
-Route::post('/articles/comment', [ArticleController::class, 'comment'])->name('articles-comment');
-Route::delete('/articles/comment/delete/{id}', [ArticleController::class, 'destroy'])->name('comment-delete');
 Route::get('/articles/{slug_eng}', [ArticleController::class, 'detail'])->name('article-detail');
 Route::get('/articles/event/{slug_eng}', [ControllersTaxEventController::class, 'detail'])->name('event-detail');
 Route::get('/careers', [CareerController::class, 'index'])->name('career');
