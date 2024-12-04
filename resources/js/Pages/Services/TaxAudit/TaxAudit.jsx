@@ -4,7 +4,10 @@ import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
 import checkLang from "@/utils/checkLang";
 import hero from "./hero.webp";
-import icon1 from "./icon1.webp";
+import audit1 from "@/assets/images/tax-audit/audit1.webp";
+import audit2 from "@/assets/images/tax-audit/audit2.webp";
+import audit3 from "@/assets/images/tax-audit/audit3.webp";
+import audit4 from "@/assets/images/tax-audit/audit4.webp";
 import icon2 from "./icon2.webp";
 import icon3 from "./icon3.webp";
 import ken from "./ken.webp";
@@ -19,11 +22,12 @@ import aw4 from "@/assets/images/aw-4.webp";
 import aw5 from "@/assets/images/aw-5.webp";
 import timer from "./timer.webp";
 import CountdownTimer from "./CountdownTimer";
+import CounterLg from "@/Components/CounterLg";
 
 function TaxAudit() {
     const { t } = useTranslation();
     const theme = useTheme();
-    const { locale } = usePage().props;
+    const { locale, stats } = usePage().props;
     return (
         <Guest
             en={route("tax-audit")}
@@ -79,28 +83,8 @@ function TaxAudit() {
                                     paddingTop: "100px",
                                 },
                             }}
-                            className="col-9 col-md-7 text-end d-flex flex-column align-items-end justify-content-center gap-2 gap-md-5"
+                            className="col-9 col-md-7 text-end d-flex flex-column align-items-end justify-content-center gap-2"
                         >
-                            <Typography
-                                as="h1"
-                                sx={{
-                                    fontSize: "2.5rem",
-                                    letterSpacing: "0.009em",
-                                    lineHeight: "1.5em",
-                                    color: theme.palette.custom.darkBlue,
-                                    fontWeight: "600",
-                                    [theme.breakpoints.down("sm")]: {
-                                        fontSize: "1.25rem",
-                                    },
-                                }}
-                            >
-                                {checkLang(
-                                    locale,
-                                    "Tax Audits Sleek, Business Security Peak",
-                                    "Pemeriksaan Pajak Lancar, Perusahaan Aman",
-                                    "税務調査が順調なら、企業も安全"
-                                )}
-                            </Typography>
                             <Typography
                                 sx={{
                                     color: theme.palette.custom.lightBlue,
@@ -116,9 +100,53 @@ function TaxAudit() {
                             >
                                 {checkLang(
                                     locale,
-                                    "Readiness is the key to a successful tax audit. Ideatax is here to support you. From document preparation to the audit process, we help you minimize potential risks along the way.",
-                                    "Kesiapan adalah kunci menghadapi pemeriksaan pajak. Ideatax siap mendampingi Anda dalam persiapan dokumen hingga proses pemeriksaan, membantu meminimalkan risiko yang mungkin muncul.",
-                                    "準備が税務調査に立ち向かう鍵です。Ideatax は、書類準備から調査プロセスまでサポートし、発生し得るリスクを最小限に抑えるお手伝いをいたします。"
+                                    "Solve Tax Issues Wisely",
+                                    "Selesaikan Masalah Pajak Dengan Bijak",
+                                    "税務問題を賢く解決"
+                                )}
+                            </Typography>
+                            <Typography
+                                as="h1"
+                                sx={{
+                                    fontSize: "3rem",
+                                    letterSpacing: "0.009em",
+                                    lineHeight: "1.5em",
+                                    color: theme.palette.custom.darkBlue,
+                                    fontWeight: "700",
+                                    [theme.breakpoints.down("sm")]: {
+                                        fontSize: "1.5rem",
+                                    },
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "20+ Years of Experience in Tax Audits",
+                                    "20+ Tahun Menangani Pemeriksaan Pajak",
+                                    "20年以上の税務調査対応経験"
+                                )}
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    color: theme.palette.custom.darkBlue,
+                                    fontSize: "1.25rem",
+                                    [theme.breakpoints.down("sm")]: {
+                                        fontSize: "0.7rem",
+                                    },
+                                    margin: 0,
+                                    padding: 0,
+                                    fontWeight: 500,
+                                    lineHeight: "1.42498753em",
+                                    letterSpacing: "0.009em",
+                                    [theme.breakpoints.up("md")]: {
+                                        padding: "0 0 0 100px",
+                                    },
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Avoid potential financial losses for your company with Ideatax's support, from document preparation to the audit process.",
+                                    "Hindari  potensi kerugian keuangan perusahaan Anda dengan dampingan Ideatax dalam persiapan dokumen hingga proses pemeriksaan",
+                                    "Ideataxのサポートを受け、書類準備から税務調査まで、貴社の財務損失のリスクを避けましょう。"
                                 )}
                             </Typography>
                             <Button
@@ -147,6 +175,14 @@ function TaxAudit() {
                                     "今すぐ相談"
                                 )}
                             </Button>
+                            <Box className="d-flex align-items-center justify-content-end mt-2">
+                                <img src={aw} className="award_image-2" />
+                                <img src={aw1} className="award_image-2" />
+                                <img src={aw2} className="award_image-2" />
+                                <img src={aw3} className="award_image-2" />
+                                <img src={aw4} className="award_image-2" />
+                                <img src={aw5} className="award_image-2" />
+                            </Box>
                         </Box>
                     </div>
                 </Box>
@@ -160,9 +196,8 @@ function TaxAudit() {
                                 sx={{
                                     fontSize: "2rem",
                                     letterSpacing: "0.009em",
-                                    lineHeight: "1.01561707em",
                                     color: theme.palette.custom.darkBlue,
-                                    fontWeight: "400",
+                                    fontWeight: "700",
                                     mb: 2,
                                     [theme.breakpoints.down("sm")]: {
                                         fontSize: "1.25rem",
@@ -171,9 +206,9 @@ function TaxAudit() {
                             >
                                 {checkLang(
                                     locale,
-                                    "Are you experiencing any of the following conditions?",
-                                    "Apakah Anda merasakan salah satu  kondisi dibawah ini?",
-                                    "次のいずれかの状況を感じていますか？"
+                                    "If you're facing any of these situations, schedule a consultation now to prevent future problems:",
+                                    "Jika Anda Mengalami Hal Ini, Segera Jadwalkan Konsultasi Agar Terhindar Masalah di Kemudian Hari",
+                                    "以下のような問題が発生した場合、後々のトラブルを避けるために、すぐに相談予約をしましょう。"
                                 )}
                             </Typography>
                         </div>
@@ -182,184 +217,26 @@ function TaxAudit() {
             </Box>
             <Box className="container" mt={5}>
                 <div className="row">
-                    <Box
-                        sx={{ backgroundColor: "rgb(35, 90, 134)" }}
-                        className="col-12 col-md-4 d-flex flex-column align-items-start justify-content-center py-4 px-5 gap-4"
-                    >
+                    <Box className="col-12 col-md-4">
                         <Box
+                            className="d-flex flex-column align-items-center justify-content-end p-4"
                             sx={{
-                                backgroundColor: theme.palette.custom.white,
-                                width: "56px",
-                                height: "56px",
-                                borderRadius: "50%",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                img: {
-                                    width: "22px",
-                                    height: "29px",
-                                },
+                                backgroundImage: `url(${audit1})`,
+                                backgroundSize: "cover",
+                                backgroundRepeat: "no-repeat",
+                                backgroundPosition: "center",
+                                height: "100%",
                             }}
                         >
-                            <img
-                                src={icon1}
-                                alt="Surat Perintah Pemeriksaan dari Kantor Pajak."
-                            />
-                        </Box>
-                        <Typography
-                            sx={{
-                                fontSize: "1.2rem",
-                                letterSpacing: "0.009em",
-                                lineHeight: "1.3em",
-                                color: theme.palette.custom.white,
-                                textAlign: "start",
-                                fontWeight: "400",
-                                mb: 2,
-                                [theme.breakpoints.down("sm")]: {
-                                    fontSize: "0.9rem",
-                                },
-                            }}
-                        >
-                            {checkLang(
-                                locale,
-                                "Receiving an SP2DK or Audit Notice from the tax office?",
-                                "Menerima SP2DK atau Surat Perintah Pemeriksaan dari Kantor Pajak.",
-                                "税務署からのSP2DK（税務調査通知）または調査命令書を受け取った。"
-                            )}
-                        </Typography>
-                    </Box>
-                    <Box
-                        sx={{ backgroundColor: "rgb(3, 57, 108)" }}
-                        className="col-12 col-md-4 d-flex flex-column align-items-start justify-content-center py-4 px-5 gap-4"
-                    >
-                        <Box
-                            sx={{
-                                backgroundColor: theme.palette.custom.white,
-                                width: "56px",
-                                height: "56px",
-                                borderRadius: "50%",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                img: {
-                                    width: "22px",
-                                    height: "29px",
-                                },
-                            }}
-                        >
-                            <img
-                                src={icon2}
-                                alt="temuan audit pajak dan tidak tau cara untuk menanggapinya?"
-                            />
-                        </Box>
-                        <Typography
-                            sx={{
-                                fontSize: "1.2rem",
-                                letterSpacing: "0.009em",
-                                lineHeight: "1.3em",
-                                textAlign: "start",
-                                color: theme.palette.custom.white,
-                                fontWeight: "400",
-                                mb: 2,
-                                [theme.breakpoints.down("sm")]: {
-                                    fontSize: "0.9rem",
-                                },
-                            }}
-                        >
-                            {checkLang(
-                                locale,
-                                "Worrying about potential tax audit findings and unsure how to respond?",
-                                "Khawatir mendapatkan temuan audit pajak dan tidak tau cara untuk menanggapinya?",
-                                "税務監査の指摘が出るのではないかと心配しており、どのように対応すれば良いか分からないですか？"
-                            )}
-                        </Typography>
-                    </Box>
-                    <Box
-                        sx={{ backgroundColor: "rgb(255, 132, 79)" }}
-                        className="col-12 col-md-4 d-flex flex-column align-items-start justify-content-center py-4 px-5 gap-4"
-                    >
-                        <Box
-                            sx={{
-                                backgroundColor: theme.palette.custom.white,
-                                width: "56px",
-                                height: "56px",
-                                borderRadius: "50%",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                img: {
-                                    width: "22px",
-                                    height: "29px",
-                                },
-                            }}
-                        >
-                            <img
-                                src={icon3}
-                                alt="temuan audit pajak dan tidak tau cara untuk menanggapinya?"
-                            />
-                        </Box>
-                        <Typography
-                            sx={{
-                                fontSize: "1.2rem",
-                                letterSpacing: "0.009em",
-                                lineHeight: "1.01561707em",
-                                textAlign: "start",
-                                color: theme.palette.custom.white,
-                                fontWeight: "400",
-                                mb: 2,
-                                [theme.breakpoints.down("sm")]: {
-                                    fontSize: "0.9rem",
-                                },
-                            }}
-                        >
-                            {checkLang(
-                                locale,
-                                "Unready to face a tax audit and unsure of what to do?",
-                                "Belum Siap Menghadapi Pemeriksaan Pajak dan Tidak Tahu Harus Berbuat Apa.",
-                                "税務調査に対する準備ができておらず、何をすべきか分からない。"
-                            )}
-                        </Typography>
-                    </Box>
-                </div>
-            </Box>
-            <Box mt={8}>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12 text-center">
                             <Typography
-                                as="h2"
                                 sx={{
-                                    fontSize: "2rem",
+                                    fontSize: "1.5rem",
                                     letterSpacing: "0.009em",
                                     lineHeight: "1.3em",
-                                    color: theme.palette.custom.darkBlue,
-                                    fontWeight: "400",
-                                    mb: 2,
-                                    [theme.breakpoints.down("sm")]: {
-                                        fontSize: "1.25rem",
-                                    },
-                                }}
-                            >
-                                {checkLang(
-                                    locale,
-                                    "We understand what you're going through.",
-                                    "Kami sangat paham apa yang Anda hadapi.",
-                                    "私たちは、あなたが直面している状況をよく理解しています。"
-                                )}
-                            </Typography>
-                        </div>
-                    </div>
-                    <div className="row mt-4">
-                        <div className="col-12">
-                            <Typography
-                                sx={{
-                                    fontSize: "1.25rem",
-                                    letterSpacing: "0.009em",
-                                    lineHeight: "1.2em",
-                                    color: theme.palette.custom.darkBlue,
-                                    fontWeight: "400",
-                                    textAlign: "justify",
-                                    mb: 2,
+                                    color: theme.palette.custom.white,
+                                    textAlign: "center",
+                                    fontWeight: "500",
+                                    mt: 20,
                                     [theme.breakpoints.down("sm")]: {
                                         fontSize: "0.9rem",
                                     },
@@ -367,9 +244,385 @@ function TaxAudit() {
                             >
                                 {checkLang(
                                     locale,
-                                    "We can assist you through every phase of the audit process, from initially reviewing your financial and tax records to resolving any issues that may arise. We ensure full compliance with Indonesian tax regulations, provide strategic advice to mitigate risks, take a technical approach to potential tax matters, and prepare comprehensive responses to any inquiries.",
-                                    "Kami dapat membantu Anda melalui setiap fase audit, mulai dari tinjauan awal catatan keuangan dan pajak hingga menyelesaikan masalah apa pun yang mungkin timbul. Kami akan memastikan kepatuhan penuh terhadap peraturan perpajakan Indonesia, memberikan saran strategis untuk memitigasi risiko, pendekatan teknis terhadap potensi pajak dan menyiapkan tanggapan menyeluruh terhadap setiap pertanyaan.",
-                                    "私たちは、初期の財務および税務記録のレビューから、発生する可能性のある問題の解決まで、監査の各段階であなたをサポートできます。インドネシアの税法に完全に準拠していることを確保し、リスクを軽減するための戦略的なアドバイスを提供し、潜在的な税金に対する技術的なアプローチを行い、あらゆる質問に対する包括的な応答を準備します。"
+                                    "Receiving an SP2DK or Audit Notice from the tax office?",
+                                    "Menerima SP2DK atau Surat Perintah Pemeriksaan dari Kantor Pajak.",
+                                    "税務署からのSP2DK (税務調査通知）または調査命令書を受け取った。"
+                                )}
+                            </Typography>
+                        </Box>
+                    </Box>
+                    <Box className="col-12 col-md-4">
+                        <Box
+                            className="d-flex flex-column align-items-center justify-content-end p-4"
+                            sx={{
+                                backgroundImage: `url(${audit2})`,
+                                backgroundSize: "cover",
+                                backgroundRepeat: "no-repeat",
+                                backgroundPosition: "center",
+                            }}
+                        >
+                            <Typography
+                                sx={{
+                                    fontSize: "1.5rem",
+                                    letterSpacing: "0.009em",
+                                    lineHeight: "1.3em",
+                                    color: theme.palette.custom.white,
+                                    textAlign: "center",
+                                    fontWeight: "500",
+                                    mt: 20,
+                                    [theme.breakpoints.down("sm")]: {
+                                        fontSize: "0.9rem",
+                                    },
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Worrying about potential tax audit findings and unsure how to respond?",
+                                    "Khawatir mendapatkan temuan audit pajak dan tidak tau cara untuk menanggapinya?",
+                                    "税務監査の指摘が出るのではないかと心配しており、どのように対応すれば良いか分からないですか？"
+                                )}
+                            </Typography>
+                        </Box>
+                    </Box>
+                    <Box className="col-12 col-md-4">
+                        <Box
+                            className="d-flex flex-column align-items-center justify-content-end p-4"
+                            sx={{
+                                backgroundImage: `url(${audit3})`,
+                                backgroundSize: "cover",
+                                backgroundRepeat: "no-repeat",
+                                backgroundPosition: "center",
+                            }}
+                        >
+                            <Typography
+                                sx={{
+                                    fontSize: "1.5rem",
+                                    letterSpacing: "0.009em",
+                                    lineHeight: "1.3em",
+                                    color: theme.palette.custom.white,
+                                    textAlign: "center",
+                                    fontWeight: "500",
+                                    mt: 20,
+                                    [theme.breakpoints.down("sm")]: {
+                                        fontSize: "0.9rem",
+                                    },
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Unready to face a tax audit and unsure of what to do?",
+                                    "Belum Siap Menghadapi Pemeriksaan Pajak dan Tidak Tahu Harus Berbuat Apa.",
+                                    "税務調査に対する準備ができておらず、何をすべきか分からない。"
+                                )}
+                            </Typography>
+                        </Box>
+                    </Box>
+                </div>
+            </Box>
+            <Box mt={8}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12 col-md-5 text-start">
+                            {checkLang(
+                                locale,
+                                <Typography
+                                    sx={{
+                                        fontSize: "2rem",
+                                        letterSpacing: "0.009em",
+                                        color: theme.palette.custom.darkBlue,
+                                        fontWeight: "600",
+                                        mb: 2,
+                                        [theme.breakpoints.down("sm")]: {
+                                            fontSize: "1.25rem",
+                                        },
+                                    }}
+                                >
+                                    How{" "}
+                                    <Typography
+                                        as="span"
+                                        sx={{
+                                            color: theme.palette.custom.orange,
+                                            fontSize: "2rem",
+                                            letterSpacing: "0.009em",
+                                            fontWeight: "600",
+                                            mb: 2,
+                                            [theme.breakpoints.down("sm")]: {
+                                                fontSize: "1.25rem",
+                                            },
+                                        }}
+                                    >
+                                        Ideatax
+                                    </Typography>{" "}
+                                    Serves as Your Tax Partner
+                                </Typography>,
+                                <Typography
+                                    sx={{
+                                        fontSize: "2rem",
+                                        letterSpacing: "0.009em",
+                                        color: theme.palette.custom.darkBlue,
+                                        fontWeight: "600",
+                                        mb: 2,
+                                        [theme.breakpoints.down("sm")]: {
+                                            fontSize: "1.25rem",
+                                        },
+                                    }}
+                                >
+                                    Peran{" "}
+                                    <Typography
+                                        as="span"
+                                        sx={{
+                                            color: theme.palette.custom.orange,
+                                            fontSize: "2rem",
+                                            letterSpacing: "0.009em",
+                                            fontWeight: "600",
+                                            mb: 2,
+                                            [theme.breakpoints.down("sm")]: {
+                                                fontSize: "1.25rem",
+                                            },
+                                        }}
+                                    >
+                                        Ideatax
+                                    </Typography>{" "}
+                                    Sebagai Partner Pajak Anda
+                                </Typography>,
+                                <Typography
+                                    sx={{
+                                        fontSize: "2rem",
+                                        letterSpacing: "0.009em",
+                                        color: theme.palette.custom.darkBlue,
+                                        fontWeight: "600",
+                                        mb: 2,
+                                        [theme.breakpoints.down("sm")]: {
+                                            fontSize: "1.25rem",
+                                        },
+                                    }}
+                                >
+                                    <Typography
+                                        as="span"
+                                        sx={{
+                                            color: theme.palette.custom.orange,
+                                            fontSize: "2rem",
+                                            letterSpacing: "0.009em",
+                                            fontWeight: "600",
+                                            mb: 2,
+                                            [theme.breakpoints.down("sm")]: {
+                                                fontSize: "1.25rem",
+                                            },
+                                        }}
+                                    >
+                                        Ideatax
+                                    </Typography>{" "}
+                                    の税務パートナーとしての役割
+                                </Typography>
+                            )}
+                        </div>
+                    </div>
+                    <div className="row mt-4 position-relative">
+                        <div className="col-3 d-flex align-items-start justify-content-start position-relative">
+                            <Box
+                                sx={{
+                                    height: "40px",
+                                    width: "40px",
+                                    borderRadius: "50%",
+                                    backgroundColor:
+                                        theme.palette.custom.darkBlue,
+                                    position: "relative",
+                                    zIndex: 10,
+                                }}
+                            ></Box>
+                        </div>
+                        <div className="col-3 d-flex align-items-start justify-content-start position-relative">
+                            <Box
+                                sx={{
+                                    height: "40px",
+                                    width: "40px",
+                                    borderRadius: "50%",
+                                    backgroundColor:
+                                        theme.palette.custom.darkBlue,
+                                    position: "relative",
+                                    zIndex: 10,
+                                }}
+                            ></Box>
+                        </div>
+                        <div className="col-3 d-flex align-items-start justify-content-start position-relative">
+                            <Box
+                                sx={{
+                                    height: "40px",
+                                    width: "40px",
+                                    borderRadius: "50%",
+                                    backgroundColor:
+                                        theme.palette.custom.darkBlue,
+                                    position: "relative",
+                                    zIndex: 10,
+                                }}
+                            ></Box>
+                        </div>
+                        <div className="col-3 d-flex align-items-start justify-content-start position-relative">
+                            <Box
+                                sx={{
+                                    height: "40px",
+                                    width: "40px",
+                                    borderRadius: "50%",
+                                    backgroundColor:
+                                        theme.palette.custom.orange,
+                                    position: "relative",
+                                    zIndex: 10,
+                                }}
+                            ></Box>
+                        </div>
+                        <Box
+                            className="col-12"
+                            sx={{
+                                position: "absolute",
+                                top: "50%",
+                                translate: "transformY(-50%)",
+                                zIndex: 1,
+                            }}
+                        >
+                            <Box
+                                sx={{
+                                    height: "4px",
+                                    backgroundColor:
+                                        theme.palette.custom.darkBlue,
+                                    width: "100%",
+                                }}
+                            ></Box>
+                        </Box>
+                    </div>
+                    <div className="row mt-4">
+                        <div className="col-12 col-lg-3">
+                            <Typography
+                                as="h3"
+                                sx={{
+                                    color: theme.palette.custom.darkBlue,
+                                    fontSize: "1.25rem",
+                                    letterSpacing: "0.009em",
+                                    fontWeight: "600",
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Document Review",
+                                    "Review Dokumen",
+                                    "書類レビュー"
+                                )}
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    color: theme.palette.custom.black,
+                                    fontSize: "1rem",
+                                    letterSpacing: "0.009em",
+                                    fontWeight: 500,
+                                    mt: 1,
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Review and analyze audit documents before submission to the tax examiner.",
+                                    "Meninjau dan menganalisa dokumen pemeriksaan untuk diserahkan ke pemeriksa.",
+                                    "税務調査に提出する書類を確認し、分析します。"
+                                )}
+                            </Typography>
+                        </div>
+                        <div className="col-12 col-lg-3">
+                            <Typography
+                                as="h3"
+                                sx={{
+                                    color: theme.palette.custom.darkBlue,
+                                    fontSize: "1.25rem",
+                                    letterSpacing: "0.009em",
+                                    fontWeight: "600",
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Preparation of Formal Responses",
+                                    "Persiapan Tanggapan Formal",
+                                    "正式な回答準備"
+                                )}
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    color: theme.palette.custom.black,
+                                    fontSize: "1rem",
+                                    letterSpacing: "0.009em",
+                                    fontWeight: 500,
+                                    mt: 1,
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Assist in preparing formal responses from initial findings to the issuance of the SPHP.",
+                                    "Membantu menyiapkan tanggapan formal dari temuan awal pajak hingga dikeluarkannya SPHP.",
+                                    "税務調査の初期発見からSPHP発行までの正式な回答を準備します。"
+                                )}
+                            </Typography>
+                        </div>
+                        <div className="col-12 col-lg-3">
+                            <Typography
+                                as="h3"
+                                sx={{
+                                    color: theme.palette.custom.darkBlue,
+                                    fontSize: "1.25rem",
+                                    letterSpacing: "0.009em",
+                                    fontWeight: "600",
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Audit Assistance",
+                                    "Pendampingan Selama Pemeriksaan",
+                                    "調査中のサポート"
+                                )}
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    color: theme.palette.custom.black,
+                                    fontSize: "1rem",
+                                    letterSpacing: "0.009em",
+                                    fontWeight: 500,
+                                    mt: 1,
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Accompany, attend, and/or represent you during meetings with the tax office.",
+                                    "Mendampingi, menghadiri, dan/atau mewakilkan pada setiap panggilan ke kantor pajak.",
+                                    "税務署への呼び出しに同席、代理、または出席します。"
+                                )}
+                            </Typography>
+                        </div>
+                        <div className="col-12 col-lg-3">
+                            <Typography
+                                as="h3"
+                                sx={{
+                                    color: theme.palette.custom.darkBlue,
+                                    fontSize: "1.25rem",
+                                    letterSpacing: "0.009em",
+                                    fontWeight: "600",
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Audit Assistance",
+                                    "Pendampingan Selama Pemeriksaan",
+                                    "調査中のサポート"
+                                )}
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    color: theme.palette.custom.black,
+                                    fontSize: "1rem",
+                                    letterSpacing: "0.009em",
+                                    fontWeight: 500,
+                                    mt: 1,
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Stress-Free Tax Solutions",
+                                    "Bebas Stress!",
+                                    "ストレスフリー！"
                                 )}
                             </Typography>
                         </div>
@@ -379,28 +632,75 @@ function TaxAudit() {
             <Box mt={8}>
                 <div className="container">
                     <div className="row">
-                        <div className="col-12 col-md-6">
-                            <Typography
-                                as="h2"
+                        <Box className="col-12 col-md-5 mt-4 mt-md-0 d-flex flex-column justify-content-center align-items-center p-5 gap-5">
+                            <Box
                                 sx={{
-                                    fontSize: "1.8rem",
-                                    letterSpacing: "0.009em",
-                                    lineHeight: "1.01561707em",
-                                    color: theme.palette.custom.darkBlue,
-                                    fontWeight: "400",
-                                    mb: 2,
-                                    [theme.breakpoints.down("sm")]: {
-                                        fontSize: "0.9rem",
-                                    },
+                                    position: "relative",
                                 }}
                             >
-                                {checkLang(
-                                    locale,
-                                    "Our Strengths",
-                                    "Keunggulan Kami",
-                                    "私たちの強み"
-                                )}
-                            </Typography>
+                                <img
+                                    src={ken}
+                                    alt="Ken Dwijugiasteadi"
+                                    className="w-100"
+                                />
+                                <Box
+                                    sx={{
+                                        backgroundColor: "rgb(212, 240, 252)",
+                                        padding: "7px 25px",
+                                        position: "absolute",
+                                        bottom: "20px",
+                                        left: "20px",
+                                        right: "20px",
+                                    }}
+                                >
+                                    <Typography
+                                        sx={{
+                                            fontSize: "0.9rem",
+                                            color: "rgb(25, 25, 25)",
+                                            lineHeight: "26px",
+                                            fontWeight: "700",
+                                            textAlign: "center",
+                                            borderBottom: "2px solid grey",
+                                        }}
+                                    >
+                                        Ken Dwijugiasteadi
+                                    </Typography>
+                                    <Typography
+                                        sx={{
+                                            fontSize: "0.9rem",
+                                            color: "rgb(25, 25, 25)",
+                                            fontWeight: "500",
+                                            textAlign: "center",
+                                            mt: "5px",
+                                        }}
+                                    >
+                                        {checkLang(
+                                            locale,
+                                            "Director General of the Ministry of Finance of Indonesia (2015-2017).",
+                                            "Dirjen Kemenkeu RI Tahun 2015-2017",
+                                            "2015年から2017年まで、インドネシア財務省総局長 (Dirjen Kemenkeu RI) を務めた人物。"
+                                        )}
+                                    </Typography>
+                                    <Typography
+                                        sx={{
+                                            fontSize: "0.9rem",
+                                            color: "rgb(25, 25, 25)",
+                                            fontWeight: "500",
+                                            textAlign: "center",
+                                            whiteSpace: "nowrap",
+                                        }}
+                                    >
+                                        {checkLang(
+                                            locale,
+                                            "Senior Advisor Ideatax",
+                                            "Penasehat Senior Ideatax",
+                                            "のシニアアドバイザー。"
+                                        )}
+                                    </Typography>
+                                </Box>
+                            </Box>
+                        </Box>
+                        <div className="col-12 col-md-7">
                             <Box
                                 sx={{
                                     display: "flex",
@@ -418,7 +718,7 @@ function TaxAudit() {
                                             lineHeight: "1.01561707em",
                                             color: theme.palette.custom
                                                 .darkBlue,
-                                            fontWeight: "400",
+                                            fontWeight: "600",
                                             mb: 2,
                                             [theme.breakpoints.down("sm")]: {
                                                 fontSize: "1.25rem",
@@ -444,10 +744,10 @@ function TaxAudit() {
                                             lineHeight: "1.2em",
                                             color: theme.palette.custom
                                                 .darkBlue,
-                                            fontWeight: "500",
+                                            fontWeight: "600",
                                             mb: 2,
                                             [theme.breakpoints.down("sm")]: {
-                                                fontSize: "0.9rem",
+                                                fontSize: "1rem",
                                             },
                                         }}
                                     >
@@ -463,9 +763,8 @@ function TaxAudit() {
                                             fontSize: "1rem",
                                             letterSpacing: "0.009em",
                                             lineHeight: "1.5em",
-                                            color: theme.palette.custom
-                                                .darkBlue,
-                                            fontWeight: "400",
+                                            color: theme.palette.custom.black,
+                                            fontWeight: "500",
                                             mb: 2,
                                             [theme.breakpoints.down("sm")]: {
                                                 fontSize: "0.9rem",
@@ -498,7 +797,7 @@ function TaxAudit() {
                                             lineHeight: "1.01561707em",
                                             color: theme.palette.custom
                                                 .darkBlue,
-                                            fontWeight: "400",
+                                            fontWeight: "600",
                                             mb: 2,
                                             [theme.breakpoints.down("sm")]: {
                                                 fontSize: "1.25rem",
@@ -524,10 +823,10 @@ function TaxAudit() {
                                             lineHeight: "1.2em",
                                             color: theme.palette.custom
                                                 .darkBlue,
-                                            fontWeight: "500",
+                                            fontWeight: "600",
                                             mb: 2,
                                             [theme.breakpoints.down("sm")]: {
-                                                fontSize: "0.9rem",
+                                                fontSize: "1rem",
                                             },
                                         }}
                                     >
@@ -543,9 +842,8 @@ function TaxAudit() {
                                             fontSize: "1rem",
                                             letterSpacing: "0.009em",
                                             lineHeight: "1.5em",
-                                            color: theme.palette.custom
-                                                .darkBlue,
-                                            fontWeight: "400",
+                                            color: theme.palette.custom.black,
+                                            fontWeight: "500",
                                             mb: 2,
                                             [theme.breakpoints.down("sm")]: {
                                                 fontSize: "0.9rem",
@@ -578,7 +876,7 @@ function TaxAudit() {
                                             lineHeight: "1.01561707em",
                                             color: theme.palette.custom
                                                 .darkBlue,
-                                            fontWeight: "400",
+                                            fontWeight: "600",
                                             mb: 2,
                                             [theme.breakpoints.down("sm")]: {
                                                 fontSize: "1.25rem",
@@ -604,10 +902,10 @@ function TaxAudit() {
                                             lineHeight: "1.2em",
                                             color: theme.palette.custom
                                                 .darkBlue,
-                                            fontWeight: "500",
+                                            fontWeight: "600",
                                             mb: 2,
                                             [theme.breakpoints.down("sm")]: {
-                                                fontSize: "0.9rem",
+                                                fontSize: "1rem",
                                             },
                                         }}
                                     >
@@ -623,9 +921,8 @@ function TaxAudit() {
                                             fontSize: "1rem",
                                             letterSpacing: "0.009em",
                                             lineHeight: "1.5em",
-                                            color: theme.palette.custom
-                                                .darkBlue,
-                                            fontWeight: "400",
+                                            color: theme.palette.custom.black,
+                                            fontWeight: "500",
                                             mb: 2,
                                             [theme.breakpoints.down("sm")]: {
                                                 fontSize: "0.9rem",
@@ -642,68 +939,7 @@ function TaxAudit() {
                                 </Box>
                             </Box>
                         </div>
-                        <Box className="col-12 col-md-6 mt-4 mt-md-0 d-flex flex-column justify-content-center align-items-center p-5 gap-5">
-                            <Box
-                                sx={{
-                                    position: "relative",
-                                    img: {
-                                        width: "80%",
-                                        [theme.breakpoints.down("md")]: {
-                                            width: "100%",
-                                        },
-                                    },
-                                }}
-                            >
-                                <img src={ken} alt="Ken Dwijugiasteadi" />
-                                <Box
-                                    sx={{
-                                        backgroundColor: "rgb(212, 240, 252)",
-                                        padding: "7px 25px",
-                                        position: "absolute",
-                                        bottom: "20px",
-                                        left: "110px",
-                                        [theme.breakpoints.down("md")]: {
-                                            left: "30px",
-                                        },
-                                    }}
-                                >
-                                    <Typography
-                                        sx={{
-                                            fontSize: "0.9rem",
-                                            color: "rgb(25, 25, 25)",
-                                            lineHeight: "26px",
-                                            fontWeight: "700",
-                                            textAlign: "center",
-                                            borderBottom: "2px solid grey",
-                                        }}
-                                    >
-                                        Ken Dwijugiasteadi
-                                    </Typography>
-                                    <Typography
-                                        sx={{
-                                            fontSize: "0.9rem",
-                                            color: "rgb(25, 25, 25)",
-                                            fontWeight: "500",
-                                            textAlign: "center",
-                                            mt: "5px",
-                                            whiteSpace: "nowrap",
-                                        }}
-                                    >
-                                        Dirjen Kemenkeu RI Tahun 2015-2017
-                                    </Typography>
-                                    <Typography
-                                        sx={{
-                                            fontSize: "0.9rem",
-                                            color: "rgb(25, 25, 25)",
-                                            fontWeight: "500",
-                                            textAlign: "center",
-                                            whiteSpace: "nowrap",
-                                        }}
-                                    >
-                                        Senior Advisor Ideatax
-                                    </Typography>
-                                </Box>
-                            </Box>
+                        <div className="col-12 d-flex align-items-center justify-content-center mt-4">
                             <Button
                                 href="https://wa.me/62811195708?text=Hello%20Ideatax"
                                 rel="noopener noreferrer"
@@ -730,22 +966,88 @@ function TaxAudit() {
                                     "今すぐ相談"
                                 )}
                             </Button>
-                        </Box>
+                        </div>
                     </div>
                 </div>
             </Box>
             <Box mt={8}>
                 <div className="container">
-                    <div className="row">
-                        <div className="col-12 text-start">
+                    <div className="row d-flex align-items-center justify-content-center">
+                        <div className="col-12 col-md-8 text-center">
                             <Typography
                                 as="h2"
                                 sx={{
-                                    fontSize: "1.8rem",
+                                    fontSize: "2rem",
                                     letterSpacing: "0.009em",
-                                    lineHeight: "1.01561707em",
                                     color: theme.palette.custom.darkBlue,
-                                    fontWeight: "400",
+                                    fontWeight: "700",
+                                    mb: 2,
+                                    [theme.breakpoints.down("sm")]: {
+                                        fontSize: "1.25rem",
+                                    },
+                                }}
+                            >
+                                <Typography
+                                    as="span"
+                                    sx={{
+                                        fontSize: "2rem",
+                                        letterSpacing: "0.009em",
+                                        color: theme.palette.custom.orange,
+                                        fontWeight: "700",
+                                        mb: 2,
+                                        [theme.breakpoints.down("sm")]: {
+                                            fontSize: "1.25rem",
+                                        },
+                                    }}
+                                >
+                                    Ideatax
+                                </Typography>
+                                {checkLang(
+                                    locale,
+                                    " is trusted to resolve and assist with tax issues.",
+                                    " Telah Dipercaya Menyelesaikan dan Membantu Permasalahan Pajak",
+                                    " はさまざまな業界の税務問題解決に信頼されています。"
+                                )}
+                            </Typography>
+                        </div>
+                    </div>
+                    <div className="row mt-5 d-flex align-items-center justify-content-center">
+                        {stats.map((stat) => (
+                            <div
+                                key={stat.id}
+                                className="col-12 col-md-3 d-flex flex-column gap-2 align-items-center justify-content-center"
+                            >
+                                <CounterLg target={stat.value} />
+                                <Typography
+                                    sx={{
+                                        color: theme.palette.custom.orange,
+                                        fontSize: "1.25rem",
+                                        lineHeight: "1.390625em",
+                                        textAlign: "center",
+                                        fontWeight: "600",
+                                        textTransform: "capitalize",
+                                    }}
+                                    className="stat_head m-0"
+                                >
+                                    {checkLang(
+                                        locale,
+                                        stat.head_eng,
+                                        stat.head,
+                                        stat.head_jpn
+                                    )}
+                                </Typography>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="row d-flex align-items-center justify-content-center">
+                        <Box mt={7} className="col-12 text-center">
+                            <Typography
+                                as="h2"
+                                sx={{
+                                    fontSize: "2rem",
+                                    letterSpacing: "0.009em",
+                                    color: theme.palette.custom.darkBlue,
+                                    fontWeight: "700",
                                     mb: 2,
                                     [theme.breakpoints.down("sm")]: {
                                         fontSize: "1.25rem",
@@ -754,218 +1056,301 @@ function TaxAudit() {
                             >
                                 {checkLang(
                                     locale,
-                                    "Tax Audit Services Include:",
-                                    "Jasa Pemeriksaan Pajak Meliputi:",
-                                    "税務調査サービスには以下が含まれます："
+                                    "Trusted by Diverse Industries for Tax Solutions",
+                                    "Dari Berbagai Industri",
+                                    "さまざまな業界から"
+                                )}
+                            </Typography>
+                        </Box>
+                    </div>
+                    <div className="row mt-3">
+                        <div className="col-12 d-flex justify-content-center align-items-center text-center">
+                            <Typography
+                                sx={{
+                                    borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                    px: 2,
+                                    fontWeight: 500,
+                                    fontSize: "1.2rem",
+                                    color: theme.palette.custom.black,
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Mining and Quarrying",
+                                    "Pertambangan dan Penggalian",
+                                    "さまざまな業界から"
+                                )}
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                    px: 2,
+                                    fontWeight: 500,
+                                    fontSize: "1.2rem",
+                                    color: theme.palette.custom.black,
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Manufacturing",
+                                    "Manufaktur",
+                                    "製造業"
+                                )}
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                    px: 2,
+                                    fontWeight: 500,
+                                    fontSize: "1.2rem",
+                                    color: theme.palette.custom.black,
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Business Activities",
+                                    "Kegiatan Bisnis",
+                                    "商業活動"
+                                )}
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    px: 2,
+                                    fontWeight: 500,
+                                    fontSize: "1.2rem",
+                                    color: theme.palette.custom.black,
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Agriculture, Forestry, and Fisheries",
+                                    "Pertanian, Kehutanan dan Perikanan",
+                                    "農業、林業、漁業"
+                                )}
+                            </Typography>
+                        </div>
+                        <div className="col-12 mt-4 d-flex justify-content-center align-items-center text-center">
+                            <Typography
+                                sx={{
+                                    borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                    px: 2,
+                                    fontWeight: 500,
+                                    fontSize: "1.2rem",
+                                    color: theme.palette.custom.black,
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Electricity and Gas",
+                                    "Listrik dan Gas",
+                                    "電気・ガス業"
+                                )}
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                    px: 2,
+                                    fontWeight: 500,
+                                    fontSize: "1.2rem",
+                                    color: theme.palette.custom.black,
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Accommodation and Food Services",
+                                    "Akomodasi dan Penyediaan Makanan dan Minuman",
+                                    "宿泊業・飲食提供業"
+                                )}
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                    px: 2,
+                                    fontWeight: 500,
+                                    fontSize: "1.2rem",
+                                    color: theme.palette.custom.black,
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Legal Services",
+                                    "Hukum",
+                                    "法律業"
+                                )}
+                            </Typography>
+
+                            <Typography
+                                sx={{
+                                    px: 2,
+                                    fontWeight: 500,
+                                    fontSize: "1.2rem",
+                                    color: theme.palette.custom.black,
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Construction",
+                                    "Konstruksi",
+                                    "建設業"
+                                )}
+                            </Typography>
+                        </div>
+                        <div className="col-12 mt-4 d-flex justify-content-center align-items-center text-center">
+                            <Typography
+                                sx={{
+                                    borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                    px: 2,
+                                    fontWeight: 500,
+                                    fontSize: "1.2rem",
+                                    color: theme.palette.custom.black,
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Finance and Insurance Activities",
+                                    "Kegiatan Keuangan dan Asuransi",
+                                    "金融業・保険業"
+                                )}
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                    px: 2,
+                                    fontWeight: 500,
+                                    fontSize: "1.2rem",
+                                    color: theme.palette.custom.black,
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Transportation and Warehousing",
+                                    "Transportasi dan Pergudangan",
+                                    "運輸・倉庫業"
+                                )}
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    px: 2,
+                                    fontWeight: 500,
+                                    fontSize: "1.2rem",
+                                    color: theme.palette.custom.black,
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Information and Communication",
+                                    "Informasi dan Komunikasi",
+                                    "情報・通信業"
+                                )}
+                            </Typography>
+                        </div>
+                        <div className="col-12 mt-4 d-flex justify-content-center align-items-center text-center">
+                            <Typography
+                                sx={{
+                                    borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                    px: 2,
+                                    fontWeight: 500,
+                                    fontSize: "1.2rem",
+                                    color: theme.palette.custom.black,
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Wholesale and Retail Trade, Vehicle and Motorcycle Repair",
+                                    "Perdagangan Besar dan Eceran, Reparasi Mobil dan Sepeda Motor",
+                                    "卸売業・小売業、車両・バイクの修理"
+                                )}
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                    px: 2,
+                                    fontWeight: 500,
+                                    fontSize: "1.2rem",
+                                    color: theme.palette.custom.black,
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Personal Services",
+                                    "Pribadi",
+                                    "個人"
+                                )}
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    px: 2,
+                                    fontWeight: 500,
+                                    fontSize: "1.2rem",
+                                    color: theme.palette.custom.black,
+                                }}
+                            >
+                                {checkLang(
+                                    locale,
+                                    "Other Services",
+                                    "Kegiatan Jasa Lainnya",
+                                    "その他のサービス業"
                                 )}
                             </Typography>
                         </div>
                     </div>
-                    <div className="row mt-4">
-                        <div className="col-12 col-md-4">
-                            <Box className="position-relative">
-                                <img src={review} />
-                                <Box
-                                    sx={{
-                                        position: "absolute",
-                                        inset: 0,
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        p: 2,
-                                    }}
-                                >
-                                    <Typography
-                                        as="h3"
-                                        sx={{
-                                            fontSize: "1.8rem",
-                                            letterSpacing: "0.009em",
-                                            lineHeight: "1.01561707em",
-                                            color: theme.palette.custom.white,
-                                            textAlign: "center",
-                                            fontWeight: "400",
-                                            mb: 2,
-                                            [theme.breakpoints.down("sm")]: {
-                                                fontSize: "1.25em",
-                                            },
-                                        }}
-                                    >
-                                        {checkLang(
-                                            locale,
-                                            "Document Review",
-                                            "Review Dokumen",
-                                            "文書レビュー"
-                                        )}
-                                    </Typography>
-                                </Box>
-                            </Box>
-
-                            <Box
+                </div>
+            </Box>
+            <Box
+                className="py-5"
+                sx={{
+                    mt: 10,
+                    backgroundImage: `url(${audit4})`,
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center",
+                }}
+            >
+                <div className="container">
+                    <div className="row py-5">
+                        <div className="col-12 col-md-6 py-md-4">
+                            <Typography
+                                as="h2"
                                 sx={{
-                                    borderLeft: "1px solid grey",
-                                    paddingLeft: 3,
-                                    mt: 4,
+                                    fontSize: "2rem",
+                                    letterSpacing: "0.009em",
+                                    color: theme.palette.custom.white,
+                                    fontWeight: "700",
+                                    mb: 2,
+                                    [theme.breakpoints.down("sm")]: {
+                                        fontSize: "1.25rem",
+                                    },
                                 }}
                             >
                                 <Typography
+                                    as="span"
                                     sx={{
-                                        fontSize: "1rem",
+                                        fontSize: "2rem",
                                         letterSpacing: "0.009em",
-                                        lineHeight: "1.5em",
-                                        color: theme.palette.custom.lightBlue,
-                                        fontWeight: "400",
+                                        color: theme.palette.custom.orange,
+                                        fontWeight: "700",
                                         mb: 2,
                                         [theme.breakpoints.down("sm")]: {
-                                            fontSize: "0.9rem",
+                                            fontSize: "1.25rem",
                                         },
                                     }}
                                 >
                                     {checkLang(
                                         locale,
-                                        "Reviewing and analyzing audit documents to be submitted to the auditor.",
-                                        "Meninjau dan menganalisa dokumen pemeriksaan untuk diserahkan ke pemeriksa",
-                                        "調査のために検査官に提出する文書をレビューおよび分析します。"
+                                        "Free Consultation, ",
+                                        "Konsultasi Gratis ",
+                                        "無料相談 "
                                     )}
                                 </Typography>
-                            </Box>
+                                {checkLang(
+                                    locale,
+                                    "Agar Anda Bisa Fokus ke Bisnis!",
+                                    "Focus on Your Destination!",
+                                    "ジネスに集中するための!"
+                                )}
+                            </Typography>
                         </div>
-                        <div className="col-12 col-md-4">
-                            <Box className="position-relative">
-                                <img src={persiapan} />
-                                <Box
-                                    sx={{
-                                        position: "absolute",
-                                        inset: 0,
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        p: 2,
-                                    }}
-                                >
-                                    <Typography
-                                        as="h3"
-                                        sx={{
-                                            fontSize: "1.8rem",
-                                            letterSpacing: "0.009em",
-                                            lineHeight: "1.01561707em",
-                                            textAlign: "center",
-                                            color: theme.palette.custom.white,
-                                            fontWeight: "400",
-                                            mb: 2,
-                                            [theme.breakpoints.down("sm")]: {
-                                                fontSize: "1.25rem",
-                                            },
-                                        }}
-                                    >
-                                        {checkLang(
-                                            locale,
-                                            "Preparation of Formal Responses",
-                                            "Persiapan Tanggapan Formal",
-                                            "正式な応答の準備"
-                                        )}
-                                    </Typography>
-                                </Box>
-                            </Box>
-
-                            <Box
-                                sx={{
-                                    borderLeft: "1px solid grey",
-                                    paddingLeft: 3,
-                                    mt: 4,
-                                }}
-                            >
-                                <Typography
-                                    sx={{
-                                        fontSize: "1rem",
-                                        letterSpacing: "0.009em",
-                                        lineHeight: "1.5em",
-                                        color: theme.palette.custom.lightBlue,
-                                        fontWeight: "400",
-                                        mb: 2,
-                                        [theme.breakpoints.down("sm")]: {
-                                            fontSize: "0.9rem",
-                                        },
-                                    }}
-                                >
-                                    {checkLang(
-                                        locale,
-                                        "Assisting in the preparation or review of formal responses to initial findings from the tax office until the Notification of Tax Audit Result (SPHP) is issued.",
-                                        "Membantu mempersiapkan atau meninjau tanggapan formal atas temuan awal kantor pajak hingga surat pemberitahuan hasil pemeriksaan (SPHP) dikeluarkan",
-                                        "税務署の初期発見に対する正式な応答を準備またはレビューし、調査結果通知書 SPHP が発行されるまでサポートします。"
-                                    )}
-                                </Typography>
-                            </Box>
-                        </div>
-                        <div className="col-12 col-md-4">
-                            <Box className="position-relative">
-                                <img src={pendampingan} />
-                                <Box
-                                    sx={{
-                                        position: "absolute",
-                                        inset: 0,
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        p: 2,
-                                    }}
-                                >
-                                    <Typography
-                                        as="h3"
-                                        sx={{
-                                            fontSize: "1.8rem",
-                                            letterSpacing: "0.009em",
-                                            lineHeight: "1.01561707em",
-                                            textAlign: "center",
-                                            color: theme.palette.custom.white,
-                                            fontWeight: "400",
-                                            mb: 2,
-                                            [theme.breakpoints.down("sm")]: {
-                                                fontSize: "1.25rem",
-                                            },
-                                        }}
-                                    >
-                                        {checkLang(
-                                            locale,
-                                            "Audit Assistance",
-                                            "Pendampingan Selama Pemeriksaan ",
-                                            "調査中のサポート"
-                                        )}
-                                    </Typography>
-                                </Box>
-                            </Box>
-
-                            <Box
-                                sx={{
-                                    borderLeft: "1px solid grey",
-                                    paddingLeft: 3,
-                                    mt: 4,
-                                }}
-                            >
-                                <Typography
-                                    sx={{
-                                        fontSize: "1rem",
-                                        letterSpacing: "0.009em",
-                                        lineHeight: "1.5em",
-                                        color: theme.palette.custom.lightBlue,
-                                        fontWeight: "400",
-                                        mb: 2,
-                                        [theme.breakpoints.down("sm")]: {
-                                            fontSize: "0.9rem",
-                                        },
-                                    }}
-                                >
-                                    {checkLang(
-                                        locale,
-                                        "Accompanying, attending, and/or representing you at every call to the tax office.",
-                                        "Mendampingin, menghadiri, dan/atau mewakilkan pada setiap panggilan ke Kantor Pajak ",
-                                        "税務署へのすべての呼び出しにおいて、サポート、出席、および/または代理を行います。"
-                                    )}
-                                </Typography>
-                            </Box>
-                        </div>
-                    </div>
-                    <div className="row mt-4">
-                        <div className="col-12 d-flex align-items-center justify-content-center">
+                        <div className="col-12 col-md-6 py-md-4 d-flex align-items-center justify-content-center">
                             <Button
                                 href="https://wa.me/62811195708?text=Hello%20Ideatax"
                                 rel="noopener noreferrer"
@@ -992,112 +1377,6 @@ function TaxAudit() {
                                     "今すぐ相談"
                                 )}
                             </Button>
-                        </div>
-                    </div>
-                </div>
-            </Box>
-            <Box mt={10}>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12 text-center">
-                            <Typography
-                                as="h2"
-                                sx={{
-                                    fontSize: "2rem",
-                                    letterSpacing: "0.009em",
-                                    lineHeight: "1.01561707em",
-                                    color: theme.palette.custom.darkBlue,
-                                    fontWeight: "400",
-                                    mb: 2,
-                                    [theme.breakpoints.down("sm")]: {
-                                        fontSize: "0.9rem",
-                                    },
-                                }}
-                            >
-                                {checkLang(
-                                    locale,
-                                    "Awards",
-                                    "Awards",
-                                    "受賞歴"
-                                )}
-                            </Typography>
-                        </div>
-                    </div>
-                    <div className="row mt-5">
-                        <div className="col-12 d-flex align-items-center justify-content-center">
-                            <img src={aw} className="award_image" />
-                            <img src={aw1} className="award_image" />
-                            <img src={aw2} className="award_image" />
-                            <img src={aw3} className="award_image" />
-                            <img src={aw4} className="award_image" />
-                            <img src={aw5} className="award_image" />
-                        </div>
-                    </div>
-                </div>
-            </Box>
-            <Box mt={10}>
-                <div className="container">
-                    <div className="row d-flex align-items-center justify-content-center">
-                        <div className="col-12 col-md-10">
-                            <div className="row">
-                                <div className="col-12 col-md-6">
-                                    <img
-                                        src={timer}
-                                        alt="consultation now"
-                                        className="w-100"
-                                    />
-                                </div>
-                                <div className="col-12 col-md-6 d-flex mt-5 mt-md-0 flex-column align-item-center align-items-md-start justify-content-start text-center gap-5 ps-md-5">
-                                    <Typography
-                                        as="h2"
-                                        sx={{
-                                            fontSize: "2rem",
-                                            letterSpacing: "0.009em",
-                                            lineHeight: "1.01561707em",
-                                            color: theme.palette.custom
-                                                .darkBlue,
-                                            fontWeight: "400",
-                                            [theme.breakpoints.down("sm")]: {
-                                                fontSize: "1.25rem",
-                                            },
-                                        }}
-                                    >
-                                        {checkLang(
-                                            locale,
-                                            "Claim Your Free Consultation Now!",
-                                            "Klaim Konsultasi Gratis Sekarang!",
-                                            "今すぐ無料相談を申し込む！"
-                                        )}
-                                    </Typography>
-                                    <CountdownTimer />
-                                    <Button
-                                        href="https://wa.me/62811195708?text=Hello%20Ideatax"
-                                        rel="noopener noreferrer"
-                                        target="_blank"
-                                        sx={{
-                                            color: theme.palette.custom.white,
-                                            fontWeight: "500",
-                                            backgroundColor:
-                                                theme.palette.custom.orange,
-                                            padding: "15px",
-                                            fontSize: "1.2rem",
-                                            textTransform: "none",
-                                            [theme.breakpoints.down("sm")]: {
-                                                padding: "7px",
-                                                fontSize: "0.9rem",
-                                                fontWeight: "500",
-                                            },
-                                        }}
-                                    >
-                                        {checkLang(
-                                            locale,
-                                            "Consult Now",
-                                            "Konsultasi Sekarang",
-                                            "今すぐ相談"
-                                        )}
-                                    </Button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

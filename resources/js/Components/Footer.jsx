@@ -1,7 +1,10 @@
 import React from "react";
 import "@/assets/sass/footer.scss";
+import checkLang from "@/utils/checkLang";
+import { usePage } from "@inertiajs/react";
 
 function Footer() {
+    const { locale } = usePage().props;
     return (
         <footer className="py-5">
             <div className="container">
@@ -39,16 +42,39 @@ function Footer() {
                     </div>
                     <div className="col-12 col-md-4 right d-flex flex-column align-items-end ps-md-5 pt-2 pt-md-0">
                         <div className="text-left w-100 b_border py-2">
-                            <a href="{{ route('our-team') }}">Team</a>
+                            <a href="{{ route('our-team') }}">
+                                {checkLang(locale, "Team", "Tim", "チーム")}
+                            </a>
                         </div>
                         <div className="text-left w-100 b_border py-2">
-                            <a href="{{ route('articles') }}">Articles</a>
+                            <a href="{{ route('articles') }}">
+                                {checkLang(
+                                    locale,
+                                    "Articles",
+                                    "Artikel",
+                                    "記事"
+                                )}
+                            </a>
                         </div>
                         <div className="text-left w-100 b_border py-2">
-                            <a href="{{ route('careers') }}">Career</a>
+                            <a href="{{ route('careers') }}">
+                                {checkLang(
+                                    locale,
+                                    "Career",
+                                    "Karir",
+                                    "キャリア"
+                                )}
+                            </a>
                         </div>
                         <div className="text-left w-100 b_border py-2">
-                            <a href="{{ route('contact') }}">Contact Ideatax</a>
+                            <a href="{{ route('contact') }}">
+                                {checkLang(
+                                    locale,
+                                    "Contact Ideatax",
+                                    "Hubungi Ideatax",
+                                    "Ideataxへのお問い合わせ"
+                                )}
+                            </a>
                         </div>
                     </div>
                 </div>
