@@ -148,13 +148,13 @@ i18next
                         "私たちのサービスは、税務調査の通知書を受け取る前のサポート、そして税務署職員との面談時における支援を含みます。",
                     serviceTwoHead: "税金還付支援",
                     serviceTwoDesc:
-                        "Tax refund happens when there is a remaining tax in a tax return year that should be returned to the Taxpayer. Ideatax is ready to help you in submitting and processing refund of tax overpayment.",
+                        "税金の還付とは、確定申告年度において納税者に返還されるべき税金の過剰納付が生じた場合を指します。Ideataxは、税金の還付申請および処理をサポートする準備が整っています。",
                     serviceThreeHead: "移転価格文書",
                     serviceThreeDesc:
-                        "Transfer pricing documentation ensures that both national and multinational companies intra-group transactions comply with tax regulations, demonstrating arm's length pricing to avoid tax avoidance and ensuring transparency for tax authorities.",
+                        "移転価格文書は、国内企業および多国籍企業のグループ内取引が税法を遵守していることを保証し、市場価格に基づく適正価格を示すことで租税回避を防ぎ、税務当局に対する透明性を確保します。",
                     serviceFourHead: "税務コンプライアンス",
                     serviceFourDesc:
-                        "Companies need to automate tax processes to stay compliant with regulations. Ideatax offers a solution with automation and expert support, minimizing risk and freeing your time to focus on running your business.",
+                        "企業は、規制を遵守するために税務プロセスの自動化が必要です。Ideataxは、自動化と専門家のサポートを組み合わせたソリューションを提供し、リスクを最小限に抑え、貴社がビジネス運営に専念できる時間を生み出します。",
                     read: "詳細",
                     articleHead: "アーティクルズ",
                     consult: "相談受付中",
