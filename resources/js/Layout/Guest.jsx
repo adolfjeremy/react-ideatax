@@ -14,7 +14,7 @@ import { IoLogIn } from "react-icons/io5";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
 
-function Guest({ children, en, id, jp, description, seo_title, href }) {
+function Guest({ children, en, id, jp, cn, description, seo_title, href }) {
     const { locale, auth } = usePage().props;
     const { spinnerState } = useContext(SpinnerContext);
     const { alertState } = useContext(AlertContext);
@@ -52,7 +52,7 @@ function Guest({ children, en, id, jp, description, seo_title, href }) {
                 <link rel="canonical" href={href}></link>
                 <title>{seo_title}</title>
             </Head>
-            <HeaderBar en={en} id={id} jp={jp} />
+            <HeaderBar en={en} id={id} jp={jp} cn={cn} />
             <Box
                 component="main"
                 sx={{ minHeight: "100vh", width: "100%", position: "relative" }}

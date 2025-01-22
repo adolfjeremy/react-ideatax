@@ -60,6 +60,7 @@ function Home() {
             en={route("home")}
             id={route("home.id")}
             jp={route("home.jp")}
+            cn={route("home.jp")}
             description={checkLang(
                 locale,
                 page.description_eng,

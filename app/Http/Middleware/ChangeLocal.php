@@ -17,14 +17,7 @@ class ChangeLocal
     public function handle(Request $request, Closure $next): Response
     {
         $isIndonesian = $request->segment(1);
-        // if($isIndonesian === 'id') {
-        //     App::setLocale('id');
-        // } else if ($isIndonesian === 'en') {
-        //     App::setLocale('en');
-        // } else {
-        //     App::setLocale('jp');
-        // }
-        if (in_array($isIndonesian, ['en', 'id', 'jp'])) {
+        if (in_array($isIndonesian, ['en', 'id', 'jp', 'zh-CN'])) {
             App::setLocale($isIndonesian);  // Set locale sesuai segmen URL
         } else {
             App::setLocale('en');  // Default locale ke 'en' jika tidak ditemukan
