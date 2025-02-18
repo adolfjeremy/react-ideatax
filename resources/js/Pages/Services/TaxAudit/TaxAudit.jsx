@@ -8,20 +8,13 @@ import audit1 from "@/assets/images/tax-audit/audit1.webp";
 import audit2 from "@/assets/images/tax-audit/audit2.webp";
 import audit3 from "@/assets/images/tax-audit/audit3.webp";
 import audit4 from "@/assets/images/tax-audit/audit4.webp";
-import icon2 from "./icon2.webp";
-import icon3 from "./icon3.webp";
 import ken from "./ken.webp";
-import review from "./review.webp";
-import persiapan from "./persiapan.webp";
-import pendampingan from "./pendampingan.webp";
 import aw from "@/assets/images/aw.webp";
 import aw1 from "@/assets/images/aw-1.webp";
 import aw2 from "@/assets/images/aw-2.webp";
 import aw3 from "@/assets/images/aw-3.webp";
 import aw4 from "@/assets/images/aw-4.webp";
 import aw5 from "@/assets/images/aw-5.webp";
-import timer from "./timer.webp";
-import CountdownTimer from "./CountdownTimer";
 import CounterLg from "@/Components/CounterLg";
 
 function TaxAudit() {
@@ -30,6 +23,7 @@ function TaxAudit() {
     const { locale, stats } = usePage().props;
     return (
         <Guest
+            className="services"
             en={route("tax-audit")}
             id={route("tax-audit.id")}
             jp={route("tax-audit.jp")}

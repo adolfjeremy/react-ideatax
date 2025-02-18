@@ -119,6 +119,39 @@ function Service() {
                                 </Typography>
                                 <IoIosArrowRoundForward />
                             </Link>
+                            <Link
+                                href={
+                                    locale == "en"
+                                        ? route("tax-refund")
+                                        : locale == "id"
+                                        ? route("tax-refund.id")
+                                        : route("tax-refund.jp")
+                                }
+                                sx={{
+                                    svg: {
+                                        fontSize: "2rem",
+                                        color: theme.palette.custom.darkBlue,
+                                    },
+                                }}
+                                className="col-12 service_item d-flex align-items-center justify-content-between p-2"
+                            >
+                                <Typography
+                                    sx={{
+                                        fontSize: "1.3125rem",
+                                        letterSpacing: "0.009em",
+                                        lineHeight: "1.2em",
+                                        color: theme.palette.custom.blue,
+                                    }}
+                                >
+                                    {checkLang(
+                                        locale,
+                                        "Tax Refund Assistance",
+                                        "Bantuan Pengembalian Pajak",
+                                        "税金の還付 サポート"
+                                    )}
+                                </Typography>
+                                <IoIosArrowRoundForward />
+                            </Link>
                             {services.map((service) => (
                                 <Link
                                     href={

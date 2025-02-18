@@ -254,7 +254,7 @@ function LangChange({ en, id, jp, cn }) {
                         <img src={jpf} alt="Japan flag" />
                     </MenuItem>
                 )}
-                {locale !== "zh-CN" && (
+                {/* {locale !== "zh-CN" && (
                     <MenuItem
                         sx={{
                             display: "flex",
@@ -284,7 +284,7 @@ function LangChange({ en, id, jp, cn }) {
                         </Link>
                         <img src={jpf} alt="Japan flag" />
                     </MenuItem>
-                )}
+                )} */}
             </Menu>
         </>
     );

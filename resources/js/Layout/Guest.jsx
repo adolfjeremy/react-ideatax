@@ -14,7 +14,17 @@ import { IoLogIn } from "react-icons/io5";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
 
-function Guest({ children, en, id, jp, cn, description, seo_title, href }) {
+function Guest({
+    children,
+    en,
+    id,
+    jp,
+    cn,
+    description,
+    seo_title,
+    href,
+    className,
+}) {
     const { locale, auth } = usePage().props;
     const { spinnerState } = useContext(SpinnerContext);
     const { alertState } = useContext(AlertContext);
@@ -56,20 +66,27 @@ function Guest({ children, en, id, jp, cn, description, seo_title, href }) {
             <Box
                 component="main"
                 sx={{ minHeight: "100vh", width: "100%", position: "relative" }}
+                className={className}
             >
                 {alertState && <AlertBar />}
                 {spinnerState && <Spinner />}
                 {children}
+            </Box>
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 2,
+                    position: "fixed",
+                    bottom: 20,
+                    right: 20,
+                    svg: {
+                        fontSize: "1.4rem",
+                    },
+                }}
+            >
                 <SpeedDial
                     ariaLabel="SpeedDial basic example"
-                    sx={{
-                        position: "fixed",
-                        bottom: 100,
-                        right: 20,
-                        svg: {
-                            fontSize: "1.25rem",
-                        },
-                    }}
                     icon={<FaUser />}
                 >
                     {auth.user ? (
@@ -120,17 +137,11 @@ function Guest({ children, en, id, jp, cn, description, seo_title, href }) {
                     href="https://wa.me/62811195708?text=Hello%20Ideatax"
                     target="_blank"
                     rel="noopener noreferrer"
-                    sx={{
-                        position: "fixed",
-                        bottom: 20,
-                        right: 20,
-                        backgroundColor: "#25D366",
-                        svg: {
-                            fontSize: "1.4rem",
-                        },
-                    }}
                     color="primary"
                     aria-label="add"
+                    sx={{
+                        backgroundColor: "#25D366",
+                    }}
                 >
                     <FaWhatsapp />
                 </Fab>
