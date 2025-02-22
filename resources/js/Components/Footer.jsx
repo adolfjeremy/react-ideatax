@@ -42,12 +42,26 @@ function Footer() {
                     </div>
                     <div className="col-12 col-md-4 right d-flex flex-column align-items-end ps-md-5 pt-2 pt-md-0">
                         <div className="text-left w-100 b_border py-2">
-                            <a href="{{ route('our-team') }}">
+                            <a
+                                href={checkLang(
+                                    locale,
+                                    route("team"),
+                                    route("team.id"),
+                                    route("team.jp")
+                                )}
+                            >
                                 {checkLang(locale, "Team", "Tim", "チーム")}
                             </a>
                         </div>
                         <div className="text-left w-100 b_border py-2">
-                            <a href="{{ route('articles') }}">
+                            <a
+                                href={checkLang(
+                                    locale,
+                                    route("articles"),
+                                    route("articles.id"),
+                                    route("articles.jp")
+                                )}
+                            >
                                 {checkLang(
                                     locale,
                                     "Articles",
@@ -57,7 +71,14 @@ function Footer() {
                             </a>
                         </div>
                         <div className="text-left w-100 b_border py-2">
-                            <a href="{{ route('careers') }}">
+                            <a
+                                href={checkLang(
+                                    locale,
+                                    route("career"),
+                                    route("career.id"),
+                                    route("career.jp")
+                                )}
+                            >
                                 {checkLang(
                                     locale,
                                     "Career",
@@ -67,7 +88,14 @@ function Footer() {
                             </a>
                         </div>
                         <div className="text-left w-100 b_border py-2">
-                            <a href="{{ route('contact') }}">
+                            <a
+                                href={checkLang(
+                                    locale,
+                                    route("contact"),
+                                    route("contact.id"),
+                                    route("contact.jp")
+                                )}
+                            >
                                 {checkLang(
                                     locale,
                                     "Contact Ideatax",
