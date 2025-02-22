@@ -1,16 +1,33 @@
 import React from "react";
+import { Box, useTheme } from "@mui/material";
 import "@/assets/sass/footer.scss";
 import checkLang from "@/utils/checkLang";
 import { usePage } from "@inertiajs/react";
 
 function Footer() {
     const { locale } = usePage().props;
+    const theme = useTheme();
     return (
         <footer className="py-5">
             <div className="container">
                 <div className="row">
-                    <div className="col-12 col-md-8 left">
-                        <h2>PT Ide Solid Indonesia</h2>
+                    <Box
+                        sx={{
+                            paddingRight: "200px",
+                            [theme.breakpoints.down("md")]: {
+                                padding: 0,
+                            },
+                        }}
+                        className="col-12 col-md-8 left"
+                    >
+                        <h2>
+                            {checkLang(
+                                locale,
+                                "PT Ide Solid Indonesia",
+                                "PT Ide Solid Indonesia",
+                                "PT インドネシアアイデアソリッド"
+                            )}
+                        </h2>
                         <a
                             target="_blank"
                             className="mt-1"
@@ -33,13 +50,12 @@ function Footer() {
                             rel="noopener noreferrer"
                             className="mt-1"
                         >
-                            Menara Kadin, South Jakarta, Indonesia
-                            <br />
-                            Level 26 Jl. HR. Rasuna Said Blok X-5 Kav.2-3, East
-                            <br />
-                            Kuningan, Setiabudi, South Jakarta, Jakarta
+                            {locale === "jp" &&
+                                "メナラ・カディン、南ジャカルタ、インドネシアレベル26 Jl. HR. ラスナ・サイード通り ブロック X-5 カブ2-3東クニンガン、セティアブディ、南ジャカルタ、ジャカルタ"}
+                            {locale !== "jp" &&
+                                "Menara Kadin Indonesia, Jl. H. R. Rasuna Said Blok X-5 No.Kav.2-3, RT.1/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12950"}
                         </a>
-                    </div>
+                    </Box>
                     <div className="col-12 col-md-4 right d-flex flex-column align-items-end ps-md-5 pt-2 pt-md-0">
                         <div className="text-left w-100 b_border py-2">
                             <a
@@ -100,7 +116,7 @@ function Footer() {
                                     locale,
                                     "Contact Ideatax",
                                     "Hubungi Ideatax",
-                                    "Ideataxへのお問い合わせ"
+                                    "お問い合わせ"
                                 )}
                             </a>
                         </div>
