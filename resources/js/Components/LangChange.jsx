@@ -92,35 +92,6 @@ function LangChange({ en, id, jp, cn }) {
                         </Typography>
                         <img src={idf} alt="Indonesian flag" />
                     </Box>
-                ) : locale == "id" ? (
-                    <Box
-                        sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            gap: 1,
-                            img: {
-                                width: "20px",
-                            },
-                        }}
-                    >
-                        <Typography
-                            sx={{
-                                fontSize: "0.8rem",
-                                color: theme.palette.custom.white,
-                                letterSpacing: ".009em",
-                                textTransform: "capitalize",
-                                textDecoration: "none",
-                                padding: "0.5rem 0",
-                                "&:hover": {
-                                    color: theme.palette.custom.orange,
-                                },
-                            }}
-                        >
-                            Japan
-                        </Typography>
-                        <img src={jpf} alt="Japan flag" />
-                    </Box>
                 ) : (
                     <Box
                         sx={{
@@ -146,7 +117,7 @@ function LangChange({ en, id, jp, cn }) {
                                 },
                             }}
                         >
-                            China
+                            Japan
                         </Typography>
                         <img src={jpf} alt="Japan flag" />
                     </Box>
