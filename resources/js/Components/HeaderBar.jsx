@@ -60,7 +60,7 @@ function HeaderBar({ en, id, jp, cn }) {
         if (
             !route().current("team") ||
             !route().current("team.id") ||
-            !route().current("team.id")
+            !route().current("team.jp")
         ) {
             setCurrentRoute(true);
         } else {
