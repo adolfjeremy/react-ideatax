@@ -37,9 +37,9 @@ function TaxRefund() {
             )}
             seo_title={checkLang(
                 locale,
-                "Tax Refund Assistance Service Best and Trusted Tax Consultant in Indonesia",
-                "Layanan Bantuan Pengembalian Pajak Konsultan Pajak Terbaik dan Terpercaya di Indonesia",
-                "税金の還付 サポート"
+                "Tax Refund Assistance Service Best and Trusted Tax Consultant in Indonesia | Ideatax",
+                "Layanan Bantuan Pengembalian Pajak Konsultan Pajak Terbaik dan Terpercaya di Indonesia | Ideatax",
+                "税金の還付 サポート | Ideatax"
             )}
             href={checkLang(
                 locale,
@@ -448,11 +448,11 @@ function TaxRefund() {
                                     backgroundColor:
                                         theme.palette.custom.orange,
                                     padding: "15px",
-                                    fontSize: "1.2rem",
+                                    fontSize: "1.3rem",
                                     textTransform: "none",
                                     [theme.breakpoints.down("sm")]: {
                                         padding: "7px",
-                                        fontSize: "0.8rem",
+                                        fontSize: "1.25rem",
                                         fontWeight: "500",
                                     },
                                 }}
@@ -548,11 +548,11 @@ function TaxRefund() {
                                     backgroundColor:
                                         theme.palette.custom.orange,
                                     padding: "15px",
-                                    fontSize: "1.2rem",
+                                    fontSize: "1.3rem",
                                     textTransform: "none",
                                     [theme.breakpoints.down("sm")]: {
                                         padding: "7px",
-                                        fontSize: "0.8rem",
+                                        fontSize: "1.25rem",
                                         fontWeight: "500",
                                     },
                                 }}
@@ -1401,16 +1401,15 @@ function TaxRefund() {
                                 target="_blank"
                                 sx={{
                                     color: theme.palette.custom.white,
-                                    fontWeight: "800",
+                                    fontWeight: "500",
                                     backgroundColor:
                                         theme.palette.custom.orange,
-                                    padding: "20px 30px",
-                                    fontSize: "1.5rem",
+                                    padding: "15px",
+                                    fontSize: "1.3rem",
                                     textTransform: "none",
-                                    borderRadius: "40px",
                                     [theme.breakpoints.down("sm")]: {
                                         padding: "7px",
-                                        fontSize: "0.8rem",
+                                        fontSize: "1.25rem",
                                         fontWeight: "500",
                                     },
                                 }}

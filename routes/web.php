@@ -81,7 +81,7 @@ Route::get('/our-team/{slug}', [TeamController::class, 'detail'])->name('team-de
 Route::get('/our-services', [ServiceController::class, 'index'])->name('service');
 Route::get('/our-services/{slug_eng}', [ServiceController::class, 'detail'])->name('service-detail');
 Route::get('/our-service/tax-audit-assistance', [TaxAuditController::class, 'detail'])->name('tax-audit');
-// Route::get('/our-service/tax-report', [TaxReportController::class, 'index'])->name('tax-report');
+Route::get('/our-service/annual-tax-return-reporting-service-for-corporations-and-individuals', [TaxReportController::class, 'index'])->name('tax-report');
 Route::get('/our-service/tax-refund-assistance', [TaxRefundController::class, 'index'])->name('tax-refund');
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
@@ -103,7 +103,7 @@ Route::prefix('id')
         Route::get('/our-services', [ServiceController::class, 'index'])->name('service.id');
         Route::get('/our-services/{slug}', [ServiceController::class, 'detail'])->name('service-detail.id');
         Route::get('/our-service/bantuan-pemeriksaan-pajak', [TaxAuditController::class, 'detail'])->name('tax-audit.id');
-        // Route::get('/our-service/tax-report', [TaxReportController::class, 'index'])->name('tax-report.id');
+        Route::get('/our-service/layanan-pelaporan-spt-tahunan-badan-dan-pribadi', [TaxReportController::class, 'index'])->name('tax-report.id');
         Route::get('/our-service/bantuan-pengembalian-pajak', [TaxRefundController::class, 'index'])->name('tax-refund.id');
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.id');
         Route::get('/articles/{slug}', [ArticleController::class, 'detail'])->name('article-detail.id');
@@ -125,6 +125,7 @@ Route::prefix('jp')
         Route::get('/our-services/{slug_jpn}', [ServiceController::class, 'detail'])->name('service-detail.jp');
         Route::get('/our-service/zeimu-kansa-sapoto', [TaxAuditController::class, 'detail'])->name('tax-audit.jp');
         Route::get('/our-service/shui-jin-nohuan-fu-sapoto', [TaxRefundController::class, 'index'])->name('tax-refund.jp');
+        Route::get('/our-service/fa-ren-oyobige-ren-xiang-kenian-jian-na-shui-shen-gao-sptsabisu', [TaxReportController::class, 'index'])->name('tax-report.jp');
 
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.jp');
         Route::get('/articles/{slug_jpn}', [ArticleController::class, 'detail'])->name('article-detail.jp');

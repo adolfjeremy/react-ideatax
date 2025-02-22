@@ -152,6 +152,39 @@ function Service() {
                                 </Typography>
                                 <IoIosArrowRoundForward />
                             </Link>
+                            <Link
+                                href={
+                                    locale == "en"
+                                        ? route("tax-report")
+                                        : locale == "id"
+                                        ? route("tax-report.id")
+                                        : route("tax-report.jp")
+                                }
+                                sx={{
+                                    svg: {
+                                        fontSize: "2rem",
+                                        color: theme.palette.custom.darkBlue,
+                                    },
+                                }}
+                                className="col-12 service_item d-flex align-items-center justify-content-between p-2"
+                            >
+                                <Typography
+                                    sx={{
+                                        fontSize: "1.3125rem",
+                                        letterSpacing: "0.009em",
+                                        lineHeight: "1.2em",
+                                        color: theme.palette.custom.blue,
+                                    }}
+                                >
+                                    {checkLang(
+                                        locale,
+                                        "Annual Tax Return Reporting Service for Corporations and Individuals",
+                                        "Layanan Pelaporan SPT Tahunan Badan dan Pribadi",
+                                        "法人および個人向け年間納税申告 SPT サービス"
+                                    )}
+                                </Typography>
+                                <IoIosArrowRoundForward />
+                            </Link>
                             {services.map((service) => (
                                 <Link
                                     href={

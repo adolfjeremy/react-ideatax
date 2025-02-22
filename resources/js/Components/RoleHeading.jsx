@@ -18,8 +18,8 @@ function RoleHeading() {
                             color: theme.palette.custom.darkBlue,
                             fontWeight: "600",
                             mb: 2,
-                            [theme.breakpoints.down("sm")]: {
-                                fontSize: "1.25rem",
+                            [theme.breakpoints.down("md")]: {
+                                fontSize: "1.5rem",
                             },
                         }}
                     >
@@ -32,15 +32,16 @@ function RoleHeading() {
                                 letterSpacing: "0.009em",
                                 fontWeight: "600",
                                 mb: 2,
-                                [theme.breakpoints.down("sm")]: {
-                                    fontSize: "1.25rem",
+                                [theme.breakpoints.down("md")]: {
+                                    fontSize: "1.5rem",
                                 },
                             }}
                         >
                             Ideatax
                         </Typography>{" "}
-                        Serves as <br />
-                        Your Tax Partner
+                        Supports Your
+                        <br />
+                        Tax Compliance
                     </Typography>,
                     <Typography
                         sx={{
@@ -49,8 +50,8 @@ function RoleHeading() {
                             color: theme.palette.custom.darkBlue,
                             fontWeight: "600",
                             mb: 2,
-                            [theme.breakpoints.down("sm")]: {
-                                fontSize: "1.25rem",
+                            [theme.breakpoints.down("md")]: {
+                                fontSize: "1.5rem",
                             },
                         }}
                     >
@@ -63,8 +64,8 @@ function RoleHeading() {
                                 letterSpacing: "0.009em",
                                 fontWeight: "600",
                                 mb: 2,
-                                [theme.breakpoints.down("sm")]: {
-                                    fontSize: "1.25rem",
+                                [theme.breakpoints.down("md")]: {
+                                    fontSize: "1.5rem",
                                 },
                             }}
                         >
@@ -80,8 +81,8 @@ function RoleHeading() {
                             color: theme.palette.custom.darkBlue,
                             fontWeight: "600",
                             mb: 2,
-                            [theme.breakpoints.down("sm")]: {
-                                fontSize: "1.25rem",
+                            [theme.breakpoints.down("md")]: {
+                                fontSize: "1.5rem",
                             },
                         }}
                     >
@@ -93,8 +94,8 @@ function RoleHeading() {
                                 letterSpacing: "0.009em",
                                 fontWeight: "600",
                                 mb: 2,
-                                [theme.breakpoints.down("sm")]: {
-                                    fontSize: "1.25rem",
+                                [theme.breakpoints.down("md")]: {
+                                    fontSize: "1.5rem",
                                 },
                             }}
                         >
