@@ -51,9 +51,9 @@ function Contact() {
     };
     return (
         <Guest
-            en={route("career")}
-            id={route("career.id")}
-            jp={route("career.jp")}
+            en={route("contact")}
+            id={route("contact.id")}
+            jp={route("contact.jp")}
             description={checkLang(
                 locale,
                 page.description_eng,
@@ -68,9 +68,9 @@ function Contact() {
             )}
             href={checkLang(
                 locale,
-                route("career"),
-                route("career.id"),
-                route("career.jp")
+                route("contact"),
+                route("contact.id"),
+                route("contact.jp")
             )}
         >
             <Box
