@@ -2,15 +2,38 @@ import { Box, Typography, useTheme, Button, TextField } from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
-import TruncateRichText from "@/Components/TruncateRichText";
+import RichText from "@/Components/RichText";
 import checkLang from "@/utils/checkLang";
+import "../career.scss";
 
 function CareerDetail() {
     const { locale, item } = usePage().props;
     const theme = useTheme();
     const { t } = useTranslation();
     return (
-        <Guest>
+        <Guest
+            en={route("career-detail", item.slug_eng)}
+            id={route("career-detail.id", item.slug)}
+            jp={route("career-detail.jp", item.slug_jpn)}
+            description={checkLang(
+                locale,
+                item.description_eng,
+                item.description,
+                item.description_jpn
+            )}
+            seo_title={checkLang(
+                locale,
+                item.SEO_title_eng,
+                item.SEO_title,
+                item.SEO_title_jpn
+            )}
+            href={checkLang(
+                locale,
+                route("career-detail", item.slug_eng),
+                route("career-detail.id", item.slug),
+                route("career-detail.jp", item.slug_jpn)
+            )}
+        >
             <Box sx={{ paddingTop: "120px" }}>
                 <div className="container">
                     <div className="row">
@@ -44,7 +67,7 @@ function CareerDetail() {
                                             fontSize: "30px",
                                             fontWeight: "700",
                                             lineHeight: "38px",
-                                            margin: "0 0 23px 0",
+                                            margin: "0 0 15px 0",
                                             padding: "10px 0 0 0",
                                             color: theme.palette.custom
                                                 .darkBlue,
@@ -54,19 +77,9 @@ function CareerDetail() {
                                     </Typography>
                                 </div>
                             )}
-                            <div className="col-12 career_desc">
-                                <TruncateRichText
-                                    style={{
-                                        color: theme.palette.custom.lightBlue,
-                                        fontSize: "0.8939rem",
-                                        [theme.breakpoints.down("sm")]: {
-                                            fontSize: "0.8939rem",
-                                        },
-                                        lineHeight: "1.17857248em",
-                                        letterSpacing: "0.009em",
-                                        padding: 0,
-                                        margin: 0,
-                                    }}
+                            <Box className="col-12">
+                                <RichText
+                                    className="career_desc"
                                     htmlContent={checkLang(
                                         locale,
                                         item.jobdesc_eng,
@@ -74,7 +87,7 @@ function CareerDetail() {
                                         item.jobdesc_jpn
                                     )}
                                 />
-                            </div>
+                            </Box>
                             <div className="col-12">
                                 <Typography
                                     variant="h2"
@@ -90,7 +103,17 @@ function CareerDetail() {
                                     {t("careerQual")}
                                 </Typography>
                             </div>
-                            <div className="col-12 career_desc"></div>
+                            <Box className="col-12">
+                                <RichText
+                                    className="career_desc"
+                                    htmlContent={checkLang(
+                                        locale,
+                                        item.qualification_eng,
+                                        item.qualification,
+                                        item.qualification_jpn
+                                    )}
+                                />
+                            </Box>
                             <div className="col-12">
                                 <Typography
                                     variant="h2"
@@ -106,7 +129,17 @@ function CareerDetail() {
                                     {t("careerSkill")}
                                 </Typography>
                             </div>
-                            <div className="col-12 career_desc"></div>
+                            <Box className="col-12">
+                                <RichText
+                                    className="career_desc"
+                                    htmlContent={checkLang(
+                                        locale,
+                                        item.skill_eng,
+                                        item.skill,
+                                        item.skill_jpn
+                                    )}
+                                />
+                            </Box>
                         </div>
                         <div className="col-12 col-lg-5 mt-md-4">
                             <div className="col-12">
