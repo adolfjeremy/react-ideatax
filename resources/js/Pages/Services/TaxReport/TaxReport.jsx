@@ -100,7 +100,7 @@ function TaxReport() {
                             locale,
                             "Annual Tax Return Filing Efficient, Accurate, and Hassle-Free",
                             "SPT Tahunan Badan/Orang Pribadi Rapih, Cepat dan Tepat",
-                            "20年以上の税務調査対応経験"
+                            ""
                         )}
                     </Typography>
                     <Typography
@@ -149,7 +149,7 @@ function TaxReport() {
                             locale,
                             "Consult Now",
                             "Jadwalkan Konsultasi",
-                            "今すぐ相談"
+                            ""
                         )}
                     </Button>
                 </Box>
@@ -183,7 +183,7 @@ function TaxReport() {
                             >
                                 <Typography
                                     sx={{
-                                        fontSize: "1.4rem",
+                                        fontSize: "1.1rem",
                                         letterSpacing: "0.009em",
                                         lineHeight: "1.3em",
                                         color: theme.palette.custom.white,
@@ -191,7 +191,7 @@ function TaxReport() {
                                         fontWeight: "500",
                                         m: 0,
                                         [theme.breakpoints.down("sm")]: {
-                                            fontSize: "1.2rem",
+                                            fontSize: "1rem",
                                         },
                                     }}
                                 >
@@ -217,7 +217,7 @@ function TaxReport() {
                             >
                                 <Typography
                                     sx={{
-                                        fontSize: "1.4rem",
+                                        fontSize: "1.1rem",
                                         letterSpacing: "0.009em",
                                         lineHeight: "1.3em",
                                         color: theme.palette.custom.white,
@@ -225,7 +225,7 @@ function TaxReport() {
                                         fontWeight: "500",
                                         m: 0,
                                         [theme.breakpoints.down("sm")]: {
-                                            fontSize: "1.2rem",
+                                            fontSize: "1rem",
                                         },
                                     }}
                                 >
@@ -251,7 +251,7 @@ function TaxReport() {
                             >
                                 <Typography
                                     sx={{
-                                        fontSize: "1.4rem",
+                                        fontSize: "1.1rem",
                                         letterSpacing: "0.009em",
                                         lineHeight: "1.3em",
                                         color: theme.palette.custom.white,
@@ -259,7 +259,7 @@ function TaxReport() {
                                         fontWeight: "500",
                                         m: 0,
                                         [theme.breakpoints.down("sm")]: {
-                                            fontSize: "1.2rem",
+                                            fontSize: "1rem",
                                         },
                                     }}
                                 >
@@ -285,7 +285,7 @@ function TaxReport() {
                             >
                                 <Typography
                                     sx={{
-                                        fontSize: "1.4rem",
+                                        fontSize: "1.1rem",
                                         letterSpacing: "0.009em",
                                         lineHeight: "1.3em",
                                         color: theme.palette.custom.white,
@@ -293,7 +293,7 @@ function TaxReport() {
                                         fontWeight: "500",
                                         m: 0,
                                         [theme.breakpoints.down("sm")]: {
-                                            fontSize: "1.2rem",
+                                            fontSize: "1rem",
                                         },
                                     }}
                                 >
@@ -345,9 +345,9 @@ function TaxReport() {
                                 >
                                     {checkLang(
                                         locale,
-                                        "Why ",
+                                        "Why Choose ",
                                         "Kenapa ",
-                                        "なぜ 税務問題において"
+                                        ""
                                     )}
                                     <Typography
                                         fontSize="2rem"
@@ -358,9 +358,9 @@ function TaxReport() {
                                     </Typography>{" "}
                                     {checkLang(
                                         locale,
-                                        "Choose Ideatax for Your Tax Matters?",
+                                        "for Your Tax Matters?",
                                         "Adalah Pilihan Terbaik dalam Masalah Pajak?",
-                                        "が最適な選択肢である理由"
+                                        ""
                                     )}
                                 </Typography>
                             </div>
@@ -420,7 +420,7 @@ function TaxReport() {
                                             {checkLang(
                                                 locale,
                                                 "20+ Years of Tax Compliance Handling Experience",
-                                                "Pengalaman 20+ Tahun Menangani Pemeriksaan Pajak",
+                                                "Pengalaman 20+ Tahun Menangani Kepatuhan Pajak",
                                                 ""
                                             )}
                                         </Typography>
@@ -587,7 +587,7 @@ function TaxReport() {
                                                 locale,
                                                 "Client-Centric Approach",
                                                 "Pendekatan Kebutuhan Client",
-                                                "クライアントのニーズへのアプローチ"
+                                                ""
                                             )}
                                         </Typography>
                                         <Typography
@@ -609,7 +609,7 @@ function TaxReport() {
                                                 locale,
                                                 "We believe that open communication and prompt responses are the cornerstones of successful collaboration. At every stage, we are committed to providing full support, with a strong dedication to maintaining privacy and confidentiality as our core values.",
                                                 "Kami percaya bahwa komunikasi yang terbuka dan tanggapan yang cepat adalah dasar dari kolaborasi yang sukses. Di setiap tahap, kami siap mendukung sepenuhnya, dengan komitmen kuat untuk menjaga privasi dan kerahasiaan sebagai bagian tak terpisahkan dari nilai yang kami junjung.",
-                                                "私たちは、オープンなコミュニケーションと迅速な応答が成功するコラボレーションの基本であると信じています。すべての段階で、私たちは完全にサポートする準備が整っており、プライバシーと機密性を守ることを、私たちの価値観の不可欠な部分として強くコミットしています。"
+                                                ""
                                             )}
                                         </Typography>
                                     </Box>
@@ -642,7 +642,7 @@ function TaxReport() {
                                     locale,
                                     "Consult Now",
                                     "Konsultasi Sekarang",
-                                    "今すぐ相談"
+                                    ""
                                 )}
                             </Button>
                         </div>
@@ -778,9 +778,9 @@ function TaxReport() {
                                 </Typography>
                                 {checkLang(
                                     locale,
-                                    " is trusted to resolve and assist with tax issues.",
+                                    " Has Been Trusted for Tax Solutions and Assistance ",
                                     " Telah Dipercaya Menyelesaikan dan Membantu Permasalahan Pajak",
-                                    " はさまざまな業界の税務問題解決に信頼されています。"
+                                    ""
                                 )}
                             </Typography>
                         </div>
@@ -830,9 +830,9 @@ function TaxReport() {
                             >
                                 {checkLang(
                                     locale,
-                                    "Trusted by Diverse Industries for Tax Solutions",
+                                    "From Various Industries",
                                     "Dari Berbagai Industri",
-                                    "さまざまな業界から"
+                                    ""
                                 )}
                             </Typography>
                         </Box>
@@ -858,7 +858,7 @@ function TaxReport() {
                                             locale,
                                             "Mining and Quarrying",
                                             "Pertambangan dan Penggalian",
-                                            "さまざまな業界から"
+                                            ""
                                         )}
                                     </Typography>
                                     <Typography
@@ -878,7 +878,7 @@ function TaxReport() {
                                             locale,
                                             "Manufacturing",
                                             "Manufaktur",
-                                            "製造業"
+                                            ""
                                         )}
                                     </Typography>
                                     <Typography
@@ -898,7 +898,7 @@ function TaxReport() {
                                             locale,
                                             "Business Activities",
                                             "Kegiatan Bisnis",
-                                            "商業活動"
+                                            ""
                                         )}
                                     </Typography>
                                     <Typography
@@ -961,7 +961,7 @@ function TaxReport() {
                                             locale,
                                             "Electricity and Gas",
                                             "Listrik dan Gas",
-                                            "電気・ガス業"
+                                            ""
                                         )}
                                     </Typography>
                                     <Typography
@@ -1043,7 +1043,8 @@ function TaxReport() {
                                         {checkLang(
                                             locale,
                                             "Financial and Insurance Activities",
-                                            "Kegiatan Keuangan dan Asuransi"
+                                            "Kegiatan Keuangan dan Asuransi",
+                                            ""
                                         )}
                                     </Typography>
                                 </div>
@@ -1064,7 +1065,8 @@ function TaxReport() {
                                         {checkLang(
                                             locale,
                                             "Information and Communication",
-                                            "Informasi dan Komunikasi"
+                                            "Informasi dan Komunikasi",
+                                            ""
                                         )}
                                     </Typography>
                                     <Typography
@@ -1083,7 +1085,8 @@ function TaxReport() {
                                         {checkLang(
                                             locale,
                                             "Private",
-                                            "Pribadi"
+                                            "Pribadi",
+                                            ""
                                         )}
                                     </Typography>
                                     <Typography
@@ -1102,7 +1105,7 @@ function TaxReport() {
                                             locale,
                                             "Other Services",
                                             "Kegiatan Jasa Lainnya",
-                                            "その他のサービス業"
+                                            ""
                                         )}
                                     </Typography>
                                 </div>
@@ -1123,7 +1126,7 @@ function TaxReport() {
                                             locale,
                                             "Wholesale and Retail Trade, Vehicle and Motorcycle Repair",
                                             "Perdagangan Besar dan Eceran, Reparasi Mobil dan Sepeda Motor",
-                                            "卸売業・小売業、車両・バイクの修理"
+                                            ""
                                         )}
                                     </Typography>
                                 </div>
@@ -1212,7 +1215,7 @@ function TaxReport() {
                                     locale,
                                     "Consult Now",
                                     "Konsultasi Sekarang",
-                                    "今すぐ相談"
+                                    ""
                                 )}
                             </Button>
                         </div>

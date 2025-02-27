@@ -18,12 +18,7 @@ function RoleItems() {
                         fontWeight: "600",
                     }}
                 >
-                    {checkLang(
-                        locale,
-                        "Document Review",
-                        "Review Dokumen",
-                        "書類レビュー"
-                    )}
+                    {checkLang(locale, "Document Review", "Review Dokumen", "")}
                 </Typography>
                 <Typography
                     sx={{
@@ -106,7 +101,7 @@ function RoleItems() {
                         locale,
                         "Reviewing accounts, Corporate Income Tax Returns, followed by discussions for filing preparation",
                         "Meninjau akun, SPT PPh Badan dan berdiskusi dalam persiapan pelaporan.",
-                        "税務署への呼び出しに同席、代理、または出席します。"
+                        ""
                     )}
                 </Typography>
             </div>

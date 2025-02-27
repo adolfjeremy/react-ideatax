@@ -98,7 +98,7 @@ function TaxRefund() {
                                     locale,
                                     "Solve Your Tax Problems Wisely",
                                     "Selesaikan Masalah Pajak dengan Bijak",
-                                    "税務問題を賢く解決"
+                                    ""
                                 )}
                             </Typography>
                             <Typography
@@ -117,7 +117,8 @@ function TaxRefund() {
                                 {checkLang(
                                     locale,
                                     "Over 20 Years of Tax Refund Handling Experience",
-                                    "Lebih dari 20 Tahun Pengalaman dalam Menangani Restitusi Pajak"
+                                    "Lebih dari 20 Tahun Pengalaman dalam Menangani Restitusi Pajak",
+                                    ""
                                 )}
                             </Typography>
                             <Typography
@@ -138,7 +139,7 @@ function TaxRefund() {
                                     locale,
                                     "Maximize your company's tax refund with Ideatax, from document preparation to a seamless refund process.",
                                     "Maksimalkan restitusi pajak perusahaan Anda dengan bantuan Ideatax, mulai dari persiapan dokumen hingga proses pengembalian yang lancar.",
-                                    "Ideataxのサポートを受け、書類準備から税務調査まで、貴社の財務損失のリスクを避けましょう。"
+                                    ""
                                 )}
                             </Typography>
                             <Button
@@ -164,7 +165,7 @@ function TaxRefund() {
                                     locale,
                                     "Consult Now",
                                     "Konsultasi Sekarang",
-                                    "今すぐ相談"
+                                    ""
                                 )}
                             </Button>
                         </Box>
@@ -175,7 +176,8 @@ function TaxRefund() {
                 question={checkLang(
                     locale,
                     "If you are facing any of these situations, schedule a consultation now to prevent future problems:",
-                    "Jika Anda menghadapi salah satu dari situasi ini, jadwalkan konsultasi sekarang untuk mencegah masalah di masa depan:"
+                    "Jika Anda menghadapi salah satu dari situasi ini, jadwalkan konsultasi sekarang untuk mencegah masalah di masa depan:",
+                    ""
                 )}
             />
             <Box>
@@ -209,7 +211,8 @@ function TaxRefund() {
                                     {checkLang(
                                         locale,
                                         "Experiencing Tax Refund Delays?",
-                                        "Mengalami Keterlambatan dalam Proses Pengembalian atau Restitusi Pajak?"
+                                        "Mengalami Keterlambatan dalam Proses Pengembalian atau Restitusi Pajak?",
+                                        ""
                                     )}
                                 </Typography>
                             </Box>
@@ -242,7 +245,8 @@ function TaxRefund() {
                                     {checkLang(
                                         locale,
                                         "Unsure about your tax refund application status and how to proceed?",
-                                        "Tidak yakin dengan status permohonan restitusi pajak Anda dan bagaimana menindaklanjutinya?"
+                                        "Tidak yakin dengan status permohonan restitusi pajak Anda dan bagaimana menindaklanjutinya?",
+                                        ""
                                     )}
                                 </Typography>
                             </Box>
@@ -275,7 +279,8 @@ function TaxRefund() {
                                     {checkLang(
                                         locale,
                                         "Not prepared for a tax audit related to your tax refund claim and need expert guidance?",
-                                        "Tidak siap menghadapi pemeriksaan pajak terkait klaim restitusi Anda dan membutuhkan panduan ahli?"
+                                        "Tidak siap menghadapi pemeriksaan pajak terkait klaim restitusi Anda dan membutuhkan panduan ahli?",
+                                        ""
                                     )}
                                 </Typography>
                             </Box>
@@ -308,7 +313,8 @@ function TaxRefund() {
                                     {checkLang(
                                         locale,
                                         "Did you file for a tax refund but didn't get the expected results?",
-                                        "Mengajukan restitusi pajak, tetapi hasilnya tidak sesuai harapan?"
+                                        "Mengajukan restitusi pajak, tetapi hasilnya tidak sesuai harapan?",
+                                        ""
                                     )}
                                 </Typography>
                             </Box>
@@ -391,48 +397,56 @@ function TaxRefund() {
                             heading={checkLang(
                                 locale,
                                 "Document Review & Submission",
-                                "Tinjauan & Pengajuan Dokumen"
+                                "Tinjauan & Pengajuan Dokumen",
+                                ""
                             )}
                             subtitle={checkLang(
                                 locale,
                                 "Tax documents are reviewed to ensure accuracy and eligibility for a tax refund.",
-                                "Dokumen pajak ditinjau untuk memastikan keakuratan dan kelayakan untuk restitusi."
+                                "Dokumen pajak ditinjau untuk memastikan keakuratan dan kelayakan untuk restitusi.",
+                                ""
                             )}
                         />
                         <RoleItem
                             heading={checkLang(
                                 locale,
                                 "Submission Documents Preparation",
-                                "Persiapan Dokumen Pengajuan"
+                                "Persiapan Dokumen Pengajuan",
+                                ""
                             )}
                             subtitle={checkLang(
                                 locale,
                                 "Prepare the required documents for a tax refund submission",
-                                "Menyusun dokumen yang diperlukan untuk mengajukan Pengembalian Pajak"
+                                "Menyusun dokumen yang diperlukan untuk mengajukan Pengembalian Pajak",
+                                ""
                             )}
                         />
                         <RoleItem
                             heading={checkLang(
                                 locale,
                                 "Audit Assistance",
-                                "Pendampingan Audit"
+                                "Pendampingan Audit",
+                                ""
                             )}
                             subtitle={checkLang(
                                 locale,
                                 "If audited, we provide guidance in preparing a response and attending a meeting with the tax office.",
-                                "Jika diperiksa, panduan diberikan untuk menyiapkan tanggapan dan menghadiri pertemuan dengan kantor pajak."
+                                "Jika diperiksa, panduan diberikan untuk menyiapkan tanggapan dan menghadiri pertemuan dengan kantor pajak.",
+                                ""
                             )}
                         />
                         <RoleItem
                             heading={checkLang(
                                 locale,
                                 "Tax Refund Completed",
-                                "Restitusi Pajak Selesai"
+                                "Restitusi Pajak Selesai",
+                                ""
                             )}
                             subtitle={checkLang(
                                 locale,
                                 "The tax refund process is completed seamlessly.",
-                                "Proses pengembalian pajak selesai dengan lancar."
+                                "Proses pengembalian pajak selesai dengan lancar.",
+                                ""
                             )}
                         />
                     </div>
@@ -461,7 +475,7 @@ function TaxRefund() {
                                     locale,
                                     "Consult Now",
                                     "Konsultasi Sekarang",
-                                    "今すぐ相談"
+                                    ""
                                 )}
                             </Button>
                         </div>
@@ -561,7 +575,7 @@ function TaxRefund() {
                                     locale,
                                     "Consult Now",
                                     "Konsultasi Sekarang",
-                                    "今すぐ相談"
+                                    ""
                                 )}
                             </Button>
                         </div>
@@ -617,7 +631,7 @@ function TaxRefund() {
                                             locale,
                                             "Director General of the Ministry of Finance of Indonesia (2015-2017).",
                                             "Dirjen Kemenkeu RI Tahun 2015-2017",
-                                            "2015年から2017年まで、インドネシア財務省総局長 (Dirjen Kemenkeu RI) を務めた人物。"
+                                            ""
                                         )}
                                     </Typography>
                                     <Typography
@@ -633,7 +647,7 @@ function TaxRefund() {
                                             locale,
                                             "Senior Advisor Ideatax",
                                             "Penasehat Senior Ideatax",
-                                            "のシニアアドバイザー。"
+                                            ""
                                         )}
                                     </Typography>
                                 </Box>
@@ -934,7 +948,7 @@ function TaxRefund() {
                                     locale,
                                     "Consult Now",
                                     "Konsultasi Sekarang",
-                                    "今すぐ相談"
+                                    ""
                                 )}
                             </Button>
                         </div>
@@ -975,9 +989,9 @@ function TaxRefund() {
                                 </Typography>
                                 {checkLang(
                                     locale,
-                                    " is trusted to resolve and assist with tax issues.",
+                                    " Has Been Trusted for Tax Solutions and Assistance.",
                                     " Telah Dipercaya Menyelesaikan dan Membantu Permasalahan Pajak",
-                                    " はさまざまな業界の税務問題解決に信頼されています。"
+                                    ""
                                 )}
                             </Typography>
                         </div>
@@ -1027,9 +1041,9 @@ function TaxRefund() {
                             >
                                 {checkLang(
                                     locale,
-                                    "Trusted by Diverse Industries for Tax Solutions",
+                                    "From Various Industries",
                                     "Dari Berbagai Industri",
-                                    "さまざまな業界から"
+                                    ""
                                 )}
                             </Typography>
                         </Box>
@@ -1064,7 +1078,7 @@ function TaxRefund() {
                                             locale,
                                             "Mining and Quarrying",
                                             "Pertambangan dan Penggalian",
-                                            "さまざまな業界から"
+                                            ""
                                         )}
                                     </Typography>
                                     <Typography
@@ -1084,7 +1098,7 @@ function TaxRefund() {
                                             locale,
                                             "Manufacturing",
                                             "Manufaktur",
-                                            "製造業"
+                                            ""
                                         )}
                                     </Typography>
                                     <Typography
@@ -1104,7 +1118,7 @@ function TaxRefund() {
                                             locale,
                                             "Business Activities",
                                             "Kegiatan Bisnis",
-                                            "商業活動"
+                                            ""
                                         )}
                                     </Typography>
                                     <Typography
@@ -1167,7 +1181,7 @@ function TaxRefund() {
                                             locale,
                                             "Electricity and Gas",
                                             "Listrik dan Gas",
-                                            "電気・ガス業"
+                                            ""
                                         )}
                                     </Typography>
                                     <Typography
@@ -1249,7 +1263,8 @@ function TaxRefund() {
                                         {checkLang(
                                             locale,
                                             "Financial and Insurance Activities",
-                                            "Kegiatan Keuangan dan Asuransi"
+                                            "Kegiatan Keuangan dan Asuransi",
+                                            ""
                                         )}
                                     </Typography>
                                 </div>
@@ -1270,7 +1285,8 @@ function TaxRefund() {
                                         {checkLang(
                                             locale,
                                             "Information and Communication",
-                                            "Informasi dan Komunikasi"
+                                            "Informasi dan Komunikasi",
+                                            ""
                                         )}
                                     </Typography>
                                     <Typography
@@ -1289,7 +1305,8 @@ function TaxRefund() {
                                         {checkLang(
                                             locale,
                                             "Private",
-                                            "Pribadi"
+                                            "Pribadi",
+                                            ""
                                         )}
                                     </Typography>
                                     <Typography
@@ -1308,7 +1325,7 @@ function TaxRefund() {
                                             locale,
                                             "Other Services",
                                             "Kegiatan Jasa Lainnya",
-                                            "その他のサービス業"
+                                            ""
                                         )}
                                     </Typography>
                                 </div>
@@ -1329,7 +1346,7 @@ function TaxRefund() {
                                             locale,
                                             "Wholesale and Retail Trade, Vehicle and Motorcycle Repair",
                                             "Perdagangan Besar dan Eceran, Reparasi Mobil dan Sepeda Motor",
-                                            "卸売業・小売業、車両・バイクの修理"
+                                            ""
                                         )}
                                     </Typography>
                                 </div>
@@ -1418,7 +1435,7 @@ function TaxRefund() {
                                     locale,
                                     "Consult Now",
                                     "Konsultasi Sekarang",
-                                    "今すぐ相談"
+                                    ""
                                 )}
                             </Button>
                         </div>
