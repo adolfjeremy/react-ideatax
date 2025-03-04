@@ -18,7 +18,6 @@ function LangChange({ en, id, jp, ch }) {
     const handleClose = () => {
         setAnchorEl(null);
     };
-    console.log(locale);
     return (
         <>
             <Button

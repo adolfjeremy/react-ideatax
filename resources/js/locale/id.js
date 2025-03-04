@@ -59,5 +59,7 @@ export default {
         contactIssue: "Jelaskan Masalah Anda",
         contactRobot: "I'm not a robot",
         contactSubmit: "Jadwalkan Pertemuan",
+        address:
+            "Menara Kadin Indonesia, Jl. H. R. Rasuna Said Blok X-5 No.Kav.2-3, RT.1/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12950",
     },
 };

@@ -3,10 +3,12 @@ import { Box, useTheme } from "@mui/material";
 import "@/assets/sass/footer.scss";
 import checkLang from "@/utils/checkLang";
 import { usePage } from "@inertiajs/react";
+import { useTranslation } from "react-i18next";
 
 function Footer() {
     const { locale } = usePage().props;
     const theme = useTheme();
+    const { t } = useTranslation();
     return (
         <footer className="py-5">
             <div className="container">
@@ -25,7 +27,8 @@ function Footer() {
                                 locale,
                                 "PT Ide Solid Indonesia",
                                 "PT Ide Solid Indonesia",
-                                "PT インドネシアアイデアソリッド"
+                                "PT インドネシアアイデアソリッド",
+                                "Ide Solid Indonesia 有限责任公司"
                             )}
                         </h2>
                         <a
@@ -50,10 +53,7 @@ function Footer() {
                             rel="noopener noreferrer"
                             className="mt-1"
                         >
-                            {locale === "jp" &&
-                                "メナラ・カディン、南ジャカルタ、インドネシアレベル26 Jl. HR. ラスナ・サイード通り ブロック X-5 カブ2-3東クニンガン、セティアブディ、南ジャカルタ、ジャカルタ"}
-                            {locale !== "jp" &&
-                                "Menara Kadin Indonesia, Jl. H. R. Rasuna Said Blok X-5 No.Kav.2-3, RT.1/RW.2, Kuningan, Kuningan Tim., Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12950"}
+                            {t("address")}
                         </a>
                     </Box>
                     <div className="col-12 col-md-4 right d-flex flex-column align-items-end ps-md-5 pt-2 pt-md-0">

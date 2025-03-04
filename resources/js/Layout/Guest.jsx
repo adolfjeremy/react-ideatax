@@ -53,6 +53,7 @@ function Guest({
         });
         e.preventDefault();
     };
+    console.log(locale);
     return (
         <>
             <Head>

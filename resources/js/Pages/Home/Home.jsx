@@ -60,25 +60,27 @@ function Home() {
             en={route("home")}
             id={route("home.id")}
             jp={route("home.jp")}
-            cn={route("home.cn")}
+            ch={route("home.ch")}
             description={checkLang(
                 locale,
                 page.description_eng,
                 page.description,
-                page.description_jpn
+                page.description_jpn,
+                page.description_ch
             )}
             seo_title={checkLang(
                 locale,
                 page.SEO_title_eng,
                 page.SEO_title,
-                page.SEO_title_jpn
+                page.SEO_title_jpn,
+                page.SEO_title_ch
             )}
             href={checkLang(
                 locale,
                 route("home"),
                 route("home.id"),
                 route("home.jp"),
-                route("home.cn")
+                route("home.ch")
             )}
         >
             <Box

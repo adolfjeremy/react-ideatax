@@ -139,7 +139,7 @@ Route::prefix('jp')
 Route::prefix('zh-CN')
     ->middleware(ChangeLocal::class)
     ->group(function () {
-        Route::get('/', [HomeController::class, 'index'])->name('home.cn');
+        Route::get('/', [HomeController::class, 'index'])->name('home.ch');
         Route::get('/our-team', [TeamController::class, 'index'])->name('team.ch');
         Route::get('/our-team/{slug}', [TeamController::class, 'detail'])->name('team-detail.ch');
         // Route::get('/our-services', [ServiceController::class, 'index'])->name('service.jp');
