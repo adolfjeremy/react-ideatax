@@ -19,9 +19,11 @@ function PageEdit() {
         SEO_title: item.SEO_title,
         SEO_title_eng: item.SEO_title_eng,
         SEO_title_jpn: item.SEO_title_jpn,
+        SEO_title_ch: item.SEO_title_ch,
         description: item.description,
         description_eng: item.description_eng,
         description_jpn: item.description_jpn,
+        description_ch: item.description_ch,
     });
 
     const onHandleSubmit = (e) => {
@@ -61,6 +63,7 @@ function PageEdit() {
                                 <Tab label="Service En" {...a11yProps(0)} />
                                 <Tab label="Service Id" {...a11yProps(1)} />
                                 <Tab label="Service Jp" {...a11yProps(2)} />
+                                <Tab label="Service Ch" {...a11yProps(3)} />
                             </Tabs>
                         </Box>
                         <CustomTabPanel value={value} index={0}>
@@ -135,6 +138,32 @@ function PageEdit() {
                                 value={data.description_jpn}
                                 onChange={(e) =>
                                     setData("description_jpn", e.target.value)
+                                }
+                                sx={{ width: "100%", mb: 2 }}
+                                required
+                            />
+                        </CustomTabPanel>
+                        <CustomTabPanel value={value} index={3}>
+                            <TextField
+                                id="SEO_title_ch"
+                                value={data.SEO_title_ch}
+                                onChange={(e) =>
+                                    setData("SEO_title_ch", e.target.value)
+                                }
+                                label="SEO Title China"
+                                variant="outlined"
+                                sx={{ width: "100%", mb: 2 }}
+                                required
+                            />
+
+                            <TextField
+                                id="outlined-multiline-static"
+                                label="Description China"
+                                multiline
+                                rows={4}
+                                value={data.description_ch}
+                                onChange={(e) =>
+                                    setData("description_ch", e.target.value)
                                 }
                                 sx={{ width: "100%", mb: 2 }}
                                 required
