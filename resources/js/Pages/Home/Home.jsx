@@ -839,10 +839,7 @@ function Home() {
                                                   "service-detail.jp",
                                                   service.slug_jpn
                                               )
-                                            : route(
-                                                  "service-detail.ch",
-                                                  service.slug_ch
-                                              )
+                                            : ""
                                     }
                                     sx={{
                                         svg: {
