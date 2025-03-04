@@ -20,7 +20,7 @@ import logoClear from "@/assets/images/logo-clear.png";
 
 import "@/assets/sass/header.scss";
 
-function HeaderBar({ en, id, jp, cn }) {
+function HeaderBar({ en, id, jp, ch }) {
     const { locale } = usePage().props;
     const theme = useTheme();
     const [anchorEl, setAnchorEl] = useState(null);
@@ -203,7 +203,8 @@ function HeaderBar({ en, id, jp, cn }) {
                             locale,
                             route("team"),
                             route("team.id"),
-                            route("team.jp")
+                            route("team.jp"),
+                            route("team.ch")
                         )}
                         className={
                             route().current("team") ||
@@ -410,7 +411,7 @@ function HeaderBar({ en, id, jp, cn }) {
                     >
                         Contact Us
                     </Link>
-                    <LangChange en={en} id={id} jp={jp} cn={cn} />
+                    <LangChange en={en} id={id} jp={jp} ch={ch} />
                 </Box>
             </Drawer>
         </Box>

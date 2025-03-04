@@ -1,19 +1,13 @@
 import { useState } from "react";
-import {
-    Button,
-    Menu,
-    MenuItem,
-    useTheme,
-    Box,
-    Typography,
-    Link,
-} from "@mui/material";
+import { Button, Menu, MenuItem, useTheme, Box } from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import idf from "@/assets/images/flag/id.svg";
 import jpf from "@/assets/images/flag/jp.svg";
 import usf from "@/assets/images/flag/us.svg";
+import cnf from "@/assets/images/flag/cn.png";
+import LanguageOption from "./LanguageOption";
 
-function LangChange({ en, id, jp, cn }) {
+function LangChange({ en, id, jp, ch }) {
     const { locale } = usePage().props;
     const theme = useTheme();
     const [anchorEl, setAnchorEl] = useState(null);
@@ -24,6 +18,7 @@ function LangChange({ en, id, jp, cn }) {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    console.log(locale);
     return (
         <>
             <Button
@@ -34,93 +29,37 @@ function LangChange({ en, id, jp, cn }) {
                 onClick={handleClick}
                 sx={{ backgroundColor: theme.palette.custom.orange }}
             >
-                {locale == "en" ? (
-                    <Box
-                        sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            gap: 1,
-                            img: {
-                                width: "20px",
-                            },
-                        }}
-                    >
-                        <Typography
-                            sx={{
-                                fontSize: "0.8rem",
-                                color: theme.palette.custom.white,
-                                letterSpacing: ".009em",
-                                textTransform: "capitalize",
-                                textDecoration: "none",
-                                padding: "0.5rem 0",
-                                "&:hover": {
-                                    color: theme.palette.custom.orange,
-                                },
-                            }}
-                        >
-                            English
-                        </Typography>
-                        <img src={usf} alt="US flag" />
-                    </Box>
-                ) : locale == "id" ? (
-                    <Box
-                        sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            gap: 1,
-                            img: {
-                                width: "20px",
-                            },
-                        }}
-                    >
-                        <Typography
-                            sx={{
-                                fontSize: "0.8rem",
-                                color: theme.palette.custom.white,
-                                letterSpacing: ".009em",
-                                textTransform: "capitalize",
-                                textDecoration: "none",
-                                padding: "0.5rem 0",
-                                "&:hover": {
-                                    color: theme.palette.custom.orange,
-                                },
-                            }}
-                        >
-                            Indonesia
-                        </Typography>
-                        <img src={idf} alt="Indonesian flag" />
-                    </Box>
-                ) : (
-                    <Box
-                        sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            gap: 1,
-                            img: {
-                                width: "20px",
-                            },
-                        }}
-                    >
-                        <Typography
-                            sx={{
-                                fontSize: "0.8rem",
-                                color: theme.palette.custom.white,
-                                letterSpacing: ".009em",
-                                textTransform: "capitalize",
-                                textDecoration: "none",
-                                padding: "0.5rem 0",
-                                "&:hover": {
-                                    color: theme.palette.custom.orange,
-                                },
-                            }}
-                        >
-                            Japan
-                        </Typography>
-                        <img src={jpf} alt="Japan flag" />
-                    </Box>
+                {locale === "en" && (
+                    <LanguageOption
+                        locale={locale}
+                        currentLocale
+                        label="English"
+                        flag={usf}
+                    />
+                )}
+                {locale === "id" && (
+                    <LanguageOption
+                        locale={locale}
+                        currentLocale
+                        label="Indonesia"
+                        flag={idf}
+                    />
+                )}
+                {locale === "jp" && (
+                    <LanguageOption
+                        locale={locale}
+                        currentLocale
+                        label="Japan"
+                        flag={jpf}
+                    />
+                )}
+                {locale === "zh-CN" && (
+                    <LanguageOption
+                        locale={locale}
+                        currentLocale
+                        label="China"
+                        flag={cnf}
+                    />
                 )}
             </Button>
             <Menu
@@ -128,134 +67,51 @@ function LangChange({ en, id, jp, cn }) {
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
+                width="200px"
                 MenuListProps={{
                     "aria-labelledby": "basic-button",
                 }}
             >
                 {locale !== "en" && (
-                    <MenuItem
-                        sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            gap: 1,
-                            img: {
-                                width: "20px",
-                            },
-                        }}
-                    >
-                        <Link
+                    <MenuItem onClick={handleClose}>
+                        <LanguageOption
+                            locale={locale}
                             href={en}
-                            sx={{
-                                fontSize: "0.8rem",
-                                color: theme.palette.custom.white,
-                                letterSpacing: ".009em",
-                                textTransform: "capitalize",
-                                textDecoration: "none",
-                                padding: "0.5rem 0",
-                                "&:hover": {
-                                    color: theme.palette.custom.orange,
-                                },
-                            }}
-                        >
-                            English
-                        </Link>
-                        <img src={usf} alt="US flag" />
+                            label="English"
+                            flag={usf}
+                        />
                     </MenuItem>
                 )}
                 {locale !== "id" && (
-                    <MenuItem
-                        sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            gap: 1,
-                            img: {
-                                width: "20px",
-                            },
-                        }}
-                    >
-                        <Link
+                    <MenuItem onClick={handleClose}>
+                        <LanguageOption
+                            locale={locale}
                             href={id}
-                            sx={{
-                                fontSize: "0.8rem",
-                                color: theme.palette.custom.white,
-                                letterSpacing: ".009em",
-                                textTransform: "capitalize",
-                                textDecoration: "none",
-                                padding: "0.5rem 0",
-                                "&:hover": {
-                                    color: theme.palette.custom.orange,
-                                },
-                            }}
-                        >
-                            Indonesia
-                        </Link>
-                        <img src={idf} alt="Indonesian flag" />
+                            label="Indonesia"
+                            flag={idf}
+                        />
                     </MenuItem>
                 )}
                 {locale !== "jp" && (
-                    <MenuItem
-                        sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            gap: 1,
-                            img: {
-                                width: "20px",
-                            },
-                        }}
-                    >
-                        <Link
+                    <MenuItem onClick={handleClose}>
+                        <LanguageOption
+                            locale={locale}
                             href={jp}
-                            sx={{
-                                fontSize: "0.8rem",
-                                color: theme.palette.custom.white,
-                                letterSpacing: ".009em",
-                                textTransform: "capitalize",
-                                textDecoration: "none",
-                                padding: "0.5rem 0",
-                                "&:hover": {
-                                    color: theme.palette.custom.orange,
-                                },
-                            }}
-                        >
-                            Japan
-                        </Link>
-                        <img src={jpf} alt="Japan flag" />
+                            label="Japan"
+                            flag={jpf}
+                        />
                     </MenuItem>
                 )}
-                {/* {locale !== "zh-CN" && (
-                    <MenuItem
-                        sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            gap: 1,
-                            img: {
-                                width: "20px",
-                            },
-                        }}
-                    >
-                        <Link
-                            href={cn}
-                            sx={{
-                                fontSize: "0.8rem",
-                                color: theme.palette.custom.white,
-                                letterSpacing: ".009em",
-                                textTransform: "capitalize",
-                                textDecoration: "none",
-                                padding: "0.5rem 0",
-                                "&:hover": {
-                                    color: theme.palette.custom.orange,
-                                },
-                            }}
-                        >
-                            China
-                        </Link>
-                        <img src={jpf} alt="Japan flag" />
+                {locale !== "zh-CN" && (
+                    <MenuItem onClick={handleClose}>
+                        <LanguageOption
+                            locale={locale}
+                            href={ch}
+                            label="China"
+                            flag={cnf}
+                        />
                     </MenuItem>
-                )} */}
+                )}
             </Menu>
         </>
     );

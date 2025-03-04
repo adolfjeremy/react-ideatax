@@ -15,23 +15,27 @@ function Team() {
             en={route("team")}
             id={route("team.id")}
             jp={route("team.jp")}
+            ch={route("team.ch")}
             description={checkLang(
                 locale,
                 page.description_eng,
                 page.description,
                 page.description_jpn
+                // item.description_ch
             )}
             seo_title={checkLang(
                 locale,
                 page.SEO_title_eng,
                 page.SEO_title,
                 page.SEO_title_jpn
+                // item.SEO_title_ch
             )}
             href={checkLang(
                 locale,
                 route("team"),
                 route("team.id"),
-                route("team.jp")
+                route("team.jp"),
+                route("team.ch")
             )}
         >
             <Box className="position-relative">
@@ -70,13 +74,21 @@ function Team() {
                                 key={item.id}
                                 image={`/storage/${item.photo}`}
                                 name={item.name}
-                                position={item.position}
+                                position={checkLang(
+                                    locale,
+                                    item.position,
+                                    item.position_id,
+                                    item.position_jp,
+                                    item.position_ch
+                                )}
                                 destination={
                                     locale == "en"
                                         ? route("team-detail", item.slug)
                                         : locale == "id"
                                         ? route("team-detail.id", item.slug)
-                                        : route("team-detail.jp", item.slug)
+                                        : locale == "jp"
+                                        ? route("team-detail.jp", item.slug)
+                                        : route("team-detail.ch", item.slug)
                                 }
                             />
                         ))}

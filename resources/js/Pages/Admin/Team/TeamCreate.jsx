@@ -16,21 +16,28 @@ function TeamCreate() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: "",
         position: "",
+        position_id: "",
+        position_jp: "",
+        position_ch: "",
         linkedin: "",
         email: "",
         phone: "",
         biography: "",
         biography_eng: "",
         biography_jpn: "",
+        biography_ch: "",
         area_of_expertise: "",
         area_of_expertise_eng: "",
         area_of_expertise_jpn: "",
+        area_of_expertise_ch: "",
         SEO_title: "",
         SEO_title_eng: "",
         SEO_title_jpn: "",
+        SEO_title_ch: "",
         description: "",
         description_eng: "",
         description_jpn: "",
+        description_ch: "",
     });
 
     const onHandleSubmit = (e) => {
@@ -74,6 +81,7 @@ function TeamCreate() {
                                 <Tab label="Team En" {...a11yProps(0)} />
                                 <Tab label="Team Id" {...a11yProps(1)} />
                                 <Tab label="Team Jp" {...a11yProps(2)} />
+                                <Tab label="Team Jp" {...a11yProps(3)} />
                             </Tabs>
                         </Box>
                         <CustomTabPanel value={value} index={0}>
@@ -111,6 +119,17 @@ function TeamCreate() {
                                 onChange={(e) =>
                                     setData("description_eng", e.target.value)
                                 }
+                                sx={{ width: "100%", mb: 2 }}
+                                required
+                            />
+                            <TextField
+                                id="position"
+                                value={data.position}
+                                onChange={(e) =>
+                                    setData("position", e.target.value)
+                                }
+                                label="Position En"
+                                variant="outlined"
                                 sx={{ width: "100%", mb: 2 }}
                                 required
                             />
@@ -153,6 +172,16 @@ function TeamCreate() {
                                 sx={{ width: "100%", mb: 2 }}
                                 required
                             />
+                            <TextField
+                                id="position_id"
+                                value={data.position_id}
+                                onChange={(e) =>
+                                    setData("position_id", e.target.value)
+                                }
+                                label="Position Id"
+                                variant="outlined"
+                                sx={{ width: "100%", mb: 2 }}
+                            />
                         </CustomTabPanel>
                         <CustomTabPanel value={value} index={2}>
                             <RichEditor
@@ -192,6 +221,67 @@ function TeamCreate() {
                                 sx={{ width: "100%", mb: 2 }}
                                 required
                             />
+                            <TextField
+                                id="position_jp"
+                                value={data.position_jp}
+                                onChange={(e) =>
+                                    setData("position_jp", e.target.value)
+                                }
+                                label="Position Jp"
+                                variant="outlined"
+                                sx={{ width: "100%", mb: 2 }}
+                                required
+                            />
+                        </CustomTabPanel>
+                        <CustomTabPanel value={value} index={3}>
+                            <RichEditor
+                                placeholder="Biography China"
+                                value={data.biography_ch}
+                                handleInput={(data) =>
+                                    setData("biography_ch", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Area of Expertise China"
+                                value={data.area_of_expertise_ch}
+                                handleInput={(data) =>
+                                    setData("area_of_expertise_ch", data)
+                                }
+                            />
+                            <TextField
+                                id="SEO_title_ch"
+                                value={data.SEO_title_ch}
+                                onChange={(e) =>
+                                    setData("SEO_title_ch", e.target.value)
+                                }
+                                label="SEO Title China"
+                                variant="outlined"
+                                sx={{ width: "100%", mb: 2 }}
+                                required
+                            />
+                            <TextField
+                                id="outlined-multiline-static"
+                                label="Meta Description China"
+                                multiline
+                                rows={3}
+                                value={data.description_ch}
+                                onChange={(e) =>
+                                    setData("description_ch", e.target.value)
+                                }
+                                sx={{ width: "100%", mb: 2 }}
+                                required
+                            />
+                            <TextField
+                                id="position_ch"
+                                value={data.position_ch}
+                                onChange={(e) =>
+                                    setData("position_ch", e.target.value)
+                                }
+                                label="Position Ch"
+                                variant="outlined"
+                                sx={{ width: "100%", mb: 2 }}
+                                required
+                            />
                         </CustomTabPanel>
                         <Box px={3}>
                             <TextField
@@ -201,17 +291,6 @@ function TeamCreate() {
                                     setData("name", e.target.value)
                                 }
                                 label="Name"
-                                variant="outlined"
-                                sx={{ width: "100%", mb: 2 }}
-                                required
-                            />
-                            <TextField
-                                id="position"
-                                value={data.position}
-                                onChange={(e) =>
-                                    setData("position", e.target.value)
-                                }
-                                label="Position"
                                 variant="outlined"
                                 sx={{ width: "100%", mb: 2 }}
                                 required
@@ -282,6 +361,7 @@ function TeamCreate() {
                                 }}
                             >
                                 <Button
+                                    disabled={processing}
                                     sx={{ mt: 2 }}
                                     type="submit"
                                     component="button"

@@ -60,6 +60,7 @@ function Home() {
             en={route("home")}
             id={route("home.id")}
             jp={route("home.jp")}
+            cn={route("home.cn")}
             description={checkLang(
                 locale,
                 page.description_eng,
@@ -76,7 +77,8 @@ function Home() {
                 locale,
                 route("home"),
                 route("home.id"),
-                route("home.jp")
+                route("home.jp"),
+                route("home.cn")
             )}
         >
             <Box

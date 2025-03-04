@@ -108,25 +108,22 @@ function CareerEdit() {
                             <RichEditor
                                 placeholder="Job Desc English"
                                 value={data.jobdesc_eng}
-                                handleInput={(e) =>
-                                    setData("jobdesc_eng", e.target.innerHTML)
+                                handleInput={(data) =>
+                                    setData("jobdesc_eng", data)
                                 }
                             />
                             <RichEditor
                                 placeholder="Qualification English"
                                 value={data.qualification_eng}
-                                handleInput={(e) =>
-                                    setData(
-                                        "qualification_eng",
-                                        e.target.innerHTML
-                                    )
+                                handleInput={(data) =>
+                                    setData("qualification_eng", data)
                                 }
                             />
                             <RichEditor
                                 placeholder="Skill English"
                                 value={data.skill_eng}
-                                handleInput={(e) =>
-                                    setData("skill_eng", e.target.innerHTML)
+                                handleInput={(data) =>
+                                    setData("skill_eng", data)
                                 }
                             />
                             <TextField
@@ -169,23 +166,19 @@ function CareerEdit() {
                             <RichEditor
                                 placeholder="Job Desc Indonesia"
                                 value={data.jobdesc}
-                                handleInput={(e) =>
-                                    setData("jobdesc", e.target.innerHTML)
-                                }
+                                handleInput={(data) => setData("jobdesc", data)}
                             />
                             <RichEditor
                                 placeholder="Qualification Indonesia"
                                 value={data.qualification}
-                                handleInput={(e) =>
-                                    setData("qualification", e.target.innerHTML)
+                                handleInput={(data) =>
+                                    setData("qualification", data)
                                 }
                             />
                             <RichEditor
                                 placeholder="Skill Indonesia"
                                 value={data.skill}
-                                handleInput={(e) =>
-                                    setData("skill", e.target.innerHTML)
-                                }
+                                handleInput={(data) => setData("skill", data)}
                             />
                             <TextField
                                 id="outlined-multiline-static"
@@ -227,25 +220,22 @@ function CareerEdit() {
                             <RichEditor
                                 placeholder="Job Desc Japan"
                                 value={data.jobdesc_jpn}
-                                handleInput={(e) =>
-                                    setData("jobdesc_jpn", e.target.innerHTML)
+                                handleInput={(data) =>
+                                    setData("jobdesc_jpn", data)
                                 }
                             />
                             <RichEditor
                                 placeholder="Qualification Japan"
                                 value={data.qualification_jpn}
-                                handleInput={(e) =>
-                                    setData(
-                                        "qualification_jpn",
-                                        e.target.innerHTML
-                                    )
+                                handleInput={(data) =>
+                                    setData("qualification_jpn", data)
                                 }
                             />
                             <RichEditor
                                 placeholder="Skill Japan"
                                 value={data.skill_jpn}
-                                handleInput={(e) =>
-                                    setData("skill_jpn", e.target.innerHTML)
+                                handleInput={(data) =>
+                                    setData("skill_jpn", data)
                                 }
                             />
                             <TextField

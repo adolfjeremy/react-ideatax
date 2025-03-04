@@ -19,7 +19,7 @@ function Guest({
     en,
     id,
     jp,
-    cn,
+    ch,
     description,
     seo_title,
     href,
@@ -62,7 +62,7 @@ function Guest({
                 <link rel="canonical" href={href}></link>
                 <title>{seo_title}</title>
             </Head>
-            <HeaderBar en={en} id={id} jp={jp} cn={cn} />
+            <HeaderBar en={en} id={id} jp={jp} ch={ch} />
             <Box
                 component="main"
                 sx={{ minHeight: "100vh", width: "100%", position: "relative" }}
