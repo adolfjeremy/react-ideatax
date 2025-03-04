@@ -19,18 +19,23 @@ function ServiceEdit() {
         title: item.title,
         title_eng: item.title_eng,
         title_jpn: item.title_jpn,
+        title_ch: item.title_ch,
         slug: item.slug,
         slug_eng: item.slug_eng,
         slug_jpn: item.slug_jpn,
+        slug_ch: item.slug_ch,
         description: item.description,
         description_eng: item.description_eng,
         description_jpn: item.description_jpn,
+        description_ch: item.description_ch,
         SEO_title: item.SEO_title,
         SEO_title_eng: item.SEO_title_eng,
         SEO_title_jpn: item.SEO_title_jpn,
+        SEO_title_ch: item.SEO_title_ch,
         meta_description: item.meta_description,
         meta_description_eng: item.meta_description_eng,
         meta_description_jpn: item.meta_description_jpn,
+        meta_description_ch: item.meta_description_ch,
         oldImage: item.image,
         _method: "put",
     });
@@ -77,6 +82,7 @@ function ServiceEdit() {
                                 <Tab label="Service En" {...a11yProps(0)} />
                                 <Tab label="Service Id" {...a11yProps(1)} />
                                 <Tab label="Service Jp" {...a11yProps(2)} />
+                                <Tab label="Service Ch" {...a11yProps(3)} />
                             </Tabs>
                         </Box>
                         <CustomTabPanel value={value} index={0}>
@@ -228,6 +234,59 @@ function ServiceEdit() {
                                 onChange={(e) =>
                                     setData(
                                         "meta_description_jpn",
+                                        e.target.value
+                                    )
+                                }
+                                sx={{ width: "100%", mb: 2 }}
+                                required
+                            />
+                        </CustomTabPanel>
+                        <CustomTabPanel value={value} index={3}>
+                            <TextField
+                                id="title_ch"
+                                value={data.title_ch}
+                                onChange={(e) =>
+                                    setData("title_ch", e.target.value)
+                                }
+                                label="Title China"
+                                variant="outlined"
+                                sx={{ width: "100%", mb: 2 }}
+                                required
+                            />
+
+                            <TextField
+                                id="SEO_title_ch"
+                                value={data.SEO_title_ch}
+                                onChange={(e) =>
+                                    setData("SEO_title_ch", e.target.value)
+                                }
+                                label="SEO Title China"
+                                variant="outlined"
+                                sx={{ width: "100%", mb: 2 }}
+                                required
+                            />
+
+                            <TextField
+                                id="outlined-multiline-static"
+                                label="Description Chins"
+                                multiline
+                                rows={4}
+                                value={data.description_ch}
+                                onChange={(e) =>
+                                    setData("description_ch", e.target.value)
+                                }
+                                sx={{ width: "100%", mb: 2 }}
+                                required
+                            />
+                            <TextField
+                                id="outlined-multiline-static"
+                                label="Meta Description China"
+                                multiline
+                                rows={4}
+                                value={data.meta_description_ch}
+                                onChange={(e) =>
+                                    setData(
+                                        "meta_description_ch",
                                         e.target.value
                                     )
                                 }

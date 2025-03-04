@@ -17,18 +17,23 @@ function ServiceCreate() {
         title: "",
         title_eng: "",
         title_jpn: "",
+        title_ch: "",
         slug: "",
         slug_eng: "",
         slug_jpn: "",
+        slug_ch: "",
         description: "",
         description_eng: "",
         description_jpn: "",
+        description_ch: "",
         SEO_title: "",
         SEO_title_eng: "",
         SEO_title_jpn: "",
+        SEO_title_ch: "",
         meta_description: "",
         meta_description_eng: "",
         meta_description_jpn: "",
+        meta_description_ch: "",
     });
 
     const onHandleSubmit = (e) => {
@@ -72,6 +77,7 @@ function ServiceCreate() {
                                 <Tab label="Service En" {...a11yProps(0)} />
                                 <Tab label="Service Id" {...a11yProps(1)} />
                                 <Tab label="Service Jp" {...a11yProps(2)} />
+                                <Tab label="Service Jp" {...a11yProps(3)} />
                             </Tabs>
                         </Box>
                         <CustomTabPanel value={value} index={0}>
@@ -223,6 +229,59 @@ function ServiceCreate() {
                                 onChange={(e) =>
                                     setData(
                                         "meta_description_jpn",
+                                        e.target.value
+                                    )
+                                }
+                                sx={{ width: "100%", mb: 2 }}
+                                required
+                            />
+                        </CustomTabPanel>
+                        <CustomTabPanel value={value} index={3}>
+                            <TextField
+                                id="title_ch"
+                                value={data.title_ch}
+                                onChange={(e) =>
+                                    setData("title_ch", e.target.value)
+                                }
+                                label="Title China"
+                                variant="outlined"
+                                sx={{ width: "100%", mb: 2 }}
+                                required
+                            />
+
+                            <TextField
+                                id="SEO_title_ch"
+                                value={data.SEO_title_ch}
+                                onChange={(e) =>
+                                    setData("SEO_title_ch", e.target.value)
+                                }
+                                label="SEO Title China"
+                                variant="outlined"
+                                sx={{ width: "100%", mb: 2 }}
+                                required
+                            />
+
+                            <TextField
+                                id="outlined-multiline-static"
+                                label="Description China"
+                                multiline
+                                rows={3}
+                                value={data.description_ch}
+                                onChange={(e) =>
+                                    setData("description_ch", e.target.value)
+                                }
+                                sx={{ width: "100%", mb: 2 }}
+                                required
+                            />
+                            <TextField
+                                id="outlined-multiline-static"
+                                label="Meta Description China"
+                                multiline
+                                rows={3}
+                                value={data.meta_description_ch}
+                                onChange={(e) =>
+                                    setData(
+                                        "meta_description_ch",
                                         e.target.value
                                     )
                                 }

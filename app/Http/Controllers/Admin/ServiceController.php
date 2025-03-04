@@ -42,6 +42,7 @@ class ServiceController extends Controller
         $data['slug'] = Str::slug($request->title);
         $data['slug_eng'] = Str::slug($request->title_eng);
         $data['slug_jpn'] = Str::slug($request->title_jpn, language:"ja-JP");
+        $data['slug_ch'] = Str::slug($request->title_ch, language:"zh-CN");
 
         if($request->file('image'))
         {
@@ -86,6 +87,7 @@ class ServiceController extends Controller
         $data['slug'] = Str::slug($request->title);
         $data['slug_eng'] = Str::slug($request->title_eng);
         $data['slug_jpn'] = Str::slug($request->title_jpn, language:"ja-JP");
+        $data['slug_ch'] = Str::slug($request->title_ch, language:"zh-CN");
 
         if($request->file('image'))
         {
