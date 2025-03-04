@@ -224,7 +224,8 @@ function Home() {
                                         locale,
                                         stat.head_eng,
                                         stat.head,
-                                        stat.head_jpn
+                                        stat.head_jpn,
+                                        stat.head_ch
                                     )}
                                 </Typography>
                             </Box>

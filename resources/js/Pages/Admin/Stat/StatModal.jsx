@@ -26,7 +26,9 @@ function StatModal({ stat }) {
         head: stat.head || "",
         head_eng: stat.head_eng || "",
         head_jpn: stat.head_jpn || "",
+        head_ch: stat.head_ch || "",
     });
+    console.log(stat);
     const [edit, setEdit] = useState(false);
     const { toggleSpinner } = useContext(SpinnerContext);
     const { toggleAlert } = useContext(AlertContext);
@@ -180,6 +182,15 @@ function StatModal({ stat }) {
                             onChange={(e) =>
                                 setData("head_jpn", e.target.value)
                             }
+                            required
+                            sx={{ width: "100%" }}
+                        />
+                        <TextField
+                            id="head_ch"
+                            variant="outlined"
+                            label="Text China"
+                            value={data.head_ch}
+                            onChange={(e) => setData("head_ch", e.target.value)}
                             required
                             sx={{ width: "100%" }}
                         />
