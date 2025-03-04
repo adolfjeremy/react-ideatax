@@ -142,8 +142,8 @@ Route::prefix('zh-CN')
         Route::get('/', [HomeController::class, 'index'])->name('home.ch');
         Route::get('/our-team', [TeamController::class, 'index'])->name('team.ch');
         Route::get('/our-team/{slug}', [TeamController::class, 'detail'])->name('team-detail.ch');
-        // Route::get('/our-services', [ServiceController::class, 'index'])->name('service.jp');
-        // Route::get('/our-services/{slug_jpn}', [ServiceController::class, 'detail'])->name('service-detail.jp');
+        Route::get('/our-services', [ServiceController::class, 'index'])->name('service.ch');
+        Route::get('/our-services/{slug_ch}', [ServiceController::class, 'detail'])->name('service-detail.ch');
         // Route::get('/our-service/zeimu-kansa-sapoto', [TaxAuditController::class, 'detail'])->name('tax-audit.jp');
         // Route::get('/articles', [ArticleController::class, 'index'])->name('articles.jp');
         // Route::get('/articles/{slug_jpn}', [ArticleController::class, 'detail'])->name('article-detail.jp');

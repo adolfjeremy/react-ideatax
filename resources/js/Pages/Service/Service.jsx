@@ -17,23 +17,27 @@ function Service() {
             en={route("service")}
             id={route("service.id")}
             jp={route("service.jp")}
+            ch={route("service.ch")}
             description={checkLang(
                 locale,
                 page.description_eng,
                 page.description,
-                page.description_jpn
+                page.description_jpn,
+                page.description_ch
             )}
             seo_title={checkLang(
                 locale,
                 page.SEO_title_eng,
                 page.SEO_title,
-                page.SEO_title_jpn
+                page.SEO_title_jpn,
+                page.SEO_title_ch
             )}
             href={checkLang(
                 locale,
                 route("service"),
                 route("service.id"),
-                route("service.jp")
+                route("service.jp"),
+                route("service.ch")
             )}
         >
             <Box
@@ -198,9 +202,14 @@ function Service() {
                                                   "service-detail.id",
                                                   service.slug
                                               )
-                                            : route(
+                                            : locale == "jp"
+                                            ? route(
                                                   "service-detail.jp",
                                                   service.slug_jpn
+                                              )
+                                            : route(
+                                                  "service-detail.ch",
+                                                  service.slug_ch
                                               )
                                     }
                                     key={service.id}
@@ -225,7 +234,8 @@ function Service() {
                                             locale,
                                             service.title_eng,
                                             service.title,
-                                            service.title_jpn
+                                            service.title_jpn,
+                                            service.title_ch
                                         )}
                                     </Typography>
                                     <IoIosArrowRoundForward />

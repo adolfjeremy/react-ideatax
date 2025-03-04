@@ -834,9 +834,14 @@ function Home() {
                                                   "service-detail.id",
                                                   service.slug
                                               )
-                                            : route(
+                                            : locale == "jp"
+                                            ? route(
                                                   "service-detail.jp",
                                                   service.slug_jpn
+                                              )
+                                            : route(
+                                                  "service-detail.ch",
+                                                  service.slug_ch
                                               )
                                     }
                                     sx={{
@@ -860,7 +865,8 @@ function Home() {
                                             locale,
                                             service.title_eng,
                                             service.title,
-                                            service.title_jpn
+                                            service.title_jpn,
+                                            service.title_ch
                                         )}
                                     </Typography>
                                     <IoIosArrowRoundForward />
