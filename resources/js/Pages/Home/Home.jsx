@@ -935,22 +935,16 @@ function Home() {
                                 category="PPN"
                                 timeStamp={formatDate(article.created_at)}
                                 img={`/storage/${article.thumbnail}`}
-                                detail={
-                                    locale == "en"
-                                        ? route(
-                                              "article-detail",
-                                              article.slug_eng
-                                          )
-                                        : locale == "id"
-                                        ? route(
-                                              "article-detail.id",
-                                              article.slug
-                                          )
-                                        : route(
-                                              "article-detail.jp",
-                                              article.slug_jpn
-                                          )
-                                }
+                                detail={checkLang(
+                                    locale,
+                                    route("article-detail", article.slug_eng),
+                                    route("article-detail.id", article.slug),
+                                    route(
+                                        "article-detail.jp",
+                                        article.slug_jpn
+                                    ),
+                                    route("article-detail.ch", article.slug_eng)
+                                )}
                             />
                         ))}
                     </div>

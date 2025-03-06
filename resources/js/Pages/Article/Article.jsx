@@ -185,16 +185,13 @@ function Article() {
                                     item.title_jpn
                                 )}
                                 image={`/storage/${item.thumbnail}`}
-                                desctination={
-                                    locale == "en"
-                                        ? route("article-detail", item.slug_eng)
-                                        : locale == "id"
-                                        ? route("article-detail.id", item.slug)
-                                        : route(
-                                              "article-detail.jp",
-                                              item.slug_jpn
-                                          )
-                                }
+                                desctination={checkLang(
+                                    locale,
+                                    route("article-detail", item.slug_eng),
+                                    route("article-detail.id", item.slug),
+                                    route("article-detail.jp", item.slug_jpn),
+                                    route("article-detail.ch", item.slug_eng)
+                                )}
                                 desc={
                                     <TruncateRichText
                                         style={{
