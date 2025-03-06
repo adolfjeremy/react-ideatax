@@ -145,13 +145,13 @@ Route::prefix('zh-CN')
         Route::get('/our-services', [ServiceController::class, 'index'])->name('service.ch');
         Route::get('/our-services/{slug_ch}', [ServiceController::class, 'detail'])->name('service-detail.ch');
         // Route::get('/our-service/zeimu-kansa-sapoto', [TaxAuditController::class, 'detail'])->name('tax-audit.jp');
-        // Route::get('/articles', [ArticleController::class, 'index'])->name('articles.jp');
-        // Route::get('/articles/{slug_jpn}', [ArticleController::class, 'detail'])->name('article-detail.jp');
+        Route::get('/articles', [ArticleController::class, 'index'])->name('articles.ch');
+        Route::get('/articles/{slug_ch}', [ArticleController::class, 'detail'])->name('article-detail.ch');
         // Route::get('/articles/event/{slug_jpn}', [ControllersTaxEventController::class, 'detail'])->name('event-detail.jp');
         // Route::get('/careers', [CareerController::class, 'index'])->name('career.jp');
         // Route::get('/careers/{slug_jpn}', [CareerController::class, 'detail'])->name('career-detail.jp');
         // Route::get('/careers/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax.jp');
-        // Route::get('/contact', [ContactController::class, 'index'])->name('contact.jp');
+        Route::get('/contact', [ContactController::class, 'index'])->name('contact.ch');
 });
 
 Route::prefix('admin')

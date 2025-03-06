@@ -29,9 +29,15 @@ class ArticleController extends Controller
             $item = Article::where('slug_eng', $id)->withCount('likes')->with("articleCategory")->firstOrFail();
         } else if(app()->getLocale() == "id") {
             $item = Article::where('slug', $id)->withCount('likes')->with("articleCategory")->firstOrFail();
-        } else {
+        } else if(app()->getLocale() == "id"){
             $item = Article::where('slug_jpn', $id)->withCount('likes')->with("articleCategory")->firstOrFail();
+        }  else {
+            $item = Article::where('slug_eng', $id)->withCount('likes')->with("articleCategory")->firstOrFail();
         }
+
+        // else if(app()->getLocale() == "zh-CN"){
+        //     $item = Article::where('slug_ch', $id)->withCount('likes')->with("articleCategory")->firstOrFail();
+        // }
 
         $previousArticle = Article::where('id', '<', $item->id)->orderBy('id', 'desc')->first();
         $nextArticle = Article::where('id', '>', $item->id)->orderBy('id', 'asc')->first();

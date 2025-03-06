@@ -1,8 +1,10 @@
 import { Box, Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 function Pagination({ prev, next }) {
+    const { t } = useTranslation();
     return (
         <Box
             className="col-12"
@@ -19,14 +21,14 @@ function Pagination({ prev, next }) {
                 variant="outlined"
             >
                 <MdKeyboardDoubleArrowLeft />
-                Previous
+                {t("prev")}
             </Button>
             <Button
                 href={next}
                 disabled={next == "" ? true : false}
                 variant="outlined"
             >
-                Next <MdKeyboardDoubleArrowRight />
+                {t("next")} <MdKeyboardDoubleArrowRight />
             </Button>
         </Box>
     );

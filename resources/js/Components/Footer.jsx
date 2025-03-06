@@ -66,7 +66,13 @@ function Footer() {
                                     route("team.jp")
                                 )}
                             >
-                                {checkLang(locale, "Team", "Tim", "チーム")}
+                                {checkLang(
+                                    locale,
+                                    "Team",
+                                    "Tim",
+                                    "チーム",
+                                    "团队"
+                                )}
                             </a>
                         </div>
                         <div className="text-left w-100 b_border py-2">
@@ -75,14 +81,16 @@ function Footer() {
                                     locale,
                                     route("articles"),
                                     route("articles.id"),
-                                    route("articles.jp")
+                                    route("articles.jp"),
+                                    route("articles.ch")
                                 )}
                             >
                                 {checkLang(
                                     locale,
                                     "Articles",
                                     "Artikel",
-                                    "記事"
+                                    "記事",
+                                    "文章"
                                 )}
                             </a>
                         </div>
@@ -93,13 +101,15 @@ function Footer() {
                                     route("career"),
                                     route("career.id"),
                                     route("career.jp")
+                                    // route("career.jp"),
                                 )}
                             >
                                 {checkLang(
                                     locale,
                                     "Career",
                                     "Karir",
-                                    "キャリア"
+                                    "キャリア",
+                                    "职业"
                                 )}
                             </a>
                         </div>
@@ -110,13 +120,15 @@ function Footer() {
                                     route("contact"),
                                     route("contact.id"),
                                     route("contact.jp")
+                                    // route("contact.ch"),
                                 )}
                             >
                                 {checkLang(
                                     locale,
                                     "Contact Ideatax",
                                     "Hubungi Ideatax",
-                                    "お問い合わせ"
+                                    "お問い合わせ",
+                                    "联系Ideatax"
                                 )}
                             </a>
                         </div>

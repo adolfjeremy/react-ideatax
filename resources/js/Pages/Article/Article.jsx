@@ -6,32 +6,38 @@ import ArticleItem from "./ArticleItem";
 import checkLang from "@/utils/checkLang";
 import TruncateRichText from "@/Components/TruncateRichText";
 import Pagination from "@/Components/Pagination";
+import { useTranslation } from "react-i18next";
 
 function Article() {
     const { locale, page, latest, articles } = usePage().props;
     const theme = useTheme();
+    const { t } = useTranslation();
     return (
         <Guest
             en={route("articles")}
             id={route("articles.id")}
             jp={route("articles.jp")}
+            ch={route("articles.ch")}
             description={checkLang(
                 locale,
                 page.description_eng,
                 page.description,
-                page.description_jpn
+                page.description_jpn,
+                page.description_ch
             )}
             seo_title={checkLang(
                 locale,
                 page.SEO_title_eng,
                 page.SEO_title,
-                page.SEO_title_jpn
+                page.SEO_title_jpn,
+                page.SEO_title_ch
             )}
             href={checkLang(
                 locale,
                 route("articles"),
                 route("articles.id"),
-                route("articles.jp")
+                route("articles.jp"),
+                route("articles.ch")
             )}
         >
             <Box
@@ -164,7 +170,7 @@ function Article() {
                                 }}
                                 variant="h2"
                             >
-                                Latest articles
+                                {t("latestArticle")}
                             </Typography>
                         </div>
                     </div>

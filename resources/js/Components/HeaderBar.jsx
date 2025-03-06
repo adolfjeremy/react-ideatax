@@ -96,7 +96,8 @@ function HeaderBar({ en, id, jp, ch }) {
                 if (
                     !route().current("team") &&
                     !route().current("team.id") &&
-                    !route().current("team.jp")
+                    !route().current("team.jp") &&
+                    !route().current("team.ch")
                 ) {
                     return (
                         <Link
@@ -109,14 +110,16 @@ function HeaderBar({ en, id, jp, ch }) {
                                 locale,
                                 route("home"),
                                 route("home.id"),
-                                route("home.jp")
+                                route("home.jp"),
+                                route("home.ch")
                             )}
                         >
                             <img
                                 src={
                                     route().current("home") ||
                                     route().current("home.id") ||
-                                    route().current("home.jp")
+                                    route().current("home.jp") ||
+                                    route().current("home.ch")
                                         ? logoClear
                                         : logo
                                 }
@@ -181,7 +184,8 @@ function HeaderBar({ en, id, jp, ch }) {
                             locale,
                             route("home"),
                             route("home.id"),
-                            route("home.jp")
+                            route("home.jp"),
+                            route("home.ch")
                         )}
                         className={route().current("home") ? "active" : ""}
                         sx={{
@@ -231,7 +235,8 @@ function HeaderBar({ en, id, jp, ch }) {
                             locale,
                             route("service"),
                             route("service.id"),
-                            route("service.jp")
+                            route("service.jp"),
+                            route("service.ch")
                         )}
                         className={
                             route().current("service") ||
@@ -274,7 +279,8 @@ function HeaderBar({ en, id, jp, ch }) {
                             locale,
                             route("articles"),
                             route("articles.id"),
-                            route("articles.jp")
+                            route("articles.jp"),
+                            route("articles.ch")
                         )}
                         className={
                             route().current("articles") ||
@@ -394,7 +400,8 @@ function HeaderBar({ en, id, jp, ch }) {
                             locale,
                             route("contact"),
                             route("contact.id"),
-                            route("contact.jp")
+                            route("contact.jp"),
+                            route("contact.ch")
                         )}
                         className={route().current("contact") ? "active" : ""}
                         sx={{

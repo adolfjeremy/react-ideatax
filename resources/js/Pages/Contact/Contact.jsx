@@ -54,23 +54,27 @@ function Contact() {
             en={route("contact")}
             id={route("contact.id")}
             jp={route("contact.jp")}
+            ch={route("contact.ch")}
             description={checkLang(
                 locale,
                 page.description_eng,
                 page.description,
-                page.description_jpn
+                page.description_jpn,
+                page.description_ch
             )}
             seo_title={checkLang(
                 locale,
                 page.SEO_title_eng,
                 page.SEO_title,
-                page.SEO_title_jpn
+                page.SEO_title_jpn,
+                page.SEO_title_ch
             )}
             href={checkLang(
                 locale,
                 route("contact"),
                 route("contact.id"),
-                route("contact.jp")
+                route("contact.jp"),
+                route("contact.ch")
             )}
         >
             <Box

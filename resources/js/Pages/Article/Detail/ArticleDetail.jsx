@@ -22,25 +22,37 @@ function ArticleDetail() {
             jp={
                 item.slug_jpn
                     ? route("article-detail.jp", item.slug_jpn)
-                    : route("article-detail", item.slug_eng)
+                    : route("article-detail.jp", item.slug_eng)
+            }
+            ch={
+                item.slug_ch
+                    ? route("article-detail.ch", item.slug_ch)
+                    : route("article-detail.ch", item.slug_eng)
             }
             description={checkLang(
                 locale,
                 item.description_eng,
                 item.description,
-                item.description_jpn
+                item.description_jpn,
+                item.description_ch
             )}
             seo_title={checkLang(
                 locale,
                 item.SEO_title_eng,
                 item.SEO_title,
-                item.SEO_title_jpn
+                item.SEO_title_jpn,
+                item.slug_ch
+                    ? route("article-detail.ch", item.slug_ch)
+                    : route("article-detail.jp", item.slug_eng)
             )}
             href={checkLang(
                 locale,
                 route("article-detail", item.slug_eng),
                 route("article-detail.id", item.slug),
-                route("article-detail.jp", item.slug_jpn)
+                route("article-detail.jp", item.slug_jpn),
+                item.slug_ch
+                    ? route("article-detail.ch", item.slug_ch)
+                    : route("article-detail.jp", item.slug_eng)
             )}
         >
             <Box
