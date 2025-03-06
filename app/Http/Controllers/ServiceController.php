@@ -12,7 +12,7 @@ class ServiceController extends Controller
     public function index()
     {
         $page = Page::findOrFail(3);
-        $services = Service::select('id', 'title', 'title_eng', 'title_jpn', 'slug', 'slug_eng', 'slug_jpn')->get();
+        $services = Service::get();
         return Inertia::render('Service/Service', [
             "services" => $services,
             "page" => $page
@@ -24,8 +24,10 @@ class ServiceController extends Controller
             $item = Service::where('slug_eng', $id)->firstOrFail();
         } else if(app()->getLocale() == "id") {
             $item = Service::where('slug', $id)->firstOrFail();
-        } else {
+        } else if(app()->getLocale() == "jp") {
             $item = Service::where('slug_jpn', $id)->firstOrFail();
+        } else if(app()->getLocale() == "zh-CN") {
+            $item = Service::where('slug_ch', $id)->firstOrFail();
         }
         return Inertia::render('Service/Detail/ServiceDetail', [
             'item' => $item,

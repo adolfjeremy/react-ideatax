@@ -824,22 +824,30 @@ function Home() {
                                 <Link
                                     key={service.id}
                                     href={
-                                        locale == "en"
+                                        locale === "en"
                                             ? route(
                                                   "service-detail",
                                                   service.slug_eng
                                               )
-                                            : locale == "id"
+                                            : locale === "id"
                                             ? route(
                                                   "service-detail.id",
                                                   service.slug
                                               )
-                                            : locale == "jp"
+                                            : locale === "jp"
                                             ? route(
                                                   "service-detail.jp",
                                                   service.slug_jpn
                                               )
-                                            : ""
+                                            : locale === "zh-CN"
+                                            ? route(
+                                                  "service-detail.ch",
+                                                  service.slug_ch
+                                              )
+                                            : route(
+                                                  "service-detail",
+                                                  service.slug_eng
+                                              )
                                     }
                                     sx={{
                                         svg: {

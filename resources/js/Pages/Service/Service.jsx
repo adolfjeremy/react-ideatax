@@ -207,7 +207,10 @@ function Service() {
                                                   "service-detail.jp",
                                                   service.slug_jpn
                                               )
-                                            : ""
+                                            : route(
+                                                  "service-detail.ch",
+                                                  service.slug_ch
+                                              )
                                     }
                                     key={service.id}
                                     sx={{
