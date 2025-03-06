@@ -28,7 +28,7 @@ class HomeController extends Controller
         $page = Page::findOrFail(1);
         $heroes = HeroSlider::all();
         $stats = Stat::all();
-        $services = Service::select('id', 'title', 'title_eng', 'title_jpn', 'slug', 'slug_eng', 'slug_jpn', 'slug_ch')->get();
+        $services = Service::select('id', 'title', 'title_eng', 'title_jpn', 'title_ch', 'slug', 'slug_eng', 'slug_jpn', 'slug_ch')->get();
         $articles = Article::latest()->take(4)->select('id', 'title', 'title_eng', 'title_jpn', 'slug', 'slug_eng', 'slug_jpn', 'thumbnail', 'created_at')->get();
         $events = TaxEvent::latest()->take(4)->select('id', 'title', 'title_eng', 'title_jpn', 'slug', 'slug_eng', 'slug_jpn', 'photo', 'created_at')->get();
         return Inertia::render('Home/Home', [
