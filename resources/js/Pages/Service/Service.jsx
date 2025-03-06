@@ -96,7 +96,9 @@ function Service() {
                                         ? route("tax-audit")
                                         : locale == "id"
                                         ? route("tax-audit.id")
-                                        : route("tax-audit.jp")
+                                        : locale == "jp"
+                                        ? route("tax-audit.jp")
+                                        : route("tax-audit")
                                 }
                                 sx={{
                                     svg: {
@@ -129,7 +131,9 @@ function Service() {
                                         ? route("tax-refund")
                                         : locale == "id"
                                         ? route("tax-refund.id")
-                                        : route("tax-refund.jp")
+                                        : locale == "jp"
+                                        ? route("tax-refund.jp")
+                                        : route("tax-refund")
                                 }
                                 sx={{
                                     svg: {
@@ -162,7 +166,9 @@ function Service() {
                                         ? route("tax-report")
                                         : locale == "id"
                                         ? route("tax-report.id")
-                                        : route("tax-report.jp")
+                                        : locale == "jp"
+                                        ? route("tax-report.jp")
+                                        : route("tax-report")
                                 }
                                 sx={{
                                     svg: {

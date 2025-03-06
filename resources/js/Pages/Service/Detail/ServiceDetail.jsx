@@ -14,6 +14,28 @@ function ServiceDetail() {
             en={route("service-detail", item.slug_eng)}
             id={route("service-detail.id", item.slug)}
             jp={route("service-detail.jp", item.slug_jpn)}
+            ch={route("service-detail.ch", item.slug_ch)}
+            description={checkLang(
+                locale,
+                item.description_eng,
+                item.description,
+                item.description_jpn,
+                item.description_ch
+            )}
+            seo_title={checkLang(
+                locale,
+                item.SEO_title_eng,
+                item.SEO_title,
+                item.SEO_title_jpn,
+                item.SEO_title_ch
+            )}
+            href={checkLang(
+                locale,
+                route("service-detail"),
+                route("service-detail.id"),
+                route("service-detail.jp"),
+                route("service-detail.ch")
+            )}
         >
             <Box
                 sx={{

@@ -727,7 +727,9 @@ function Home() {
                                         ? route("tax-audit")
                                         : locale == "id"
                                         ? route("tax-audit.id")
-                                        : route("tax-audit.jp")
+                                        : locale == "jp"
+                                        ? route("tax-audit.jp")
+                                        : route("tax-audit")
                                 }
                                 sx={{
                                     svg: {
@@ -760,7 +762,9 @@ function Home() {
                                         ? route("tax-refund")
                                         : locale == "id"
                                         ? route("tax-refund.id")
-                                        : route("tax-refund.jp")
+                                        : locale == "jp"
+                                        ? route("tax-refund.jp")
+                                        : route("tax-refund")
                                 }
                                 sx={{
                                     svg: {
@@ -793,7 +797,9 @@ function Home() {
                                         ? route("tax-report")
                                         : locale == "id"
                                         ? route("tax-report.id")
-                                        : route("tax-report.jp")
+                                        : locale == "jp"
+                                        ? route("tax-report.jp")
+                                        : route("tax-report")
                                 }
                                 sx={{
                                     svg: {
@@ -844,10 +850,7 @@ function Home() {
                                                   "service-detail.ch",
                                                   service.slug_ch
                                               )
-                                            : route(
-                                                  "service-detail",
-                                                  service.slug_eng
-                                              )
+                                            : ""
                                     }
                                     sx={{
                                         svg: {
