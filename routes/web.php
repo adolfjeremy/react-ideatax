@@ -145,6 +145,7 @@ Route::prefix('zh-CN')
         Route::get('/our-services', [ServiceController::class, 'index'])->name('service.ch');
         Route::get('/our-services/{slug_ch}', [ServiceController::class, 'detail'])->name('service-detail.ch');
         // Route::get('/our-service/zeimu-kansa-sapoto', [TaxAuditController::class, 'detail'])->name('tax-audit.jp');
+        Route::get('/our-service/退税', [TaxRefundController::class, 'index'])->name('tax-refund.ch');
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.ch');
         Route::get('/articles/{slug_ch}', [ArticleController::class, 'detail'])->name('article-detail.ch');
         // Route::get('/articles/event/{slug_jpn}', [ControllersTaxEventController::class, 'detail'])->name('event-detail.jp');
