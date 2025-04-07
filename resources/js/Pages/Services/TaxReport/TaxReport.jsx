@@ -33,23 +33,27 @@ function TaxReport() {
             en={route("tax-report")}
             id={route("tax-report.id")}
             jp={route("tax-report.jp")}
+            ch={route("tax-report.ch")}
             description={checkLang(
                 locale,
                 "Filing an annual tax return is a legal obligation for corporations and individuals to report income, expenses, and tax liabilities for a fiscal year. Accurate and timely filing ensures compliance with tax regulations and helps prevent penalties or audits. Our team is here to assist you at every stage of the process, from document preparation and tax calculations to the completion and submission of your tax return.",
                 "Pelaporan SPT Tahunan merupakan kewajiban bagi wajib pajak, baik badan maupun pribadi, untuk melaporkan penghasilan, pengeluaran, serta kewajiban pajaknya dalam satu tahun pajak. Dengan pelaporan yang akurat dan tepat waktu, wajib pajak dapat memastikan kepatuhan terhadap peraturan perpajakan serta menghindari risiko denda atau pemeriksaan pajak. Kami siap membantu Anda dalam setiap tahap pelaporan, mulai dari persiapan dokumen, perhitungan pajak, hingga pengisian dan pengiriman SPT.",
-                "年間納税申告 SPT は、法人・個人を問わず納税者が1年間の所得、支出、および税務義務を報告するための義務です。正確かつ期限内に申告することで、納税者は税法の遵守を確実にし、罰則や税務調査のリスクを回避できます。当社は、書類準備、税額計算、申告書の記入・提出まで、あらゆる申告プロセスをサポートいたします。"
+                "年間納税申告 SPT は、法人・個人を問わず納税者が1年間の所得、支出、および税務義務を報告するための義務です。正確かつ期限内に申告することで、納税者は税法の遵守を確実にし、罰則や税務調査のリスクを回避できます。当社は、書類準備、税額計算、申告書の記入・提出まで、あらゆる申告プロセスをサポートいたします。",
+                "年度税务申报是企业和个人依法履行的义务，用于报告一个财政年度的收入、支出和税务负债。准确且按时申报有助于确保符合税法规定，并避免罚款或审计。我们的团队将在整个过程中为您提供帮助，包括文件准备、税款计算，以及税务申报表的完成与提交。"
             )}
             seo_title={checkLang(
                 locale,
                 "Annual Tax Return Reporting Service for Corporations and Individuals | Ideatax",
                 "Layanan Pelaporan SPT Tahunan Badan dan Pribadi | Ideatax",
-                "法人および個人向け年間納税申告 SPT サービス | Ideatax"
+                "法人および個人向け年間納税申告 SPT サービス | Ideatax",
+                "年度企业和个人税务申报服务 | Ideatax"
             )}
             href={checkLang(
                 locale,
                 route("tax-report"),
                 route("tax-report.id"),
-                route("tax-report.jp")
+                route("tax-report.jp"),
+                route("tax-report.ch")
             )}
         >
             {/* start of hero section */}
@@ -93,14 +97,16 @@ function TaxReport() {
                             locale,
                             "Corporate/Individual",
                             "Pelaporan Pajak",
-                            ""
+                            "",
+                            "税务报告"
                         )}
                         <br />
                         {checkLang(
                             locale,
                             "Annual Tax Return Filing Efficient, Accurate, and Hassle-Free",
                             "SPT Tahunan Badan/Orang Pribadi Rapih, Cepat dan Tepat",
-                            ""
+                            "",
+                            "年度企业/个人 SPT 整齐、快速、准确"
                         )}
                     </Typography>
                     <Typography
@@ -124,7 +130,8 @@ function TaxReport() {
                             locale,
                             "Filing your tax return can be stressful with complex calculations and piles of documents. If you miss the deadline, penalties await! But don't worry, we're here to ensure your tax returns are accurate, timely, and risk-free.",
                             "Pelaporan SPT sering kali bikin pusing. hitungannya rumit, dokumennya banyak, dan kalau telat? Denda menanti! Jangan khawatir, kami siap membantu memastikan laporan pajak Anda akurat, tepat waktu, dan bebas risiko.",
-                            ""
+                            "",
+                            "SPT 报告常常令人头痛。计算复杂，文书工作很多，万一迟到怎么办？罚款等待！不用担心，我们已准备好帮助确保您的税务报告准确、及时且无风险。"
                         )}
                     </Typography>
                     <Button
@@ -149,7 +156,8 @@ function TaxReport() {
                             locale,
                             "Consult Now",
                             "Jadwalkan Konsultasi",
-                            ""
+                            "",
+                            "安排咨询"
                         )}
                     </Button>
                 </Box>
@@ -161,7 +169,8 @@ function TaxReport() {
                     locale,
                     "Are you facing any of these problems?",
                     "Apakah Anda pernah merasakan salah satu masalah ini?",
-                    ""
+                    "",
+                    "您是否遇到过这些问题？"
                 )}
             />
             {/* end of problems questioner */}
@@ -199,7 +208,8 @@ function TaxReport() {
                                         locale,
                                         "Receiving an SP2DK Due to Inconsistencies Between Your Tax Return and Financial Statement",
                                         "Mendapat SP2DK Karena Ketidaksesuaian SPT dengan Laporan Keuangan",
-                                        ""
+                                        "",
+                                        "由于SPT与财务报告不兼容而收到SP2DK"
                                     )}
                                 </Typography>
                             </Box>
@@ -233,7 +243,8 @@ function TaxReport() {
                                         locale,
                                         "Struggling to Access or Navigate the Tax System",
                                         "Kesulitan dalam Mengakses atau Menggunakan Sistem Perpajakan",
-                                        ""
+                                        "",
+                                        "进入或使用税务系统的困难"
                                     )}
                                 </Typography>
                             </Box>
@@ -267,7 +278,8 @@ function TaxReport() {
                                         locale,
                                         "Unfamiliar with the Latest Tax Regulations",
                                         "Kurangnya Pemahaman Terhadap Peraturan Perpajakan Terbaru",
-                                        ""
+                                        "",
+                                        "对最新税收法规缺乏了解"
                                     )}
                                 </Typography>
                             </Box>
@@ -301,7 +313,8 @@ function TaxReport() {
                                         locale,
                                         "Lacking the Time or Resources to Manage Your Taxes",
                                         "Tidak Punya Waktu dan SDM untuk Mengurus Perpajakan",
-                                        ""
+                                        "",
+                                        "没有时间和人力资源来处理税务事项"
                                     )}
                                 </Typography>
                             </Box>
@@ -347,7 +360,8 @@ function TaxReport() {
                                         locale,
                                         "Why Choose ",
                                         "Kenapa ",
-                                        ""
+                                        "",
+                                        "为什么"
                                     )}
                                     <Typography
                                         fontSize="2rem"
@@ -360,7 +374,8 @@ function TaxReport() {
                                         locale,
                                         "for Your Tax Matters?",
                                         "Adalah Pilihan Terbaik dalam Masalah Pajak?",
-                                        ""
+                                        "",
+                                        "是解决税务问题的最佳选择？"
                                     )}
                                 </Typography>
                             </div>
@@ -421,7 +436,8 @@ function TaxReport() {
                                                 locale,
                                                 "20+ Years of Tax Compliance Handling Experience",
                                                 "Pengalaman 20+ Tahun Menangani Kepatuhan Pajak",
-                                                ""
+                                                "",
+                                                "20多年处理税务合规的经验"
                                             )}
                                         </Typography>
                                         <Typography
@@ -443,7 +459,8 @@ function TaxReport() {
                                                 locale,
                                                 "Ideatax partners bring over 20 years of experience in taxation. Our partners have worked with Big Four tax consultants and tax authorities, providing you with comprehensive solutions.",
                                                 "Partner Ideatax berpengalaman lebih dari 20 tahun di bidang perpajakan. Partner Kami berpengalaman bekerja di Konsultan Pajak Big Four dan otoritas pajak sehingga memberikan solusi yang komprehensif kepada Anda.",
-                                                ""
+                                                "",
+                                                "Ideatax合伙人在税务领域拥有20多年的经验。我们的合作伙伴拥有与四大税务顾问和税务机关合作的经验, 可为您提供全面的解决方案。"
                                             )}
                                         </Typography>
                                     </Box>
@@ -504,7 +521,8 @@ function TaxReport() {
                                                 locale,
                                                 "Specialists for Domestic and Foreign Investors",
                                                 "Spesialisasi untuk Investor Dalam dan Luar Negeri",
-                                                ""
+                                                "",
+                                                "外资以及内资投资者的专家"
                                             )}
                                         </Typography>
                                         <Typography
@@ -526,7 +544,8 @@ function TaxReport() {
                                                 locale,
                                                 "As one of the leading consultants in both domestic and foreign investment in Indonesia, we have extensive experience in handling taxation for both Foreign Investment Companies (PMA) and Domestic Investment Companies (PMDN).",
                                                 "Salah satu konsultan terkemuka di bidang investasi asing maupun dalam negeri di Indonesia. Kami telah berpengalaman dalam menangani perpajakan perusahaan Penanaman Modal Asing (PMA)  maupun Penanaman Modal Dalam Negeri (PMDN).",
-                                                ""
+                                                "",
+                                                "作为印度尼西亚国内外投资领域的领先顾问之一, 我们在处理外国投资公司 和国内投资公司 的税务事务方面拥有丰富的经验。"
                                             )}
                                         </Typography>
                                     </Box>
@@ -587,7 +606,8 @@ function TaxReport() {
                                                 locale,
                                                 "Client-Centric Approach",
                                                 "Pendekatan Kebutuhan Client",
-                                                ""
+                                                "",
+                                                "您的需求方案"
                                             )}
                                         </Typography>
                                         <Typography
@@ -609,7 +629,8 @@ function TaxReport() {
                                                 locale,
                                                 "We believe that open communication and prompt responses are the cornerstones of successful collaboration. At every stage, we are committed to providing full support, with a strong dedication to maintaining privacy and confidentiality as our core values.",
                                                 "Kami percaya bahwa komunikasi yang terbuka dan tanggapan yang cepat adalah dasar dari kolaborasi yang sukses. Di setiap tahap, kami siap mendukung sepenuhnya, dengan komitmen kuat untuk menjaga privasi dan kerahasiaan sebagai bagian tak terpisahkan dari nilai yang kami junjung.",
-                                                ""
+                                                "",
+                                                "我们相信开放的沟通和快速的响应是成功合作的关键。我们致力于全力支持和维护隐私和保密作为重要的价值观"
                                             )}
                                         </Typography>
                                     </Box>
@@ -642,7 +663,8 @@ function TaxReport() {
                                     locale,
                                     "Consult Now",
                                     "Konsultasi Sekarang",
-                                    ""
+                                    "",
+                                    "安排咨询"
                                 )}
                             </Button>
                         </div>
@@ -665,24 +687,29 @@ function TaxReport() {
                                 headingEng="Corporate Annual Income Tax Return Filing Service"
                                 headingId="Layanan Pelaporan SPT Tahunan PPh Badan"
                                 headingJp=""
+                                headingCh="的年度企业所得税申报表服务"
                                 tagLineEng="Hassle-Free "
                                 tagLineId="Tanpa Ribet"
                                 tagLineJp=""
+                                tagLineCh="无麻烦"
                             >
                                 <CheckIconContent
                                     eng="Tax Analysis and Calculation"
                                     id="Analisa dan Perhitungan Pajak"
                                     jp=""
+                                    ch="税收分析与计算"
                                 />
                                 <CheckIconContent
                                     eng="Account Review and Tax Return Preparation"
                                     id="Peninjauan akun dan Penyiapan SPT"
                                     jp=""
+                                    ch="账户审查和SPT准备"
                                 />
                                 <CheckIconContent
                                     eng="Annual Tax Return Filing"
                                     id="Pelaporan SPT Tahunan"
                                     jp=""
+                                    ch="年度SPT报告"
                                 />
                             </ServiceDetailBox>
                         </div>
@@ -692,24 +719,29 @@ function TaxReport() {
                                 headingEng="for Individual Annual Tax Return Filing Service"
                                 headingId="Layanan Pelaporan SPT Tahunan Orang Pribadi"
                                 headingJp=""
+                                headingCh="个人年度 SPT 报告服务"
                                 tagLineEng="Comprehensive Assistance "
                                 tagLineId="Dibantu Sampai Beres"
                                 tagLineJp=""
+                                tagLineCh="帮助完成"
                             >
                                 <CheckIconContent
                                     eng="Tax Analysis and Calculation"
                                     id="Analisa dan Perhitungan Pajak"
                                     jp=""
+                                    ch="税收分析与计算"
                                 />
                                 <CheckIconContent
                                     eng="Account Review and Tax Return Preparation"
                                     id="Peninjauan akun dan Penyiapan SPT"
                                     jp=""
+                                    ch="账户审查和SPT准备"
                                 />
                                 <CheckIconContent
                                     eng="Annual Tax Return Filing"
                                     id="Pelaporan SPT Tahunan"
                                     jp=""
+                                    ch="年度SPT报告"
                                 />
                             </ServiceDetailBox>
                         </div>
@@ -719,24 +751,29 @@ function TaxReport() {
                                 headingEng="Tax Return Correction Service"
                                 headingId="Layanan Pembetulan SPT  dikerjakan oleh "
                                 headingJp=""
+                                headingCh="提供 SPT 矫正服务。"
                                 tagLineId="Para Ahli"
                                 tagLineEng="Expert-Led "
                                 tagLineJp=""
+                                tagLineCh="专家"
                             >
                                 <CheckIconContent
                                     eng="Error Identification and Analysis"
                                     id="Identifikasi dan Analisis Kesalahan"
                                     jp=""
+                                    ch="错误识别与分析"
                                 />
                                 <CheckIconContent
                                     eng="Amended Tax Return Preparation"
                                     id="Penyusunan SPT Pembetulan"
                                     jp=""
+                                    ch="校正SPT的准备"
                                 />
                                 <CheckIconContent
                                     eng="Amended Tax Return Filing and Submission"
                                     id="Pengajuan dan Pelaporan SPT Pembetulan"
                                     jp=""
+                                    ch="更正的SPT的提交和报告"
                                 />
                             </ServiceDetailBox>
                         </div>
@@ -780,7 +817,8 @@ function TaxReport() {
                                     locale,
                                     " Has Been Trusted for Tax Solutions and Assistance ",
                                     " Telah Dipercaya Menyelesaikan dan Membantu Permasalahan Pajak",
-                                    ""
+                                    "",
+                                    "已获得可以解决和帮助解决税务问题的信赖"
                                 )}
                             </Typography>
                         </div>
@@ -832,7 +870,8 @@ function TaxReport() {
                                     locale,
                                     "From Various Industries",
                                     "Dari Berbagai Industri",
-                                    ""
+                                    "",
+                                    "从各种行业"
                                 )}
                             </Typography>
                         </Box>
@@ -858,7 +897,8 @@ function TaxReport() {
                                             locale,
                                             "Mining and Quarrying",
                                             "Pertambangan dan Penggalian",
-                                            ""
+                                            "",
+                                            "采矿业"
                                         )}
                                     </Typography>
                                     <Typography
@@ -878,7 +918,8 @@ function TaxReport() {
                                             locale,
                                             "Manufacturing",
                                             "Manufaktur",
-                                            ""
+                                            "",
+                                            "制造业"
                                         )}
                                     </Typography>
                                     <Typography
@@ -898,7 +939,8 @@ function TaxReport() {
                                             locale,
                                             "Business Activities",
                                             "Kegiatan Bisnis",
-                                            ""
+                                            "",
+                                            "商业活动"
                                         )}
                                     </Typography>
                                     <Typography
@@ -918,7 +960,7 @@ function TaxReport() {
                                             "Agricultural,",
                                             "Konstruksi",
                                             "",
-                                            ""
+                                            "建设"
                                         )}
                                     </Typography>
                                 </div>
@@ -941,7 +983,7 @@ function TaxReport() {
                                             "Forestry, and Fishery Constructions",
                                             "Pertanian, Kehutanan, dan Perikanan",
                                             "",
-                                            ""
+                                            "农业, 林业和渔业"
                                         )}
                                     </Typography>
                                     <Typography
@@ -961,7 +1003,8 @@ function TaxReport() {
                                             locale,
                                             "Electricity and Gas",
                                             "Listrik dan Gas",
-                                            ""
+                                            "",
+                                            "电力和燃气"
                                         )}
                                     </Typography>
                                     <Typography
@@ -982,7 +1025,7 @@ function TaxReport() {
                                             "Legal",
                                             "Hukum",
                                             "",
-                                            ""
+                                            "法律"
                                         )}
                                     </Typography>
                                     <Typography
@@ -1002,7 +1045,7 @@ function TaxReport() {
                                             "Transport and Warehousing",
                                             "Transportasi dan Pergudangan",
                                             "",
-                                            ""
+                                            "运输和仓储"
                                         )}
                                     </Typography>
                                 </div>
@@ -1025,7 +1068,7 @@ function TaxReport() {
                                             "Accommodation and Food and Beverage Services",
                                             "Akomodasi dan Penyediaan Makanan dan Minuman",
                                             "",
-                                            ""
+                                            "住宿和餐饮提供"
                                         )}
                                     </Typography>
                                     <Typography
@@ -1044,7 +1087,8 @@ function TaxReport() {
                                             locale,
                                             "Financial and Insurance Activities",
                                             "Kegiatan Keuangan dan Asuransi",
-                                            ""
+                                            "",
+                                            "金融和保险活动"
                                         )}
                                     </Typography>
                                 </div>
@@ -1066,7 +1110,8 @@ function TaxReport() {
                                             locale,
                                             "Information and Communication",
                                             "Informasi dan Komunikasi",
-                                            ""
+                                            "",
+                                            "信息和通信"
                                         )}
                                     </Typography>
                                     <Typography
@@ -1086,7 +1131,8 @@ function TaxReport() {
                                             locale,
                                             "Private",
                                             "Pribadi",
-                                            ""
+                                            "",
+                                            "个人"
                                         )}
                                     </Typography>
                                     <Typography
@@ -1105,7 +1151,8 @@ function TaxReport() {
                                             locale,
                                             "Other Services",
                                             "Kegiatan Jasa Lainnya",
-                                            ""
+                                            "",
+                                            "其他服务活动"
                                         )}
                                     </Typography>
                                 </div>
@@ -1126,7 +1173,7 @@ function TaxReport() {
                                             locale,
                                             "Wholesale and Retail Trade, Vehicle and Motorcycle Repair",
                                             "Perdagangan Besar dan Eceran, Reparasi Mobil dan Sepeda Motor",
-                                            ""
+                                            "贸易和零售, 汽车和摩托车维修"
                                         )}
                                     </Typography>
                                 </div>
@@ -1166,7 +1213,7 @@ function TaxReport() {
                                     "Get a Free Consultation ",
                                     "Konsultasi Gratis ",
                                     "",
-                                    ""
+                                    "免费咨询，"
                                 )}
                             </Typography>
                             <Typography
@@ -1187,7 +1234,7 @@ function TaxReport() {
                                     "and Focus on Growing Your Business!",
                                     "Agar Anda Bisa Fokus ke Bisnis!",
                                     "",
-                                    ""
+                                    "让您专注业务！"
                                 )}
                             </Typography>
                         </div>
@@ -1215,7 +1262,8 @@ function TaxReport() {
                                     locale,
                                     "Consult Now",
                                     "Konsultasi Sekarang",
-                                    ""
+                                    "",
+                                    "立即咨询"
                                 )}
                             </Button>
                         </div>

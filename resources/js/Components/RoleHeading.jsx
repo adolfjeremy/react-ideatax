@@ -74,36 +74,36 @@ function RoleHeading() {
                         Sebagai <br />
                         Partner Pajak Anda
                     </Typography>,
-                    ""
-                    // <Typography
-                    //     sx={{
-                    //         fontSize: "2rem",
-                    //         letterSpacing: "0.009em",
-                    //         color: theme.palette.custom.darkBlue,
-                    //         fontWeight: "600",
-                    //         mb: 2,
-                    //         [theme.breakpoints.down("md")]: {
-                    //             fontSize: "1.5rem",
-                    //         },
-                    //     }}
-                    // >
-                    //     <Typography
-                    //         as="span"
-                    //         sx={{
-                    //             color: theme.palette.custom.orange,
-                    //             fontSize: "2rem",
-                    //             letterSpacing: "0.009em",
-                    //             fontWeight: "600",
-                    //             mb: 2,
-                    //             [theme.breakpoints.down("md")]: {
-                    //                 fontSize: "1.5rem",
-                    //             },
-                    //         }}
-                    //     >
-                    //         Ideatax
-                    //     </Typography>{" "}
-                    //     の税務パートナーとしての役割
-                    // </Typography>
+                    "",
+                    <Typography
+                        sx={{
+                            fontSize: "2rem",
+                            letterSpacing: "0.009em",
+                            color: theme.palette.custom.darkBlue,
+                            fontWeight: "600",
+                            mb: 2,
+                            [theme.breakpoints.down("md")]: {
+                                fontSize: "1.5rem",
+                            },
+                        }}
+                    >
+                        <Typography
+                            as="span"
+                            sx={{
+                                color: theme.palette.custom.orange,
+                                fontSize: "2rem",
+                                letterSpacing: "0.009em",
+                                fontWeight: "600",
+                                mb: 2,
+                                [theme.breakpoints.down("md")]: {
+                                    fontSize: "1.5rem",
+                                },
+                            }}
+                        >
+                            Ideatax{" "}
+                        </Typography>
+                        作为您税务合作伙伴的角色
+                    </Typography>
                 )}
             </div>
         </Box>

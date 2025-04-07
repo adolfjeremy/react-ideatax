@@ -161,6 +161,9 @@ function HeaderBar({ en, id, jp, ch }) {
                         },
                     },
                 }}
+                ModalProps={{
+                    keepMounted: true,
+                }}
                 anchor="right"
                 open={state}
                 onClose={toggleDrawer(false)}

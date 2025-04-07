@@ -8,9 +8,11 @@ function ServiceDetailBox({
     headingEng,
     headingId,
     headingJp,
+    headingCh,
     tagLineEng,
     tagLineId,
     tagLineJp,
+    tagLineCh,
 }) {
     const theme = useTheme();
     return (
@@ -43,15 +45,14 @@ function ServiceDetailBox({
                                 locale,
                                 tagLineEng,
                                 tagLineId,
-                                tagLineJp
+                                tagLineJp,
+                                tagLineCh
                             )}
                         </Typography>
                     </>
                 )}
-                {checkLang(locale, headingEng, headingId, headingJp)}
-                {locale !== "en" && (
+                {locale == "zh-CN" && (
                     <>
-                        <br />
                         <Typography
                             variant="span"
                             sx={{
@@ -63,11 +64,13 @@ function ServiceDetailBox({
                                 locale,
                                 tagLineEng,
                                 tagLineId,
-                                tagLineJp
+                                tagLineJp,
+                                tagLineCh
                             )}
                         </Typography>
                     </>
                 )}
+                {checkLang(locale, headingEng, headingId, headingJp, headingCh)}
             </Typography>
             <hr />
             <Box

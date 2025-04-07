@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 import CheckIcon from "./CheckIcon";
 import checkLang from "@/utils/checkLang";
 
-function CheckIconContent({ eng, id, jp }) {
+function CheckIconContent({ eng, id, jp, ch }) {
     const { locale } = usePage().props;
     return (
         <Box
@@ -22,7 +22,7 @@ function CheckIconContent({ eng, id, jp }) {
         >
             <CheckIcon />
             <p className="m-0 text-xl text-white">
-                {checkLang(locale, eng, id, jp)}
+                {checkLang(locale, eng, id, jp, ch)}
             </p>
         </Box>
     );

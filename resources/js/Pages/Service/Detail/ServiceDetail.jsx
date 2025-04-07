@@ -31,10 +31,10 @@ function ServiceDetail() {
             )}
             href={checkLang(
                 locale,
-                route("service-detail"),
-                route("service-detail.id"),
-                route("service-detail.jp"),
-                route("service-detail.ch")
+                route("service-detail", item.slug_eng),
+                route("service-detail.id", item.slug),
+                route("service-detail.jp", item.slug_jpn),
+                route("service-detail.ch", item.slug_ch)
             )}
         >
             <Box

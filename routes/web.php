@@ -112,7 +112,7 @@ Route::prefix('id')
         Route::get('/careers/{slug}', [CareerController::class, 'detail'])->name('career-detail.id');
         Route::get('/careers/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax.id');
         Route::get('/contact', [ContactController::class, 'index'])->name('contact.id');
-});
+    });
 
 Route::prefix('jp')
     ->middleware(ChangeLocal::class)
@@ -134,7 +134,7 @@ Route::prefix('jp')
         Route::get('/careers/{slug_jpn}', [CareerController::class, 'detail'])->name('career-detail.jp');
         Route::get('/careers/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax.jp');
         Route::get('/contact', [ContactController::class, 'index'])->name('contact.jp');
-});
+    });
 
 Route::prefix('zh-CN')
     ->middleware(ChangeLocal::class)
@@ -144,8 +144,9 @@ Route::prefix('zh-CN')
         Route::get('/our-team/{slug}', [TeamController::class, 'detail'])->name('team-detail.ch');
         Route::get('/our-services', [ServiceController::class, 'index'])->name('service.ch');
         Route::get('/our-services/{slug_ch}', [ServiceController::class, 'detail'])->name('service-detail.ch');
-        // Route::get('/our-service/zeimu-kansa-sapoto', [TaxAuditController::class, 'detail'])->name('tax-audit.jp');
+        Route::get('/our-service/xiezhu-shuiwu-jiancha', [TaxAuditController::class, 'detail'])->name('tax-audit.ch');
         Route::get('/our-service/退税', [TaxRefundController::class, 'index'])->name('tax-refund.ch');
+        Route::get('/our-service/年度企业和个人SPT申报服务', [TaxReportController::class, 'index'])->name('tax-report.ch');
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.ch');
         Route::get('/articles/{slug_ch}', [ArticleController::class, 'detail'])->name('article-detail.ch');
         // Route::get('/articles/event/{slug_jpn}', [ControllersTaxEventController::class, 'detail'])->name('event-detail.jp');
@@ -153,7 +154,7 @@ Route::prefix('zh-CN')
         // Route::get('/careers/{slug_jpn}', [CareerController::class, 'detail'])->name('career-detail.jp');
         // Route::get('/careers/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax.jp');
         Route::get('/contact', [ContactController::class, 'index'])->name('contact.ch');
-});
+    });
 
 Route::prefix('admin')
     ->middleware('auth', "isAdmin")
@@ -171,7 +172,7 @@ Route::prefix('admin')
         Route::resource('company-profile', CompanyProfileController::class);
         Route::resource('consultation-meeting', ConsultationMeetingController::class);
         Route::resource('subscriber', SubscribeController::class);
-});
+    });
 
 
 
@@ -185,4 +186,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
