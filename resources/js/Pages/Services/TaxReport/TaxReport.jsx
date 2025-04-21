@@ -1,5 +1,11 @@
 import React from "react";
-import { Box, Typography, useTheme, Button } from "@mui/material";
+import {
+    Box,
+    Typography,
+    useTheme,
+    Button,
+    useMediaQuery,
+} from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
@@ -21,12 +27,14 @@ import RoleItems from "@/Components/RoleItems";
 import ServiceDetailBox from "@/Components/ServiceDetailBox";
 import CheckIconContent from "@/Components/CheckIconContent";
 import CounterLg from "@/Components/CounterLg";
-import AwardImage from "@/Components/AwardImage";
+import AwardDesktop from "@/Components/AwardDesktop";
+import AwardIconMobile from "@/Components/AwardIconMobile";
 
 function TaxReport() {
     const { t } = useTranslation();
     const theme = useTheme();
     const { locale, stats } = usePage().props;
+    const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
     return (
         <Guest
             className="services"
@@ -1182,7 +1190,11 @@ function TaxReport() {
                     </div>
                 </div>
             </Box>
-            <AwardImage />
+            <div className="container">
+                <div className="row mt-5">
+                    {isMobile ? <AwardIconMobile /> : <AwardDesktop />}
+                </div>
+            </div>
             <Box
                 className="py-5"
                 sx={{

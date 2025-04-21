@@ -54,7 +54,7 @@ const Counter = ({ target, duration = 3000 }) => {
                     textAlign: "center",
                     fontWeight: "800",
                     [theme.breakpoints.down("md")]: {
-                        fontSize: "1.125rem",
+                        fontSize: "2rem",
                     },
                 }}
                 className="stat m-0"

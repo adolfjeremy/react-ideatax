@@ -9,17 +9,14 @@
 }
 
 .award_image {
-    width: calc((100vw - 233px) / 6);
+    width: calc((100vw - 233px) / 8);
     @media (max-width: 1024px) {
-        width: calc((100vw - 71px) / 6);
-    }
-    @media (max-width: 480px) {
-        width: calc((100vw - 24px) / 6);
+        width: calc((100vw - 71px) / 8);
     }
 }
 
 .award_image-2 {
-    width: calc((100% - 20px) / 7.5);
+    width: calc((100% - 20px) / 9);
 }
 
 .consultation_cta {

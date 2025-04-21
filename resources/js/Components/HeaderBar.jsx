@@ -104,6 +104,9 @@ function HeaderBar({ en, id, jp, ch }) {
                             sx={{
                                 img: {
                                     width: "160px",
+                                    [theme.breakpoints.down("md")]: {
+                                        width: "120px",
+                                    },
                                 },
                             }}
                             href={checkLang(

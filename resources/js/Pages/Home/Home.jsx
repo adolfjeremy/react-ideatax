@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Box, Typography, useTheme, Link } from "@mui/material";
+import { Box, Typography, useTheme, Link, useMediaQuery } from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import { IoIosArrowRoundForward } from "react-icons/io";
@@ -9,15 +9,20 @@ import ComproModal from "./ComproModal";
 import ConsultationButton from "@/Components/ConsultationButton";
 import SubsModal from "./SubsModal";
 import RoundedArticle from "./RoundedArticle";
+import ExpertiseItem from "@/Components/ExpertiseItem";
+import AwardIconMobile from "@/Components/AwardIconMobile";
+import AwardDesktop from "@/Components/AwardDesktop";
+import ValueSlick from "@/Components/ValueSlick";
 import serviceBg from "../../assets/images/service-bg.png";
 import teamImg from "../../assets/images/team-img.webp";
 import subs from "../../assets/images/subscribe.webp";
-import aw from "../../assets/images/aw.webp";
-import aw1 from "../../assets/images/aw-1.webp";
-import aw2 from "../../assets/images/aw-2.webp";
-import aw3 from "../../assets/images/aw-3.webp";
-import aw4 from "../../assets/images/aw-4.webp";
-import aw5 from "../../assets/images/aw-5.webp";
+// import aw from "../../assets/images/aw.webp";
+// import aw1 from "../../assets/images/aw-1.webp";
+// import aw2 from "../../assets/images/aw-2.webp";
+// import aw3 from "../../assets/images/aw-3.webp";
+// import aw4 from "../../assets/images/aw-4.webp";
+// import aw5 from "../../assets/images/aw-5.webp";
+import serviceBgMobile from "@/assets/images/pages/home/service-bg-sm.png";
 import professional from "../../assets/images/1.webp";
 import trustwothy from "../../assets/images/2.webp";
 import creativity from "../../assets/images/3.webp";
@@ -34,6 +39,9 @@ import "./home.scss";
 function Home() {
     const containerRef = useRef(null);
     const [visible, setIsVisible] = useState(false);
+
+    const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
+
     const callbackFunction = (entries) => {
         const [entry] = entries;
         setIsVisible(entry.isIntersecting);
@@ -140,8 +148,9 @@ function Home() {
                             <Typography
                                 sx={{
                                     color: theme.palette.custom.white,
+                                    fontWeight: 700,
                                     [theme.breakpoints.down("md")]: {
-                                        fontSize: "1.2em",
+                                        fontSize: "1.6rem",
                                         mt: 7,
                                     },
                                     [theme.breakpoints.up("md")]: {
@@ -174,22 +183,29 @@ function Home() {
                     </Box>
                 </Box>
             </Box>
-            <Box component="section" sx={{ py: "3.5rem" }}>
+            <Box
+                component="section"
+                sx={{
+                    padding: "2rem 0 1rem 0",
+                    [theme.breakpoints.down("md")]: {
+                        backgroundImage: `url(${serviceBgMobile})`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                    },
+                }}
+            >
                 <div className="container">
                     <div className="row">
-                        <div className="col-12 d-flex align-items-center justify-content-center">
-                            <img src={aw} className="award_image" />
-                            <img src={aw1} className="award_image" />
-                            <img src={aw2} className="award_image" />
-                            <img src={aw3} className="award_image" />
-                            <img src={aw4} className="award_image" />
-                            <img src={aw5} className="award_image" />
-                        </div>
+                        {isMobile ? <AwardIconMobile /> : <AwardDesktop />}
                     </div>
-                    <div className="row about_text">
+                    <div className="row about_text mt-3">
                         <div className="col-12">
                             <Typography
-                                sx={{ color: theme.palette.custom.lightBlue }}
+                                sx={{
+                                    color: theme.palette.custom.lightBlue,
+                                    textAlign: "center",
+                                }}
                             >
                                 {t("about")}
                             </Typography>
@@ -199,7 +215,7 @@ function Home() {
                         {stats.map((stat) => (
                             <Box
                                 key={stat.id}
-                                className="col-3"
+                                className="col-4 col-md-3"
                                 sx={{
                                     display: "flex",
                                     alignItems: "center",
@@ -217,21 +233,32 @@ function Home() {
                                         textAlign: "center",
                                         fontWeight: "500",
                                         textTransform: "capitalize",
+                                        [theme.breakpoints.down("md")]: {
+                                            fontSize: "1rem",
+                                        },
                                     }}
                                     className="stat_head m-0"
                                 >
-                                    {checkLang(
-                                        locale,
-                                        stat.head_eng,
-                                        stat.head,
-                                        stat.head_jpn,
-                                        stat.head_ch
-                                    )}
+                                    {isMobile && stat.id === 3
+                                        ? checkLang(
+                                              locale,
+                                              "Experience",
+                                              "Pengalaman",
+                                              "",
+                                              stat.head_ch
+                                          )
+                                        : checkLang(
+                                              locale,
+                                              stat.head_eng,
+                                              stat.head,
+                                              stat.head_jpn,
+                                              stat.head_ch
+                                          )}
                                 </Typography>
                             </Box>
                         ))}
                         <Box
-                            className="col-3"
+                            className="col-12 col-md-3 mt-2"
                             sx={{
                                 display: "flex",
                                 alignItems: "center",
@@ -241,18 +268,13 @@ function Home() {
                             <ComproModal buttonText={t("comproButton")} />
                         </Box>
                     </div>
-                </div>
-            </Box>
-            <Box component="section" sx={{ py: "3.5rem" }}>
-                <div className="container">
                     <div className="row">
-                        <div className="col-12 ">
+                        <div className="col-12 text-center mt-5">
                             <Typography
                                 sx={{
                                     fontSize: "1.9375rem",
                                     lineHeight: "1.43749551em",
-                                    color: theme.palette.custom.lightBlue,
-                                    textAlign: "center",
+                                    color: theme.palette.custom.darkBlue,
                                 }}
                                 as="h2"
                             >
@@ -260,277 +282,75 @@ function Home() {
                             </Typography>
                         </div>
                     </div>
-                    <div className="row expertise">
-                        <div className="col-12 col-md-6 mt-5">
-                            <img src={audit} alt={t("serviceOneHead")} />
-                            <Typography
-                                className="mt-3"
-                                sx={{
-                                    fontWeight: 700,
-                                    color: theme.palette.custom.darkBlue,
-                                    lineHeight: "1.42856633em",
-                                    letterSpacing: "0.009em",
-                                    fontSize: "1.6875rem",
-                                }}
-                                as="h3"
-                            >
-                                {t("serviceOneHead")}
-                            </Typography>
-                            <Typography
-                                sx={{
-                                    color: theme.palette.custom.darkBlue,
-                                    lineHeight: "1.42856633em",
-                                    letterSpacing: "0.009em",
-                                    fontSize: "1.15rem",
-                                    margin: "20px 0 10px 0",
-                                }}
-                            >
-                                {t("serviceOneDesc")}
-                            </Typography>
-                            <Link
-                                href={
-                                    locale == "en"
-                                        ? route("tax-audit")
-                                        : locale == "id"
-                                        ? route("tax-audit.id")
-                                        : route("tax-audit.jp")
-                                }
-                                underline="none"
-                                sx={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "starts",
-                                    gap: 1,
-                                    fontSize: "0.75rem",
-                                    fontWeight: "600",
-                                    color: theme.palette.custom.orange,
-                                    transition: "all 300ms ease-in-out",
-                                    svg: {
-                                        color: theme.palette.custom.orange,
-                                        fontSize: "1.4rem",
-                                    },
-                                    "&:hover": {
-                                        color: theme.palette.custom.lightBlue,
-                                        fontSize: "0.8rem",
-                                        svg: {
-                                            color: theme.palette.custom
-                                                .lightBlue,
-                                            fontSize: "1.5rem",
-                                        },
-                                    },
-                                }}
-                            >
-                                {t("read")}
-                                <IoIosArrowRoundForward />
-                            </Link>
-                        </div>
-                        <div className="col-12 col-md-6 mt-5">
-                            <img src={refund} alt={t("serviceTwoHead")} />
-                            <Typography
-                                className="mt-3"
-                                sx={{
-                                    fontWeight: 700,
-                                    color: theme.palette.custom.darkBlue,
-                                    lineHeight: "1.42856633em",
-                                    letterSpacing: "0.009em",
-                                    fontSize: "1.6875rem",
-                                }}
-                                as="h3"
-                            >
-                                {t("serviceTwoHead")}
-                            </Typography>
-                            <Typography
-                                sx={{
-                                    color: theme.palette.custom.darkBlue,
-                                    lineHeight: "1.42856633em",
-                                    letterSpacing: "0.009em",
-                                    fontSize: "1.15rem",
-                                    margin: "20px 0 10px 0",
-                                }}
-                            >
-                                {t("serviceTwoDesc")}
-                            </Typography>
-                            <Link
-                                href={
-                                    locale == "en"
-                                        ? route("tax-refund")
-                                        : locale == "id"
-                                        ? route("tax-refund.id")
-                                        : route("tax-refund.jp")
-                                }
-                                underline="none"
-                                sx={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "starts",
-                                    gap: 1,
-                                    fontSize: "0.75rem",
-                                    fontWeight: "600",
-                                    color: theme.palette.custom.orange,
-                                    transition: "all 300ms ease-in-out",
-                                    svg: {
-                                        color: theme.palette.custom.orange,
-                                        fontSize: "1.4rem",
-                                    },
-                                    "&:hover": {
-                                        color: theme.palette.custom.lightBlue,
-                                        fontSize: "0.8rem",
-                                        svg: {
-                                            color: theme.palette.custom
-                                                .lightBlue,
-                                            fontSize: "1.5rem",
-                                        },
-                                    },
-                                }}
-                            >
-                                {t("read")}
-                                <IoIosArrowRoundForward />
-                            </Link>
-                        </div>
-                        <div className="col-12 col-md-6 mt-5">
-                            <img src={transfer} alt={t("serviceThreeHead")} />
-                            <Typography
-                                className="mt-3"
-                                sx={{
-                                    fontWeight: 700,
-                                    color: theme.palette.custom.darkBlue,
-                                    lineHeight: "1.42856633em",
-                                    letterSpacing: "0.009em",
-                                    fontSize: "1.6875rem",
-                                }}
-                                as="h3"
-                            >
-                                {t("serviceThreeHead")}
-                            </Typography>
-                            <Typography
-                                sx={{
-                                    color: theme.palette.custom.darkBlue,
-                                    lineHeight: "1.42856633em",
-                                    letterSpacing: "0.009em",
-                                    fontSize: "1.15rem",
-                                    margin: "20px 0 10px 0",
-                                }}
-                            >
-                                {t("serviceThreeDesc")}
-                            </Typography>
-                            <Link
-                                href={
-                                    locale == "en"
-                                        ? route(
-                                              "service-detail",
-                                              "transfer-pricing-documentation-preparation-local-and-master-file"
-                                          )
-                                        : locale == "id"
-                                        ? route(
-                                              "service-detail.id",
-                                              "penyiapan-dokumentasi-transfer-pricing-file-lokal-dan-master"
-                                          )
-                                        : route(
-                                              "service-detail.jp",
-                                              "yi-zhuan-jia-ge-wen-shu-zuo-cheng-rokaruhuairuji-bimasutahuairu"
-                                          )
-                                }
-                                underline="none"
-                                sx={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "starts",
-                                    gap: 1,
-                                    fontSize: "0.75rem",
-                                    fontWeight: "600",
-                                    color: theme.palette.custom.orange,
-                                    transition: "all 300ms ease-in-out",
-                                    svg: {
-                                        color: theme.palette.custom.orange,
-                                        fontSize: "1.4rem",
-                                    },
-                                    "&:hover": {
-                                        color: theme.palette.custom.lightBlue,
-                                        fontSize: "0.8rem",
-                                        svg: {
-                                            color: theme.palette.custom
-                                                .lightBlue,
-                                            fontSize: "1.5rem",
-                                        },
-                                    },
-                                }}
-                            >
-                                {t("read")}
-                                <IoIosArrowRoundForward />
-                            </Link>
-                        </div>
-                        <div className="col-12 col-md-6 mt-5">
-                            <img src={compliance} alt={t("serviceFourHead")} />
-                            <Typography
-                                className="mt-3"
-                                sx={{
-                                    fontWeight: 700,
-                                    color: theme.palette.custom.darkBlue,
-                                    lineHeight: "1.42856633em",
-                                    letterSpacing: "0.009em",
-                                    fontSize: "1.6875rem",
-                                }}
-                                as="h3"
-                            >
-                                {t("serviceFourHead")}
-                            </Typography>
-                            <Typography
-                                sx={{
-                                    color: theme.palette.custom.darkBlue,
-                                    lineHeight: "1.42856633em",
-                                    letterSpacing: "0.009em",
-                                    fontSize: "1.15rem",
-                                    margin: "20px 0 10px 0",
-                                }}
-                            >
-                                {t("serviceFourDesc")}
-                            </Typography>
-                            <Link
-                                href={
-                                    locale == "en"
-                                        ? route(
-                                              "service-detail",
-                                              "tax-and-customs-compliances"
-                                          )
-                                        : locale == "id"
-                                        ? route(
-                                              "service-detail.id",
-                                              "otomatisasi-dan-kepatuhan-perpajakan"
-                                          )
-                                        : route(
-                                              "service-detail.jp",
-                                              "shui-wu-shui-guan-konpuraiansu"
-                                          )
-                                }
-                                underline="none"
-                                sx={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "starts",
-                                    gap: 1,
-                                    fontSize: "0.75rem",
-                                    fontWeight: "600",
-                                    color: theme.palette.custom.orange,
-                                    transition: "all 300ms ease-in-out",
-                                    svg: {
-                                        color: theme.palette.custom.orange,
-                                        fontSize: "1.4rem",
-                                    },
-                                    "&:hover": {
-                                        color: theme.palette.custom.lightBlue,
-                                        fontSize: "0.8rem",
-                                        svg: {
-                                            color: theme.palette.custom
-                                                .lightBlue,
-                                            fontSize: "1.5rem",
-                                        },
-                                    },
-                                }}
-                            >
-                                {t("read")}
-                                <IoIosArrowRoundForward />
-                            </Link>
-                        </div>
+                    <div className="row expertise mt-1">
+                        <ExpertiseItem
+                            head={t("serviceOneHead")}
+                            desc={t("serviceOneDesc")}
+                            image={audit}
+                            isEven={false}
+                            route={
+                                locale == "en"
+                                    ? route("tax-audit")
+                                    : locale == "id"
+                                    ? route("tax-audit.id")
+                                    : route("tax-audit.jp")
+                            }
+                        />
+                        <ExpertiseItem
+                            head={t("serviceTwoHead")}
+                            desc={t("serviceTwoDesc")}
+                            image={refund}
+                            route={
+                                locale == "en"
+                                    ? route("tax-refund")
+                                    : locale == "id"
+                                    ? route("tax-refund.id")
+                                    : route("tax-refund.jp")
+                            }
+                        />
+                        <ExpertiseItem
+                            head={t("serviceThreeHead")}
+                            desc={t("serviceThreeDesc")}
+                            image={transfer}
+                            isEven={false}
+                            route={
+                                locale == "en"
+                                    ? route(
+                                          "service-detail",
+                                          "transfer-pricing-documentation-preparation-local-and-master-file"
+                                      )
+                                    : locale == "id"
+                                    ? route(
+                                          "service-detail.id",
+                                          "penyiapan-dokumentasi-transfer-pricing-file-lokal-dan-master"
+                                      )
+                                    : route(
+                                          "service-detail.jp",
+                                          "yi-zhuan-jia-ge-wen-shu-zuo-cheng-rokaruhuairuji-bimasutahuairu"
+                                      )
+                            }
+                        />
+                        <ExpertiseItem
+                            head={t("serviceFourHead")}
+                            desc={t("serviceFourDesc")}
+                            image={compliance}
+                            route={
+                                locale == "en"
+                                    ? route(
+                                          "service-detail",
+                                          "tax-and-customs-compliances"
+                                      )
+                                    : locale == "id"
+                                    ? route(
+                                          "service-detail.id",
+                                          "otomatisasi-dan-kepatuhan-perpajakan"
+                                      )
+                                    : route(
+                                          "service-detail.jp",
+                                          "shui-wu-shui-guan-konpuraiansu"
+                                      )
+                            }
+                        />
                     </div>
                 </div>
             </Box>
@@ -555,124 +375,142 @@ function Home() {
                             </Typography>
                         </div>
                     </div>
-                    <div className="row mt-4">
-                        <Box
-                            className="col-3 p-0 value_item"
-                            sx={{ position: "relative", overflow: "hidden" }}
-                        >
-                            <img
-                                src={professional}
-                                alt={t("valueOne")}
-                                className="w-100"
-                            />
-                            <Typography
+                    {isMobile ? (
+                        <div className="row">
+                            <ValueSlick />
+                        </div>
+                    ) : (
+                        <div className="row mt-4">
+                            <Box
+                                className="col-3 p-0 value_item"
                                 sx={{
-                                    position: "absolute",
-                                    color: theme.palette.custom.white,
-                                    margin: 0,
-                                    bottom: "20px",
-                                    right: "50%",
-                                    transform: "translateX(50%)",
-                                    fontSize: "1.3125rem",
-                                    fontWeight: "400",
-                                    lineHeight: "1.42498753em",
-                                    letterSpacing: ".009em",
-                                    [theme.breakpoints.down("md")]: {
-                                        fontSize: "0.8rem",
-                                    },
+                                    position: "relative",
+                                    overflow: "hidden",
                                 }}
                             >
-                                {t("valueOne")}
-                            </Typography>
-                        </Box>
-                        <Box
-                            className="col-3 p-0 value_item"
-                            sx={{ position: "relative", overflow: "hidden" }}
-                        >
-                            <img
-                                src={trustwothy}
-                                alt={t("valueTwo")}
-                                className="w-100"
-                            />
-                            <Typography
+                                <img
+                                    src={professional}
+                                    alt={t("valueOne")}
+                                    className="w-100"
+                                />
+                                <Typography
+                                    sx={{
+                                        position: "absolute",
+                                        color: theme.palette.custom.white,
+                                        margin: 0,
+                                        bottom: "20px",
+                                        right: "50%",
+                                        transform: "translateX(50%)",
+                                        fontSize: "1.3125rem",
+                                        fontWeight: "400",
+                                        lineHeight: "1.42498753em",
+                                        letterSpacing: ".009em",
+                                        [theme.breakpoints.down("md")]: {
+                                            fontSize: "0.8rem",
+                                        },
+                                    }}
+                                >
+                                    {t("valueOne")}
+                                </Typography>
+                            </Box>
+                            <Box
+                                className="col-3 p-0 value_item"
                                 sx={{
-                                    position: "absolute",
-                                    color: theme.palette.custom.white,
-                                    margin: 0,
-                                    bottom: "20px",
-                                    right: "50%",
-                                    transform: "translateX(50%)",
-                                    fontSize: "1.3125rem",
-                                    fontWeight: "400",
-                                    lineHeight: "1.42498753em",
-                                    letterSpacing: ".009em",
-                                    [theme.breakpoints.down("md")]: {
-                                        fontSize: "0.8rem",
-                                    },
+                                    position: "relative",
+                                    overflow: "hidden",
                                 }}
                             >
-                                {t("valueTwo")}
-                            </Typography>
-                        </Box>
-                        <Box
-                            className="col-3 p-0 value_item"
-                            sx={{ position: "relative", overflow: "hidden" }}
-                        >
-                            <img
-                                src={creativity}
-                                alt={t("valueThree")}
-                                className="w-100"
-                            />
-                            <Typography
+                                <img
+                                    src={trustwothy}
+                                    alt={t("valueTwo")}
+                                    className="w-100"
+                                />
+                                <Typography
+                                    sx={{
+                                        position: "absolute",
+                                        color: theme.palette.custom.white,
+                                        margin: 0,
+                                        bottom: "20px",
+                                        right: "50%",
+                                        transform: "translateX(50%)",
+                                        fontSize: "1.3125rem",
+                                        fontWeight: "400",
+                                        lineHeight: "1.42498753em",
+                                        letterSpacing: ".009em",
+                                        [theme.breakpoints.down("md")]: {
+                                            fontSize: "0.8rem",
+                                        },
+                                    }}
+                                >
+                                    {t("valueTwo")}
+                                </Typography>
+                            </Box>
+                            <Box
+                                className="col-3 p-0 value_item"
                                 sx={{
-                                    position: "absolute",
-                                    color: theme.palette.custom.white,
-                                    margin: 0,
-                                    bottom: "20px",
-                                    right: "50%",
-                                    transform: "translateX(50%)",
-                                    fontSize: "1.3125rem",
-                                    fontWeight: "400",
-                                    lineHeight: "1.42498753em",
-                                    letterSpacing: ".009em",
-                                    [theme.breakpoints.down("md")]: {
-                                        fontSize: "0.8rem",
-                                    },
+                                    position: "relative",
+                                    overflow: "hidden",
                                 }}
                             >
-                                {t("valueThree")}
-                            </Typography>
-                        </Box>
-                        <Box
-                            className="col-3 p-0 value_item"
-                            sx={{ position: "relative", overflow: "hidden" }}
-                        >
-                            <img
-                                src={prudent}
-                                alt={t("valueFour")}
-                                className="w-100"
-                            />
-                            <Typography
+                                <img
+                                    src={creativity}
+                                    alt={t("valueThree")}
+                                    className="w-100"
+                                />
+                                <Typography
+                                    sx={{
+                                        position: "absolute",
+                                        color: theme.palette.custom.white,
+                                        margin: 0,
+                                        bottom: "20px",
+                                        right: "50%",
+                                        transform: "translateX(50%)",
+                                        fontSize: "1.3125rem",
+                                        fontWeight: "400",
+                                        lineHeight: "1.42498753em",
+                                        letterSpacing: ".009em",
+                                        [theme.breakpoints.down("md")]: {
+                                            fontSize: "0.8rem",
+                                        },
+                                    }}
+                                >
+                                    {t("valueThree")}
+                                </Typography>
+                            </Box>
+                            <Box
+                                className="col-3 p-0 value_item"
                                 sx={{
-                                    position: "absolute",
-                                    color: theme.palette.custom.white,
-                                    margin: 0,
-                                    bottom: "20px",
-                                    right: "50%",
-                                    transform: "translateX(50%)",
-                                    fontSize: "1.3125rem",
-                                    fontWeight: "400",
-                                    lineHeight: "1.42498753em",
-                                    letterSpacing: ".009em",
-                                    [theme.breakpoints.down("md")]: {
-                                        fontSize: "0.8rem",
-                                    },
+                                    position: "relative",
+                                    overflow: "hidden",
                                 }}
                             >
-                                {t("valueFour")}
-                            </Typography>
-                        </Box>
-                    </div>
+                                <img
+                                    src={prudent}
+                                    alt={t("valueFour")}
+                                    className="w-100"
+                                />
+                                <Typography
+                                    sx={{
+                                        position: "absolute",
+                                        color: theme.palette.custom.white,
+                                        margin: 0,
+                                        bottom: "20px",
+                                        right: "50%",
+                                        transform: "translateX(50%)",
+                                        fontSize: "1.3125rem",
+                                        fontWeight: "400",
+                                        lineHeight: "1.42498753em",
+                                        letterSpacing: ".009em",
+                                        [theme.breakpoints.down("md")]: {
+                                            fontSize: "0.8rem",
+                                        },
+                                    }}
+                                >
+                                    {t("valueFour")}
+                                </Typography>
+                            </Box>
+                        </div>
+                    )}
                 </div>
             </Box>
             <Box

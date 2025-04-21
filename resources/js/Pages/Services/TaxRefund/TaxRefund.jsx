@@ -1,6 +1,12 @@
 import React from "react";
 import { usePage } from "@inertiajs/react";
-import { Box, useTheme, Typography, Button } from "@mui/material";
+import {
+    Box,
+    useTheme,
+    Typography,
+    Button,
+    useMediaQuery,
+} from "@mui/material";
 import Guest from "@/Layout/Guest";
 import checkLang from "@/utils/checkLang";
 import CounterLg from "@/Components/CounterLg";
@@ -19,11 +25,13 @@ import industryBg from "./industri_bg.png";
 import quest4 from "./quest4.png";
 import Steps from "@/Components/Steps";
 import RoleItem from "@/Components/RoleItem";
-import AwardImage from "@/Components/AwardImage";
+import AwardDesktop from "@/Components/AwardDesktop";
+import AwardIconMobile from "@/Components/AwardIconMobile";
 
 function TaxRefund() {
     const theme = useTheme();
     const { locale, stats } = usePage().props;
+    const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
     return (
         <Guest
             className="services"
@@ -1430,7 +1438,11 @@ function TaxRefund() {
                     </div>
                 </div>
             </Box>
-            <AwardImage />
+            <div className="container">
+                <div className="row mt-5">
+                    {isMobile ? <AwardIconMobile /> : <AwardDesktop />}
+                </div>
+            </div>
             <Box
                 className="py-5"
                 sx={{
