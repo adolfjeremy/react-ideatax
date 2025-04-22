@@ -531,7 +531,8 @@ function Home() {
                                     color: theme.palette.custom.orange,
                                     marginBottom: "10px",
                                     [theme.breakpoints.down("sm")]: {
-                                        fontSize: "2.4189rem",
+                                        fontSize: "1.8rem",
+                                        textAlign: "center",
                                     },
                                 }}
                             >
@@ -545,6 +546,7 @@ function Home() {
                                     color: theme.palette.custom.lightBlue,
                                     [theme.breakpoints.down("sm")]: {
                                         fontSize: "0.9rem",
+                                        textAlign: "center",
                                     },
                                     [theme.breakpoints.down("lg")]: {
                                         fontSize: "1.0366rem",
@@ -554,7 +556,7 @@ function Home() {
                                 {t("serviceDesc")}
                             </Typography>
                         </div>
-                        <div className="col-12 col-md-7 services_list">
+                        <div className="col-12 col-md-7 mt-5 mt-md-0 services_list">
                             <Link
                                 href={
                                     locale == "en"
