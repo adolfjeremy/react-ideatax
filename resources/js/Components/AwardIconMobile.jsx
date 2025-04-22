@@ -23,6 +23,7 @@ function AwardIconMobile() {
         autoplaySpeed: 3000,
         cssEase: "linear",
         variableWidth: true,
+        arrows: false,
     };
     return (
         <div className="slider-container">

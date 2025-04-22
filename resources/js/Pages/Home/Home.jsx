@@ -16,12 +16,6 @@ import ValueSlick from "@/Components/ValueSlick";
 import serviceBg from "../../assets/images/service-bg.png";
 import teamImg from "../../assets/images/team-img.webp";
 import subs from "../../assets/images/subscribe.webp";
-// import aw from "../../assets/images/aw.webp";
-// import aw1 from "../../assets/images/aw-1.webp";
-// import aw2 from "../../assets/images/aw-2.webp";
-// import aw3 from "../../assets/images/aw-3.webp";
-// import aw4 from "../../assets/images/aw-4.webp";
-// import aw5 from "../../assets/images/aw-5.webp";
 import serviceBgMobile from "@/assets/images/pages/home/service-bg-sm.png";
 import professional from "../../assets/images/1.webp";
 import trustwothy from "../../assets/images/2.webp";
@@ -35,6 +29,8 @@ import checkLang from "@/utils/checkLang";
 import formatDate from "@/utils/formatDate";
 import Counter from "./Counter";
 import "./home.scss";
+import EventItem from "@/Components/EventItem";
+import EventItemMobile from "@/Components/EventItemMobile";
 
 function Home() {
     const containerRef = useRef(null);
@@ -842,69 +838,29 @@ function Home() {
                         </div>
                     </div>
                     <div className="row">
-                        {events.map((item) => (
-                            <Link
-                                key={item.id}
-                                underline="none"
-                                href={checkLang(
-                                    locale,
-                                    route("event-detail", item.slug_eng),
-                                    route("event-detail.id", item.slug),
-                                    route("event-detail.jp", item.slug_jpn)
-                                )}
-                                className="col-6 col-md-3 d-flex flex-column event_item mt-4"
-                                sx={{
-                                    cursor: "pointer",
-                                    "&:hover": {
-                                        h3: {
-                                            color: theme.palette.custom.orange,
-                                        },
-                                    },
-                                }}
-                            >
-                                <img
-                                    src={`/storage/${item.photo}`}
-                                    alt={item.title}
-                                    className="w-100"
-                                />
-                                <Typography
-                                    sx={{
-                                        fontSize: "1.48125rem",
-                                        color: theme.palette.custom.darkBlue,
-                                        lineHeight: "1.42967633em",
-                                        letterSpacing: "0.009em",
-                                        fontWeight: "600",
-                                        marginTop: "10px",
-                                        transition: "all 300ms  e-in-out",
-                                        [theme.breakpoints.down("sm")]: {
-                                            fontSize: "1.875rem",
-                                        },
-                                    }}
-                                >
-                                    {formatDate(item.created_at, true)}
-                                </Typography>
-                                <Typography
-                                    as="h3"
-                                    sx={{
-                                        fontSize: "1.48125rem",
-                                        color: theme.palette.custom.lightkBlue,
-                                        lineHeight: "1.42967633em",
-                                        letterSpacing: "0.009em",
-                                        transition: "all 300ms ease-in-out",
-                                        [theme.breakpoints.down("sm")]: {
-                                            fontSize: "0.9rem",
-                                        },
-                                    }}
-                                >
-                                    {checkLang(
+                        {isMobile ? (
+                            <EventItemMobile events={events} locale={locale} />
+                        ) : (
+                            events.map((item) => (
+                                <EventItem
+                                    key={item.id}
+                                    route={checkLang(
+                                        locale,
+                                        route("event-detail", item.slug_eng),
+                                        route("event-detail.id", item.slug),
+                                        route("event-detail.jp", item.slug_jpn)
+                                    )}
+                                    image={item.photo}
+                                    title={checkLang(
                                         locale,
                                         item.title_eng,
                                         item.title,
                                         item.title_jpn
                                     )}
-                                </Typography>
-                            </Link>
-                        ))}
+                                    date={formatDate(item.created_at, true)}
+                                />
+                            ))
+                        )}
                     </div>
                 </div>
             </Box>
