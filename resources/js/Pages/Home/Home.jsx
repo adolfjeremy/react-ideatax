@@ -61,8 +61,6 @@ function Home() {
         events,
     } = usePage().props;
 
-    console.log(unCatogorizedservices);
-
     useEffect(() => {
         const observer = new IntersectionObserver(callbackFunction, options);
         if (containerRef.current) observer.observe(containerRef.current);
