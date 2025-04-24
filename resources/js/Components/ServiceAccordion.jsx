@@ -217,7 +217,6 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                         route("service-detail.jp", service.slug_jpn),
                         route("service-detail.ch", service.slug_ch)
                     )}
-                    expandIcon={<GoArrowUpRight />}
                     sx={{
                         borderTop: `1px solid rgba(0,0,0,0.2)`,
                         "&:hover": {
