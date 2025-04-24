@@ -31,6 +31,7 @@ import Counter from "./Counter";
 import "./home.scss";
 import EventItem from "@/Components/EventItem";
 import EventItemMobile from "@/Components/EventItemMobile";
+import ServiceAccordion from "@/Components/ServiceAccordion";
 
 function Home() {
     const containerRef = useRef(null);
@@ -49,8 +50,18 @@ function Home() {
     };
     const { t } = useTranslation();
     const theme = useTheme();
-    const { locale, page, heroes, stats, services, articles, events } =
-        usePage().props;
+    const {
+        locale,
+        page,
+        heroes,
+        stats,
+        catogorizedservices,
+        unCatogorizedservices,
+        articles,
+        events,
+    } = usePage().props;
+
+    console.log(unCatogorizedservices);
 
     useEffect(() => {
         const observer = new IntersectionObserver(callbackFunction, options);
@@ -521,7 +532,7 @@ function Home() {
             >
                 <div className="container">
                     <div className="row">
-                        <div className="col-12 col-md-5">
+                        <div className="col-12 col-md-6">
                             <Typography
                                 as="h2"
                                 sx={{
@@ -556,167 +567,13 @@ function Home() {
                                 {t("serviceDesc")}
                             </Typography>
                         </div>
-                        <div className="col-12 col-md-7 mt-5 mt-md-0 services_list">
-                            <Link
-                                href={
-                                    locale == "en"
-                                        ? route("tax-audit")
-                                        : locale == "id"
-                                        ? route("tax-audit.id")
-                                        : locale == "jp"
-                                        ? route("tax-audit.jp")
-                                        : route("tax-audit")
-                                }
-                                sx={{
-                                    svg: {
-                                        fontSize: "2rem",
-                                        color: theme.palette.custom.darkBlue,
-                                    },
-                                }}
-                                className="col-12 service_item d-flex align-items-center justify-content-between p-2"
-                            >
-                                <Typography
-                                    sx={{
-                                        fontSize: "1.3125rem",
-                                        letterSpacing: "0.009em",
-                                        lineHeight: "1.2em",
-                                        color: theme.palette.custom.blue,
-                                    }}
-                                >
-                                    {checkLang(
-                                        locale,
-                                        "Tax Audit Assistance",
-                                        "Bantuan Pemeriksaan Pajak",
-                                        "税務監査サポート"
-                                    )}
-                                </Typography>
-                                <IoIosArrowRoundForward />
-                            </Link>
-                            <Link
-                                href={
-                                    locale == "en"
-                                        ? route("tax-refund")
-                                        : locale == "id"
-                                        ? route("tax-refund.id")
-                                        : locale == "jp"
-                                        ? route("tax-refund.jp")
-                                        : route("tax-refund")
-                                }
-                                sx={{
-                                    svg: {
-                                        fontSize: "2rem",
-                                        color: theme.palette.custom.darkBlue,
-                                    },
-                                }}
-                                className="col-12 service_item d-flex align-items-center justify-content-between p-2"
-                            >
-                                <Typography
-                                    sx={{
-                                        fontSize: "1.3125rem",
-                                        letterSpacing: "0.009em",
-                                        lineHeight: "1.2em",
-                                        color: theme.palette.custom.blue,
-                                    }}
-                                >
-                                    {checkLang(
-                                        locale,
-                                        "Tax Refund Assistance",
-                                        "Bantuan Pengembalian Pajak",
-                                        "税金の還付 サポート"
-                                    )}
-                                </Typography>
-                                <IoIosArrowRoundForward />
-                            </Link>
-                            <Link
-                                href={
-                                    locale == "en"
-                                        ? route("tax-report")
-                                        : locale == "id"
-                                        ? route("tax-report.id")
-                                        : locale == "jp"
-                                        ? route("tax-report.jp")
-                                        : route("tax-report")
-                                }
-                                sx={{
-                                    svg: {
-                                        fontSize: "2rem",
-                                        color: theme.palette.custom.darkBlue,
-                                    },
-                                }}
-                                className="col-12 service_item d-flex align-items-center justify-content-between p-2"
-                            >
-                                <Typography
-                                    sx={{
-                                        fontSize: "1.3125rem",
-                                        letterSpacing: "0.009em",
-                                        lineHeight: "1.2em",
-                                        color: theme.palette.custom.blue,
-                                    }}
-                                >
-                                    {checkLang(
-                                        locale,
-                                        "Annual Tax Return Reporting Service for Corporations and Individuals",
-                                        "Layanan Pelaporan SPT Tahunan Badan dan Pribadi",
-                                        "法人および個人向け年間納税申告 SPT サービス"
-                                    )}
-                                </Typography>
-                                <IoIosArrowRoundForward />
-                            </Link>
-                            {services.map((service) => (
-                                <Link
-                                    key={service.id}
-                                    href={
-                                        locale === "en"
-                                            ? route(
-                                                  "service-detail",
-                                                  service.slug_eng
-                                              )
-                                            : locale === "id"
-                                            ? route(
-                                                  "service-detail.id",
-                                                  service.slug
-                                              )
-                                            : locale === "jp"
-                                            ? route(
-                                                  "service-detail.jp",
-                                                  service.slug_jpn
-                                              )
-                                            : locale === "zh-CN"
-                                            ? route(
-                                                  "service-detail.ch",
-                                                  service.slug_ch
-                                              )
-                                            : ""
-                                    }
-                                    sx={{
-                                        svg: {
-                                            fontSize: "2rem",
-                                            color: theme.palette.custom
-                                                .darkBlue,
-                                        },
-                                    }}
-                                    className="col-12 service_item d-flex align-items-center justify-content-between p-2"
-                                >
-                                    <Typography
-                                        sx={{
-                                            fontSize: "1.3125rem",
-                                            letterSpacing: "0.009em",
-                                            lineHeight: "1.2em",
-                                            color: theme.palette.custom.blue,
-                                        }}
-                                    >
-                                        {checkLang(
-                                            locale,
-                                            service.title_eng,
-                                            service.title,
-                                            service.title_jpn,
-                                            service.title_ch
-                                        )}
-                                    </Typography>
-                                    <IoIosArrowRoundForward />
-                                </Link>
-                            ))}
-                        </div>
+                        <Box className="col-12 col-md-6 mt-5 mt-md-0 services_list">
+                            <ServiceAccordion
+                                locale={locale}
+                                categorized={catogorizedservices}
+                                unCategorized={unCatogorizedservices}
+                            />
+                        </Box>
                         <div className="row mt-5">
                             <div className="col-12">
                                 <Typography

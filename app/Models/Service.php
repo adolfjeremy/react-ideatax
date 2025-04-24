@@ -14,7 +14,8 @@ class Service extends Model
         'title_ch',
         'slug',
         'slug_eng',
-        'slug_jpn','slug_ch',
+        'slug_jpn',
+        'slug_ch',
         'description',
         'description_eng',
         'description_jpn',
@@ -27,5 +28,11 @@ class Service extends Model
         'meta_description_eng',
         'meta_description_jpn',
         'meta_description_ch',
+        'service_category_id'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(ServiceCategory::class, "service_category_id", "id");
+    }
 }

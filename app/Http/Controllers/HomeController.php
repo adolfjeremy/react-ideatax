@@ -13,6 +13,7 @@ use App\Models\HeroSlider;
 use Illuminate\Http\Request;
 use App\Models\CompanyProfile;
 use App\Models\ComproDownloader;
+use App\Models\ServiceCategory;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
@@ -28,13 +29,15 @@ class HomeController extends Controller
         $page = Page::findOrFail(1);
         $heroes = HeroSlider::all();
         $stats = Stat::all();
-        $services = Service::select('id', 'title', 'title_eng', 'title_jpn', 'title_ch', 'slug', 'slug_eng', 'slug_jpn', 'slug_ch')->get();
+        $catogorizedservices  = ServiceCategory::with("services")->get();
+        $unCatogorizedservices  = Service::where("service_category_id", null)->get();
         $articles = Article::latest()->take(4)->select('id', 'title', 'title_eng', 'title_jpn', 'slug', 'slug_eng', 'slug_jpn', 'thumbnail', 'created_at')->get();
         $events = TaxEvent::latest()->take(4)->select('id', 'title', 'title_eng', 'title_jpn', 'slug', 'slug_eng', 'slug_jpn', 'photo', 'created_at')->get();
         return Inertia::render('Home/Home', [
             "heroes" => $heroes,
             "stats" => $stats,
-            "services" => $services,
+            "catogorizedservices" => $catogorizedservices,
+            "unCatogorizedservices" => $unCatogorizedservices,
             "articles" => $articles,
             "events" => $events,
             "page" => $page
@@ -43,10 +46,10 @@ class HomeController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->all();     
+        $data = $request->all();
         $compro = CompanyProfile::orderBy('updated_at', 'desc')->first();
         $path = asset("storage/" . $compro->compro);
-        ComproDownloader::create($data);       
+        ComproDownloader::create($data);
         return redirect()->back()->with([
             'message' => $path,
             'type' => 'success'
@@ -56,7 +59,7 @@ class HomeController extends Controller
     public function subscribe(Request $request)
     {
         $data = $request->all();
-        subscribe::create($data);       
+        subscribe::create($data);
         return redirect()->back()->with([
             'message' => "Thanks for the subscription",
             'type' => 'success'

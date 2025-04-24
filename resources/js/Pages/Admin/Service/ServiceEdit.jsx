@@ -1,6 +1,15 @@
 import { useState, useContext } from "react";
 import { useForm, usePage } from "@inertiajs/react";
-import { Box, Tabs, Tab, Button } from "@mui/material";
+import {
+    Box,
+    Tabs,
+    Tab,
+    Button,
+    InputLabel,
+    MenuItem,
+    FormControl,
+    Select,
+} from "@mui/material";
 import AuthLayout from "@/Layout/AuthLayout";
 import { TextField } from "@mui/material";
 import CustomTabPanel from "@/Components/CustomTabPanel";
@@ -13,7 +22,7 @@ function ServiceEdit() {
     const { toggleSpinner } = useContext(SpinnerContext);
     const { toggleAlert } = useContext(AlertContext);
 
-    const { item } = usePage().props;
+    const { item, categories } = usePage().props;
 
     const { data, setData, post, processing, errors, reset } = useForm({
         title: item.title,
@@ -36,6 +45,7 @@ function ServiceEdit() {
         meta_description_eng: item.meta_description_eng,
         meta_description_jpn: item.meta_description_jpn,
         meta_description_ch: item.meta_description_ch,
+        service_category_id: item.service_category_id || "",
         oldImage: item.image,
         _method: "put",
     });
@@ -295,6 +305,35 @@ function ServiceEdit() {
                             />
                         </CustomTabPanel>
                         <Box px={3}>
+                            <FormControl fullWidth>
+                                <InputLabel id="demo-simple-select-label">
+                                    Service Category
+                                </InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={data.service_category_id}
+                                    label="Service Category"
+                                    onChange={(e) =>
+                                        setData(
+                                            "service_category_id",
+                                            e.target.value
+                                        )
+                                    }
+                                >
+                                    <MenuItem value="">Uncategorized</MenuItem>
+                                    {categories.map((category) => (
+                                        <MenuItem
+                                            key={category.id}
+                                            value={category.id}
+                                        >
+                                            {category.title}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        </Box>
+                        <Box px={3} mt={2}>
                             <label htmlFor="image">Image</label>
                             <TextField
                                 id="image"

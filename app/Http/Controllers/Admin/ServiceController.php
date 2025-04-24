@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Models\Service;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\ServiceCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ServiceRequest;
 use Illuminate\Support\Facades\Storage;
@@ -41,13 +42,12 @@ class ServiceController extends Controller
 
         $data['slug'] = Str::slug($request->title);
         $data['slug_eng'] = Str::slug($request->title_eng);
-        $data['slug_jpn'] = Str::slug($request->title_jpn, language:"ja-JP");
-        $data['slug_ch'] = Str::slug($request->title_ch, language:"zh-CN");
+        $data['slug_jpn'] = Str::slug($request->title_jpn, language: "ja-JP");
+        $data['slug_ch'] = Str::slug($request->title_ch, language: "zh-CN");
 
-        if($request->file('image'))
-        {
+        if ($request->file('image')) {
             $data['image'] = $request->file('image')->store('service');
-        }        
+        }
 
         Service::create($data);
 
@@ -71,8 +71,10 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $item = Service::findOrFail($id);
+        $categories = ServiceCategory::all();
         return Inertia::render('Admin/Service/ServiceEdit', [
-            "item" => $item
+            "item" => $item,
+            "categories" => $categories
         ]);
     }
 
@@ -86,17 +88,15 @@ class ServiceController extends Controller
 
         $data['slug'] = Str::slug($request->title);
         $data['slug_eng'] = Str::slug($request->title_eng);
-        $data['slug_jpn'] = Str::slug($request->title_jpn, language:"ja-JP");
-        $data['slug_ch'] = Str::slug($request->title_ch, language:"zh-CN");
+        $data['slug_jpn'] = Str::slug($request->title_jpn, language: "ja-JP");
+        $data['slug_ch'] = Str::slug($request->title_ch, language: "zh-CN");
 
-        if($request->file('image'))
-        {
-            if($request->oldImage)
-            {
+        if ($request->file('image')) {
+            if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
             $data['image'] = $request->file('image')->store('service');
-        }        
+        }
 
         $item->update($data);
 
