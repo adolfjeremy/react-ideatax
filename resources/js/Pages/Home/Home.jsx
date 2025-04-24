@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import { Box, Typography, useTheme, Link, useMediaQuery } from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
-import { IoIosArrowRoundForward } from "react-icons/io";
 import Guest from "@/Layout/Guest";
 import OrangeButton from "@/Components/OrangeButton";
 import ComproModal from "./ComproModal";
@@ -32,6 +31,9 @@ import "./home.scss";
 import EventItem from "@/Components/EventItem";
 import EventItemMobile from "@/Components/EventItemMobile";
 import ServiceAccordion from "@/Components/ServiceAccordion";
+import ArticleSwipeable from "@/Components/ArticleSwipeable";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 function Home() {
     const containerRef = useRef(null);
@@ -59,7 +61,10 @@ function Home() {
         unCatogorizedservices,
         articles,
         events,
+        articlesMobile,
     } = usePage().props;
+    console.log(articlesMobile);
+    const [swipeData, setSwipeData] = useState(articlesMobile);
 
     useEffect(() => {
         const observer = new IntersectionObserver(callbackFunction, options);
@@ -614,30 +619,75 @@ function Home() {
                         </div>
                     </div>
                     <div className="row">
-                        {articles.map((article) => (
-                            <RoundedArticle
-                                key={article.id}
-                                title={checkLang(
-                                    locale,
-                                    article.title_eng,
-                                    article.title,
-                                    article.title_jpn
-                                )}
-                                category="PPN"
-                                timeStamp={formatDate(article.created_at)}
-                                img={`/storage/${article.thumbnail}`}
-                                detail={checkLang(
-                                    locale,
-                                    route("article-detail", article.slug_eng),
-                                    route("article-detail.id", article.slug),
-                                    route(
-                                        "article-detail.jp",
-                                        article.slug_jpn
-                                    ),
-                                    route("article-detail.ch", article.slug_eng)
-                                )}
-                            />
-                        ))}
+                        {isMobile && (
+                            <Box
+                                sx={{
+                                    placeItems: "center",
+                                    overflow: "hidden",
+                                    height: "100%",
+                                }}
+                                className="col-12 d-grid px-5, pt-5 mt-3"
+                            >
+                                {swipeData.map((article, index) => (
+                                    <ArticleSwipeable
+                                        article={article}
+                                        swipeData={swipeData}
+                                        setSwipeData={setSwipeData}
+                                        index={index}
+                                        key={article.id}
+                                        locale={locale}
+                                    />
+                                ))}
+                            </Box>
+                        )}
+                        {isMobile && (
+                            <div className="col-12">
+                                <Typography
+                                    sx={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                    }}
+                                >
+                                    <FaArrowLeftLong /> Swipe{" "}
+                                    <FaArrowRightLong />
+                                </Typography>
+                            </div>
+                        )}
+                        {!isMobile &&
+                            articles.map((article) => (
+                                <RoundedArticle
+                                    key={article.id}
+                                    title={checkLang(
+                                        locale,
+                                        article.title_eng,
+                                        article.title,
+                                        article.title_jpn
+                                    )}
+                                    category="PPN"
+                                    timeStamp={formatDate(article.created_at)}
+                                    img={`/storage/${article.thumbnail}`}
+                                    detail={checkLang(
+                                        locale,
+                                        route(
+                                            "article-detail",
+                                            article.slug_eng
+                                        ),
+                                        route(
+                                            "article-detail.id",
+                                            article.slug
+                                        ),
+                                        route(
+                                            "article-detail.jp",
+                                            article.slug_jpn
+                                        ),
+                                        route(
+                                            "article-detail.ch",
+                                            article.slug_eng
+                                        )
+                                    )}
+                                />
+                            ))}
                     </div>
                 </div>
             </Box>
