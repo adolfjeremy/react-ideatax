@@ -52,7 +52,7 @@ function ArticleSwipeable({ article, swipeData, setSwipeData, index, locale }) {
                 flexDirection: "column",
                 justifyContent: "flex-end",
                 backgroundColor: "#000", // fallback kalau image
-                backgroundImage: `url(/storage/${article.thumbnail}})`,
+                backgroundImage: `url("/storage/${article.thumbnail}")`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 transition: "transform 0.3s ease",
