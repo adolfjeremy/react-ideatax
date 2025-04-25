@@ -32,7 +32,6 @@ class HomeController extends Controller
         $catogorizedservices  = ServiceCategory::with("services")->get();
         $unCatogorizedservices  = Service::where("service_category_id", null)->get();
         $articles = Article::latest()->take(4)->get();
-        $articlesMobile = Article::latest()->take(15)->get();
         $events = TaxEvent::latest()->take(4)->select('id', 'title', 'title_eng', 'title_jpn', 'slug', 'slug_eng', 'slug_jpn', 'photo', 'created_at')->get();
         return Inertia::render('Home/Home', [
             "heroes" => $heroes,
@@ -40,7 +39,6 @@ class HomeController extends Controller
             "catogorizedservices" => $catogorizedservices,
             "unCatogorizedservices" => $unCatogorizedservices,
             "articles" => $articles,
-            "articlesMobile" => $articlesMobile,
             "events" => $events,
             "page" => $page
         ]);

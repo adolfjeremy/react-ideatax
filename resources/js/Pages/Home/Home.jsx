@@ -61,10 +61,8 @@ function Home() {
         unCatogorizedservices,
         articles,
         events,
-        articlesMobile,
     } = usePage().props;
-    console.log(articlesMobile);
-    const [swipeData, setSwipeData] = useState(articlesMobile);
+    const [swipeData, setSwipeData] = useState(articles);
 
     useEffect(() => {
         const observer = new IntersectionObserver(callbackFunction, options);
