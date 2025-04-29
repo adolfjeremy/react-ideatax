@@ -17,8 +17,9 @@ function ValueSlick() {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        speed: 5000,
+        speed: 1000,
         autoplaySpeed: 3000,
+        swipeToSlide: true,
         cssEase: "linear",
     };
     const theme = useTheme();

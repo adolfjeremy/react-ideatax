@@ -5,6 +5,7 @@ import Guest from "@/Layout/Guest";
 import TeamItem from "./TeamItem";
 import hero from "../../assets/images/team-hero.webp";
 import checkLang from "@/utils/checkLang";
+import ContactForm from "@/Components/ContactForm";
 
 function Team() {
     const theme = useTheme();
@@ -94,6 +95,9 @@ function Team() {
                         ))}
                     </div>
                 </div>
+            </Box>
+            <Box className="container-fluid mt-4">
+                <ContactForm />
             </Box>
         </Guest>
     );

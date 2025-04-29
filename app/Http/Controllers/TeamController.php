@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Page;
 use App\Models\Team;
 use Inertia\Inertia;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class TeamController extends Controller
@@ -13,9 +14,11 @@ class TeamController extends Controller
     {
         $page = Page::findOrFail(2);
         $teams = Team::all();
+        $sercvices = Service::all();
         return Inertia::render('Team/Team', [
             "teams" => $teams,
-            "page" => $page
+            "page" => $page,
+            "services" => $sercvices,
         ]);
     }
 

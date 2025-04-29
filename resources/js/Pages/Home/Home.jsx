@@ -702,9 +702,8 @@ function Home() {
                         bottom: "50%",
                         transform: "translateY(50%)",
                         right: "4.5rem",
-                        [theme.breakpoints.down("sm")]: {
-                            right: 0,
-                            left: 0,
+                        [theme.breakpoints.down("md")]: {
+                            right: 8,
                         },
                     }}
                 >
@@ -716,7 +715,7 @@ function Home() {
                             lineHeight: "1.42967633em",
                             letterSpacing: "0.009em",
                             [theme.breakpoints.down("sm")]: {
-                                fontSize: "1.875rem",
+                                fontSize: ".9rem",
                             },
                         }}
                     >

@@ -13,11 +13,12 @@ function EventItemMobile({ events, locale }) {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        speed: 3000,
+        speed: 1000,
         autoplaySpeed: 3000,
         cssEase: "linear",
         arrows: false,
         centerMode: true,
+        swipeToSlide: true,
         centerPadding: "100px",
     };
     return (

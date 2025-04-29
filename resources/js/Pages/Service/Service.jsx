@@ -5,6 +5,7 @@ import serviceBg from "../../assets/images/service-bg.png";
 import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
 import checkLang from "@/utils/checkLang";
+import ContactForm from "@/Components/ContactForm";
 
 import "./service.scss";
 
@@ -101,6 +102,9 @@ function Service() {
                         </Box>
                     </div>
                 </div>
+            </Box>
+            <Box>
+                <ContactForm />
             </Box>
         </Guest>
     );

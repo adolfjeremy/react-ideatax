@@ -31,6 +31,7 @@ function ExpertiseItem({ head, desc, image, route, isEven = true }) {
                     fontSize: "1.6875rem",
                     [theme.breakpoints.down("md")]: {
                         textAlign: "center",
+                        fontSize: "1.4rem",
                     },
                 }}
                 as="h3"
@@ -46,6 +47,7 @@ function ExpertiseItem({ head, desc, image, route, isEven = true }) {
                     margin: "20px 0 10px 0",
                     [theme.breakpoints.down("md")]: {
                         textAlign: "center",
+                        fontSize: "0.9rem",
                     },
                 }}
             >

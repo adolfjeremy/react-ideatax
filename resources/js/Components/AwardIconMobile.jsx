@@ -19,11 +19,12 @@ function AwardIconMobile() {
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
-        speed: 3000,
+        speed: 1000,
         autoplaySpeed: 3000,
         cssEase: "linear",
         variableWidth: true,
         arrows: false,
+        swipeToSlide: true,
     };
     return (
         <div className="slider-container">
@@ -36,7 +37,7 @@ function AwardIconMobile() {
                         justifyContent: "center",
                         margin: "0 15px",
                         img: {
-                            width: "100px",
+                            width: "120px",
                         },
                     }}
                 >
@@ -50,7 +51,7 @@ function AwardIconMobile() {
                         justifyContent: "center",
                         margin: "0 15px",
                         img: {
-                            width: "70px",
+                            width: "100px",
                         },
                     }}
                 >
@@ -64,7 +65,7 @@ function AwardIconMobile() {
                         justifyContent: "center",
                         margin: "0 15px",
                         img: {
-                            width: "70px",
+                            width: "100px",
                         },
                     }}
                 >
@@ -78,7 +79,7 @@ function AwardIconMobile() {
                         justifyContent: "center",
                         margin: "0 15px",
                         img: {
-                            width: "90px",
+                            width: "100px",
                         },
                     }}
                 >
@@ -92,7 +93,7 @@ function AwardIconMobile() {
                         justifyContent: "center",
                         margin: "0 15px",
                         img: {
-                            width: "90px",
+                            width: "100px",
                         },
                     }}
                 >
@@ -106,7 +107,7 @@ function AwardIconMobile() {
                         justifyContent: "center",
                         margin: "0 15px",
                         img: {
-                            width: "90px",
+                            width: "100px",
                         },
                     }}
                 >
@@ -121,7 +122,7 @@ function AwardIconMobile() {
                         justifyContent: "center",
                         margin: "0 15px",
                         img: {
-                            width: "90px",
+                            width: "100px",
                         },
                     }}
                 >
@@ -136,7 +137,7 @@ function AwardIconMobile() {
                         justifyContent: "center",
                         margin: "0 15px",
                         img: {
-                            width: "90px",
+                            width: "100px",
                         },
                     }}
                 >

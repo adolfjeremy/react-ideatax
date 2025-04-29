@@ -4,6 +4,10 @@ import "@/assets/sass/footer.scss";
 import checkLang from "@/utils/checkLang";
 import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
+import { FaInstagram } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { AiFillTikTok } from "react-icons/ai";
+import { FaYoutube } from "react-icons/fa";
 
 function Footer() {
     const { locale } = usePage().props;
@@ -17,7 +21,7 @@ function Footer() {
                         sx={{
                             paddingRight: "200px",
                             [theme.breakpoints.down("md")]: {
-                                padding: 0,
+                                padding: 2,
                             },
                         }}
                         className="col-12 col-md-8 left"
@@ -56,7 +60,50 @@ function Footer() {
                             {t("address")}
                         </a>
                     </Box>
-                    <div className="col-12 col-md-4 right d-flex flex-column align-items-end ps-md-5 pt-2 pt-md-0">
+                    <div className="col-12 col-md-4 right d-flex flex-column align-items-start ps-md-5 pt-2 pt-md-0">
+                        <Box
+                            sx={{
+                                display: "flex",
+                                gap: 2,
+                                justifyContent: "center",
+                                alignItems: "center",
+                                a: {
+                                    svg: {
+                                        color: theme.palette.custom.darkBlue,
+                                        fontSize: "2.2rem",
+                                    },
+                                },
+                            }}
+                        >
+                            <a
+                                href="https://www.instagram.com/ideatax.idn/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <FaInstagram className="social_icon" />
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/company/idea-tax/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <FaLinkedin className="social_icon" />
+                            </a>
+                            <a
+                                href="https://www.tiktok.com/@ideatax_idn"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <AiFillTikTok className="social_icon" />
+                            </a>
+                            <a
+                                href="https://www.youtube.com/@Ideatax"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <FaYoutube className="social_icon" />
+                            </a>
+                        </Box>
                         <div className="text-left w-100 b_border py-2">
                             <a
                                 href={checkLang(

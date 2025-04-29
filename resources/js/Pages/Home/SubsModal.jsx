@@ -71,11 +71,12 @@ function SubsModal({ buttonText }) {
                     justifyContent: "center",
                     textTransform: "none",
                     gap: "5px",
+                    padding: 0,
                     svg: {
                         fontSize: "3.2rem",
                     },
                     [theme.breakpoints.down("sm")]: {
-                        fontSize: "1.75rem",
+                        fontSize: "0.8rem",
                         svg: {
                             fontSize: "2.2rem",
                         },

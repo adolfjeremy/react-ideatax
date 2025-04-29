@@ -31,7 +31,7 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
         >
             {categorized.map((category, index) => (
                 <Accordion
-                    key={index}
+                    key={`${index}-accordion`}
                     expanded={expanded === `panel${index + 1}`}
                     onChange={handleChange(`panel${index + 1}`)}
                     sx={{ border: "none", boxShadow: "none" }}
@@ -78,7 +78,7 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                         route("tax-report.id"),
                                         route("tax-report.jp"))
                                     }
-                                    key={index}
+                                    key={`${index}-list`}
                                     sx={{
                                         pl: 1,
                                         justifyContent: "start",
@@ -108,7 +108,7 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                             route("tax-refund.jp"),
                                             route("tax-refund.ch"))
                                         }
-                                        key={index}
+                                        key={`${index}-listitembutton`}
                                         sx={{
                                             pl: 1,
                                             justifyContent: "start",
@@ -135,7 +135,7 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                             route("tax-audit.id"),
                                             route("tax-audit.jp"))
                                         }
-                                        key={index}
+                                        key={`${index}-listitembutton2`}
                                         sx={{
                                             pl: 1,
                                             justifyContent: "start",
@@ -181,7 +181,7 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                                 service.slug_ch
                                             ))
                                         }
-                                        key={index}
+                                        key={`${index}-listitembutton3`}
                                         sx={{
                                             pl: 1,
                                             justifyContent: "start",

@@ -45,7 +45,7 @@ const Counter = ({ target, duration = 3000 }) => {
     }, [isVisible, target, duration]);
 
     return (
-        <div ref={counterRef}>
+        <div className="mt-4" ref={counterRef}>
             <Typography
                 sx={{
                     color: theme.palette.custom.darkBlue,
@@ -54,7 +54,7 @@ const Counter = ({ target, duration = 3000 }) => {
                     textAlign: "center",
                     fontWeight: "800",
                     [theme.breakpoints.down("md")]: {
-                        fontSize: "2rem",
+                        fontSize: "1.8rem",
                     },
                 }}
                 className="stat m-0"
