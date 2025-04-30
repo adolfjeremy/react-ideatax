@@ -645,9 +645,14 @@ function Home() {
                                         display: "flex",
                                         alignItems: "center",
                                         justifyContent: "center",
+                                        gap: 1,
+                                        fontSize: "0.9rem",
+                                        svg: {
+                                            fontSize: "1.1rem",
+                                        },
                                     }}
                                 >
-                                    <FaArrowLeftLong /> Swipe{" "}
+                                    Swipe
                                     <FaArrowRightLong />
                                 </Typography>
                             </div>
