@@ -53,7 +53,7 @@ function ContactForm() {
         });
     };
     return (
-        <form onSubmit={onHandleSubmit} className="row mt-4 p-2 p-md-3">
+        <form onSubmit={onHandleSubmit} className="row mt-4 p-2 p-md-3 mt-4">
             <div className="col-12 text-center mb-4">
                 <Typography
                     sx={{

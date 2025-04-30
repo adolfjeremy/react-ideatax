@@ -40,6 +40,7 @@ function TeamItem({ image, name, position, destination }) {
                         padding: 0,
                         margin: 0,
                         letterSpacing: "0.009em",
+                        textAlign: "center",
                         [theme.breakpoints.down("md")]: {
                             fontSize: "0.8rem",
                         },
@@ -56,7 +57,7 @@ function TeamItem({ image, name, position, destination }) {
                         margin: 0,
                         letterSpacing: "0.009em",
                         [theme.breakpoints.down("md")]: {
-                            fontSize: "0.8rem",
+                            fontSize: "0.7rem",
                         },
                     }}
                 >
