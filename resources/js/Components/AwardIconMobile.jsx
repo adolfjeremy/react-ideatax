@@ -27,7 +27,7 @@ function AwardIconMobile() {
         swipeToSlide: true,
     };
     return (
-        <div className="slider-container">
+        <div className="slider-container award_icon_mobile">
             <Slider {...settings}>
                 <Box
                     sx={{
