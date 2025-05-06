@@ -64,7 +64,13 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                         : theme.palette.custom.black,
                             }}
                         >
-                            {category.title}
+                            {checkLang(
+                                locale,
+                                category.title_eng,
+                                category.title,
+                                category.title_jp,
+                                category.title_ch
+                            )}
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -72,12 +78,13 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                             {category.id === 1 ? (
                                 <ListItemButton
                                     component="a"
-                                    href={
-                                        (locale,
+                                    href={checkLang(
+                                        locale,
                                         route("tax-report"),
                                         route("tax-report.id"),
-                                        route("tax-report.jp"))
-                                    }
+                                        route("tax-report.jp"),
+                                        route("tax-report.ch")
+                                    )}
                                     key={`${index}-list`}
                                     sx={{
                                         pl: 1,
@@ -101,13 +108,13 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                 <>
                                     <ListItemButton
                                         component="a"
-                                        href={
-                                            (locale === "en",
-                                            route("tax-refund"),
-                                            route("tax-refund.id"),
-                                            route("tax-refund.jp"),
-                                            route("tax-refund.ch"))
-                                        }
+                                        href={checkLang(
+                                            locale,
+                                            route("tax-audit"),
+                                            route("tax-audit.id"),
+                                            route("tax-audit.jp"),
+                                            route("tax-audit.ch")
+                                        )}
                                         key={`${index}-listitembutton`}
                                         sx={{
                                             pl: 1,
@@ -129,12 +136,13 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                     </ListItemButton>
                                     <ListItemButton
                                         component="a"
-                                        href={
-                                            (locale === "en",
-                                            route("tax-audit"),
-                                            route("tax-audit.id"),
-                                            route("tax-audit.jp"))
-                                        }
+                                        href={checkLang(
+                                            locale,
+                                            route("tax-refund"),
+                                            route("tax-refund.id"),
+                                            route("tax-refund.jp"),
+                                            route("tax-refund.ch")
+                                        )}
                                         key={`${index}-listitembutton2`}
                                         sx={{
                                             pl: 1,
@@ -162,8 +170,8 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                 <>
                                     <ListItemButton
                                         component="a"
-                                        href={
-                                            (locale === "en",
+                                        href={checkLang(
+                                            locale,
                                             route(
                                                 "service-detail",
                                                 service.slug_eng
@@ -179,8 +187,8 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                             route(
                                                 "service-detail.ch",
                                                 service.slug_ch
-                                            ))
-                                        }
+                                            )
+                                        )}
                                         key={`${index}-listitembutton3`}
                                         sx={{
                                             pl: 1,
