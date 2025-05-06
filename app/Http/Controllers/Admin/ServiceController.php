@@ -30,7 +30,10 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Admin/Service/ServiceCreate');
+        $categories = ServiceCategory::all();
+        return Inertia::render('Admin/Service/ServiceCreate', [
+            "categories" => $categories
+        ]);
     }
 
     /**
