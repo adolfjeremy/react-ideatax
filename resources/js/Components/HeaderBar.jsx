@@ -136,6 +136,9 @@ function HeaderBar({ en, id, jp, ch }) {
                 onClick={toggleDrawer()}
                 aria-label="open side menu"
                 sx={{
+                    position: "absolute",
+                    right: "6%",
+                    zIndex: "1202",
                     svg: {
                         fontSize: "2.5rem",
                         color: `${
@@ -150,6 +153,7 @@ function HeaderBar({ en, id, jp, ch }) {
             </IconButton>
             <Drawer
                 sx={{
+                    display: state ? "" : "none",
                     ".css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop": {
                         backgroundColor: "transparent",
                     },
@@ -163,10 +167,11 @@ function HeaderBar({ en, id, jp, ch }) {
                             width: "75vw",
                         },
                     },
+                    ".MuiDrawer-paper": {
+                        border: "none",
+                    },
                 }}
-                ModalProps={{
-                    keepMounted: true,
-                }}
+                variant="persistent"
                 anchor="right"
                 open={state}
                 onClose={toggleDrawer(false)}
