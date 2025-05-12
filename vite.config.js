@@ -11,7 +11,11 @@ export default defineConfig({
         }),
         react(),
     ],
-    ssr: {
-        noExternal: ["@ckeditor/ckeditor5-react", "ckeditor5"],
-    },
+    // ssr: {
+    //     external: [
+    //         "@ckeditor/ckeditor5-react",
+    //         "@ckeditor/ckeditor5-build-classic",
+    //         /^@ckeditor\/ckeditor5-/,
+    //     ],
+    // },
 });

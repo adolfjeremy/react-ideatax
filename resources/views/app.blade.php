@@ -57,6 +57,12 @@
     @routes
     @viteReactRefresh
     @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
+    @php
+        if (Request::is('admin/*')) {
+            $__inertiaSsrDispatched = true;
+            $__inertiaSsrResponse = null;
+        }
+    @endphp
     @inertiaHead
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16841387368"></script>
     <script>
