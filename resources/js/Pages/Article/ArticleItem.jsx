@@ -5,7 +5,7 @@ function ArticleItem({ image, title, desc, desctination }) {
     const theme = useTheme();
     return (
         <div className="col-12 col-md-4  d-flex flex-column gap-4 align-items-start mt-5 px-4">
-            <img src={image} alt={title} className="w-100" />
+            <img src={image} alt={title} loading="lazy" className="w-100" />
             <Typography
                 sx={{
                     color: theme.palette.custom.darkBlue,

@@ -124,6 +124,7 @@ function Home() {
                             >
                                 <img
                                     src={`/storage/${hero.hero}`}
+                                    loading="eager"
                                     className="d-block w-100"
                                 />
                             </div>

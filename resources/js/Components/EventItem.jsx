@@ -17,7 +17,12 @@ function EventItem({ route, date, title, image }) {
                 },
             }}
         >
-            <img src={`/storage/${image}`} alt={title} className="w-100" />
+            <img
+                src={`/storage/${image}`}
+                alt={title}
+                loading="lazy"
+                className="w-100"
+            />
             <Typography
                 sx={{
                     fontSize: "1.48125rem",
