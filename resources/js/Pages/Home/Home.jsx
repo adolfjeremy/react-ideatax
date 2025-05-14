@@ -1,15 +1,10 @@
 import { useState, useRef, useEffect } from "react";
-import {
-    Box,
-    Typography,
-    useTheme,
-    Button,
-    useMediaQuery,
-} from "@mui/material";
+import { Box, Typography, useTheme, Link, useMediaQuery } from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
 import OrangeButton from "@/Components/OrangeButton";
+import ComproModal from "./ComproModal";
 import ConsultationButton from "@/Components/ConsultationButton";
 import SubsModal from "./SubsModal";
 import RoundedArticle from "./RoundedArticle";
@@ -38,8 +33,7 @@ import EventItemMobile from "@/Components/EventItemMobile";
 import ServiceAccordion from "@/Components/ServiceAccordion";
 import ArticleSwipeable from "@/Components/ArticleSwipeable";
 import { FaArrowRightLong } from "react-icons/fa6";
-// import { FaArrowLeftLong } from "react-icons/fa6";
-// import ButtonModal from "./ButtonModal";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 function Home() {
     const containerRef = useRef(null);
@@ -262,14 +256,6 @@ function Home() {
                                 </Typography>
                             </Box>
                         ))}
-                        <Box
-                            className="col-12 col-md-3 mt-2"
-                            sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                            }}
-                        ></Box>
                     </div>
                     <div className="row">
                         <div className="col-12 text-center mt-5">
