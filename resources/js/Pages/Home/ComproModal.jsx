@@ -82,7 +82,7 @@ function ComproModal({ buttonText }) {
             >
                 {buttonText}
             </Button>
-            <Modal
+            {/* <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
                 open={open}
@@ -104,7 +104,7 @@ function ComproModal({ buttonText }) {
                         >
                             Download Company Profile
                         </Typography>
-                        {/* <form
+                        <form
                             onSubmit={onHandleSubmit}
                             className="compro_form mt-3"
                         >
@@ -141,7 +141,7 @@ function ComproModal({ buttonText }) {
                             <Button variant="contained" type="submit">
                                 Submit
                             </Button>
-                        </form> */}
+                        </form>
                     </Box>
                 </Fade>
             </Modal>
@@ -173,7 +173,7 @@ function ComproModal({ buttonText }) {
                         </Box>
                     </Fade>
                 </Modal>
-            )}
+            )} */}
         </div>
     );
 }
