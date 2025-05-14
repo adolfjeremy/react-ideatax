@@ -26,7 +26,7 @@ const style = {
 };
 
 function ComproModal({ buttonText }) {
-    const { flashMessage } = usePage().props;
+    // const { flashMessage } = usePage().props;
     const [open, setOpen] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const handleOpen = () => setOpen(true);
