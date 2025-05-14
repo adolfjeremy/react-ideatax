@@ -16,17 +16,6 @@ class HandleInertiaRequests extends Middleware
      */
     protected $rootView = 'app';
 
-    public function rootView(Request $request): string
-    {
-        // Jika URL diawali /admin, return root view tanpa SSR
-        if ($request->is('admin*')) {
-            // View ini hanya berisi <div id="app"></div> dan load JS biasa
-            return 'admin'; // kamu harus buat view resources/views/admin.blade.php
-        }
-
-        return parent::rootView($request); // default: 'app'
-    }
-
     /**
      * Determine the current asset version.
      */
