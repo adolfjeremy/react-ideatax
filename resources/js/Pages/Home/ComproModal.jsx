@@ -34,33 +34,33 @@ function ComproModal({ buttonText }) {
     const { toggleSpinner } = useContext(SpinnerContext);
     const { toggleAlert } = useContext(AlertContext);
     const theme = useTheme();
-    const { data, setData, post, processing, errors, reset } = useForm({
-        name: "",
-        email: "",
-        tel: "",
-        company: "",
-    });
+    // const { data, setData, post, processing, errors, reset } = useForm({
+    //     name: "",
+    //     email: "",
+    //     tel: "",
+    //     company: "",
+    // });
 
-    const onHandleSubmit = (e) => {
-        e.preventDefault();
-        post(route("home-store"), {
-            onStart: () => {
-                toggleSpinner(true);
-            },
-            onSuccess: () => {
-                reset();
-                toggleSpinner(false);
-                toggleAlert(true);
-                reset();
-                handleClose();
-                setIsOpen(true);
-            },
-            onError: (error) => {
-                toggleSpinner(false);
-                console.log(error);
-            },
-        });
-    };
+    // const onHandleSubmit = (e) => {
+    //     e.preventDefault();
+    //     post(route("home-store"), {
+    //         onStart: () => {
+    //             toggleSpinner(true);
+    //         },
+    //         onSuccess: () => {
+    //             reset();
+    //             toggleSpinner(false);
+    //             toggleAlert(true);
+    //             reset();
+    //             handleClose();
+    //             setIsOpen(true);
+    //         },
+    //         onError: (error) => {
+    //             toggleSpinner(false);
+    //             console.log(error);
+    //         },
+    //     });
+    // };
 
     return (
         <div>
