@@ -139,7 +139,7 @@ function Home() {
                             isMobile={isMobile}
                         />
                         <Box
-                            className="col-4 col-md-3"
+                            className="col-12 col-md-3 mt-3 mt-md-0"
                             sx={{
                                 display: "flex",
                                 alignItems: "center",
