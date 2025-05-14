@@ -281,7 +281,7 @@ function Home() {
                             </Typography>
                         </div>
                     </div>
-                    <div className="row expertise mt-1">
+                    {/* <div className="row expertise mt-1">
                         <ExpertiseItem
                             head={t("serviceOneHead")}
                             desc={t("serviceOneDesc")}
@@ -350,7 +350,7 @@ function Home() {
                                       )
                             }
                         />
-                    </div>
+                    </div> */}
                 </div>
             </Box>
             <ConsultationButton />
