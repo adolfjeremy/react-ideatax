@@ -269,27 +269,7 @@ function Home() {
                                 alignItems: "center",
                                 justifyContent: "center",
                             }}
-                        >
-                            <Button
-                                variant="contained"
-                                size="large"
-                                sx={{
-                                    backgroundColor:
-                                        theme.palette.custom.orange,
-                                    textTransform: "none",
-                                    [theme.breakpoints.down("md")]: {
-                                        fontSize: "0.8rem",
-                                    },
-                                    [theme.breakpoints.up("md")]: {
-                                        fontSize: "1.1rem",
-                                    },
-                                    fontWeight: 700,
-                                }}
-                                // onClick={() => setOpen(true)}
-                            >
-                                Buka Modal
-                            </Button>
-                        </Box>
+                        ></Box>
                     </div>
                     <div className="row">
                         <div className="col-12 text-center mt-5">
