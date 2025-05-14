@@ -4,7 +4,6 @@ import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
 import OrangeButton from "@/Components/OrangeButton";
-import ComproModal from "./ComproModal";
 import ConsultationButton from "@/Components/ConsultationButton";
 import SubsModal from "./SubsModal";
 import RoundedArticle from "./RoundedArticle";
@@ -210,7 +209,7 @@ function Home() {
                             </Typography>
                         </div>
                     </div>
-                    <div ref={containerRef} className="row">
+                    {/* <div ref={containerRef} className="row">
                         {stats.map((stat) => (
                             <Box
                                 key={stat.id}
@@ -256,7 +255,7 @@ function Home() {
                                 </Typography>
                             </Box>
                         ))}
-                    </div>
+                    </div> */}
                     <div className="row">
                         <div className="col-12 text-center mt-5">
                             <Typography
