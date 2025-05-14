@@ -210,7 +210,7 @@ function Home() {
                             </Typography>
                         </div>
                     </div>
-                    <div ref={containerRef} className="row">
+                    {/* <div ref={containerRef} className="row">
                         {stats.map((stat) => (
                             <Box
                                 key={stat.id}
@@ -266,7 +266,7 @@ function Home() {
                         >
                             <ComproModal buttonText={t("comproButton")} />
                         </Box>
-                    </div>
+                    </div> */}
                     <div className="row">
                         <div className="col-12 text-center mt-5">
                             <Typography
@@ -281,7 +281,7 @@ function Home() {
                             </Typography>
                         </div>
                     </div>
-                    {/* <div className="row expertise mt-1">
+                    <div className="row expertise mt-1">
                         <ExpertiseItem
                             head={t("serviceOneHead")}
                             desc={t("serviceOneDesc")}
@@ -350,7 +350,7 @@ function Home() {
                                       )
                             }
                         />
-                    </div> */}
+                    </div>
                 </div>
             </Box>
             <ConsultationButton />
