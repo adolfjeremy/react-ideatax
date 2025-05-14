@@ -3,11 +3,12 @@ import { Box, Typography, useTheme, Link, useMediaQuery } from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
+import Hero from "./parts/Hero";
+import ExpertiseList from "./parts/ExpertiseList";
 import OrangeButton from "@/Components/OrangeButton";
 import ConsultationButton from "@/Components/ConsultationButton";
 import SubsModal from "./SubsModal";
 import RoundedArticle from "./RoundedArticle";
-import ExpertiseItem from "@/Components/ExpertiseItem";
 import AwardIconMobile from "@/Components/AwardIconMobile";
 import AwardDesktop from "@/Components/AwardDesktop";
 import ValueSlick from "@/Components/ValueSlick";
@@ -19,10 +20,6 @@ import professional from "../../assets/images/1.webp";
 import trustwothy from "../../assets/images/2.webp";
 import creativity from "../../assets/images/3.webp";
 import prudent from "../../assets/images/4.webp";
-import audit from "../../assets/images/icons/audit.svg";
-import refund from "../../assets/images/icons/refund.svg";
-import transfer from "../../assets/images/icons/transfer.svg";
-import compliance from "../../assets/images/icons/compliance.svg";
 import checkLang from "@/utils/checkLang";
 import formatDate from "@/utils/formatDate";
 import Counter from "./Counter";
@@ -98,89 +95,13 @@ function Home() {
                 route("home.ch")
             )}
         >
-            <Box
-                component="section"
-                sx={{
-                    position: "relative",
-                    [theme.breakpoints.up("md")]: {
-                        maxHeight: "100vh",
-                        overflow: "hidden",
-                    },
-                }}
-            >
-                {heroes.map((hero, i) => (
-                    <div
-                        key={hero.id}
-                        className={`carousel-item ${i === 0 ? "active" : ""}`}
-                    >
-                        <img
-                            src={`/storage/${hero.hero}`}
-                            loading="eager"
-                            className="d-block w-100"
-                        />
-                    </div>
-                ))}
-                <Box
-                    sx={{
-                        position: "absolute",
-                        inset: 0,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "start",
-                        padding: "0 4rem",
-                        [theme.breakpoints.down("md")]: {
-                            padding: "0 2rem",
-                        },
-                    }}
-                >
-                    <Box className="row">
-                        <Box
-                            className="col-12 col-md-8"
-                            sx={{
-                                display: "flex",
-                                flexDirection: "column",
-                                alignItems: "start",
-                                gap: 2,
-                            }}
-                        >
-                            <Typography
-                                sx={{
-                                    color: theme.palette.custom.white,
-                                    fontWeight: 700,
-                                    [theme.breakpoints.down("md")]: {
-                                        fontSize: "1.6rem",
-                                        mt: 7,
-                                    },
-                                    [theme.breakpoints.up("md")]: {
-                                        fontSize: "2.822rem",
-                                    },
-                                    [theme.breakpoints.up("lg")]: {
-                                        fontSize: "4rem",
-                                    },
-                                    lineHeight: "1.01019687em",
-                                    letterSpacing: "-.054em",
-                                    textShadow:
-                                        "0 .0375em .159375em rgba(0,0,0,.325)",
-                                }}
-                                variant="h1"
-                            >
-                                {t("hero")}
-                            </Typography>
-                            <OrangeButton
-                                href={
-                                    locale == "en"
-                                        ? route("contact")
-                                        : locale == "id"
-                                        ? route("contact.id")
-                                        : route("contact.jp")
-                                }
-                            >
-                                {t("heroButton")}
-                            </OrangeButton>
-                        </Box>
-                    </Box>
-                </Box>
-            </Box>
+            <Hero
+                heroes={heroes}
+                t={t}
+                theme={theme}
+                locale={locale}
+                checkLang={checkLang}
+            />
             <Box
                 component="section"
                 sx={{
@@ -209,7 +130,7 @@ function Home() {
                             </Typography>
                         </div>
                     </div>
-                    <div ref={containerRef} className="row">
+                    {/* <div ref={containerRef} className="row">
                         {stats.map((stat) => (
                             <Box
                                 key={stat.id}
@@ -255,7 +176,7 @@ function Home() {
                                 </Typography>
                             </Box>
                         ))}
-                    </div>
+                    </div> */}
                     <div className="row">
                         <div className="col-12 text-center mt-5">
                             <Typography
@@ -270,76 +191,11 @@ function Home() {
                             </Typography>
                         </div>
                     </div>
-                    <div className="row expertise mt-1">
-                        <ExpertiseItem
-                            head={t("serviceOneHead")}
-                            desc={t("serviceOneDesc")}
-                            image={audit}
-                            isEven={false}
-                            route={
-                                locale == "en"
-                                    ? route("tax-audit")
-                                    : locale == "id"
-                                    ? route("tax-audit.id")
-                                    : route("tax-audit.jp")
-                            }
-                        />
-                        <ExpertiseItem
-                            head={t("serviceTwoHead")}
-                            desc={t("serviceTwoDesc")}
-                            image={refund}
-                            route={
-                                locale == "en"
-                                    ? route("tax-refund")
-                                    : locale == "id"
-                                    ? route("tax-refund.id")
-                                    : route("tax-refund.jp")
-                            }
-                        />
-                        <ExpertiseItem
-                            head={t("serviceThreeHead")}
-                            desc={t("serviceThreeDesc")}
-                            image={transfer}
-                            isEven={false}
-                            route={
-                                locale == "en"
-                                    ? route(
-                                          "service-detail",
-                                          "transfer-pricing-documentation-preparation-local-and-master-file"
-                                      )
-                                    : locale == "id"
-                                    ? route(
-                                          "service-detail.id",
-                                          "penyiapan-dokumentasi-transfer-pricing-file-lokal-dan-master"
-                                      )
-                                    : route(
-                                          "service-detail.jp",
-                                          "yi-zhuan-jia-ge-wen-shu-zuo-cheng-rokaruhuairuji-bimasutahuairu"
-                                      )
-                            }
-                        />
-                        <ExpertiseItem
-                            head={t("serviceFourHead")}
-                            desc={t("serviceFourDesc")}
-                            image={compliance}
-                            route={
-                                locale == "en"
-                                    ? route(
-                                          "service-detail",
-                                          "tax-and-customs-compliances"
-                                      )
-                                    : locale == "id"
-                                    ? route(
-                                          "service-detail.id",
-                                          "otomatisasi-dan-kepatuhan-perpajakan"
-                                      )
-                                    : route(
-                                          "service-detail.jp",
-                                          "shui-wu-shui-guan-konpuraiansu"
-                                      )
-                            }
-                        />
-                    </div>
+                    <ExpertiseList
+                        checkLang={checkLang}
+                        locale={locale}
+                        t={t}
+                    />
                 </div>
             </Box>
             <ConsultationButton />
