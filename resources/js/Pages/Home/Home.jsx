@@ -352,7 +352,7 @@ function Home() {
                         />
                     </div>
                 </div>
-            </Box>
+            </Box> */}
             <ConsultationButton />
             <Box component="section" sx={{ py: "3rem", overflow: "hidden" }}>
                 <div className="container-fluid p-0 m-0">
@@ -763,7 +763,7 @@ function Home() {
                         )}
                     </div>
                 </div>
-            </Box> */}
+            </Box>
         </Guest>
     );
 }
