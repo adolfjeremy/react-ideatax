@@ -1,10 +1,15 @@
 import { useState, useRef, useEffect } from "react";
-import { Box, Typography, useTheme, Link, useMediaQuery } from "@mui/material";
+import {
+    Box,
+    Typography,
+    useTheme,
+    Button,
+    useMediaQuery,
+} from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
 import OrangeButton from "@/Components/OrangeButton";
-import ComproModal from "./ComproModal";
 import ConsultationButton from "@/Components/ConsultationButton";
 import SubsModal from "./SubsModal";
 import RoundedArticle from "./RoundedArticle";
@@ -33,8 +38,8 @@ import EventItemMobile from "@/Components/EventItemMobile";
 import ServiceAccordion from "@/Components/ServiceAccordion";
 import ArticleSwipeable from "@/Components/ArticleSwipeable";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { FaArrowLeftLong } from "react-icons/fa6";
-import ButtonModal from "./ButtonModal";
+// import { FaArrowLeftLong } from "react-icons/fa6";
+// import ButtonModal from "./ButtonModal";
 
 function Home() {
     const containerRef = useRef(null);
@@ -265,8 +270,25 @@ function Home() {
                                 justifyContent: "center",
                             }}
                         >
-                            <ButtonModal />
-                            {/* <ComproModal buttonText={t("comproButton")} /> */}
+                            <Button
+                                variant="contained"
+                                size="large"
+                                sx={{
+                                    backgroundColor:
+                                        theme.palette.custom.orange,
+                                    textTransform: "none",
+                                    [theme.breakpoints.down("md")]: {
+                                        fontSize: "0.8rem",
+                                    },
+                                    [theme.breakpoints.up("md")]: {
+                                        fontSize: "1.1rem",
+                                    },
+                                    fontWeight: 700,
+                                }}
+                                // onClick={() => setOpen(true)}
+                            >
+                                Buka Modal
+                            </Button>
                         </Box>
                     </div>
                     <div className="row">
