@@ -210,7 +210,7 @@ function Home() {
                             </Typography>
                         </div>
                     </div>
-                    {/* <div ref={containerRef} className="row">
+                    <div ref={containerRef} className="row">
                         {stats.map((stat) => (
                             <Box
                                 key={stat.id}
@@ -264,9 +264,9 @@ function Home() {
                                 justifyContent: "center",
                             }}
                         >
-                            <ComproModal buttonText={t("comproButton")} />
+                            {/* <ComproModal buttonText={t("comproButton")} /> */}
                         </Box>
-                    </div> */}
+                    </div>
                     <div className="row">
                         <div className="col-12 text-center mt-5">
                             <Typography
