@@ -182,7 +182,7 @@ function Home() {
                     </Box>
                 </Box>
             </Box>
-            {/* <Box
+            <Box
                 component="section"
                 sx={{
                     padding: "2rem 0 1rem 0",
@@ -352,7 +352,7 @@ function Home() {
                         />
                     </div>
                 </div>
-            </Box> */}
+            </Box>
             <ConsultationButton />
             <Box component="section" sx={{ py: "3rem", overflow: "hidden" }}>
                 <div className="container-fluid p-0 m-0">
