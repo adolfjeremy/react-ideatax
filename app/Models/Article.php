@@ -36,4 +36,16 @@ class Article extends Model
     {
         return $this->hasMany(Like::class);
     }
+
+    public static function truncateRichText($htmlContent, $maxLength = 250)
+    {
+        $plainText = strip_tags($htmlContent);
+        $plainText = trim(preg_replace('/\s+/', ' ', $plainText));
+
+        if (mb_strlen($plainText) > $maxLength) {
+            return mb_substr($plainText, 0, $maxLength) . '...';
+        }
+
+        return $plainText;
+    }
 }

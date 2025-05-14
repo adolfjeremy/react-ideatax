@@ -2,7 +2,8 @@ import { Box, Typography, useTheme } from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import Guest from "@/Layout/Guest";
 import ReadMoreButton from "./ReadMoreButton";
-import ArticleItem from "./ArticleItem";
+import LatestCarousel from "./parts/LatestCarousel";
+import ArticleLists from "./parts/ArticleLists";
 import checkLang from "@/utils/checkLang";
 import TruncateRichText from "@/Components/TruncateRichText";
 import Pagination from "@/Components/Pagination";
@@ -53,7 +54,8 @@ function Article() {
                     },
                 }}
             >
-                <div
+                <LatestCarousel data={latest} locale={locale} theme={theme} />
+                {/* <div
                     id="carouselExampleSlidesOnly"
                     className="carousel slide"
                     data-bs-ride="carousel"
@@ -152,7 +154,7 @@ function Article() {
                             </div>
                         ))}
                     </div>
-                </div>
+                </div> */}
             </Box>
             <Box className="py-3">
                 <div className="container">
@@ -175,47 +177,11 @@ function Article() {
                         </div>
                     </div>
                     <div className="row">
-                        {articles.data.map((item) => (
-                            <ArticleItem
-                                key={item.id}
-                                title={checkLang(
-                                    locale,
-                                    item.title_eng,
-                                    item.title,
-                                    item.title_jpn
-                                )}
-                                image={`/storage/${item.thumbnail}`}
-                                desctination={checkLang(
-                                    locale,
-                                    route("article-detail", item.slug_eng),
-                                    route("article-detail.id", item.slug),
-                                    route("article-detail.jp", item.slug_jpn),
-                                    route("article-detail.ch", item.slug_eng)
-                                )}
-                                desc={
-                                    <TruncateRichText
-                                        style={{
-                                            color: theme.palette.custom
-                                                .lightBlue,
-                                            fontSize: "0.8939rem",
-                                            [theme.breakpoints.down("sm")]: {
-                                                fontSize: "0.8939rem",
-                                            },
-                                            lineHeight: "1.17857248em",
-                                            letterSpacing: "0.009em",
-                                            padding: 0,
-                                            margin: 0,
-                                        }}
-                                        htmlContent={checkLang(
-                                            locale,
-                                            item.body_eng,
-                                            item.body,
-                                            item.body_jpn
-                                        )}
-                                    />
-                                }
-                            />
-                        ))}
+                        <ArticleLists
+                            articles={articles}
+                            locale={locale}
+                            theme={theme}
+                        />
                     </div>
                     <div className="row mt-5">
                         <Pagination

@@ -1,10 +1,8 @@
 import { Typography, useTheme } from "@mui/material";
-import truncateRichText from "@/utils/truncateRichText";
 
-function TruncateRichText({ htmlContent, maxLength = 250, style }) {
+function TruncateRichText({ htmlContent, style }) {
     const theme = useTheme();
-    const truncatedText = truncateRichText(htmlContent, maxLength);
-    return <Typography sx={style}>{truncatedText}</Typography>;
+    return <Typography sx={style}>{htmlContent}</Typography>;
 }
 
 export default TruncateRichText;

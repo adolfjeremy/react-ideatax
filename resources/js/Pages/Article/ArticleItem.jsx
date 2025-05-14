@@ -1,7 +1,8 @@
 import { Typography, useTheme } from "@mui/material";
 import ReadMoreButton from "./ReadMoreButton";
+import checkLang from "@/utils/checkLang";
 
-function ArticleItem({ image, title, desc, desctination }) {
+function ArticleItem({ image, title, desc, destination, locale }) {
     const theme = useTheme();
     return (
         <div className="col-12 col-md-4  d-flex flex-column gap-4 align-items-start mt-5 px-4">
@@ -22,7 +23,15 @@ function ArticleItem({ image, title, desc, desctination }) {
                 {title}
             </Typography>
             {desc}
-            <ReadMoreButton desctination={desctination} />
+            <ReadMoreButton
+                destination={checkLang(
+                    locale,
+                    route("article-detail", destination),
+                    route("article-detail.id", destination),
+                    route("article-detail.jp", destination),
+                    route("article-detail.ch", destination)
+                )}
+            />
         </div>
     );
 }

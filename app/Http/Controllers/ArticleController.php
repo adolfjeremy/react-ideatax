@@ -8,15 +8,36 @@ use Inertia\Inertia;
 use App\Models\Article;
 use App\Models\Comment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 
 class ArticleController extends Controller
 {
     public function index()
     {
         $page = Page::findOrFail(5);
-        $latest = Article::select('id', 'title', 'title_eng', 'title_jpn', 'body', 'body_eng', 'body_jpn', 'slug', 'slug_eng', 'slug_jpn', 'photo')->latest()->take(5)->get();
-        $articles = Article::select('id', 'title', 'title_eng', 'title_jpn', 'body', 'body_eng', 'body_jpn', 'slug', 'slug_eng', 'slug_jpn', 'thumbnail')->latest()->simplePaginate(9);
+        $latest = Article::select('id', 'title', 'title_eng', 'title_jpn', 'body', 'body_eng', 'body_jpn', 'slug', 'slug_eng', 'slug_jpn', 'photo')
+            ->latest()
+            ->take(5)
+            ->get()
+            ->map(function ($article) {
+                $article->body = Article::truncateRichText($article->body);
+                $article->body_eng = Article::truncateRichText($article->body_eng);
+                $article->body_jpn = Article::truncateRichText($article->body_jpn);
+                return $article;
+            });
+        $articles = Article::select('id', 'title', 'title_eng', 'title_jpn', 'body', 'body_eng', 'body_jpn', 'slug', 'slug_eng', 'slug_jpn', 'thumbnail')
+            ->latest()
+            ->simplePaginate(9);
+
+        // Transformasi isi paginasi
+        $articles->setCollection(
+            $articles->getCollection()->map(function ($article) {
+                $article->body = Article::truncateRichText($article->body);
+                $article->body_eng = Article::truncateRichText($article->body_eng);
+                $article->body_jpn = Article::truncateRichText($article->body_jpn);
+                return $article;
+            })
+        );
+
         return Inertia::render('Article/Article', [
             "latest" => $latest,
             "articles" => $articles,
