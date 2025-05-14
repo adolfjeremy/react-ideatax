@@ -1,11 +1,9 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import Guest from "@/Layout/Guest";
-import ReadMoreButton from "./ReadMoreButton";
 import LatestCarousel from "./parts/LatestCarousel";
 import ArticleLists from "./parts/ArticleLists";
 import checkLang from "@/utils/checkLang";
-import TruncateRichText from "@/Components/TruncateRichText";
 import Pagination from "@/Components/Pagination";
 import { useTranslation } from "react-i18next";
 
@@ -55,106 +53,6 @@ function Article() {
                 }}
             >
                 <LatestCarousel data={latest} locale={locale} theme={theme} />
-                {/* <div
-                    id="carouselExampleSlidesOnly"
-                    className="carousel slide"
-                    data-bs-ride="carousel"
-                >
-                    <div className="carousel-inner">
-                        {latest.map((item, i) => (
-                            <div
-                                key={item.id}
-                                className={`carousel-item ${
-                                    i === 0 ? "active" : ""
-                                }`}
-                            >
-                                <img
-                                    src={`/storage/${item.photo}`}
-                                    className="d-block w-100"
-                                    alt="title"
-                                />
-                                <Box
-                                    sx={{
-                                        position: "absolute",
-                                        left: 0,
-                                        bottom: 0,
-                                        top: 0,
-                                        right: "35vw",
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        alignItems: "flex-start",
-                                        justifyContent: "center",
-                                        paddingLeft: "10%",
-                                        gap: "0.5rem",
-                                        [theme.breakpoints.down("sm")]: {
-                                            inset: 0,
-                                        },
-                                    }}
-                                >
-                                    <Typography
-                                        sx={{
-                                            color: theme.palette.custom
-                                                .darkBlue,
-                                            fontSize: "3.0861rem",
-                                            [theme.breakpoints.down("sm")]: {
-                                                fontSize: "1rem",
-                                            },
-                                            lineHeight: "1.0999978em",
-                                            letterSpacing: "0.009em",
-                                            fontWeight: "700",
-                                        }}
-                                        variant="h1"
-                                    >
-                                        {checkLang(
-                                            locale,
-                                            item.title_eng,
-                                            item.title,
-                                            item.title_jpn
-                                        )}
-                                    </Typography>
-                                    <TruncateRichText
-                                        style={{
-                                            color: theme.palette.custom
-                                                .darkBlue,
-                                            fontSize: "1.15215rem",
-                                            [theme.breakpoints.down("sm")]: {
-                                                fontSize: "0.8rem",
-                                            },
-                                            margin: 0,
-                                            padding: 0,
-                                            lineHeight: "1.49999732em",
-                                            letterSpacing: "0.009em",
-                                        }}
-                                        htmlContent={checkLang(
-                                            locale,
-                                            item.body_eng,
-                                            item.body,
-                                            item.body_jpn
-                                        )}
-                                    />
-                                    <ReadMoreButton
-                                        desctination={
-                                            locale == "en"
-                                                ? route(
-                                                      "article-detail",
-                                                      item.slug_eng
-                                                  )
-                                                : locale == "id"
-                                                ? route(
-                                                      "article-detail.id",
-                                                      item.slug
-                                                  )
-                                                : route(
-                                                      "article-detail.jp",
-                                                      item.slug_jpn
-                                                  )
-                                        }
-                                    />
-                                </Box>
-                            </div>
-                        ))}
-                    </div>
-                </div> */}
             </Box>
             <Box className="py-3">
                 <div className="container">
