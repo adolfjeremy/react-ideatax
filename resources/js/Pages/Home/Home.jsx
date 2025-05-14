@@ -264,7 +264,7 @@ function Home() {
                                 justifyContent: "center",
                             }}
                         >
-                            {/* <ComproModal buttonText={t("comproButton")} /> */}
+                            <ComproModal buttonText={t("comproButton")} />
                         </Box>
                     </div>
                     <div className="row">
