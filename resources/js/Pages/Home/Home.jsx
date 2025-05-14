@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect } from "react";
-import { Box, Typography, useTheme, Link, useMediaQuery } from "@mui/material";
+import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
 import Hero from "./parts/Hero";
 import ExpertiseList from "./parts/ExpertiseList";
-import OrangeButton from "@/Components/OrangeButton";
+import StatCountUp from "./parts/StatCountUp";
+import ComproModal from "./ComproModal";
 import ConsultationButton from "@/Components/ConsultationButton";
 import SubsModal from "./SubsModal";
 import RoundedArticle from "./RoundedArticle";
@@ -22,14 +23,13 @@ import creativity from "../../assets/images/3.webp";
 import prudent from "../../assets/images/4.webp";
 import checkLang from "@/utils/checkLang";
 import formatDate from "@/utils/formatDate";
-import Counter from "./Counter";
-import "./home.scss";
 import EventItem from "@/Components/EventItem";
 import EventItemMobile from "@/Components/EventItemMobile";
 import ServiceAccordion from "@/Components/ServiceAccordion";
 import ArticleSwipeable from "@/Components/ArticleSwipeable";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { FaArrowLeftLong } from "react-icons/fa6";
+
+import "./home.scss";
 
 function Home() {
     const containerRef = useRef(null);
@@ -129,6 +129,25 @@ function Home() {
                                 {t("about")}
                             </Typography>
                         </div>
+                    </div>
+                    <div ref={containerRef} className="row">
+                        <StatCountUp
+                            stats={stats}
+                            theme={theme}
+                            locale={locale}
+                            checkLang={checkLang}
+                            isMobile={isMobile}
+                        />
+                        <Box
+                            className="col-4 col-md-3"
+                            sx={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                            }}
+                        >
+                            <ComproModal buttonText={t("comproButton")} />
+                        </Box>
                     </div>
                     <div className="row">
                         <div className="col-12 text-center mt-5">

@@ -1,7 +1,15 @@
 import { useState, useContext, useRef } from "react";
-// import { useForm, usePage } from "@inertiajs/react";
-
-import { Modal, Box, Typography, Button } from "@mui/material";
+import { useForm, usePage } from "@inertiajs/react";
+import {
+    Backdrop,
+    Box,
+    Modal,
+    Fade,
+    Button,
+    Typography,
+    useTheme,
+    TextField,
+} from "@mui/material";
 import { SpinnerContext } from "@/Context/SpinnerContext";
 import { AlertContext } from "@/Context/AlertContext";
 
@@ -17,54 +25,156 @@ const style = {
     p: 4,
 };
 
-function ComproModal({ open, onClose }) {
-    // const { flashMessage } = usePage().props;
-    // const [open, setOpen] = useState(false);
-    // const [isOpen, setIsOpen] = useState(false);
-    // const handleOpen = () => setOpen(true);
-    // const handleClose = () => setOpen(false);
-    // const { toggleSpinner } = useContext(SpinnerContext);
-    // const { toggleAlert } = useContext(AlertContext);
-    // const theme = useTheme();
-    //     e.preventDefault();
-    //     post(route("home-store"), {
-    //         onStart: () => {
-    //             toggleSpinner(true);
-    //         },
-    //         onSuccess: () => {
-    //             reset();
-    //             toggleSpinner(false);
-    //             toggleAlert(true);
-    //             reset();
-    //             handleClose();
-    //             setIsOpen(true);
-    //         },
-    //         onError: (error) => {
-    //             toggleSpinner(false);
-    //             console.log(error);
-    //         },
-    //     });
-    // };
+function ComproModal({ buttonText }) {
+    const { flashMessage } = usePage().props;
+    const [open, setOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const { toggleSpinner } = useContext(SpinnerContext);
+    const { toggleAlert } = useContext(AlertContext);
+    const theme = useTheme();
+    const { data, setData, post, processing, errors, reset } = useForm({
+        name: "",
+        email: "",
+        tel: "",
+        company: "",
+    });
+
+    const onHandleSubmit = (e) => {
+        e.preventDefault();
+        post(route("home-store"), {
+            onStart: () => {
+                toggleSpinner(true);
+            },
+            onSuccess: () => {
+                reset();
+                toggleSpinner(false);
+                toggleAlert(true);
+                reset();
+                handleClose();
+                setIsOpen(true);
+            },
+            onError: (error) => {
+                toggleSpinner(false);
+                console.log(error);
+            },
+        });
+    };
 
     return (
-        <Modal
-            open={open}
-            onClose={onClose}
-            aria-labelledby="modal-title"
-            aria-describedby="modal-description"
-        >
-            <Box sx={style}>
-                <Typography id="modal-title" variant="h6" component="h2">
-                    Ini Modal!
-                </Typography>
-                <Typography id="modal-description" sx={{ mt: 2 }}>
-                    Ini adalah konten dari modal menggunakan Material UI.
-                </Typography>
-                <Button onClick={onClose} sx={{ mt: 3 }} variant="contained">
-                    Tutup
-                </Button>
-            </Box>
-        </Modal>
+        <div>
+            <Button
+                variant="contained"
+                size="large"
+                sx={{
+                    backgroundColor: theme.palette.custom.orange,
+                    textTransform: "none",
+                    [theme.breakpoints.down("md")]: {
+                        fontSize: "0.8rem",
+                    },
+                    [theme.breakpoints.up("md")]: {
+                        fontSize: "1.1rem",
+                    },
+                    fontWeight: 700,
+                }}
+                onClick={handleOpen}
+            >
+                {buttonText}
+            </Button>
+            <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                open={open}
+                onClose={handleClose}
+                closeAfterTransition
+                slots={{ backdrop: Backdrop }}
+                slotProps={{
+                    backdrop: {
+                        timeout: 500,
+                    },
+                }}
+            >
+                <Fade in={open}>
+                    <Box sx={style}>
+                        <Typography
+                            id="transition-modal-title"
+                            variant="h6"
+                            component="h2"
+                        >
+                            Download Company Profile
+                        </Typography>
+                        <form
+                            onSubmit={onHandleSubmit}
+                            className="compro_form mt-3"
+                        >
+                            <TextField
+                                sx={{ width: "100%" }}
+                                label="Name"
+                                variant="outlined"
+                                onChange={(e) =>
+                                    setData("name", e.target.value)
+                                }
+                            />
+                            <TextField
+                                sx={{ width: "100%" }}
+                                label="Email"
+                                variant="outlined"
+                                onChange={(e) =>
+                                    setData("email", e.target.value)
+                                }
+                            />
+                            <TextField
+                                sx={{ width: "100%" }}
+                                label="Handphone Number"
+                                variant="outlined"
+                                onChange={(e) => setData("tel", e.target.value)}
+                            />
+                            <TextField
+                                sx={{ width: "100%" }}
+                                label="Company"
+                                variant="outlined"
+                                onChange={(e) =>
+                                    setData("company", e.target.value)
+                                }
+                            />
+                            <Button variant="contained" type="submit">
+                                Submit
+                            </Button>
+                        </form>
+                    </Box>
+                </Fade>
+            </Modal>
+            {isOpen && (
+                <Modal
+                    aria-labelledby="transition-modal-title"
+                    aria-describedby="transition-modal-description"
+                    open={isOpen}
+                    onClose={() => setIsOpen(false)}
+                    closeAfterTransition
+                    slots={{ backdrop: Backdrop }}
+                    slotProps={{
+                        backdrop: {
+                            timeout: 500,
+                        },
+                    }}
+                >
+                    <Fade in={isOpen}>
+                        <Box sx={style}>
+                            <Typography
+                                id="transition-modal-title"
+                                component="h3"
+                            >
+                                Download Company Profile{" "}
+                                <a href={flashMessage.message} target="_blank">
+                                    here
+                                </a>
+                            </Typography>
+                        </Box>
+                    </Fade>
+                </Modal>
+            )}
+        </div>
     );
 }
 
