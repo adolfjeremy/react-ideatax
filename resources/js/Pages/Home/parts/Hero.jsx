@@ -15,10 +15,7 @@ function Hero({ heroes, t, theme, locale, checkLang }) {
             }}
         >
             {heroes.map((hero, i) => (
-                <div
-                    key={hero.id}
-                    className={`carousel-item ${i === 0 ? "active" : ""}`}
-                >
+                <div key={hero.id}>
                     <img
                         src={`/storage/${hero.hero}`}
                         loading="eager"
