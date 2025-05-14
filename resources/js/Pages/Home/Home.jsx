@@ -34,6 +34,7 @@ import ServiceAccordion from "@/Components/ServiceAccordion";
 import ArticleSwipeable from "@/Components/ArticleSwipeable";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import ButtonModal from "./ButtonModal";
 
 function Home() {
     const containerRef = useRef(null);
@@ -264,7 +265,8 @@ function Home() {
                                 justifyContent: "center",
                             }}
                         >
-                            <ComproModal buttonText={t("comproButton")} />
+                            <ButtonModal />
+                            {/* <ComproModal buttonText={t("comproButton")} /> */}
                         </Box>
                     </div>
                     <div className="row">
