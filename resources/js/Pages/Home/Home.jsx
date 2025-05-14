@@ -109,28 +109,18 @@ function Home() {
                     },
                 }}
             >
-                <div
-                    id="carouselExampleSlidesOnly"
-                    className="carousel slide"
-                    data-bs-ride="carousel"
-                >
-                    <div className="carousel-inner">
-                        {heroes.map((hero, i) => (
-                            <div
-                                key={hero.id}
-                                className={`carousel-item ${
-                                    i === 0 ? "active" : ""
-                                }`}
-                            >
-                                <img
-                                    src={`/storage/${hero.hero}`}
-                                    loading="eager"
-                                    className="d-block w-100"
-                                />
-                            </div>
-                        ))}
+                {heroes.map((hero, i) => (
+                    <div
+                        key={hero.id}
+                        className={`carousel-item ${i === 0 ? "active" : ""}`}
+                    >
+                        <img
+                            src={`/storage/${hero.hero}`}
+                            loading="eager"
+                            className="d-block w-100"
+                        />
                     </div>
-                </div>
+                ))}
                 <Box
                     sx={{
                         position: "absolute",
@@ -192,7 +182,7 @@ function Home() {
                     </Box>
                 </Box>
             </Box>
-            <Box
+            {/* <Box
                 component="section"
                 sx={{
                     padding: "2rem 0 1rem 0",
@@ -773,7 +763,7 @@ function Home() {
                         )}
                     </div>
                 </div>
-            </Box>
+            </Box> */}
         </Guest>
     );
 }
