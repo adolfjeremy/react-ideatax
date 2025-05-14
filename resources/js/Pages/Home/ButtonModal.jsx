@@ -1,9 +1,9 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Button, useTheme } from "@mui/material";
 import ComproModal from "./ComproModal";
 
 function ButtonModal() {
-    const [open, setOpen] = useState(false);
+    // const [open, setOpen] = useState(false);
     const theme = useTheme();
 
     return (
@@ -22,11 +22,11 @@ function ButtonModal() {
                     },
                     fontWeight: 700,
                 }}
-                onClick={() => setOpen(true)}
+                // onClick={() => setOpen(true)}
             >
                 Buka Modal
             </Button>
-            <ComproModal open={open} onClose={() => setOpen(false)} />
+            {/* <ComproModal open={open} onClose={() => setOpen(false)} /> */}
         </>
     );
 }
