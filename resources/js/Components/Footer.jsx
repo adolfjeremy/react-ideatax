@@ -76,7 +76,7 @@ function Footer() {
                             }}
                         >
                             <a
-                                href="https://www.instagram.com/ideatax.idn/"
+                                href="https://www.instagram.com/ideatax_idn/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >

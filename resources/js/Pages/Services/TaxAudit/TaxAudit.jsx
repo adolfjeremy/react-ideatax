@@ -76,6 +76,13 @@ function TaxAudit() {
                         <div className="row">
                             <CustomBreadcrumb separator=">">
                                 <Link
+                                    href={checkLang(
+                                        locale,
+                                        route("service"),
+                                        route("service.id"),
+                                        route("service.jp"),
+                                        route("service.ch")
+                                    )}
                                     sx={{
                                         fontSize: "0.6rem",
                                         textDecoration: "none",
@@ -106,8 +113,8 @@ function TaxAudit() {
                                     sx={{
                                         color: theme.palette.custom.lightBlue,
                                         fontSize: "1.4459rem",
-                                        [theme.breakpoints.down("sm")]: {
-                                            fontSize: "0.7rem",
+                                        [theme.breakpoints.down("md")]: {
+                                            fontSize: "0.825rem",
                                         },
                                         margin: 0,
                                         padding: 0,
@@ -131,8 +138,8 @@ function TaxAudit() {
                                         lineHeight: "1.5em",
                                         color: theme.palette.custom.darkBlue,
                                         fontWeight: "700",
-                                        [theme.breakpoints.down("sm")]: {
-                                            fontSize: "1.5rem",
+                                        [theme.breakpoints.down("md")]: {
+                                            fontSize: "1.625rem",
                                         },
                                     }}
                                 >
@@ -148,8 +155,8 @@ function TaxAudit() {
                                     sx={{
                                         color: theme.palette.custom.darkBlue,
                                         fontSize: "1.25rem",
-                                        [theme.breakpoints.down("sm")]: {
-                                            fontSize: "0.7rem",
+                                        [theme.breakpoints.down("md")]: {
+                                            fontSize: "0.825rem",
                                         },
                                         margin: 0,
                                         padding: 0,
