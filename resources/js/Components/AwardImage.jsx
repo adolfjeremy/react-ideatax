@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-// import aw25 from "@/assets/images/aw-2025.png";
 import aw from "@/assets/images/award/aw.webp";
 import aw1 from "@/assets/images/award/aw-2025-2.png";
 import aw2 from "@/assets/images/award/aw-2025.png";
@@ -12,7 +11,6 @@ import aw7 from "@/assets/images/award/aw-7.webp";
 function AwardImage() {
     return (
         <Box className="d-flex align-items-center justify-content-center py-5 mt-2">
-            {/* <img src={aw25} className="award_image-2" /> */}
             <img src={aw} className="award_image-2" />
             <img src={aw1} className="award_image-2" />
             <img src={aw2} className="award_image-2" />

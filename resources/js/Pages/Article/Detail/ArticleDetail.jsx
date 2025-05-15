@@ -90,7 +90,6 @@ function ArticleDetail() {
                     </div>
                 </div>
             </Box>
-            {/* <ConsultationButton /> */}
             <Pagination
                 prev={
                     previousArticle

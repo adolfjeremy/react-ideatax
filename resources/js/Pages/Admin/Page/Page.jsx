@@ -39,21 +39,6 @@ function Page() {
     return (
         <AuthLayout sectionHeading="Page">
             <div className="container">
-                {/* <div className="row">
-                <div className="col-12 d-flex align-items-center justify-content-end">
-                    <Button
-                        sx={{
-                            textTransform: "none",
-                            fontSize: "0.8rem",
-                            fontWeight: 500,
-                        }}
-                        href={route("tax-event.create")}
-                        variant="contained"
-                    >
-                        Create Tax Event
-                    </Button>
-                </div>
-            </div> */}
                 <div className="row mt-5">
                     <TableList rows={pages} columns={columns} />
                 </div>

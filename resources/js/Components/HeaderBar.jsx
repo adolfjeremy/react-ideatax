@@ -269,22 +269,6 @@ function HeaderBar({ en, id, jp, ch }) {
                     >
                         Our Services
                     </Link>
-                    {/* <Link
-                        href={route("team")}
-                        sx={{
-                            fontSize: "1.7rem",
-                            color: theme.palette.custom.white,
-                            letterSpacing: ".009em",
-                            textTransform: "capitalize",
-                            textDecoration: "none",
-                            padding: "0.5rem 0",
-                            "&:hover": {
-                                color: theme.palette.custom.orange,
-                            },
-                        }}
-                    >
-                        Updates
-                    </Link> */}
                     <Link
                         href={checkLang(
                             locale,
