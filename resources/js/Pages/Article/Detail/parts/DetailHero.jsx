@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Typography, Link } from "@mui/material";
 
 function DetailHero({ item, formatDate, checkLang, locale, theme }) {

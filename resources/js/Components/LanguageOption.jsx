@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Typography, Link, useTheme } from "@mui/material";
 
 const LanguageOption = ({ locale, currentLocale, href, label, flag }) => {

@@ -1,4 +1,3 @@
-import React from "react";
 import aw from "@/assets/images/award/aw.webp";
 import aw1 from "@/assets/images/award/aw-2025-2.png";
 import aw2 from "@/assets/images/award/aw-2025.png";

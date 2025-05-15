@@ -1,4 +1,3 @@
-import React from "react";
 import { usePage } from "@inertiajs/react";
 import { Box } from "@mui/material";
 import CheckIcon from "./CheckIcon";

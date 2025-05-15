@@ -1,4 +1,3 @@
-import React from "react";
 import { usePage } from "@inertiajs/react";
 import { Box, Typography, useTheme } from "@mui/material";
 import checkLang from "@/utils/checkLang";

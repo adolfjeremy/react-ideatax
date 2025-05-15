@@ -2,16 +2,16 @@
     p,
     li,
     a, span {
-        color: #005b96 !important;
-        font-size: 1.1rem !important;
-        font-family: "OpenSauce" !important;
-        @media (max-width: 600px) {
-            font-size: 0.8939rem;
+            color: #005b96 !important;
+            font-size: 1.1rem !important;
+            font-family: "OpenSauce" !important;
+            line-height: 1.17857248em !important;
+            letter-spacing: 0.009em !important;
+            padding: 0;
+            margin: 0;
+            @media (max-width: 600px) {
+                font-size: 0.8939rem;
+            }
         }
-        line-height: 1.17857248em !important;
-        letter-spacing: 0.009em !important;
-        padding: 0;
-        margin: 0;
-    }
     }
 

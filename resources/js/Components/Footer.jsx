@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, useTheme } from "@mui/material";
 import "@/assets/sass/footer.scss";
 import checkLang from "@/utils/checkLang";

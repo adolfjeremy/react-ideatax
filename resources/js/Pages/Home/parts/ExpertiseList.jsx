@@ -1,4 +1,3 @@
-import React from "react";
 import ExpertiseItem from "@/Components/ExpertiseItem";
 
 import audit from "@/assets/images/icons/audit.svg";

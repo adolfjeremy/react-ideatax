@@ -1,4 +1,3 @@
-import React from "react";
 import ArticleItem from "../ArticleItem";
 import TruncateRichText from "@/Components/TruncateRichText";
 import checkLang from "@/utils/checkLang";

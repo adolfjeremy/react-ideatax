@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-const NoSSR = ({ children, fallback = null }) => {
+const NoSSR = ({ children, fallback = "loading" }) => {
     const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {

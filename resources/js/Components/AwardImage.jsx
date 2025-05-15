@@ -1,4 +1,3 @@
-import React from "react";
 import { Box } from "@mui/material";
 // import aw25 from "@/assets/images/aw-2025.png";
 import aw from "@/assets/images/award/aw.webp";

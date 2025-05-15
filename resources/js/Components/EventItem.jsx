@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useTheme, Typography } from "@mui/material";
 
 function EventItem({ route, date, title, image }) {

@@ -12,7 +12,6 @@ import {
 import CommentItem from "./CommentItem";
 import ShareButton from "./ShareButton";
 import { AiOutlineLike } from "react-icons/ai";
-import { AiOutlineDislike } from "react-icons/ai";
 import { SpinnerContext } from "@/Context/SpinnerContext";
 
 function CommentSection({ article_id, comment, shareUrl, likeCount }) {
@@ -137,42 +136,6 @@ function CommentSection({ article_id, comment, shareUrl, likeCount }) {
                                             <AiOutlineLike />
                                         </IconButton>
                                     </Box>
-                                    {/* <Box sx={{ position: "relative" }}>
-                                        <Box
-                                            sx={{
-                                                width: "20px",
-                                                height: "20px",
-                                                position: "absolute",
-                                                top: "0",
-                                                left: "25px",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                justifyContent: "center",
-                                                borderRadius: "50%",
-                                                backgroundColor:
-                                                    theme.palette.custom.white,
-                                            }}
-                                        >
-                                            <Typography
-                                                sx={{
-                                                    fontSize: "12px",
-                                                }}
-                                            >
-                                                2
-                                            </Typography>
-                                        </Box>
-
-                                        <IconButton
-                                            sx={{
-                                                svg: {
-                                                    color: theme.palette.custom
-                                                        .darkBlue,
-                                                },
-                                            }}
-                                        >
-                                            <AiOutlineDislike />
-                                        </IconButton>
-                                    </Box> */}
                                 </Box>
                                 <ShareButton shareUrl={shareUrl} />
                             </div>

@@ -1,4 +1,3 @@
-import React from "react";
 import { Typography, Link, useTheme, Box } from "@mui/material";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { useTranslation } from "react-i18next";
