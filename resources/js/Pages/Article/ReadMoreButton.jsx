@@ -5,6 +5,7 @@ function ReadMoreButton({ destination }) {
     return (
         <Button
             variant="contained"
+            component="a"
             href={destination}
             size="small"
             sx={{

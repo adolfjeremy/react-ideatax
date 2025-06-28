@@ -83,16 +83,12 @@ function LatestCarousel({ data, theme, locale }) {
                                 )}
                             />
                             <ReadMoreButton
-                                desctination={
-                                    locale == "en"
-                                        ? route("article-detail", item.slug_eng)
-                                        : locale == "id"
-                                        ? route("article-detail.id", item.slug)
-                                        : route(
-                                              "article-detail.jp",
-                                              item.slug_jpn
-                                          )
-                                }
+                                destination={checkLang(
+                                    locale,
+                                    route("article-detail", item.slug_eng),
+                                    route("article-detail.id", item.slug),
+                                    route("article-detail.jp", item.slug_jpn)
+                                )}
                             />
                         </Box>
                     </div>

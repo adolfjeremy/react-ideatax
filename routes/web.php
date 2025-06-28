@@ -25,7 +25,7 @@ use App\Http\Controllers\Admin\SubscribeController;
 use App\Http\Controllers\Admin\TaxEventController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\LocalizationController;
-
+use App\Http\Controllers\Sp2dkController;
 use App\Http\Controllers\TaxAuditController;
 use App\Http\Controllers\TaxReportController;
 use App\Http\Controllers\TaxRefundController;
@@ -68,7 +68,6 @@ Route::get('guest/login/google/callback', [GoogleAuthController::class, 'handleG
 Route::post('guest/sign-out', [UserLoginController::class, 'destroy'])->name('user-logout');
 
 Route::post('/articles/{id}/like', [ArticleController::class, 'likeArticle'])->middleware('auth')->name('articles-like');
-// Route::post('/articles/{id}/unlike', [ArticleController::class, 'unlikeArticle'])->middleware('auth')->name('articles-dislike');
 Route::post('/articles/comment', [ArticleController::class, 'comment'])->middleware('auth')->name('articles-comment');
 Route::delete('/articles/comment/delete/{id}', [ArticleController::class, 'destroy'])->middleware('auth')->name('comment-delete');
 
@@ -83,6 +82,7 @@ Route::get('/our-services/{slug_eng}', [ServiceController::class, 'detail'])->na
 Route::get('/our-service/tax-audit-assistance', [TaxAuditController::class, 'detail'])->name('tax-audit');
 Route::get('/our-service/annual-tax-return-reporting-service-for-corporations-and-individuals', [TaxReportController::class, 'index'])->name('tax-report');
 Route::get('/our-service/tax-refund-assistance', [TaxRefundController::class, 'index'])->name('tax-refund');
+Route::get('/our-service/sp2dk-assistance', [Sp2dkController::class, 'index'])->name('sp2dk');
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 Route::get('/articles/{slug_eng}', [ArticleController::class, 'detail'])->name('article-detail');
@@ -105,6 +105,8 @@ Route::prefix('id')
         Route::get('/our-service/bantuan-pemeriksaan-pajak', [TaxAuditController::class, 'detail'])->name('tax-audit.id');
         Route::get('/our-service/layanan-pelaporan-spt-tahunan-badan-dan-pribadi', [TaxReportController::class, 'index'])->name('tax-report.id');
         Route::get('/our-service/bantuan-pengembalian-pajak', [TaxRefundController::class, 'index'])->name('tax-refund.id');
+        Route::get('/our-service/pendampingan-surat-permintaan-penjelasan-data-danatau-informasi-sp2dk', [Sp2dkController::class, 'index'])->name('sp2dk.id');
+
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.id');
         Route::get('/articles/{slug}', [ArticleController::class, 'detail'])->name('article-detail.id');
         Route::get('/articles/event/{slug}', [ControllersTaxEventController::class, 'detail'])->name('event-detail.id');
@@ -126,6 +128,7 @@ Route::prefix('jp')
         Route::get('/our-service/zeimu-kansa-sapoto', [TaxAuditController::class, 'detail'])->name('tax-audit.jp');
         Route::get('/our-service/shui-jin-nohuan-fu-sapoto', [TaxRefundController::class, 'index'])->name('tax-refund.jp');
         Route::get('/our-service/fa-ren-oyobige-ren-xiang-kenian-jian-na-shui-shen-gao-sptsabisu', [TaxReportController::class, 'index'])->name('tax-report.jp');
+        Route::get('/our-service/sp2dkdui-ying-zhi-yuan', [Sp2dkController::class, 'index'])->name('sp2dk.jp');
 
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.jp');
         Route::get('/articles/{slug_jpn}', [ArticleController::class, 'detail'])->name('article-detail.jp');
@@ -147,6 +150,7 @@ Route::prefix('zh-CN')
         Route::get('/our-service/xiezhu-shuiwu-jiancha', [TaxAuditController::class, 'detail'])->name('tax-audit.ch');
         Route::get('/our-service/退税', [TaxRefundController::class, 'index'])->name('tax-refund.ch');
         Route::get('/our-service/年度企业和个人SPT申报服务', [TaxReportController::class, 'index'])->name('tax-report.ch');
+        Route::get('/our-service/sp2dk-assistance', [Sp2dkController::class, 'index'])->name('sp2dk.ch');
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.ch');
         Route::get('/articles/{slug_ch}', [ArticleController::class, 'detail'])->name('article-detail.ch');
         // Route::get('/articles/event/{slug_jpn}', [ControllersTaxEventController::class, 'detail'])->name('event-detail.jp');
