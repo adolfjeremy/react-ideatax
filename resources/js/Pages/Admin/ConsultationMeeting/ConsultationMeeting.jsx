@@ -12,6 +12,8 @@ function ConsultationMeeting() {
         };
     });
 
+    console.log(modifiedMeetings);
+
     const columns = [
         {
             field: "name",
@@ -23,7 +25,7 @@ function ConsultationMeeting() {
         {
             field: "email",
             headerName: "Email",
-            flex: 1,
+            flex: 0.8,
             headerAlign: "center",
             align: "center",
         },
@@ -38,6 +40,13 @@ function ConsultationMeeting() {
             field: "company",
             headerName: "Company",
             flex: 0.8,
+            headerAlign: "center",
+            align: "center",
+        },
+        {
+            field: "schedule",
+            headerName: "Schedule",
+            flex: 0.4,
             headerAlign: "center",
             align: "center",
         },
