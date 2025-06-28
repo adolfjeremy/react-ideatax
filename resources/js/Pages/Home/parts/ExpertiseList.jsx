@@ -40,18 +40,16 @@ function ExpertiseList({ checkLang, locale, t }) {
                 isEven={false}
                 route={checkLang(
                     locale,
-                    route(
-                        "service-detail",
-                        "transfer-pricing-documentation-preparation-local-and-master-file"
-                    ),
+                    route("service-detail", "transfer-pricing-documentation"),
                     route(
                         "service-detail.id",
-                        "penyiapan-dokumentasi-transfer-pricing-file-lokal-dan-master"
+                        "transfer-pricing-documentation-tp-doc"
                     ),
                     route(
                         "service-detail.jp",
-                        "yi-zhuan-ding-jie-wen-jian-tp-doc"
-                    )
+                        "yi-zhuan-jia-ge-wen-shu-tp-doc"
+                    ),
+                    route("service-detail.ch", "transfer-pricing-documentation")
                 )}
             />
             <ExpertiseItem
@@ -60,12 +58,10 @@ function ExpertiseList({ checkLang, locale, t }) {
                 image={compliance}
                 route={checkLang(
                     locale,
-                    route("service-detail", "tax-and-customs-compliances"),
-                    route(
-                        "service-detail.id",
-                        "otomatisasi-dan-kepatuhan-perpajakan"
-                    ),
-                    route("service-detail.jp", "shui-wu-shui-guan-konpuraiansu")
+                    route("service-detail", "monthly-tax-compliance"),
+                    route("service-detail.id", "Kepatuhan Pajak Bulanan"),
+                    route("service-detail.jp", "syue-ci-shui-wu-konpuraiansu"),
+                    route("service-detail.ch", "monthly-tax-compliance")
                 )}
             />
         </div>
