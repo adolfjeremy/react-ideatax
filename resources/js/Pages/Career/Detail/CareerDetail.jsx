@@ -1,15 +1,51 @@
+import { useContext } from "react";
 import { Box, Typography, useTheme, Button, TextField } from "@mui/material";
-import { usePage } from "@inertiajs/react";
+import { usePage, useForm } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
 import RichText from "@/Components/RichText";
 import checkLang from "@/utils/checkLang";
+import { SpinnerContext } from "@/Context/SpinnerContext";
+import { AlertContext } from "@/Context/AlertContext";
 import "../career.scss";
 
 function CareerDetail() {
     const { locale, item } = usePage().props;
     const theme = useTheme();
     const { t } = useTranslation();
+
+    const { toggleSpinner } = useContext(SpinnerContext);
+    const { toggleAlert } = useContext(AlertContext);
+
+    const { data, setData, post, processing, errors, reset } = useForm({
+        name: "",
+        email: "",
+        phone: "",
+        coverLetter: "",
+        career_id: item.id,
+    });
+
+    const onHandleSubmit = (e) => {
+        e.preventDefault();
+        post(
+            route("career-apply", item.slug_eng),
+            {
+                onStart: () => {
+                    toggleSpinner(true);
+                },
+                onSuccess: () => {
+                    reset();
+                    toggleSpinner(false);
+                    toggleAlert(true);
+                },
+                onError: (error) => {
+                    console.log(error);
+                    toggleSpinner(false);
+                },
+            },
+            { forceFormData: true }
+        );
+    };
     return (
         <Guest
             en={route("career-detail", item.slug_eng)}
@@ -157,32 +193,52 @@ function CareerDetail() {
                                     {t("careerApply")}
                                 </Typography>
                             </div>
-                            <form className="col-12 px-lg-4 d-flex flex-column align-items-end justify-content-center gap-2">
+                            <form
+                                onSubmit={onHandleSubmit}
+                                className="col-12 px-lg-4 d-flex flex-column align-items-end justify-content-center gap-2"
+                            >
                                 <TextField
                                     id="name"
                                     label={t("formName")}
                                     variant="outlined"
                                     sx={{ width: "100%" }}
+                                    value={data.name}
+                                    onChange={(e) =>
+                                        setData("name", e.target.value)
+                                    }
                                 />
                                 <TextField
                                     id="email"
                                     label={t("formEmail")}
                                     variant="outlined"
                                     sx={{ width: "100%" }}
+                                    value={data.email}
+                                    onChange={(e) =>
+                                        setData("email", e.target.value)
+                                    }
                                 />
                                 <TextField
                                     id="phone"
                                     label={t("formPhone")}
                                     variant="outlined"
                                     sx={{ width: "100%" }}
+                                    value={data.phone}
+                                    onChange={(e) =>
+                                        setData("phone", e.target.value)
+                                    }
                                 />
                                 <TextField
-                                    id="letter"
+                                    id="coverLetter"
+                                    name="coverLetter"
                                     label={t("formLetter")}
                                     multiline
                                     rows={4}
                                     defaultValue=""
                                     sx={{ width: "100%" }}
+                                    value={data.coverLetter}
+                                    onChange={(e) =>
+                                        setData("coverLetter", e.target.value)
+                                    }
                                 />
                                 <Box
                                     sx={{
@@ -200,21 +256,25 @@ function CareerDetail() {
                                             color: "rgb(153, 153, 153)",
                                             margin: 0,
                                         }}
-                                        for="resume"
+                                        htmlFor="resume"
                                         className="form-label"
                                     >
                                         {t("formResume")}
                                     </Typography>
                                     <TextField
                                         id="resume"
+                                        name="resume"
                                         type="file"
                                         variant="outlined"
                                         sx={{ width: "100%" }}
+                                        onChange={(e) =>
+                                            setData("resume", e.target.files[0])
+                                        }
                                     />
                                     <small
                                         style={{ color: "rgb(153, 153, 153)" }}
                                     >
-                                        allowed type: pdf
+                                        allowed type: pdf,doc,docx
                                     </small>
                                     <small
                                         style={{ color: "rgb(153, 153, 153)" }}
@@ -225,6 +285,8 @@ function CareerDetail() {
                                 <Button
                                     variant="contained"
                                     size="medium"
+                                    type="submit"
+                                    disabled={processing}
                                     sx={{
                                         backgroundColor:
                                             theme.palette.custom.orange,

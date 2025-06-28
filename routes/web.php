@@ -87,9 +87,12 @@ Route::get('/our-service/sp2dk-assistance', [Sp2dkController::class, 'index'])->
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 Route::get('/articles/{slug_eng}', [ArticleController::class, 'detail'])->name('article-detail');
 Route::get('/articles/event/{slug_eng}', [ControllersTaxEventController::class, 'detail'])->name('event-detail');
+
 Route::get('/careers', [CareerController::class, 'index'])->name('career');
 Route::get('/careers/{slug_eng}', [CareerController::class, 'detail'])->name('career-detail');
+Route::post('/careers/{slug_eng}', [CareerController::class, 'apply'])->name('career-apply');
 Route::get('/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax');
+
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact-store');
 
