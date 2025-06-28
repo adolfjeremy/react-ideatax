@@ -99,8 +99,7 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                         primary={checkLang(
                                             locale,
                                             "Annual Tax Return Reporting Service for Corporations and Individuals",
-                                            "Layanan Pelaporan SPT Tahunan Badan dan Pribadi",
-                                            "法人および個人向け年間納税申告 SPT サービス"
+                                            "Layanan Pelaporan SPT Tahunan Badan dan Pribadi"
                                         )}
                                     />
                                 </ListItemButton>
@@ -129,8 +128,7 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                             primary={checkLang(
                                                 locale,
                                                 "Tax Audit Assistance",
-                                                "Bantuan Pemeriksaan Pajak",
-                                                "税務監査サポート"
+                                                "Bantuan Pemeriksaan Pajak"
                                             )}
                                         />
                                     </ListItemButton>
@@ -159,6 +157,33 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                                 "Tax Refund Assistance",
                                                 "Bantuan Pengembalian Pajak",
                                                 "税金の還付 サポート"
+                                            )}
+                                        />
+                                    </ListItemButton>
+                                    <ListItemButton
+                                        component="a"
+                                        href={checkLang(
+                                            locale,
+                                            route("sp2dk"),
+                                            route("sp2dk.id"),
+                                            route("sp2dk.jp"),
+                                            route("sp2dk.ch")
+                                        )}
+                                        key={`${index}-listitembutton2`}
+                                        sx={{
+                                            pl: 1,
+                                            justifyContent: "start",
+                                            gap: 1,
+                                        }}
+                                    >
+                                        <Box>
+                                            <MdExpandMore />
+                                        </Box>
+                                        <ListItemText
+                                            primary={checkLang(
+                                                locale,
+                                                "SP2DK Assistance",
+                                                "Pendampingan Surat Permintaan Penjelasan Data dan/atau Informasi (SP2DK)"
                                             )}
                                         />
                                     </ListItemButton>
