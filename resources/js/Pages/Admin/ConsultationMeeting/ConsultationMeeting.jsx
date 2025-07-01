@@ -2,12 +2,15 @@ import { usePage } from "@inertiajs/react";
 import AuthLayout from "@/Layout/AuthLayout";
 import TableList from "@/Components/TableList";
 import ActionButton from "@/Components/ActionButton";
+import formatDate from "@/utils/formatDate";
 
 function ConsultationMeeting() {
     const { meetings } = usePage().props;
     const modifiedMeetings = meetings.map((item) => {
         return {
             ...item,
+            inputDate: formatDate(item.created_at),
+            scheduleDate: formatDate(item.schedule),
             serviceTitle: item.service?.title_eng,
         };
     });
@@ -44,7 +47,14 @@ function ConsultationMeeting() {
             align: "center",
         },
         {
-            field: "schedule",
+            field: "inputDate",
+            headerName: "Input Date",
+            flex: 0.4,
+            headerAlign: "center",
+            align: "center",
+        },
+        {
+            field: "scheduleDate",
             headerName: "Schedule",
             flex: 0.4,
             headerAlign: "center",
