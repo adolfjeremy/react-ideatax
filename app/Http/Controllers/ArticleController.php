@@ -6,13 +6,17 @@ use App\Models\Like;
 use App\Models\Page;
 use Inertia\Inertia;
 use App\Models\Article;
+use App\Models\ArticleCategory;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->input('search');
+        $categoryId = $request->input('categoryId');
+
         $page = Page::findOrFail(5);
         $latest = Article::select('id', 'title', 'title_eng', 'title_jpn', 'body', 'body_eng', 'body_jpn', 'slug', 'slug_eng', 'slug_jpn', 'photo')
             ->latest()
@@ -24,9 +28,21 @@ class ArticleController extends Controller
                 $article->body_jpn = Article::truncateRichText($article->body_jpn);
                 return $article;
             });
-        $articles = Article::select('id', 'title', 'title_eng', 'title_jpn', 'body', 'body_eng', 'body_jpn', 'slug', 'slug_eng', 'slug_jpn', 'thumbnail')
+        $articles = Article::query()
+            ->when($search, function ($query, $search) {
+                $query->where('title_eng', 'like', '%' . $search . '%');
+            })
+            ->when($categoryId, function ($query, $categoryId) {
+                $query->where('article_categories_id', $categoryId);
+            })
+            ->select('id', 'title', 'title_eng', 'title_jpn', 'body', 'body_eng', 'body_jpn', 'slug', 'slug_eng', 'slug_jpn', 'thumbnail')
             ->latest()
-            ->simplePaginate(9);
+            ->simplePaginate(9)
+            ->withQueryString();
+
+        $categories = ArticleCategory::select('id', 'title')
+            ->orderBy('title')
+            ->get();
 
         // Transformasi isi paginasi
         $articles->setCollection(
@@ -40,8 +56,13 @@ class ArticleController extends Controller
 
         return Inertia::render('Article/Article', [
             "latest" => $latest,
+            "categories" => $categories,
             "articles" => $articles,
-            "page" => $page
+            "page" => $page,
+            'filters' => [  // Ini dia bagian pentingnya
+                'search' => $search,
+                'categoryId' => $categoryId,
+            ],
         ]);
     }
     public function detail($id)
