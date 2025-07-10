@@ -14,8 +14,6 @@ function ComplexPaginaton({ currentPage, lastPage, onPageChange }) {
         (_, i) => startPage + i
     ).filter((p) => p <= lastPage);
 
-    console.log(visiblePages);
-
     const { t } = useTranslation();
 
     return (
