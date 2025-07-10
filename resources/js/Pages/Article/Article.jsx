@@ -7,13 +7,13 @@ import {
     MenuItem,
     Button,
 } from "@mui/material";
-import { usePage, useForm, router } from "@inertiajs/react";
+import { usePage, router } from "@inertiajs/react";
 import { IoSearch } from "react-icons/io5";
 import Guest from "@/Layout/Guest";
 import LatestCarousel from "./parts/LatestCarousel";
 import ArticleLists from "./parts/ArticleLists";
 import checkLang from "@/utils/checkLang";
-import Pagination from "@/Components/Pagination";
+import ComplexPaginaton from "@/Components/ComplexPaginaton";
 import { useTranslation } from "react-i18next";
 import { SpinnerContext } from "@/Context/SpinnerContext";
 
@@ -180,9 +180,24 @@ function Article() {
                         />
                     </div>
                     <div className="row mt-5">
-                        <Pagination
-                            prev={articles.prev_page_url}
-                            next={articles.next_page_url}
+                        <ComplexPaginaton
+                            currentPage={articles.current_page}
+                            lastPage={articles.last_page}
+                            onPageChange={(page) => {
+                                router.get(
+                                    checkLang(
+                                        locale,
+                                        route("articles"),
+                                        route("articles.id"),
+                                        route("articles.jp"),
+                                        route("articles.ch")
+                                    ),
+                                    { page },
+                                    {
+                                        preserveState: true,
+                                    }
+                                );
+                            }}
                         />
                     </div>
                 </div>

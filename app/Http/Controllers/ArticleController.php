@@ -37,7 +37,7 @@ class ArticleController extends Controller
             })
             ->select('id', 'title', 'title_eng', 'title_jpn', 'body', 'body_eng', 'body_jpn', 'slug', 'slug_eng', 'slug_jpn', 'thumbnail')
             ->latest()
-            ->simplePaginate(9)
+            ->paginate(9)
             ->withQueryString();
 
         $categories = ArticleCategory::select('id', 'title')
