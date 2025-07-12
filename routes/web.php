@@ -31,6 +31,7 @@ use App\Http\Controllers\TaxReportController;
 use App\Http\Controllers\TaxRefundController;
 
 use App\Http\Controllers\TaxEventController as ControllersTaxEventController;
+use App\Http\Controllers\TaxUpdateController;
 use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\UserRegisterController;
 use App\Http\Middleware\ChangeLocal;
@@ -88,6 +89,9 @@ Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 Route::get('/articles/{slug_eng}', [ArticleController::class, 'detail'])->name('article-detail');
 Route::get('/articles/event/{slug_eng}', [ControllersTaxEventController::class, 'detail'])->name('event-detail');
 
+Route::get('/tax-updates', [TaxUpdateController::class, 'index'])->name('updates');
+Route::get('/tax-updates/{slug_eng}', [TaxUpdateController::class, 'detail'])->name('update-detail');
+
 Route::get('/careers', [CareerController::class, 'index'])->name('career');
 Route::get('/careers/{slug_eng}', [CareerController::class, 'detail'])->name('career-detail');
 Route::post('/careers/{slug_eng}', [CareerController::class, 'apply'])->name('career-apply');
@@ -113,6 +117,10 @@ Route::prefix('id')
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.id');
         Route::get('/articles/{slug}', [ArticleController::class, 'detail'])->name('article-detail.id');
         Route::get('/articles/event/{slug}', [ControllersTaxEventController::class, 'detail'])->name('event-detail.id');
+
+        Route::get('/tax-updates', [TaxUpdateController::class, 'index'])->name('updates.id');
+        Route::get('/tax-updates/{slug}', [TaxUpdateController::class, 'detail'])->name('update-detail.id');
+
         Route::get('/careers', [CareerController::class, 'index'])->name('career.id');
         Route::get('/careers/{slug}', [CareerController::class, 'detail'])->name('career-detail.id');
         Route::get('/careers/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax.id');
@@ -136,6 +144,10 @@ Route::prefix('jp')
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.jp');
         Route::get('/articles/{slug_jpn}', [ArticleController::class, 'detail'])->name('article-detail.jp');
         Route::get('/articles/event/{slug_jpn}', [ControllersTaxEventController::class, 'detail'])->name('event-detail.jp');
+
+        Route::get('/tax-updates', [TaxUpdateController::class, 'index'])->name('updates.jp');
+        Route::get('/tax-updates/{slug_jpn}', [TaxUpdateController::class, 'detail'])->name('update-detail.jp');
+
         Route::get('/careers', [CareerController::class, 'index'])->name('career.jp');
         Route::get('/careers/{slug_jpn}', [CareerController::class, 'detail'])->name('career-detail.jp');
         Route::get('/careers/life-at-ideatax', [CareerController::class, 'life'])->name('life-at-ideatax.jp');
@@ -156,6 +168,10 @@ Route::prefix('zh-CN')
         Route::get('/our-service/sp2dk-assistance', [Sp2dkController::class, 'index'])->name('sp2dk.ch');
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.ch');
         Route::get('/articles/{slug_ch}', [ArticleController::class, 'detail'])->name('article-detail.ch');
+
+        Route::get('/tax-updates', [TaxUpdateController::class, 'index'])->name('updates.ch');
+        Route::get('/tax-updates/{slug_ch}', [TaxUpdateController::class, 'detail'])->name('update-detail.ch');
+
         // Route::get('/articles/event/{slug_jpn}', [ControllersTaxEventController::class, 'detail'])->name('event-detail.jp');
         // Route::get('/careers', [CareerController::class, 'index'])->name('career.jp');
         // Route::get('/careers/{slug_jpn}', [CareerController::class, 'detail'])->name('career-detail.jp');
