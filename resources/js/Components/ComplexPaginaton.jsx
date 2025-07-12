@@ -4,15 +4,23 @@ import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 function ComplexPaginaton({ currentPage, lastPage, onPageChange }) {
-    let startPage = currentPage;
+    let startPage = currentPage - 1;
 
+    // Kasus awal (jangan negatif)
     if (currentPage <= 2) {
         startPage = 1;
     }
+
+    // Kasus akhir (jangan lebih dari lastPage - 2)
+    if (currentPage >= lastPage - 1) {
+        startPage = Math.max(lastPage - 2, 1);
+    }
+
+    // Buat 3 angka: [start, start+1, start+2]
     const visiblePages = Array.from(
         { length: 3 },
         (_, i) => startPage + i
-    ).filter((p) => p <= lastPage);
+    ).filter((page) => page >= 1 && page <= lastPage);
 
     const { t } = useTranslation();
 
@@ -26,6 +34,14 @@ function ComplexPaginaton({ currentPage, lastPage, onPageChange }) {
                 gap: 1,
             }}
         >
+            <Button
+                onClick={() => onPageChange(1)}
+                disabled={currentPage === 1}
+                className="px-3 py-1 border rounded disabled:opacity-50"
+            >
+                First
+            </Button>
+
             <Button
                 onClick={() => onPageChange(currentPage - 1)}
                 disabled={currentPage === 1}
@@ -51,6 +67,13 @@ function ComplexPaginaton({ currentPage, lastPage, onPageChange }) {
                 variant="outlined"
             >
                 {t("next")} <MdKeyboardDoubleArrowRight />
+            </Button>
+            <Button
+                onClick={() => onPageChange(lastPage)}
+                disabled={currentPage === lastPage}
+                className="px-3 py-1 border rounded disabled:opacity-50"
+            >
+                Last
             </Button>
         </Box>
     );
