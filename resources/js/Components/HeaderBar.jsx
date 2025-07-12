@@ -24,16 +24,24 @@ function HeaderBar({ en, id, jp, ch }) {
     const { locale } = usePage().props;
     const theme = useTheme();
     const [anchorEl, setAnchorEl] = useState(null);
+    const [anchor, setAnchor] = useState(null);
     const [state, setState] = useState(false);
     const [navbarStatus, setNavbarStatus] = useState(false);
     const [currentRoute, setCurrentRoute] = useState(false);
     const open = Boolean(anchorEl);
+    const openPublication = Boolean(anchor);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
         setAnchorEl(null);
+    };
+    const handleClickPublication = (event) => {
+        setAnchor(event.currentTarget);
+    };
+    const handleClosePublication = () => {
+        setAnchor(null);
     };
     const toggleDrawer = () => (event) => {
         if (
@@ -269,20 +277,22 @@ function HeaderBar({ en, id, jp, ch }) {
                     >
                         Our Services
                     </Link>
-                    <Link
-                        href={checkLang(
-                            locale,
-                            route("articles"),
-                            route("articles.id"),
-                            route("articles.jp"),
-                            route("articles.ch")
-                        )}
+                    <Button
                         className={
                             route().current("articles") ||
-                            route().current("article-detail")
+                            route().current("article-detail") ||
+                            route().current("updates") ||
+                            route().current("updates-detail")
                                 ? "active"
                                 : ""
                         }
+                        id="basic-button"
+                        aria-controls={
+                            openPublication ? "dropdown-menu" : undefined
+                        }
+                        aria-haspopup="true"
+                        aria-expanded={openPublication ? "true" : undefined}
+                        onClick={handleClickPublication}
                         sx={{
                             fontSize: "1.7rem",
                             color: theme.palette.custom.white,
@@ -295,8 +305,72 @@ function HeaderBar({ en, id, jp, ch }) {
                             },
                         }}
                     >
-                        Articles
-                    </Link>
+                        Publication
+                        <MdOutlineArrowDropDown />
+                    </Button>
+                    <Menu
+                        id="dropdown-menu"
+                        anchorEl={anchor}
+                        open={openPublication}
+                        onClose={handleClosePublication}
+                        className="dropdown-react"
+                        MenuListProps={{
+                            "aria-labelledby": "dropdown-menu",
+                        }}
+                    >
+                        <MenuItem>
+                            <Link
+                                href={checkLang(
+                                    locale,
+                                    route("articles"),
+                                    route("articles.id"),
+                                    route("articles.jp")
+                                )}
+                                className={
+                                    route().current("articles") ? "active" : ""
+                                }
+                                sx={{
+                                    fontSize: "1.7rem",
+                                    color: theme.palette.custom.white,
+                                    letterSpacing: ".009em",
+                                    textTransform: "capitalize",
+                                    textDecoration: "none",
+                                    padding: "0.5rem 0",
+                                    "&:hover": {
+                                        color: theme.palette.custom.orange,
+                                    },
+                                }}
+                            >
+                                Articles
+                            </Link>
+                        </MenuItem>
+                        <MenuItem>
+                            <Link
+                                href={checkLang(
+                                    locale,
+                                    route("updates"),
+                                    route("updates.id"),
+                                    route("updates.jp")
+                                )}
+                                className={
+                                    route().current("updates") ? "active" : ""
+                                }
+                                sx={{
+                                    fontSize: "1.7rem",
+                                    color: theme.palette.custom.white,
+                                    letterSpacing: ".009em",
+                                    textTransform: "capitalize",
+                                    textDecoration: "none",
+                                    padding: "0.5rem 0",
+                                    "&:hover": {
+                                        color: theme.palette.custom.orange,
+                                    },
+                                }}
+                            >
+                                Tax Updates
+                            </Link>
+                        </MenuItem>
+                    </Menu>
                     <Button
                         className={
                             route().current("career") ||
