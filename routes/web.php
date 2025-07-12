@@ -23,6 +23,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\SubscribeController;
 use App\Http\Controllers\Admin\TaxEventController;
+use App\Http\Controllers\Admin\TaxUpdateController as AdminTaxUpdateController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\Sp2dkController;
@@ -186,6 +187,7 @@ Route::prefix('admin')
         Route::resource('stat', StatController::class);
         Route::resource('services', AdminServiceController::class);
         Route::resource('articles', AdminArticleController::class);
+        Route::resource('updates', AdminTaxUpdateController::class);
         Route::resource('article-category', ArticleCategoryController::class);
         Route::resource('tax-event', TaxEventController::class);
         Route::resource('team', AdminTeamController::class);
