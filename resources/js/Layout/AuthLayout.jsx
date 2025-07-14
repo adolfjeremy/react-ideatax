@@ -151,6 +151,19 @@ function AuthLayout({ children, sectionHeading }) {
                 <ListItem
                     disablePadding
                     component="a"
+                    href={route("updates.index")}
+                    className={`${route().current("updates*") ? "active" : ""}`}
+                >
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <RiArticleLine />
+                        </ListItemIcon>
+                        <ListItemText primary="Tax Update" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem
+                    disablePadding
+                    component="a"
                     href={route("article-category.index")}
                     className={`${
                         route().current("article-category*") ? "active" : ""
