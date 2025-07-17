@@ -50,7 +50,21 @@ class TaxUpdateController extends Controller
         if ($request->file('photo')) {
             $data['photo'] = $request->file('photo')->store('update');
         }
+        if ($request->file('photo')) {
+
+            if ($request->filled('oldPhoto')) {
+                Storage::delete($request->oldPhoto);
+            }
+
+            $data['photo'] = $request->file('photo')->store('update');
+        }
+
         if ($request->file('thumbnail')) {
+
+            if ($request->filled('oldThumbnail')) {
+                Storage::delete($request->oldThumbnail);
+            }
+
             $data['thumbnail'] = $request->file('thumbnail')->store('update');
         }
         if ($request->file('pdf')) {
