@@ -27,9 +27,16 @@ function HeroCTA({ image, children }) {
                     flexDirection: "column",
                 }}
             >
-                <div className="row d-flex align-items-center justify-content-end">
+                <Box
+                    sx={{
+                        [theme.breakpoints.down("sm")]: {
+                            height: "100%",
+                        },
+                    }}
+                    className="row d-flex align-items-center justify-content-end"
+                >
                     {children}
-                </div>
+                </Box>
             </Box>
         </Box>
     );

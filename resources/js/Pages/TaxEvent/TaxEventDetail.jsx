@@ -289,16 +289,11 @@ function TaxEventDetail() {
                                     item.title_jpn
                                 )}
                                 image={`/storage/${item.thumbnail}`}
-                                desctination={
-                                    locale == "en"
-                                        ? route("article-detail", item.slug_eng)
-                                        : locale == "id"
-                                        ? route("article-detail.id", item.slug)
-                                        : route(
-                                              "article-detail.jp",
-                                              item.slug_jpn
-                                          )
-                                }
+                                destination={checkLang(
+                                    locale,
+                                    item.slug_eng,
+                                    item.slug
+                                )}
                                 desc={
                                     <TruncateRichText
                                         style={{

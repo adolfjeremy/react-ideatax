@@ -3,6 +3,7 @@ import ReadMoreButton from "./ReadMoreButton";
 import checkLang from "@/utils/checkLang";
 
 function ArticleItem({ image, title, desc, destination, locale }) {
+    console.log(destination);
     const theme = useTheme();
     return (
         <div className="col-12 col-md-4  d-flex flex-column gap-4 align-items-start mt-5 px-4">

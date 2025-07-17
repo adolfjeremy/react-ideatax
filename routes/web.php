@@ -32,6 +32,7 @@ use App\Http\Controllers\TaxReportController;
 use App\Http\Controllers\TaxRefundController;
 
 use App\Http\Controllers\TaxEventController as ControllersTaxEventController;
+use App\Http\Controllers\TaxPlanningController;
 use App\Http\Controllers\TaxUpdateController;
 use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\UserRegisterController;
@@ -85,6 +86,7 @@ Route::get('/our-service/tax-audit-assistance', [TaxAuditController::class, 'det
 Route::get('/our-service/annual-tax-return-reporting-service-for-corporations-and-individuals', [TaxReportController::class, 'index'])->name('tax-report');
 Route::get('/our-service/tax-refund-assistance', [TaxRefundController::class, 'index'])->name('tax-refund');
 Route::get('/our-service/sp2dk-assistance', [Sp2dkController::class, 'index'])->name('sp2dk');
+Route::get('/our-service/tax-planning', [TaxPlanningController::class, 'index'])->name('tax-planning');
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 Route::get('/articles/{slug_eng}', [ArticleController::class, 'detail'])->name('article-detail');

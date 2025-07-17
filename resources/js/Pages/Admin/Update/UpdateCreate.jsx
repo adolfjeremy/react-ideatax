@@ -41,6 +41,7 @@ function UpdateCreate() {
         description_jpn: "",
         tax_update_categories_id: "",
     });
+    console.log(data);
 
     const onHandleSubmit = (e) => {
         e.preventDefault();

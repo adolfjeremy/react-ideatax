@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\TaxUpdateCategory;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TaxUpdateRequest;
 use Illuminate\Support\Facades\Storage;
 
 class TaxUpdateController extends Controller
@@ -37,13 +38,14 @@ class TaxUpdateController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TaxUpdateRequest $request)
     {
         $data = $request->all();
 
         $data['slug'] = Str::slug($request->title);
         $data['slug_eng'] = Str::slug($request->title_eng);
         $data['slug_jpn'] = Str::slug($request->title_jpn, language: "ja-JP");
+
 
         if ($request->file('photo')) {
             $data['photo'] = $request->file('photo')->store('update');
@@ -56,6 +58,8 @@ class TaxUpdateController extends Controller
         }
 
         TaxUpdate::create($data);
+
+        dd($data);
 
         return redirect()->route('updates.index')->with([
             'message' => "Tax Update created successfully",
