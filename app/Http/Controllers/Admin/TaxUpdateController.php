@@ -59,8 +59,6 @@ class TaxUpdateController extends Controller
 
         TaxUpdate::create($data);
 
-        dd($data);
-
         return redirect()->route('updates.index')->with([
             'message' => "Tax Update created successfully",
             'type' => 'success'
