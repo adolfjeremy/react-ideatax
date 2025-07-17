@@ -8,7 +8,6 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\TaxUpdateCategory;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\TaxUpdateRequest;
 use Illuminate\Support\Facades\Storage;
 
 class TaxUpdateController extends Controller
@@ -38,7 +37,7 @@ class TaxUpdateController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(TaxUpdateRequest $request)
+    public function store(Request $request)
     {
         $data = $request->all();
 
@@ -46,25 +45,10 @@ class TaxUpdateController extends Controller
         $data['slug_eng'] = Str::slug($request->title_eng);
         $data['slug_jpn'] = Str::slug($request->title_jpn, language: "ja-JP");
 
-
         if ($request->file('photo')) {
             $data['photo'] = $request->file('photo')->store('update');
         }
-        if ($request->file('photo')) {
-
-            if ($request->filled('oldPhoto')) {
-                Storage::delete($request->oldPhoto);
-            }
-
-            $data['photo'] = $request->file('photo')->store('update');
-        }
-
         if ($request->file('thumbnail')) {
-
-            if ($request->filled('oldThumbnail')) {
-                Storage::delete($request->oldThumbnail);
-            }
-
             $data['thumbnail'] = $request->file('thumbnail')->store('update');
         }
         if ($request->file('pdf')) {
@@ -114,13 +98,23 @@ class TaxUpdateController extends Controller
         $data['slug_jpn'] = Str::slug($request->title_jpn, language: "ja-JP");
 
         if ($request->file('photo')) {
-            Storage::delete($request->oldPhoto);
+
+            if ($request->filled('oldPhoto')) {
+                Storage::delete($request->oldPhoto);
+            }
+
             $data['photo'] = $request->file('photo')->store('update');
         }
+
         if ($request->file('thumbnail')) {
-            Storage::delete($request->oldThumbnail);
+
+            if ($request->filled('oldThumbnail')) {
+                Storage::delete($request->oldThumbnail);
+            }
+
             $data['thumbnail'] = $request->file('thumbnail')->store('update');
         }
+
         if ($request->file('pdf')) {
             Storage::delete($request->oldPdf);
             $data['pdf'] = $request->file('pdf')->store('update/pdf');
