@@ -6,7 +6,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 
 function LatestCarousel({ data, theme, locale }) {
-    const [emblaRef] = useEmblaCarousel({ loop: true }, []);
+    const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()]);
     return (
         <div className="embla" ref={emblaRef}>
             <div className="embla__container">
