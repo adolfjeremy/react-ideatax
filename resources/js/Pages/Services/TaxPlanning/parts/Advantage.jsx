@@ -16,7 +16,7 @@ function Advantage({ theme, locale, checkLang }) {
                                     fontSize: "2rem",
                                     letterSpacing: "0.009em",
                                     color: theme.palette.custom.darkBlue,
-                                    fontWeight: "700",
+                                    fontWeight: "500",
                                     mb: 2,
                                     [theme.breakpoints.down("sm")]: {
                                         fontSize: "1.25rem",

@@ -188,6 +188,36 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                         />
                                     </ListItemButton>
                                 </>
+                            ) : category.id === 3 ? (
+                                <>
+                                    <ListItemButton
+                                        component="a"
+                                        href={checkLang(
+                                            locale,
+                                            route("tax-planning"),
+                                            route("tax-planning.id"),
+                                            route("tax-planning.jp"),
+                                            route("tax-planning.ch")
+                                        )}
+                                        key={`${index}-listitembutton`}
+                                        sx={{
+                                            pl: 1,
+                                            justifyContent: "start",
+                                            gap: 1,
+                                        }}
+                                    >
+                                        <Box>
+                                            <MdExpandMore />
+                                        </Box>
+                                        <ListItemText
+                                            primary={checkLang(
+                                                locale,
+                                                "Tax Planning",
+                                                "Perencanaan Pajak"
+                                            )}
+                                        />
+                                    </ListItemButton>
+                                </>
                             ) : (
                                 ""
                             )}

@@ -432,9 +432,7 @@ function Role({ theme, locale, checkLang }) {
                             {checkLang(
                                 locale,
                                 "Book a Consultation",
-                                "Jadwalkan Konsultasi",
-                                "",
-                                "安排咨询"
+                                "Jadwalkan Konsultasi"
                             )}
                         </Button>
                     </div>

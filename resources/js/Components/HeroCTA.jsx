@@ -1,12 +1,12 @@
 import { Box, useTheme } from "@mui/material";
 
-function HeroCTA({ image, children }) {
+function HeroCTA({ image, children, padding = "100px" }) {
     const theme = useTheme();
     return (
         <Box
             sx={{
                 [theme.breakpoints.down("md")]: {
-                    paddingTop: "100px",
+                    paddingTop: padding,
                 },
             }}
             className="position-relative"

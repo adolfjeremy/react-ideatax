@@ -6,7 +6,7 @@ import heroSM from "@/assets/images/tax_planning_sm.png";
 function Hero({ locale, checkLang, theme }) {
     const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
     return (
-        <HeroCTA image={isMobile ? heroSM : hero}>
+        <HeroCTA padding="0" image={isMobile ? heroSM : hero}>
             <Box
                 sx={{
                     [theme.breakpoints.down("md")]: {
@@ -14,12 +14,11 @@ function Hero({ locale, checkLang, theme }) {
                     },
                     [theme.breakpoints.down("sm")]: {
                         height: "100%",
-                        paddingTop: "100px",
                     },
                 }}
                 className="col-12 col-md-7 text-md-end text-center d-flex flex-column align-items-center align-items-md-end justify-content-between justify-content-md-center gap-2"
             >
-                <div className="mt-5">
+                <div className="mt-2">
                     <Typography
                         as="h1"
                         sx={{
