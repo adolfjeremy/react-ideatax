@@ -30,7 +30,13 @@ function TaxUpdates() {
 
     const fetchArticles = (newFilters = {}) => {
         router.get(
-            route("updates"),
+            checkLang(
+                locale,
+                route("updates"),
+                route("updates.id"),
+                route("updates.jp"),
+                route("updates.ch")
+            ),
             {
                 search: search,
                 categoryId: categoryId,
@@ -105,7 +111,9 @@ function TaxUpdates() {
                             <Typography
                                 sx={{
                                     color: theme.palette.custom.orange,
-                                    fontSize: "2.30375rem",
+                                    fontSize: search
+                                        ? "1.625rem"
+                                        : "2.30375rem",
                                     [theme.breakpoints.down("sm")]: {
                                         fontSize: "1.6rem",
                                     },
@@ -114,7 +122,13 @@ function TaxUpdates() {
                                 }}
                                 variant="h2"
                             >
-                                {t("latestArticle")}
+                                {search
+                                    ? checkLang(
+                                          locale,
+                                          `Search results for "${search}"`,
+                                          `Hasil pencarian untuk "${search}"`
+                                      )
+                                    : t("latestUpdates")}
                             </Typography>
                         </div>
                         <div className="col-12 col-md-6 d-flex justify-content-end align-items-flex-start gap-3">

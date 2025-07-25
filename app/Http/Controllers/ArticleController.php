@@ -17,6 +17,16 @@ class ArticleController extends Controller
         $search = $request->input('search');
         $categoryId = $request->input('categoryId');
 
+        $locale = app()->getLocale(); // 'id', 'en', 'jp', atau 'ch'
+
+        // mapping locale ke nama kolom title
+        $titleColumn = match ($locale) {
+            'id' => 'title',
+            'en' => 'title_eng',
+            'jp' => 'title_jpn',
+            default => 'title_eng',
+        };
+
         $page = Page::findOrFail(5);
         $latest = Article::select('id', 'title', 'title_eng', 'title_jpn', 'body', 'body_eng', 'body_jpn', 'slug', 'slug_eng', 'slug_jpn', 'photo')
             ->latest()
@@ -29,8 +39,8 @@ class ArticleController extends Controller
                 return $article;
             });
         $articles = Article::query()
-            ->when($search, function ($query, $search) {
-                $query->where('title_eng', 'like', '%' . $search . '%');
+            ->when($search, function ($query) use ($search, $titleColumn) {
+                $query->where($titleColumn, 'like', '%' . $search . '%');
             })
             ->when($categoryId, function ($query, $categoryId) {
                 $query->where('article_categories_id', $categoryId);

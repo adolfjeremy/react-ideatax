@@ -35,6 +35,7 @@ export default {
         teamDetailHead1: "Biografi",
         teamDetailHead2: "Area of Expertise",
         latestArticle: "Artikel Terbaru",
+        latestUpdates: "Update Pajak Terbaru",
         next: " Selanjutnya",
         prev: "Sebelumnya",
         careerHero: "Bangun Karier Impian Anda dengan Ideatax",

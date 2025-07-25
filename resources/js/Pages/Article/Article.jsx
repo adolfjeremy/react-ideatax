@@ -29,7 +29,13 @@ function Article() {
 
     const fetchArticles = (newFilters = {}) => {
         router.get(
-            route("articles"),
+            checkLang(
+                locale,
+                route("articles"),
+                route("articles.id"),
+                route("articles.jp"),
+                route("articles.ch")
+            ),
             {
                 search: search,
                 categoryId: categoryId,
@@ -105,7 +111,9 @@ function Article() {
                             <Typography
                                 sx={{
                                     color: theme.palette.custom.orange,
-                                    fontSize: "2.30375rem",
+                                    fontSize: search
+                                        ? "1.625rem"
+                                        : "2.30375rem",
                                     [theme.breakpoints.down("sm")]: {
                                         fontSize: "1.6rem",
                                     },
@@ -114,7 +122,13 @@ function Article() {
                                 }}
                                 variant="h2"
                             >
-                                {t("latestArticle")}
+                                {search
+                                    ? checkLang(
+                                          locale,
+                                          `Search results for "${search}"`,
+                                          `Hasil pencarian untuk "${search}"`
+                                      )
+                                    : t("latestArticle")}
                             </Typography>
                         </div>
                         <div className="col-12 col-md-6 d-flex justify-content-end align-items-flex-start gap-3">

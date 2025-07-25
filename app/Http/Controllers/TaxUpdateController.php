@@ -14,6 +14,13 @@ class TaxUpdateController extends Controller
     {
         $search = $request->input('search');
         $categoryId = $request->input('categoryId');
+        $locale = app()->getLocale(); // 'id', 'en', 'jp', atau 'ch'
+        $titleColumn = match ($locale) {
+            'id' => 'title',
+            'en' => 'title_eng',
+            'jp' => 'title_jpn',
+            default => 'title_eng',
+        };
 
         $page = Page::findOrFail(5);
         $latest = TaxUpdate::select('id', 'title', 'title_eng', 'title_jpn', 'body', 'body_eng', 'body_jpn', 'slug', 'slug_eng', 'slug_jpn', 'photo')
@@ -27,8 +34,8 @@ class TaxUpdateController extends Controller
                 return $update;
             });
         $updates = TaxUpdate::query()
-            ->when($search, function ($query, $search) {
-                $query->where('title_eng', 'like', '%' . $search . '%');
+            ->when($search, function ($query) use ($search, $titleColumn) {
+                $query->where($titleColumn, 'like', '%' . $search . '%');
             })
             ->when($categoryId, function ($query, $categoryId) {
                 $query->where('tax_update_categories_id', $categoryId);

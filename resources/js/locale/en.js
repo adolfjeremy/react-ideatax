@@ -36,6 +36,7 @@ export default {
         teamDetailHead2: "Area of Expertise",
         careerHero: "Build Your Dream Career With Ideatax",
         latestArticle: "Latest Articles",
+        latestUpdates: "Latest Tax Upadates",
         next: "Next",
         prev: "Previous",
         careerButton: "More Details",
