@@ -4,6 +4,8 @@ import createServer from "@inertiajs/react/server";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { route } from "../../vendor/tightenco/ziggy";
 import { ThemeProvider, createTheme } from "@mui/material";
+import SpinnerContextProvider from "./Context/SpinnerContext";
+import AlertContextProvider from "./Context/AlertContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/sass/index.scss";
 
@@ -22,7 +24,6 @@ const theme = createTheme({
         fontFamily: "OpenSauce",
     },
 });
-const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 
 createServer((page) =>
     createInertiaApp({
@@ -43,7 +44,11 @@ createServer((page) =>
 
             return (
                 <ThemeProvider theme={theme}>
-                    <App {...props} />
+                    <SpinnerContextProvider>
+                        <AlertContextProvider>
+                            <App {...props} />
+                        </AlertContextProvider>
+                    </SpinnerContextProvider>
                 </ThemeProvider>
             );
         },
