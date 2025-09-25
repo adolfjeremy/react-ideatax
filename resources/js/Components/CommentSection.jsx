@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect, useRef, useContext } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { useForm, usePage } from "@inertiajs/react";
 import {
     Divider,
@@ -18,67 +18,64 @@ function CommentSection({ article_id, comment, shareUrl, likeCount }) {
     const { auth } = usePage().props;
     const theme = useTheme();
     const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
     const textbox = useRef(null);
     const { toggleSpinner } = useContext(SpinnerContext);
 
     const { data, setData, post, reset } = useForm({
         comment: "",
-        article_id: article_id,
+        article_id,
         user_id: auth.user?.id,
     });
 
+    // Auto resize textarea
     function adjustHeight() {
-        textbox.current.style.height = "inherit";
-        textbox.current.style.height = `${textbox.current.scrollHeight}px`;
+        if (textbox.current) {
+            textbox.current.style.height = "inherit";
+            textbox.current.style.height = `${textbox.current.scrollHeight}px`;
+        }
     }
 
-    useLayoutEffect(adjustHeight, []);
+    useEffect(adjustHeight, [data.comment]);
 
-    function handleKeyDown(e) {
+    const handleChange = (e) => {
         setData("comment", e.target.value);
-        adjustHeight();
-    }
-
-    const handleTextCLick = () => {
-        auth.user ? "" : handleOpen();
     };
+
+    const handleTextClick = () => {
+        if (!auth.user) setOpen(true);
+    };
+
     const onHandleSubmit = (e) => {
         e.preventDefault();
+        if (!auth.user) {
+            setOpen(true);
+            return;
+        }
         post(route("articles-comment"), {
-            onStart: () => {
-                toggleSpinner(true);
-            },
+            onStart: () => toggleSpinner(true),
             onSuccess: () => {
                 toggleSpinner(false);
                 reset();
             },
-            onError: (error) => {
-                toggleSpinner(false);
-                console.log(error);
-            },
+            onError: () => toggleSpinner(false),
             preserveScroll: true,
         });
     };
 
     const onHandleLike = (e) => {
         e.preventDefault();
+        if (!auth.user) {
+            setOpen(true);
+            return;
+        }
         post(route("articles-like", article_id), {
-            onStart: () => {
-                toggleSpinner(true);
-            },
-            onSuccess: () => {
-                toggleSpinner(false);
-                reset();
-            },
-            onError: (error) => {
-                toggleSpinner(false);
-                console.log(error);
-            },
+            onStart: () => toggleSpinner(true),
+            onSuccess: () => toggleSpinner(false),
+            onError: () => toggleSpinner(false),
             preserveScroll: true,
         });
     };
+
     return (
         <Box mt={4}>
             <div className="container">
@@ -88,12 +85,12 @@ function CommentSection({ article_id, comment, shareUrl, likeCount }) {
                         className="col-12 col-lg-8 px-5 py-3"
                     >
                         <div className="row">
+                            {/* Like + Share */}
                             <div className="col-12 mt-4 d-flex align-items-center justify-content-between">
                                 <Box
                                     sx={{
                                         display: "flex",
                                         alignItems: "center",
-                                        justifyContent: "center",
                                         gap: 1,
                                     }}
                                 >
@@ -101,24 +98,22 @@ function CommentSection({ article_id, comment, shareUrl, likeCount }) {
                                         {likeCount > 0 && (
                                             <Box
                                                 sx={{
-                                                    width: "20px",
-                                                    height: "20px",
+                                                    width: 20,
+                                                    height: 20,
                                                     position: "absolute",
-                                                    top: "0",
-                                                    left: "25px",
+                                                    top: 0,
+                                                    left: 25,
                                                     display: "flex",
                                                     alignItems: "center",
                                                     justifyContent: "center",
                                                     borderRadius: "50%",
-                                                    backgroundColor:
+                                                    bgcolor:
                                                         theme.palette.custom
                                                             .white,
                                                 }}
                                             >
                                                 <Typography
-                                                    sx={{
-                                                        fontSize: "12px",
-                                                    }}
+                                                    sx={{ fontSize: "12px" }}
                                                 >
                                                     {likeCount}
                                                 </Typography>
@@ -139,11 +134,15 @@ function CommentSection({ article_id, comment, shareUrl, likeCount }) {
                                 </Box>
                                 <ShareButton shareUrl={shareUrl} />
                             </div>
+
+                            {/* Comment Count */}
                             <div className="col-12 mt-4">
                                 <Typography sx={{ fontSize: "1rem" }}>
                                     Comments ({comment.length})
                                 </Typography>
                             </div>
+
+                            {/* Divider */}
                             <div className="col-12">
                                 <Divider
                                     sx={{
@@ -153,45 +152,51 @@ function CommentSection({ article_id, comment, shareUrl, likeCount }) {
                                     }}
                                 />
                             </div>
+
+                            {/* Comment Form */}
                             <Box className="col-12 mt-4">
                                 <Box
                                     sx={{
                                         display: "flex",
                                         alignItems: "start",
-                                        justifyContent: "start",
                                         gap: 2,
                                         width: "100%",
                                     }}
                                 >
                                     <Box
                                         sx={{
-                                            width: "36px",
-                                            height: "36px",
+                                            width: 36,
+                                            height: 36,
                                             borderRadius: "50%",
                                             border: `1px solid ${theme.palette.custom.darkBlue}`,
+                                            overflow: "hidden",
                                         }}
                                     >
                                         <img
                                             src="https://news.ddtc.co.id/_next/image?url=https%3A%2F%2Fddtc-cdn1.sgp1.digitaloceanspaces.com%2Fnews%2Fprofile%2Fpic_profile.png&w=750&q=75"
-                                            alt="profile image"
+                                            alt="profile"
+                                            style={{
+                                                width: "100%",
+                                                height: "100%",
+                                                objectFit: "cover",
+                                            }}
                                         />
                                     </Box>
                                     <form
                                         onSubmit={onHandleSubmit}
-                                        className="w-100 d-flex flex-column align-items-end justify-content-center"
+                                        className="w-100 d-flex flex-column align-items-end"
                                     >
                                         <Box className="form-floating w-100">
                                             <textarea
                                                 ref={textbox}
-                                                onChange={handleKeyDown}
+                                                onChange={handleChange}
                                                 value={data.comment}
-                                                onClick={handleTextCLick}
+                                                onClick={handleTextClick}
                                                 required
                                                 style={{
-                                                    resize: "vertical",
-                                                    fieldSizing: "content",
+                                                    resize: "none",
                                                     borderRadius: "10px",
-                                                    overflowY: "hidden",
+                                                    overflow: "hidden",
                                                     paddingTop: "40px",
                                                 }}
                                                 className="form-control"
@@ -213,11 +218,13 @@ function CommentSection({ article_id, comment, shareUrl, likeCount }) {
                                         </Button>
                                     </form>
                                 </Box>
+
+                                {/* Login Modal */}
                                 <Modal
                                     open={open}
-                                    onClose={handleClose}
-                                    aria-labelledby="modal-modal-title"
-                                    aria-describedby="modal-modal-description"
+                                    onClose={() => setOpen(false)}
+                                    aria-labelledby="login-modal-title"
+                                    aria-describedby="login-modal-description"
                                 >
                                     <Box
                                         sx={{
@@ -233,7 +240,7 @@ function CommentSection({ article_id, comment, shareUrl, likeCount }) {
                                         }}
                                     >
                                         <Typography
-                                            component="h2"
+                                            id="login-modal-title"
                                             sx={{
                                                 fontSize: "1.25rem",
                                                 fontWeight: 700,
@@ -251,8 +258,7 @@ function CommentSection({ article_id, comment, shareUrl, likeCount }) {
                                         <Box
                                             sx={{
                                                 display: "flex",
-                                                alignItems: "center",
-                                                justifyContent: "end",
+                                                justifyContent: "flex-end",
                                                 gap: 2,
                                                 mt: 2,
                                             }}
@@ -260,7 +266,7 @@ function CommentSection({ article_id, comment, shareUrl, likeCount }) {
                                             <Button
                                                 variant="contained"
                                                 color="error"
-                                                onClick={handleClose}
+                                                onClick={() => setOpen(false)}
                                                 sx={{
                                                     textTransform: "none",
                                                     fontSize: "0.8125rem",
@@ -285,6 +291,8 @@ function CommentSection({ article_id, comment, shareUrl, likeCount }) {
                                     </Box>
                                 </Modal>
                             </Box>
+
+                            {/* Comment List */}
                             {comment.map((item) => (
                                 <CommentItem
                                     key={item.id}
