@@ -2,7 +2,7 @@ import { Link, Typography, useTheme } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMotionValue, useTransform } from "framer-motion";
 import checkLang from "@/utils/checkLang";
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 
 function ArticleSwipeable({ article, swipeData, setSwipeData, index, locale }) {
     const x = useMotionValue(0);
