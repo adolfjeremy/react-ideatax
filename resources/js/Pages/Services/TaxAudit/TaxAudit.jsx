@@ -1990,8 +1990,8 @@ function TaxAudit() {
                                 </Typography>
                                 {checkLang(
                                     locale,
-                                    "Agar Anda Bisa Fokus ke Bisnis!",
                                     "Focus on Your Destination!",
+                                    "Agar Anda Bisa Fokus ke Bisnis!",
                                     "ジネスに集中するための!",
                                     "让您专注业务！"
                                 )}

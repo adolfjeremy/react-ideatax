@@ -218,6 +218,36 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                         />
                                     </ListItemButton>
                                 </>
+                            ) : category.id === 6 ? (
+                                <>
+                                    <ListItemButton
+                                        component="a"
+                                        href={checkLang(
+                                            locale,
+                                            route("aeo"),
+                                            route("aeo.id"),
+                                            route("aeo.jp"),
+                                            route("aeo.ch")
+                                        )}
+                                        key={`${index}-listitembutton`}
+                                        sx={{
+                                            pl: 1,
+                                            justifyContent: "start",
+                                            gap: 1,
+                                        }}
+                                    >
+                                        <Box>
+                                            <MdExpandMore />
+                                        </Box>
+                                        <ListItemText
+                                            primary={checkLang(
+                                                locale,
+                                                "Customs Solutions for Authorized Economic Operator (AEO)",
+                                                "Solusi Bea Cukai untuk Authorized Economic Operator (AEO)"
+                                            )}
+                                        />
+                                    </ListItemButton>
+                                </>
                             ) : (
                                 ""
                             )}

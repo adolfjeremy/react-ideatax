@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\SubscribeController;
 use App\Http\Controllers\Admin\TaxEventController;
 use App\Http\Controllers\Admin\TaxUpdateController as AdminTaxUpdateController;
+use App\Http\Controllers\AEOController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\Sp2dkController;
@@ -87,6 +88,7 @@ Route::get('/our-service/annual-tax-return-reporting-service-for-corporations-an
 Route::get('/our-service/tax-refund-assistance', [TaxRefundController::class, 'index'])->name('tax-refund');
 Route::get('/our-service/sp2dk-assistance', [Sp2dkController::class, 'index'])->name('sp2dk');
 Route::get('/our-service/tax-planning', [TaxPlanningController::class, 'index'])->name('tax-planning');
+Route::get('/our-service/authorized-economic-operator', [AEOController::class, 'index'])->name('aeo');
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 Route::get('/articles/{slug_eng}', [ArticleController::class, 'detail'])->name('article-detail');
@@ -117,6 +119,8 @@ Route::prefix('id')
         Route::get('/our-service/bantuan-pengembalian-pajak', [TaxRefundController::class, 'index'])->name('tax-refund.id');
         Route::get('/our-service/pendampingan-surat-permintaan-penjelasan-data-danatau-informasi-sp2dk', [Sp2dkController::class, 'index'])->name('sp2dk.id');
         Route::get('/our-service/perencanaan-pajak', [TaxPlanningController::class, 'index'])->name('tax-planning.id');
+        Route::get('/our-service/authorized-economic-operator', [AEOController::class, 'index'])->name('aeo.id');
+
 
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.id');
         Route::get('/articles/{slug}', [ArticleController::class, 'detail'])->name('article-detail.id');
@@ -145,6 +149,7 @@ Route::prefix('jp')
         Route::get('/our-service/fa-ren-oyobige-ren-xiang-kenian-jian-na-shui-shen-gao-sptsabisu', [TaxReportController::class, 'index'])->name('tax-report.jp');
         Route::get('/our-service/sp2dkdui-ying-zhi-yuan', [Sp2dkController::class, 'index'])->name('sp2dk.jp');
         Route::get('/our-service/tax-planning', [TaxPlanningController::class, 'index'])->name('tax-planning.jp');
+        Route::get('/our-service/authorized-economic-operator', [AEOController::class, 'index'])->name('aeo.jp');
 
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.jp');
         Route::get('/articles/{slug_jpn}', [ArticleController::class, 'detail'])->name('article-detail.jp');
@@ -172,6 +177,7 @@ Route::prefix('zh-CN')
         Route::get('/our-service/年度企业和个人SPT申报服务', [TaxReportController::class, 'index'])->name('tax-report.ch');
         Route::get('/our-service/sp2dk-assistance', [Sp2dkController::class, 'index'])->name('sp2dk.ch');
         Route::get('/our-service/tax-planning', [TaxPlanningController::class, 'index'])->name('tax-planning.ch');
+        Route::get('/our-service/authorized-economic-operator', [AEOController::class, 'index'])->name('aeo.ch');
 
         Route::get('/articles', [ArticleController::class, 'index'])->name('articles.ch');
         Route::get('/articles/{slug_ch}', [ArticleController::class, 'detail'])->name('article-detail.ch');
