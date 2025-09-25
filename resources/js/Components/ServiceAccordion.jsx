@@ -20,6 +20,7 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
+
     return (
         <Box
             sx={{
@@ -29,16 +30,16 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                 backgroundColor: "white",
             }}
         >
-            {categorized.map((category, index) => (
+            {categorized.map((category, idx) => (
                 <Accordion
-                    key={`${index}-accordion`}
-                    expanded={expanded === `panel${index + 1}`}
-                    onChange={handleChange(`panel${index + 1}`)}
+                    key={`cat-${category.id || idx}`}
+                    expanded={expanded === `panel${idx + 1}`}
+                    onChange={handleChange(`panel${idx + 1}`)}
                     sx={{ border: "none", boxShadow: "none" }}
                 >
                     <AccordionSummary
                         expandIcon={
-                            expanded === `panel${index + 1}` ? (
+                            expanded === `panel${idx + 1}` ? (
                                 <MdExpandMore />
                             ) : (
                                 <GoArrowUpRight />
@@ -51,15 +52,15 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                 },
                             },
                         }}
-                        aria-controls={`panel${index + 1}-content`}
-                        id={`panel${index + 1}-header`}
+                        aria-controls={`panel${idx + 1}-content`}
+                        id={`panel${idx + 1}-header`}
                     >
                         <Typography
                             component="span"
                             sx={{
                                 transition: "color 200ms",
                                 color:
-                                    expanded === `panel${index + 1}`
+                                    expanded === `panel${idx + 1}`
                                         ? theme.palette.custom.orange
                                         : theme.palette.custom.black,
                             }}
@@ -75,7 +76,7 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                     </AccordionSummary>
                     <AccordionDetails>
                         <List component="div" disablePadding>
-                            {category.id === 1 ? (
+                            {category.id === 1 && (
                                 <ListItemButton
                                     component="a"
                                     href={checkLang(
@@ -85,7 +86,7 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                         route("tax-report.jp"),
                                         route("tax-report.ch")
                                     )}
-                                    key={`${index}-list`}
+                                    key={`cat-${category.id}-tax-report`}
                                     sx={{
                                         pl: 1,
                                         justifyContent: "start",
@@ -103,7 +104,9 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                         )}
                                     />
                                 </ListItemButton>
-                            ) : category.id === 2 ? (
+                            )}
+
+                            {category.id === 2 && (
                                 <>
                                     <ListItemButton
                                         component="a"
@@ -114,7 +117,7 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                             route("tax-audit.jp"),
                                             route("tax-audit.ch")
                                         )}
-                                        key={`${index}-listitembutton`}
+                                        key={`cat-${category.id}-tax-audit`}
                                         sx={{
                                             pl: 1,
                                             justifyContent: "start",
@@ -132,6 +135,7 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                             )}
                                         />
                                     </ListItemButton>
+
                                     <ListItemButton
                                         component="a"
                                         href={checkLang(
@@ -141,7 +145,7 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                             route("tax-refund.jp"),
                                             route("tax-refund.ch")
                                         )}
-                                        key={`${index}-listitembutton2`}
+                                        key={`cat-${category.id}-tax-refund`}
                                         sx={{
                                             pl: 1,
                                             justifyContent: "start",
@@ -160,6 +164,7 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                             )}
                                         />
                                     </ListItemButton>
+
                                     <ListItemButton
                                         component="a"
                                         href={checkLang(
@@ -169,7 +174,7 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                             route("sp2dk.jp"),
                                             route("sp2dk.ch")
                                         )}
-                                        key={`${index}-listitembutton2`}
+                                        key={`cat-${category.id}-sp2dk`}
                                         sx={{
                                             pl: 1,
                                             justifyContent: "start",
@@ -188,120 +193,121 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                                         />
                                     </ListItemButton>
                                 </>
-                            ) : category.id === 3 ? (
-                                <>
-                                    <ListItemButton
-                                        component="a"
-                                        href={checkLang(
-                                            locale,
-                                            route("tax-planning"),
-                                            route("tax-planning.id"),
-                                            route("tax-planning.jp"),
-                                            route("tax-planning.ch")
-                                        )}
-                                        key={`${index}-listitembutton`}
-                                        sx={{
-                                            pl: 1,
-                                            justifyContent: "start",
-                                            gap: 1,
-                                        }}
-                                    >
-                                        <Box>
-                                            <MdExpandMore />
-                                        </Box>
-                                        <ListItemText
-                                            primary={checkLang(
-                                                locale,
-                                                "Tax Planning",
-                                                "Perencanaan Pajak"
-                                            )}
-                                        />
-                                    </ListItemButton>
-                                </>
-                            ) : category.id === 6 ? (
-                                <>
-                                    <ListItemButton
-                                        component="a"
-                                        href={checkLang(
-                                            locale,
-                                            route("aeo"),
-                                            route("aeo.id"),
-                                            route("aeo.jp"),
-                                            route("aeo.ch")
-                                        )}
-                                        key={`${index}-listitembutton`}
-                                        sx={{
-                                            pl: 1,
-                                            justifyContent: "start",
-                                            gap: 1,
-                                        }}
-                                    >
-                                        <Box>
-                                            <MdExpandMore />
-                                        </Box>
-                                        <ListItemText
-                                            primary={checkLang(
-                                                locale,
-                                                "Customs Solutions for Authorized Economic Operator (AEO)",
-                                                "Solusi Bea Cukai untuk Authorized Economic Operator (AEO)"
-                                            )}
-                                        />
-                                    </ListItemButton>
-                                </>
-                            ) : (
-                                ""
                             )}
-                            {category.services.map((service, index) => (
-                                <>
-                                    <ListItemButton
-                                        component="a"
-                                        href={checkLang(
+
+                            {category.id === 3 && (
+                                <ListItemButton
+                                    component="a"
+                                    href={checkLang(
+                                        locale,
+                                        route("tax-planning"),
+                                        route("tax-planning.id"),
+                                        route("tax-planning.jp"),
+                                        route("tax-planning.ch")
+                                    )}
+                                    key={`cat-${category.id}-tax-planning`}
+                                    sx={{
+                                        pl: 1,
+                                        justifyContent: "start",
+                                        gap: 1,
+                                    }}
+                                >
+                                    <Box>
+                                        <MdExpandMore />
+                                    </Box>
+                                    <ListItemText
+                                        primary={checkLang(
                                             locale,
-                                            route(
-                                                "service-detail",
-                                                service.slug_eng
-                                            ),
-                                            route(
-                                                "service-detail.id",
-                                                service.slug
-                                            ),
-                                            route(
-                                                "service-detail.jp",
-                                                service.slug_jpn
-                                            ),
-                                            route(
-                                                "service-detail.ch",
-                                                service.slug_ch
-                                            )
+                                            "Tax Planning",
+                                            "Perencanaan Pajak"
                                         )}
-                                        key={`${index}-listitembutton3`}
-                                        sx={{
-                                            pl: 1,
-                                            justifyContent: "start",
-                                            gap: 1,
-                                        }}
-                                    >
-                                        <Box>
-                                            <MdExpandMore />
-                                        </Box>
-                                        <ListItemText
-                                            primary={checkLang(
-                                                locale,
-                                                service.title_eng,
-                                                service.title,
-                                                service.title_jp,
-                                                service.title_ch
-                                            )}
-                                        />
-                                    </ListItemButton>
-                                </>
+                                    />
+                                </ListItemButton>
+                            )}
+
+                            {category.id === 6 && (
+                                <ListItemButton
+                                    component="a"
+                                    href={checkLang(
+                                        locale,
+                                        route("aeo"),
+                                        route("aeo.id"),
+                                        route("aeo.jp"),
+                                        route("aeo.ch")
+                                    )}
+                                    key={`cat-${category.id}-aeo`}
+                                    sx={{
+                                        pl: 1,
+                                        justifyContent: "start",
+                                        gap: 1,
+                                    }}
+                                >
+                                    <Box>
+                                        <MdExpandMore />
+                                    </Box>
+                                    <ListItemText
+                                        primary={checkLang(
+                                            locale,
+                                            "Customs Solutions for Authorized Economic Operator (AEO)",
+                                            "Solusi Bea Cukai untuk Authorized Economic Operator (AEO)"
+                                        )}
+                                    />
+                                </ListItemButton>
+                            )}
+
+                            {category.services.map((service) => (
+                                <ListItemButton
+                                    component="a"
+                                    href={checkLang(
+                                        locale,
+                                        route(
+                                            "service-detail",
+                                            service.slug_eng
+                                        ),
+                                        route(
+                                            "service-detail.id",
+                                            service.slug
+                                        ),
+                                        route(
+                                            "service-detail.jp",
+                                            service.slug_jpn
+                                        ),
+                                        route(
+                                            "service-detail.ch",
+                                            service.slug_ch
+                                        )
+                                    )}
+                                    key={`service-${
+                                        service.id || service.slug
+                                    }`}
+                                    sx={{
+                                        pl: 1,
+                                        justifyContent: "start",
+                                        gap: 1,
+                                    }}
+                                >
+                                    <Box>
+                                        <MdExpandMore />
+                                    </Box>
+                                    <ListItemText
+                                        primary={checkLang(
+                                            locale,
+                                            service.title_eng,
+                                            service.title,
+                                            service.title_jp,
+                                            service.title_ch
+                                        )}
+                                    />
+                                </ListItemButton>
                             ))}
                         </List>
                     </AccordionDetails>
                 </Accordion>
             ))}
+
             {unCategorized.map((service) => (
                 <AccordionSummary
+                    key={`uncat-${service.id || service.slug}`}
                     component="a"
                     href={checkLang(
                         locale,
@@ -313,17 +319,13 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                     sx={{
                         borderTop: `1px solid rgba(0,0,0,0.2)`,
                         "&:hover": {
-                            span: {
-                                color: theme.palette.custom.orange,
-                            },
+                            span: { color: theme.palette.custom.orange },
                         },
                     }}
                 >
                     <Typography
                         component="span"
-                        sx={{
-                            transition: "color 200ms",
-                        }}
+                        sx={{ transition: "color 200ms" }}
                     >
                         {checkLang(
                             locale,
