@@ -97,7 +97,6 @@ function Service() {
                             <ServiceAccordion
                                 locale={locale}
                                 categorized={catogorizedservices}
-                                unCategorized={unCatogorizedservices}
                             />
                         </Box>
                     </div>

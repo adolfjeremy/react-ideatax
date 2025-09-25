@@ -14,11 +14,9 @@ class ServiceController extends Controller
     {
         $page = Page::findOrFail(3);
         $catogorizedservices  = ServiceCategory::with("services")->get();
-        $unCatogorizedservices  = Service::where("service_category_id", null)->get();
         $services = Service::all();
         return Inertia::render('Service/Service', [
             "catogorizedservices" => $catogorizedservices,
-            "unCatogorizedservices" => $unCatogorizedservices,
             "page" => $page,
             "services" => $services,
         ]);

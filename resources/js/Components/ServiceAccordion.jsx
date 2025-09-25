@@ -14,7 +14,7 @@ import { GoArrowUpRight } from "react-icons/go";
 import { MdExpandMore } from "react-icons/md";
 import checkLang from "@/utils/checkLang";
 
-function ServiceAccordion({ categorized, unCategorized, locale }) {
+function ServiceAccordion({ categorized, locale }) {
     const theme = useTheme();
     const [expanded, setExpanded] = useState(false);
     const handleChange = (panel) => (event, isExpanded) => {
@@ -303,39 +303,6 @@ function ServiceAccordion({ categorized, unCategorized, locale }) {
                         </List>
                     </AccordionDetails>
                 </Accordion>
-            ))}
-
-            {unCategorized.map((service) => (
-                <AccordionSummary
-                    key={`uncat-${service.id || service.slug}`}
-                    component="a"
-                    href={checkLang(
-                        locale,
-                        route("service-detail", service.slug_eng),
-                        route("service-detail.id", service.slug),
-                        route("service-detail.jp", service.slug_jpn),
-                        route("service-detail.ch", service.slug_ch)
-                    )}
-                    sx={{
-                        borderTop: `1px solid rgba(0,0,0,0.2)`,
-                        "&:hover": {
-                            span: { color: theme.palette.custom.orange },
-                        },
-                    }}
-                >
-                    <Typography
-                        component="span"
-                        sx={{ transition: "color 200ms" }}
-                    >
-                        {checkLang(
-                            locale,
-                            service.title_eng,
-                            service.title,
-                            service.title_jp,
-                            service.title_ch
-                        )}
-                    </Typography>
-                </AccordionSummary>
             ))}
         </Box>
     );

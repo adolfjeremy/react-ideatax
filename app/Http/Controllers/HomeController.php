@@ -38,10 +38,6 @@ class HomeController extends Controller
             return ServiceCategory::with('services')->get();
         });
 
-        $unCatogorizedservices = Cache::remember('home_uncategorized_services', 60, function () {
-            return Service::whereNull('service_category_id')->select('id', 'title', 'title_eng', 'title_jpn', 'title_ch', 'slug', 'slug_eng', 'slug_jpn', 'slug_ch')->get();
-        });
-
         // Cache articles and events
         $articles = Cache::remember('home_articles', 60, function () {
             return Article::latest()
@@ -62,7 +58,6 @@ class HomeController extends Controller
             "heroes" => $heroes,
             "stats" => $stats,
             "catogorizedservices" => $catogorizedservices,
-            "unCatogorizedservices" => $unCatogorizedservices,
             "articles" => $articles,
             "events" => $events,
             "page" => $page

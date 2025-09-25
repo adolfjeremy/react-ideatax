@@ -380,7 +380,6 @@ function Home() {
                             <ServiceAccordion
                                 locale={locale}
                                 categorized={catogorizedservices}
-                                unCategorized={unCatogorizedservices}
                             />
                         </Box>
                         <div className="row mt-5">
