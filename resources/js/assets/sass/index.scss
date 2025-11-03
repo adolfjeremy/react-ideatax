@@ -9,9 +9,9 @@
 }
 
 .award_image {
-    width: calc((100vw - 233px) / 8);
+    width: calc((100vw - 233px) / 12);
     @media (max-width: 1024px) {
-        width: calc((100vw - 71px) / 8);
+        width: calc((100vw - 71px) / 12);
     }
 }
 

@@ -11,6 +11,10 @@ import aw4 from "@/assets/images/award/aw-4.webp";
 import aw5 from "@/assets/images/award/aw-5.webp";
 import aw6 from "@/assets/images/award/aw-6.webp";
 import aw7 from "@/assets/images/award/aw-7.webp";
+import aw8 from "@/assets/images/award/aw-2025-3.jpg";
+import aw9 from "@/assets/images/award/aw-2025-4.jpg";
+import aw10 from "@/assets/images/award/aw-2025-5.jpg";
+import aw11 from "@/assets/images/award/aw-2025-6.jpg";
 
 function AwardIconMobile() {
     const settings = {
@@ -142,6 +146,62 @@ function AwardIconMobile() {
                     }}
                 >
                     <img src={aw7} alt="award" />
+                </Box>
+                <Box
+                    sx={{
+                        width: "100px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        margin: "0 15px",
+                        img: {
+                            width: "100px",
+                        },
+                    }}
+                >
+                    <img src={aw8} alt="award" />
+                </Box>
+                <Box
+                    sx={{
+                        width: "100px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        margin: "0 15px",
+                        img: {
+                            width: "100px",
+                        },
+                    }}
+                >
+                    <img src={aw9} alt="award" />
+                </Box>
+                <Box
+                    sx={{
+                        width: "100px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        margin: "0 15px",
+                        img: {
+                            width: "100px",
+                        },
+                    }}
+                >
+                    <img src={aw10} alt="award" />
+                </Box>
+                <Box
+                    sx={{
+                        width: "100px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        margin: "0 15px",
+                        img: {
+                            width: "100px",
+                        },
+                    }}
+                >
+                    <img src={aw11} alt="award" />
                 </Box>
             </Slider>
         </div>
