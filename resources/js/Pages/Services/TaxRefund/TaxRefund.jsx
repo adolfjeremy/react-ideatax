@@ -18,7 +18,6 @@ import quest3 from "../TaxReport/quest3.png";
 import tableId from "./table_id.png";
 import tableEn from "./table_en.png";
 import tableCh from "./table_ch.png";
-import ken from "./ken.png";
 import industryBg from "./industri_bg.png";
 
 import quest4 from "./quest4.png";
@@ -652,77 +651,7 @@ function TaxRefund() {
             <Box mt={8}>
                 <div className="container">
                     <div className="row">
-                        <Box className="col-12 col-md-5 mt-4 mt-md-0 d-flex flex-column justify-content-center align-items-center p-0 p-lg-5 gap-5">
-                            <Box
-                                sx={{
-                                    position: "relative",
-                                }}
-                            >
-                                <img
-                                    src={ken}
-                                    alt="Ken Dwijugiasteadi"
-                                    className="w-100"
-                                />
-                                <Box
-                                    sx={{
-                                        backgroundColor: "rgb(212, 240, 252)",
-                                        padding: "7px 25px",
-                                        position: "absolute",
-                                        bottom: "20px",
-                                        left: "20px",
-                                        right: "20px",
-                                    }}
-                                >
-                                    <Typography
-                                        sx={{
-                                            fontSize: "0.9rem",
-                                            color: "rgb(25, 25, 25)",
-                                            lineHeight: "26px",
-                                            fontWeight: "700",
-                                            textAlign: "center",
-                                            borderBottom: "2px solid grey",
-                                        }}
-                                    >
-                                        Ken Dwijugiasteadi
-                                    </Typography>
-                                    <Typography
-                                        sx={{
-                                            fontSize: "0.9rem",
-                                            color: "rgb(25, 25, 25)",
-                                            fontWeight: "500",
-                                            textAlign: "center",
-                                            mt: "5px",
-                                        }}
-                                    >
-                                        {checkLang(
-                                            locale,
-                                            "Director General of the Ministry of Finance of Indonesia (2015-2017).",
-                                            "Dirjen Kemenkeu RI Tahun 2015-2017",
-                                            "",
-                                            "印度尼西亚财政部长 2015-2017"
-                                        )}
-                                    </Typography>
-                                    <Typography
-                                        sx={{
-                                            fontSize: "0.9rem",
-                                            color: "rgb(25, 25, 25)",
-                                            fontWeight: "500",
-                                            textAlign: "center",
-                                            whiteSpace: "nowrap",
-                                        }}
-                                    >
-                                        {checkLang(
-                                            locale,
-                                            "Senior Advisor Ideatax",
-                                            "Penasehat Senior Ideatax",
-                                            "",
-                                            "Ideatax高级顾问"
-                                        )}
-                                    </Typography>
-                                </Box>
-                            </Box>
-                        </Box>
-                        <div className="col-12 col-md-7 d-flex flex-column align-items-center justify-content-center mt-4 mt-lg-0">
+                        <div className="col-12 d-flex flex-column align-items-center justify-content-center mt-4 mt-lg-0">
                             <div className="text-lg-start text-center">
                                 <Typography
                                     variant="h2"

@@ -10,7 +10,6 @@ import CountUp from "./parts/CountUp";
 import AwardIconMobile from "@/Components/AwardIconMobile";
 import AwardDesktop from "@/Components/AwardDesktop";
 import { useMediaQuery } from "@mui/material";
-
 import checkLang from "@/utils/checkLang";
 
 function Sp2dk() {

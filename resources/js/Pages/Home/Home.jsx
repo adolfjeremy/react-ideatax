@@ -14,7 +14,7 @@ import AwardIconMobile from "@/Components/AwardIconMobile";
 import AwardDesktop from "@/Components/AwardDesktop";
 import ValueSlick from "@/Components/ValueSlick";
 import serviceBg from "../../assets/images/service-bg.png";
-import teamImg from "../../assets/images/team-img.webp";
+import teamImg from "../../assets/images/ideatax-team.png";
 import subs from "../../assets/images/subscribe.webp";
 import serviceBgMobile from "@/assets/images/pages/home/service-bg-sm.png";
 import professional from "../../assets/images/1.webp";

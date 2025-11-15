@@ -15,7 +15,6 @@ import audit1 from "@/assets/images/tax-audit/audit1.webp";
 import audit2 from "@/assets/images/tax-audit/audit2.webp";
 import audit3 from "@/assets/images/tax-audit/audit3.webp";
 import audit4 from "@/assets/images/tax-audit/audit4.webp";
-import ken from "./ken.webp";
 import CounterLg from "@/Components/CounterLg";
 import aw from "@/assets/images/award/aw.webp";
 import aw1 from "@/assets/images/award/aw-2025-2.png";
@@ -1123,77 +1122,7 @@ function TaxAudit() {
             <Box mt={8}>
                 <div className="container">
                     <div className="row">
-                        <Box className="col-12 col-md-5 mt-4 mt-md-0 d-flex flex-column justify-content-center align-items-center p-5 gap-5">
-                            <Box
-                                sx={{
-                                    position: "relative",
-                                }}
-                            >
-                                <img
-                                    src={ken}
-                                    alt="Ken Dwijugiasteadi"
-                                    className="w-100"
-                                />
-                                <Box
-                                    sx={{
-                                        backgroundColor: "rgb(212, 240, 252)",
-                                        padding: "7px 25px",
-                                        position: "absolute",
-                                        bottom: "20px",
-                                        left: "20px",
-                                        right: "20px",
-                                    }}
-                                >
-                                    <Typography
-                                        sx={{
-                                            fontSize: "0.9rem",
-                                            color: "rgb(25, 25, 25)",
-                                            lineHeight: "26px",
-                                            fontWeight: "700",
-                                            textAlign: "center",
-                                            borderBottom: "2px solid grey",
-                                        }}
-                                    >
-                                        Ken Dwijugiasteadi
-                                    </Typography>
-                                    <Typography
-                                        sx={{
-                                            fontSize: "0.9rem",
-                                            color: "rgb(25, 25, 25)",
-                                            fontWeight: "500",
-                                            textAlign: "center",
-                                            mt: "5px",
-                                        }}
-                                    >
-                                        {checkLang(
-                                            locale,
-                                            "Director General of the Ministry of Finance of Indonesia (2015-2017).",
-                                            "Dirjen Kemenkeu RI Tahun 2015-2017",
-                                            "2015年から2017年まで、インドネシア財務省総局長 (Dirjen Kemenkeu RI) を務めた人物。",
-                                            "印度尼西亚财政部长 2015-2017"
-                                        )}
-                                    </Typography>
-                                    <Typography
-                                        sx={{
-                                            fontSize: "0.9rem",
-                                            color: "rgb(25, 25, 25)",
-                                            fontWeight: "500",
-                                            textAlign: "center",
-                                            whiteSpace: "nowrap",
-                                        }}
-                                    >
-                                        {checkLang(
-                                            locale,
-                                            "Senior Advisor Ideatax",
-                                            "Penasehat Senior Ideatax",
-                                            "のシニアアドバイザー。",
-                                            "Ideatax高级顾问"
-                                        )}
-                                    </Typography>
-                                </Box>
-                            </Box>
-                        </Box>
-                        <div className="col-12 col-md-7">
+                        <div className="col-12">
                             <Box
                                 sx={{
                                     display: "flex",

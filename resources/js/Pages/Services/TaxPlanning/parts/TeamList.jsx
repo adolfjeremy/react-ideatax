@@ -3,8 +3,6 @@ import TeamItem from "./TeamItem";
 import jovita from "@/assets/images/jovita.png";
 import arianta from "@/assets/images/arianta.png";
 import taufikurrahman from "@/assets/images/taufikurrahman.png";
-import ken from "@/assets/images/ken.png";
-import kenSm from "@/assets/images/ken-sm.png";
 import jo from "@/assets/images/jo.png";
 import markus from "@/assets/images/markus.png";
 import cecilia from "@/assets/images/cecilia.png";
@@ -51,18 +49,6 @@ function TeamList({ locale, checkLang, theme, isMobile }) {
                         index={3}
                     />
                     <TeamItem
-                        theme={theme}
-                        name="Ken dwijugia-steadi"
-                        role="Senior Advisor"
-                        desc={checkLang(
-                            locale,
-                            "30+ Years of Experience in Taxation. Former Director General of Taxes from 2015 to 2017.",
-                            "30+ Tahun Pengalaman di Perpajakan. Mantan Dirjen Pajak 2015-2017."
-                        )}
-                        image={isMobile ? kenSm : ken}
-                        index={4}
-                    />
-                    <TeamItem
                         locale={locale}
                         checkLang={checkLang}
                         theme={theme}
@@ -74,7 +60,7 @@ function TeamList({ locale, checkLang, theme, isMobile }) {
                             "11+ Tahun Pengalaman di Bidang Perpajakan."
                         )}
                         image={jo}
-                        index={5}
+                        index={4}
                     />
                     <TeamItem
                         locale={locale}
@@ -88,7 +74,7 @@ function TeamList({ locale, checkLang, theme, isMobile }) {
                             "17+ Tahun Pengalaman di Bidang Perpajakan."
                         )}
                         image={markus}
-                        index={6}
+                        index={5}
                     />
                     <TeamItem
                         locale={locale}
@@ -102,7 +88,7 @@ function TeamList({ locale, checkLang, theme, isMobile }) {
                             "20+ Tahun Pengalaman di Bidang Perpajakan."
                         )}
                         image={cecilia}
-                        index={7}
+                        index={6}
                     />
                 </Box>
                 <div className="row">
