@@ -37,6 +37,8 @@
     </script>
     <!-- End Google Tag Manager -->
 
+    <meta name="google-site-verification" content="BXR7mAXcjUOs-rhhtZUH-1poRP72JGTWPrTh6eN3bq8" />
+
     <meta name="keywords"
         content="ideatax, idea tax, taxidea, tax idea, Konsultan Pajak, Tax Consultant, Pajak, Sengketa Pajak, Tax Dispute, Dirgen Pajak, Accounting Services, Assistance in Tax Supervision, Tax Audit Assistance, Tax Objection Assistance, Tax Appeal Assistance, Tax Judicial Review Assistance, Tax Refund Assistance, Business Structure Planning and Corporate Action Advisory, Tax Advisory in Liquidation and Bankruptcy, Transfer Pricing Documentation Preparation Local and Master File, Submission of Tax Facilities, Tax Research Collaboration and Training">
     <link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
