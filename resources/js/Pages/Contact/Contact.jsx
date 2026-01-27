@@ -60,21 +60,21 @@ function Contact() {
                 page.description_eng,
                 page.description,
                 page.description_jpn,
-                page.description_ch
+                page.description_ch,
             )}
             seo_title={checkLang(
                 locale,
                 page.SEO_title_eng,
                 page.SEO_title,
                 page.SEO_title_jpn,
-                page.SEO_title_ch
+                page.SEO_title_ch,
             )}
             href={checkLang(
                 locale,
                 route("contact"),
                 route("contact.id"),
                 route("contact.jp"),
-                route("contact.ch")
+                route("contact.ch"),
             )}
         >
             <Box
@@ -232,7 +232,7 @@ function Contact() {
                                         onChange={(e) =>
                                             setData(
                                                 "service_id",
-                                                e.target.value
+                                                e.target.value,
                                             )
                                         }
                                     >
@@ -245,7 +245,7 @@ function Contact() {
                                                     locale,
                                                     item.title_eng,
                                                     item.title,
-                                                    item.title_jpn
+                                                    item.title_jpn,
                                                 )}
                                             </MenuItem>
                                         ))}
@@ -293,6 +293,7 @@ function Contact() {
                                 />
                             </div>
                             <Button
+                                id="btn-schedule-meeting"
                                 sx={{
                                     backgroundColor:
                                         theme.palette.custom.orange,
