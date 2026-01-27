@@ -138,7 +138,8 @@ function Guest({
                     target="_blank"
                     rel="noopener noreferrer"
                     color="primary"
-                    aria-label="wa_contact_button"
+                    aria-label="add"
+                    id="btn-whatsapp"
                     sx={{
                         backgroundColor: "#25D366",
                     }}
