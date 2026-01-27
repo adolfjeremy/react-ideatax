@@ -138,8 +138,7 @@ function Guest({
                     target="_blank"
                     rel="noopener noreferrer"
                     color="primary"
-                    aria-label="add"
-                    data-gtm="wa_contact_button"
+                    aria-label="wa_contact_button"
                     sx={{
                         backgroundColor: "#25D366",
                     }}
