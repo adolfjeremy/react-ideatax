@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Mail\Mailables\Content;
 
 class Kernel extends HttpKernel
 {
@@ -39,6 +40,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\HandleInertiaRequests::class,
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
             \App\Http\Middleware\ChangeLocal::class,
+            \App\Http\Middleware\ContentSecurityPolicy::class,
             // \App\Http\Middleware\DisableSsrForAdmin::class,
         ],
 
