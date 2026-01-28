@@ -134,9 +134,29 @@ function Guest({
                     )}
                 </SpeedDial>
                 <Fab
-                    href="https://wa.me/62811195708?text=Hello%20Ideatax"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    onClick={() => {
+                        const url =
+                            "https://wa.me/62811195708?text=Hello%20Ideatax";
+
+                        // kirim event ke GTM
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({
+                            event: "whatsapp_click",
+                            eventCallback: function () {
+                                window.open(
+                                    url,
+                                    "_blank",
+                                    "noopener,noreferrer",
+                                );
+                            },
+                        });
+
+                        // fallback kalau eventCallback tidak terpanggil
+                        setTimeout(() => {
+                            window.open(url, "_blank", "noopener,noreferrer");
+                        }, 500);
+                    }}
+                    variant="button"
                     color="primary"
                     aria-label="add"
                     id="btn-whatsapp"
