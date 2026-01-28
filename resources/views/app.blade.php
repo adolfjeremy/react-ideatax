@@ -25,7 +25,7 @@
     <meta property="og:site_name" content="Ideatax">
     <meta name="robots" content="index">
     <!-- Google Tag Manager -->
-    <script>
+    {{-- <script>
         (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
@@ -40,7 +40,7 @@
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-KL4KJVCF');
-    </script>
+    </script> --}}
     <!-- End Google Tag Manager -->
 
     <meta name="google-site-verification" content="BXR7mAXcjUOs-rhhtZUH-1poRP72JGTWPrTh6eN3bq8" />
@@ -67,8 +67,8 @@
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KL4KJVCF" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
+    {{-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KL4KJVCF" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript> --}}
     <!-- End Google Tag Manager (noscript) -->
     @inertia
 </body>
