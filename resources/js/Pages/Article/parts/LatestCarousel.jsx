@@ -56,12 +56,7 @@ function LatestCarousel({ data, theme, locale }) {
                                 }}
                                 variant="h1"
                             >
-                                {checkLang(
-                                    locale,
-                                    item.title_eng,
-                                    item.title,
-                                    item.title_jpn
-                                )}
+                                {item.title}
                             </Typography>
                             <TruncateRichText
                                 style={{
@@ -75,12 +70,7 @@ function LatestCarousel({ data, theme, locale }) {
                                     lineHeight: "1.49999732em",
                                     letterSpacing: "0.009em",
                                 }}
-                                htmlContent={checkLang(
-                                    locale,
-                                    item.body_eng,
-                                    item.body,
-                                    item.body_jpn
-                                )}
+                                htmlContent={item.body}
                             />
                             <ReadMoreButton
                                 destination={checkLang(

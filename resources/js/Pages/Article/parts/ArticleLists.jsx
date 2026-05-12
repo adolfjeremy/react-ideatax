@@ -8,12 +8,7 @@ function ArticleLists({ articles, locale, theme }) {
             {articles.data.map((item) => (
                 <ArticleItem
                     key={item.id}
-                    title={checkLang(
-                        locale,
-                        item.title_eng,
-                        item.title,
-                        item.title_jpn
-                    )}
+                    title={item.title}
                     image={`/storage/${item.thumbnail}`}
                     destination={checkLang(
                         locale,
@@ -36,12 +31,7 @@ function ArticleLists({ articles, locale, theme }) {
                                 padding: 0,
                                 margin: 0,
                             }}
-                            htmlContent={checkLang(
-                                locale,
-                                item.body_eng,
-                                item.body,
-                                item.body_jpn
-                            )}
+                            htmlContent={item.body}
                         />
                     }
                 />
