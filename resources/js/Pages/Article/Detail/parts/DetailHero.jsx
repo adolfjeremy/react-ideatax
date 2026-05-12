@@ -54,12 +54,7 @@ function DetailHero({ item, formatDate, checkLang, locale, theme }) {
                                 }}
                                 variant="h1"
                             >
-                                {checkLang(
-                                    locale,
-                                    item.title_eng,
-                                    item.title,
-                                    item.title_jpn
-                                )}
+                                {item.title}
                             </Typography>
                             <Link
                                 sx={{

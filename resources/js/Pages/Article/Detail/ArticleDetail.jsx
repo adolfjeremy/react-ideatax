@@ -11,9 +11,10 @@ import formatDate from "@/utils/formatDate";
 import "../article.scss";
 
 function ArticleDetail() {
-    const { locale, item, previousArticle, nextArticle, comment } =
+    const { locale, item, previousArticle, nextArticle, comments } =
         usePage().props;
     const theme = useTheme();
+    console.log(item)
 
     return (
         <Guest
@@ -29,22 +30,8 @@ function ArticleDetail() {
                     ? route("article-detail.ch", item.slug_ch)
                     : route("article-detail.ch", item.slug_eng)
             }
-            description={checkLang(
-                locale,
-                item.description_eng,
-                item.description,
-                item.description_jpn,
-                item.description_ch
-            )}
-            seo_title={checkLang(
-                locale,
-                item.SEO_title_eng,
-                item.SEO_title,
-                item.SEO_title_jpn,
-                item.slug_ch
-                    ? route("article-detail.ch", item.slug_ch)
-                    : route("article-detail.jp", item.slug_eng)
-            )}
+            description={item.meta_description}
+            seo_title={item.SEO_title}
             href={checkLang(
                 locale,
                 route("article-detail", item.slug_eng),
@@ -78,12 +65,7 @@ function ArticleDetail() {
                         >
                             {
                                 <RichText
-                                    htmlContent={checkLang(
-                                        locale,
-                                        item.body_eng,
-                                        item.body,
-                                        item.body_jpn
-                                    )}
+                                    htmlContent={item.body}
                                 />
                             }
                         </Box>
@@ -94,30 +76,30 @@ function ArticleDetail() {
                 prev={
                     previousArticle
                         ? checkLang(
-                              locale,
-                              route("article-detail", previousArticle.slug_eng),
-                              route("article-detail.id", previousArticle.slug),
-                              route(
-                                  "article-detail.jp",
-                                  previousArticle.slug_jpn
-                              )
-                          )
+                            locale,
+                            route("article-detail", previousArticle.slug_eng),
+                            route("article-detail.id", previousArticle.slug),
+                            route(
+                                "article-detail.jp",
+                                previousArticle.slug_jpn
+                            )
+                        )
                         : ""
                 }
                 next={
                     nextArticle
                         ? checkLang(
-                              locale,
-                              route("article-detail", nextArticle.slug_eng),
-                              route("article-detail.id", nextArticle.slug),
-                              route("article-detail.jp", nextArticle.slug_jpn)
-                          )
+                            locale,
+                            route("article-detail", nextArticle.slug_eng),
+                            route("article-detail.id", nextArticle.slug),
+                            route("article-detail.jp", nextArticle.slug_jpn)
+                        )
                         : ""
                 }
             />
             <CommentSection
                 article_id={item.id}
-                comment={comment}
+                comment={comments}
                 likeCount={item.likes_count}
                 shareUrl={checkLang(
                     locale,

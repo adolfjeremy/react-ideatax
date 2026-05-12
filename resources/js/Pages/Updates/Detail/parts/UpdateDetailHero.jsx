@@ -1,7 +1,6 @@
 import { Box, Typography, Link } from "@mui/material";
 
 function UpdateDetailHero({ item, formatDate, checkLang, locale, theme }) {
-    console.log(item);
     return (
         <Box
             component="section"
