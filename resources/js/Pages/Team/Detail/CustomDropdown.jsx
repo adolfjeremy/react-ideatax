@@ -19,25 +19,26 @@ const CustomInput = styled(InputBase)(({ theme }) => ({
         fontFamily: "sans-serif",
         color: "#263238",
         fontWeight: 600,
-
+        display: "inline-flex",
+        alignItems: "center",
+        lineHeight: "normal",
         fontSize: 24,
-        padding: "18px 52px 18px 28px",
-
+        padding: "18px 60px 18px 28px",
         [theme.breakpoints.down("xl")]: {
             fontSize: 22,
-            padding: "16px 46px 16px 24px",
+            padding: "16px 52px 16px 24px",
         },
         [theme.breakpoints.down("lg")]: {
             fontSize: 18,
-            padding: "14px 38px 14px 20px",
+            padding: "14px 44px 14px 20px",
         },
         [theme.breakpoints.down("md")]: {
             fontSize: 15,
-            padding: "11px 30px 11px 14px",
+            padding: "11px 36px 11px 14px",
         },
         [theme.breakpoints.down("sm")]: {
             fontSize: 13,
-            padding: "8px 24px 8px 10px",
+            padding: "8px 28px 8px 10px",
         },
         "&:focus": {
             backgroundColor: "#e3f2fd",
@@ -83,29 +84,31 @@ export default function CustomDropdown({ departmentsList, value, onChange }) {
                             backgroundColor: "black",
                             borderRadius: "50%",
 
+                            // --- KUNCI DEAD CENTER IKON ---
+                            position: "absolute",
+                            top: "50% !important",
+                            transform: "translateY(-50%) !important", // Geser ke atas setengah dari tinggi ikon itu sendiri
+
+                            // --- UKURAN DESKTOP JUMBO ---
                             fontSize: "32px !important",
                             right: "18px !important",
-                            top: "calc(50% - 16px) !important",
 
+                            // --- RESPONSIVE DOWN-SCALING ---
                             [theme.breakpoints.down("xl")]: {
                                 fontSize: "28px !important",
                                 right: "14px !important",
-                                top: "calc(50% - 14px) !important",
                             },
                             [theme.breakpoints.down("lg")]: {
                                 fontSize: "22px !important",
                                 right: "12px !important",
-                                top: "calc(50% - 11px) !important",
                             },
                             [theme.breakpoints.down("md")]: {
                                 fontSize: "18px !important",
                                 right: "10px !important",
-                                top: "calc(50% - 9px) !important",
                             },
                             [theme.breakpoints.down("sm")]: {
                                 fontSize: "15px !important",
                                 right: "6px !important",
-                                top: "calc(50% - 7.5px) !important",
                             },
                         }}
                     />
@@ -186,7 +189,7 @@ export default function CustomDropdown({ departmentsList, value, onChange }) {
                     }}
                     value="all"
                 >
-                    All Expertises
+                    Practice Areas
                 </MenuItem>
 
                 {departmentsList?.map((item, index) => (
