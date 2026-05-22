@@ -14,7 +14,6 @@ function ArticleDetail() {
     const { locale, item, previousArticle, nextArticle, comments } =
         usePage().props;
     const theme = useTheme();
-    console.log(item)
 
     return (
         <Guest
@@ -39,7 +38,7 @@ function ArticleDetail() {
                 route("article-detail.jp", item.slug_jpn),
                 item.slug_ch
                     ? route("article-detail.ch", item.slug_ch)
-                    : route("article-detail.jp", item.slug_eng)
+                    : route("article-detail.jp", item.slug_eng),
             )}
         >
             <DetailHero
@@ -63,11 +62,7 @@ function ArticleDetail() {
                             }}
                             className="col-12 px-md-4 mt-5 article_body"
                         >
-                            {
-                                <RichText
-                                    htmlContent={item.body}
-                                />
-                            }
+                            {<RichText htmlContent={item.body} />}
                         </Box>
                     </div>
                 </div>
@@ -76,24 +71,24 @@ function ArticleDetail() {
                 prev={
                     previousArticle
                         ? checkLang(
-                            locale,
-                            route("article-detail", previousArticle.slug_eng),
-                            route("article-detail.id", previousArticle.slug),
-                            route(
-                                "article-detail.jp",
-                                previousArticle.slug_jpn
-                            )
-                        )
+                              locale,
+                              route("article-detail", previousArticle.slug_eng),
+                              route("article-detail.id", previousArticle.slug),
+                              route(
+                                  "article-detail.jp",
+                                  previousArticle.slug_jpn,
+                              ),
+                          )
                         : ""
                 }
                 next={
                     nextArticle
                         ? checkLang(
-                            locale,
-                            route("article-detail", nextArticle.slug_eng),
-                            route("article-detail.id", nextArticle.slug),
-                            route("article-detail.jp", nextArticle.slug_jpn)
-                        )
+                              locale,
+                              route("article-detail", nextArticle.slug_eng),
+                              route("article-detail.id", nextArticle.slug),
+                              route("article-detail.jp", nextArticle.slug_jpn),
+                          )
                         : ""
                 }
             />
@@ -105,7 +100,7 @@ function ArticleDetail() {
                     locale,
                     route("event-detail", item.slug_eng),
                     route("event-detail.id", item.slug),
-                    route("event-detail.jp", item.slug_jpn)
+                    route("event-detail.jp", item.slug_jpn),
                 )}
             />
         </Guest>

@@ -15,8 +15,6 @@ function ConsultationMeeting() {
         };
     });
 
-    console.log(modifiedMeetings);
-
     const columns = [
         {
             field: "name",
@@ -85,7 +83,7 @@ function ConsultationMeeting() {
                     needEdit={false}
                     deleteRoute={route(
                         "consultation-meeting.destroy",
-                        params.row.id
+                        params.row.id,
                     )}
                 />
             ),

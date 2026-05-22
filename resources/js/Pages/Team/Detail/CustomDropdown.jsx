@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { styled } from "@mui/material/styles";
-import checkLang from "@/utils/checkLang"; // Import ini jika ingin nama dropdown multilingual
+import checkLang from "@/utils/checkLang";
 import { usePage } from "@inertiajs/react";
 
 const CustomInput = styled(InputBase)(({ theme }) => ({
@@ -16,18 +16,28 @@ const CustomInput = styled(InputBase)(({ theme }) => ({
         backgroundColor: "#e3f2fd",
         background: "linear-gradient(to right, #8dcfffff, #ffffff)",
         border: "1px solid #ffffff",
-        fontSize: 16,
-        padding: "12px 26px 12px 16px",
-        color: "#263238",
-        fontWeight: 500,
         fontFamily: "sans-serif",
+        color: "#263238",
+        fontWeight: 600,
+
+        fontSize: 24,
+        padding: "18px 52px 18px 28px",
+
+        [theme.breakpoints.down("xl")]: {
+            fontSize: 22,
+            padding: "16px 46px 16px 24px",
+        },
+        [theme.breakpoints.down("lg")]: {
+            fontSize: 18,
+            padding: "14px 38px 14px 20px",
+        },
         [theme.breakpoints.down("md")]: {
-            fontSize: 14,
-            padding: "10px 24px 10px 12px",
+            fontSize: 15,
+            padding: "11px 30px 11px 14px",
         },
         [theme.breakpoints.down("sm")]: {
-            fontSize: 12,
-            padding: "8px 20px 8px 10px",
+            fontSize: 13,
+            padding: "8px 24px 8px 10px",
         },
         "&:focus": {
             backgroundColor: "#e3f2fd",
@@ -40,29 +50,29 @@ export default function CustomDropdown({ departmentsList, value, onChange }) {
     const { locale } = usePage().props;
 
     const handleChange = (event) => {
-        onChange(event.target.value); // Jalankan fungsi onChange bawaan parent
+        onChange(event.target.value);
     };
 
     return (
         <FormControl
             sx={{
                 m: 1,
-                minWidth: 100,
                 display: "flex",
                 alignItems: "start",
-                fontSize: 20,
-                [theme.breakpoints.down("md")]: {
-                    fontSize: 16,
-                },
-                [theme.breakpoints.down("sm")]: {
-                    fontSize: 14,
-                },
+
+                minWidth: 340,
+                fontSize: 26,
+
+                [theme.breakpoints.down("xl")]: { minWidth: 300 },
+                [theme.breakpoints.down("lg")]: { minWidth: 250 },
+                [theme.breakpoints.down("md")]: { minWidth: 190 },
+                [theme.breakpoints.down("sm")]: { minWidth: 150 },
             }}
         >
             <Select
                 labelId="custom-dropdown-label"
                 id="custom-dropdown"
-                value={value} // Ambil nilai dari props parent
+                value={value}
                 onChange={handleChange}
                 input={<CustomInput />}
                 IconComponent={(props) => (
@@ -72,44 +82,76 @@ export default function CustomDropdown({ departmentsList, value, onChange }) {
                             color: "#ffffff !important",
                             backgroundColor: "black",
                             borderRadius: "50%",
-                            fontSize: "20px !important",
-                            right: "12px !important",
-                            top: "calc(50% - 10px) !important",
+
+                            fontSize: "32px !important",
+                            right: "18px !important",
+                            top: "calc(50% - 16px) !important",
+
+                            [theme.breakpoints.down("xl")]: {
+                                fontSize: "28px !important",
+                                right: "14px !important",
+                                top: "calc(50% - 14px) !important",
+                            },
+                            [theme.breakpoints.down("lg")]: {
+                                fontSize: "22px !important",
+                                right: "12px !important",
+                                top: "calc(50% - 11px) !important",
+                            },
                             [theme.breakpoints.down("md")]: {
-                                fontSize: "16px !important",
-                                right: "8px !important",
-                                top: "calc(50% - 8px) !important",
+                                fontSize: "18px !important",
+                                right: "10px !important",
+                                top: "calc(50% - 9px) !important",
                             },
                             [theme.breakpoints.down("sm")]: {
-                                fontSize: "14px !important",
+                                fontSize: "15px !important",
                                 right: "6px !important",
-                                top: "calc(50% - 7px) !important",
+                                top: "calc(50% - 7.5px) !important",
                             },
                         }}
                     />
                 )}
                 MenuProps={{
+                    anchorOrigin: {
+                        vertical: "bottom",
+                        horizontal: "left",
+                    },
+                    transformOrigin: {
+                        vertical: "top",
+                        horizontal: "left",
+                    },
                     PaperProps: {
                         sx: {
                             mt: "4px",
                             borderRadius: "0px",
-                            boxShadow: "0px 4px 20px rgba(0,0,0,0.08)",
+                            boxShadow: "0px 8px 32px rgba(0,0,0,0.12)",
                             border: "1px solid #ffffff",
+                            minWidth: "100%",
+
                             "& .MuiMenu-list": {
                                 paddingTop: 0,
                                 paddingBottom: 0,
                             },
                             "& .MuiMenuItem-root": {
-                                padding: "14px 16px",
-                                fontSize: 16,
                                 color: "#37474f",
                                 fontWeight: 500,
                                 background:
                                     "linear-gradient(to right, #aeddffff, #ffffff)",
                                 borderBottom: "1px solid #ffffff",
                                 whiteSpace: "normal",
+
+                                padding: "22px 28px",
+                                fontSize: 20,
+
+                                [theme.breakpoints.down("xl")]: {
+                                    padding: "18px 24px",
+                                    fontSize: 18,
+                                },
+                                [theme.breakpoints.down("lg")]: {
+                                    padding: "14px 20px",
+                                    fontSize: 16,
+                                },
                                 [theme.breakpoints.down("md")]: {
-                                    padding: "10px 12px",
+                                    padding: "10px 14px",
                                     fontSize: 14,
                                 },
                                 [theme.breakpoints.down("sm")]: {
@@ -122,8 +164,12 @@ export default function CustomDropdown({ departmentsList, value, onChange }) {
                                 "&:hover": {
                                     background: "#bbdefb !important",
                                 },
+                                "&:focus": {
+                                    background: "transparent",
+                                },
                                 "&.Mui-selected": {
                                     background: "#bbdefb",
+                                    fontWeight: 600,
                                     "&:hover": {
                                         background: "#bbdefb",
                                     },
@@ -145,7 +191,6 @@ export default function CustomDropdown({ departmentsList, value, onChange }) {
 
                 {departmentsList?.map((item, index) => (
                     <MenuItem key={index} value={item.id}>
-                        {/* Menggunakan helper checkLang agar nama di dalam dropdown menyesuaikan bahasa aktif */}
                         {checkLang(
                             locale,
                             item.name_eng,

@@ -28,7 +28,6 @@ function StatModal({ stat }) {
         head_jpn: stat.head_jpn || "",
         head_ch: stat.head_ch || "",
     });
-    console.log(stat);
     const [edit, setEdit] = useState(false);
     const { toggleSpinner } = useContext(SpinnerContext);
     const { toggleAlert } = useContext(AlertContext);
