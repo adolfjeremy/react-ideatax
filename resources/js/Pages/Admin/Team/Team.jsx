@@ -40,18 +40,55 @@ function Team() {
         <AuthLayout sectionHeading="Teams">
             <div className="container">
                 <div className="row">
-                    <div className="col-12 d-flex align-items-center justify-content-end">
-                        <Button
-                            sx={{
-                                textTransform: "none",
-                                fontSize: "0.8rem",
-                                fontWeight: 500,
-                            }}
-                            href={route("team.create")}
-                            variant="contained"
-                        >
-                            Create Team
-                        </Button>
+                    <div className="col-12 d-flex align-items-center justify-content-between">
+                        <div className="d-flex flex-column align-items-start gap-3">
+                            <Button
+                                sx={{
+                                    textTransform: "none",
+                                    fontSize: "0.8rem",
+                                    fontWeight: 500,
+                                }}
+                                href={route("department.index")}
+                                variant="contained"
+                            >
+                                Department List
+                            </Button>
+                            <Button
+                                sx={{
+                                    textTransform: "none",
+                                    fontSize: "0.8rem",
+                                    fontWeight: 500,
+                                }}
+                                href={route("position.index")}
+                                variant="contained"
+                            >
+                                Position List
+                            </Button>
+                        </div>
+                        <div className="d-flex flex-column align-items-end gap-3">
+                            <Button
+                                sx={{
+                                    textTransform: "none",
+                                    fontSize: "0.8rem",
+                                    fontWeight: 500,
+                                }}
+                                href={route("team.create")}
+                                variant="contained"
+                            >
+                                Create Team
+                            </Button>
+                            <Button
+                                sx={{
+                                    textTransform: "none",
+                                    fontSize: "0.8rem",
+                                    fontWeight: 500,
+                                }}
+                                href="#"
+                                variant="contained"
+                            >
+                                Award List
+                            </Button>
+                        </div>
                     </div>
                 </div>
                 <div className="row mt-5">

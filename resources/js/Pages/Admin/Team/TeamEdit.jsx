@@ -1,6 +1,15 @@
 import { useState, useContext } from "react";
 import { useForm, usePage } from "@inertiajs/react";
-import { Box, Tabs, Tab, Button } from "@mui/material";
+import {
+    Box,
+    Tabs,
+    Tab,
+    Button,
+    InputLabel,
+    MenuItem,
+    FormControl,
+    Select,
+} from "@mui/material";
 import AuthLayout from "@/Layout/AuthLayout";
 import { TextField } from "@mui/material";
 import CustomTabPanel from "@/Components/CustomTabPanel";
@@ -10,17 +19,15 @@ import { AlertContext } from "@/Context/AlertContext";
 import RichEditor from "@/Components/RichEditor";
 
 function TeamEdit() {
-    const { item } = usePage().props;
+    const { item, positions, departments } = usePage().props;
     const [value, setValue] = useState(0);
     const { toggleSpinner } = useContext(SpinnerContext);
     const { toggleAlert } = useContext(AlertContext);
 
     const { data, setData, post, processing, errors, reset } = useForm({
         name: item.name,
-        position: item.position,
         position_id: item.position_id,
-        position_jp: item.position_jp,
-        position_ch: item.position_ch,
+        department_id: item.department_id,
         linkedin: item.linkedin || "",
         email: item.email || "",
         phone: item.phone || "",
@@ -63,7 +70,7 @@ function TeamEdit() {
                     console.log(error);
                 },
             },
-            { forceFormData: true }
+            { forceFormData: true },
         );
     };
 
@@ -127,17 +134,6 @@ function TeamEdit() {
                                 sx={{ width: "100%", mb: 2 }}
                                 required
                             />
-                            <TextField
-                                id="position"
-                                value={data.position}
-                                onChange={(e) =>
-                                    setData("position", e.target.value)
-                                }
-                                label="Position"
-                                variant="outlined"
-                                sx={{ width: "100%", mb: 2 }}
-                                required
-                            />
                         </CustomTabPanel>
                         <CustomTabPanel value={value} index={1}>
                             <RichEditor
@@ -177,16 +173,6 @@ function TeamEdit() {
                                 sx={{ width: "100%", mb: 2 }}
                                 required
                             />
-                            <TextField
-                                id="position_id"
-                                value={data.position_id}
-                                onChange={(e) =>
-                                    setData("position_id", e.target.value)
-                                }
-                                label="Position Id"
-                                variant="outlined"
-                                sx={{ width: "100%", mb: 2 }}
-                            />
                         </CustomTabPanel>
                         <CustomTabPanel value={value} index={2}>
                             <RichEditor
@@ -223,17 +209,6 @@ function TeamEdit() {
                                 onChange={(e) =>
                                     setData("description_jpn", e.target.value)
                                 }
-                                sx={{ width: "100%", mb: 2 }}
-                                required
-                            />
-                            <TextField
-                                id="position_jp"
-                                value={data.position_jp}
-                                onChange={(e) =>
-                                    setData("position_jp", e.target.value)
-                                }
-                                label="Position Jp"
-                                variant="outlined"
                                 sx={{ width: "100%", mb: 2 }}
                                 required
                             />
@@ -276,19 +251,48 @@ function TeamEdit() {
                                 sx={{ width: "100%", mb: 2 }}
                                 required
                             />
-                            <TextField
-                                id="position_ch"
-                                value={data.position_ch}
-                                onChange={(e) =>
-                                    setData("position_ch", e.target.value)
-                                }
-                                label="Position Ch"
-                                variant="outlined"
-                                sx={{ width: "100%", mb: 2 }}
-                                required
-                            />
                         </CustomTabPanel>
                         <Box px={3}>
+                            <FormControl fullWidth>
+                                <InputLabel id="demo-simple-select-label">
+                                    Department
+                                </InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={data.department_id}
+                                    label="Department"
+                                    onChange={(e) =>
+                                        setData("department_id", e.target.value)
+                                    }
+                                >
+                                    {departments.map((item) => (
+                                        <MenuItem key={item.id} value={item.id}>
+                                            {item.name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                            <FormControl fullWidth sx={{ marginTop: 2 }}>
+                                <InputLabel id="demo-simple-select-label">
+                                    Position
+                                </InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={data.position_id}
+                                    label="Position"
+                                    onChange={(e) =>
+                                        setData("position_id", e.target.value)
+                                    }
+                                >
+                                    {positions.map((item) => (
+                                        <MenuItem key={item.id} value={item.id}>
+                                            {item.name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
                             <TextField
                                 id="name"
                                 value={data.name}
@@ -297,7 +301,7 @@ function TeamEdit() {
                                 }
                                 label="Name"
                                 variant="outlined"
-                                sx={{ width: "100%", mb: 2 }}
+                                sx={{ width: "100%", my: 2 }}
                                 required
                             />
                             <TextField
@@ -350,7 +354,7 @@ function TeamEdit() {
                                 onChange={(e) =>
                                     setData(
                                         "profile_picture",
-                                        e.target.files[0]
+                                        e.target.files[0],
                                     )
                                 }
                                 variant="outlined"

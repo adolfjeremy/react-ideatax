@@ -41,6 +41,7 @@ function TeamItem({ image, name, position, destination }) {
                         margin: 0,
                         letterSpacing: "0.009em",
                         textAlign: "center",
+                        textTransform: "capitalize",
                         [theme.breakpoints.down("md")]: {
                             fontSize: "0.8rem",
                         },

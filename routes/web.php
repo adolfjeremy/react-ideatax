@@ -6,9 +6,11 @@ use App\Http\Controllers\Admin\AdminTeamController;
 use App\Http\Controllers\Admin\ArticleCategoryController;
 use App\Http\Controllers\Admin\CompanyProfileController;
 use App\Http\Controllers\Admin\ConsultationMeetingController;
+use App\Http\Controllers\Admin\DepartementController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PhotoGaleryController;
+use App\Http\Controllers\Admin\PositionController;
 use App\Http\Controllers\Admin\StatController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
@@ -39,25 +41,6 @@ use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\UserRegisterController;
 use App\Http\Middleware\ChangeLocal;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
 
 Route::get('lang/{lang}', [LocalizationController::class, 'switchLang'])->name('switchLang');
 
@@ -193,7 +176,7 @@ Route::prefix('zh-CN')
     });
 
 Route::prefix('admin')
-    ->middleware('auth', "isAdmin")
+    ->middleware(['auth', 'isAdmin'])
     ->group(function () {
         Route::resource('hero', HeroController::class);
         Route::resource('stat', StatController::class);
@@ -203,6 +186,8 @@ Route::prefix('admin')
         Route::resource('article-category', ArticleCategoryController::class);
         Route::resource('tax-event', TaxEventController::class);
         Route::resource('team', AdminTeamController::class);
+        Route::resource('department', DepartementController::class);
+        Route::resource('position', PositionController::class);
         Route::resource('page', PageController::class);
         Route::resource('career', AdminCareerController::class);
         Route::resource('photo-galery', PhotoGaleryController::class);

@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TeamRequest;
+use App\Models\Position;
+use App\Models\Department;
 use Illuminate\Support\Facades\Storage;
 
 class AdminTeamController extends Controller
@@ -28,7 +30,12 @@ class AdminTeamController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Admin/Team/TeamCreate');
+        $positions = Position::all();
+        $departments = Department::all();
+        return Inertia::render('Admin/Team/TeamCreate', [
+            "positions" => $positions,
+            "departments" => $departments
+        ]);
     }
 
     /**
@@ -40,14 +47,12 @@ class AdminTeamController extends Controller
 
         $data['slug'] = Str::slug($request->name);
 
-        if($request->file('photo'))
-        {
+        if ($request->file('photo')) {
             $data['photo'] = $request->file('photo')->store('team');
         }
-        if($request->file('profile_picture'))
-        {
+        if ($request->file('profile_picture')) {
             $data['profile_picture'] = $request->file('profile_picture')->store('team-pp');
-        }         
+        }
 
         Team::create($data);
 
@@ -71,8 +76,12 @@ class AdminTeamController extends Controller
     public function edit($id)
     {
         $item = Team::findOrFail($id);
+        $positions = Position::all();
+        $departments = Department::all();
         return Inertia::render('Admin/Team/TeamEdit', [
-            "item" => $item
+            "item" => $item,
+            "positions" => $positions,
+            "departments" => $departments
         ]);
     }
 
@@ -86,16 +95,14 @@ class AdminTeamController extends Controller
 
         $data['slug'] = Str::slug($request->name);
 
-        if($request->file('photo'))
-        {
+        if ($request->file('photo')) {
             Storage::delete($request->oldPhoto);
             $data['photo'] = $request->file('photo')->store('team');
         }
-        if($request->file('profile_picture'))
-        {
+        if ($request->file('profile_picture')) {
             Storage::delete($request->oldProfilePicture);
             $data['profile_picture'] = $request->file('profile_picture')->store('team-pp');
-        }         
+        }
 
         $item->update($data);
 
