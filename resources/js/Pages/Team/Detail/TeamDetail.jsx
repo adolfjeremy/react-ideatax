@@ -21,21 +21,21 @@ function TeamDetail() {
                 item.description_eng,
                 item.description,
                 item.description_jpn,
-                item.description_ch
+                item.description_ch,
             )}
             seo_title={checkLang(
                 locale,
                 item.SEO_title_eng,
                 item.SEO_title,
                 item.SEO_title_jpn,
-                item.SEO_title_ch
+                item.SEO_title_ch,
             )}
             href={checkLang(
                 locale,
                 route("team-detail", item.slug),
                 route("team-detail.id", item.slug),
                 route("team-detail.jp", item.slug),
-                route("team-detail.ch", item.slug)
+                route("team-detail.ch", item.slug),
             )}
         >
             <Box
@@ -78,6 +78,7 @@ function TeamDetail() {
                             paddingBottom: "20px",
                             borderBottom: `2px solid ${theme.palette.custom.darkBlue}`,
                             textAlign: "center",
+                            textTransform: "capitalize",
                             [theme.breakpoints.down("sm")]: {
                                 fontSize: "0.8rem",
                             },
@@ -106,7 +107,7 @@ function TeamDetail() {
                             item.position,
                             item.position_id,
                             item.position_jp,
-                            item.position_ch
+                            item.position_ch,
                         )}
                     </Typography>
                 </Box>
@@ -123,10 +124,10 @@ function TeamDetail() {
                                         locale == "en"
                                             ? route("team")
                                             : locale == "id"
-                                            ? route("team.id")
-                                            : locale == "jp"
-                                            ? route("team.jp")
-                                            : route("team.ch")
+                                              ? route("team.id")
+                                              : locale == "jp"
+                                                ? route("team.jp")
+                                                : route("team.ch")
                                     }
                                     sx={{
                                         color: theme.palette.custom.darkBlue,
@@ -186,7 +187,7 @@ function TeamDetail() {
                                         item.biography_eng,
                                         item.biography,
                                         item.biography_jpn,
-                                        item.biography_ch
+                                        item.biography_ch,
                                     )}
                                 />
                             }
@@ -226,7 +227,7 @@ function TeamDetail() {
                                         item.area_of_expertise_eng,
                                         item.area_of_expertise,
                                         item.area_of_expertise_jpn,
-                                        item.area_of_expertise_ch
+                                        item.area_of_expertise_ch,
                                     )}
                                 />
                             }

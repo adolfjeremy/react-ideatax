@@ -19,7 +19,7 @@ class AdminTeamController extends Controller
      */
     public function index()
     {
-        $teams = Team::all();
+        $teams = Team::with(['position', 'department'])->get();
         return Inertia::render('Admin/Team/Team', [
             "teams" => $teams
         ]);

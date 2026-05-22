@@ -12,7 +12,7 @@ import CustomDropdown from "./Detail/CustomDropdown";
 function Team() {
     const theme = useTheme();
     const { t } = useTranslation();
-    const { locale, page, teams, departments, partners } = usePage().props;
+    const { locale, page, departments } = usePage().props;
 
     // 2. Buat state untuk menampung keahlian/departemen yang dipilih
     const [selectedExpertise, setSelectedExpertise] = useState("all");
@@ -52,13 +52,34 @@ function Team() {
             )}
         >
             <Box className="position-relative">
-                <img src={hero} alt="" className="w-100" />
+                <Box
+                    component="img"
+                    src={hero}
+                    alt=""
+                    sx={{
+                        width: "100%",
+                        height: {
+                            xs: "180px",
+                            sm: "240px",
+                            md: "320px",
+                            lg: "auto",
+                        },
+                        objectFit: "cover",
+                    }}
+                />
                 <Box
                     sx={{
                         position: "absolute",
-                        top: "50px",
-                        bottom: "50px",
-                        padding: "0 12px",
+                        top: 0,
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        padding: {
+                            xs: "16px 20px",
+                            sm: "24px 40px",
+                            md: "40px 60px",
+                            lg: "50px 80px",
+                        },
                         display: "flex",
                         flexDirection: "column",
                         justifyContent: "space-between",
@@ -67,16 +88,15 @@ function Team() {
                     <Typography
                         as="h1"
                         sx={{
-                            fontSize: "3.5893rem",
+                            fontSize: {
+                                xs: "1.25rem",
+                                sm: "1.75rem",
+                                md: "2.265rem",
+                                lg: "3.5893rem",
+                            },
                             letterSpacing: "0.009em",
                             lineHeight: "1.18641911em",
                             color: theme.palette.custom.white,
-                            [theme.breakpoints.down("lg")]: {
-                                fontSize: "2.265rem",
-                            }, // Typo fix: ';g' menjadi 'lg'
-                            [theme.breakpoints.down("md")]: {
-                                fontSize: "1rem",
-                            },
                         }}
                     >
                         {t("teamHead")}
@@ -97,17 +117,24 @@ function Team() {
                     <Box key={department.id} className="container-fluid">
                         <Box className="row text-center p-2">
                             <Box
-                                className="col-12 py-6"
+                                className="col-12"
                                 sx={{
                                     background:
                                         "linear-gradient(135deg, #99c7ebff 0%, #e2ebf5ff 50%, #fff 100%)",
+                                    py: { xs: 2.5, sm: 3.5, md: 5, lg: 6 },
                                 }}
                             >
                                 <Typography
                                     sx={{
-                                        fontSize: "1.9375rem",
+                                        fontSize: {
+                                            xs: "1.15rem",
+                                            sm: "1.35rem",
+                                            md: "1.6rem",
+                                            lg: "1.9375rem",
+                                        },
                                         lineHeight: "1.43749551em",
                                         color: theme.palette.custom.darkBlue,
+                                        fontWeight: "600",
                                     }}
                                     as="h2"
                                 >

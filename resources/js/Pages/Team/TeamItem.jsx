@@ -22,44 +22,51 @@ function TeamItem({ image, name, position, destination }) {
             <Box
                 sx={{
                     position: "absolute",
-                    top: "20px",
+                    top: { xs: "auto", sm: "14px", md: "20px" },
+                    bottom: { xs: "8px", sm: "auto" },
                     left: 0,
                     right: 0,
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "center",
+                    padding: "0 6px",
                 }}
             >
                 <Typography
                     sx={{
-                        fontSize: "1.704rem",
+                        fontSize: {
+                            xs: "0.75rem",
+                            sm: "1rem",
+                            md: "1.35rem",
+                            lg: "1.704rem",
+                        },
                         fontWeight: "700",
                         color: theme.palette.custom.orange,
-                        lineHeight: "1.08664337em",
+                        lineHeight: "1.1em",
                         padding: 0,
                         margin: 0,
                         letterSpacing: "0.009em",
                         textAlign: "center",
                         textTransform: "capitalize",
-                        [theme.breakpoints.down("md")]: {
-                            fontSize: "0.8rem",
-                        },
                     }}
                 >
                     {name}
                 </Typography>
                 <Typography
                     sx={{
-                        fontSize: "1.704rem",
+                        fontSize: {
+                            xs: "0.65rem",
+                            sm: "0.85rem",
+                            md: "1.2rem",
+                            lg: "1.704rem",
+                        },
                         color: theme.palette.custom.orange,
-                        lineHeight: "1.08664337em",
+                        lineHeight: "1.1em",
                         padding: 0,
                         margin: 0,
                         letterSpacing: "0.009em",
-                        [theme.breakpoints.down("md")]: {
-                            fontSize: "0.7rem",
-                        },
+                        textAlign: "center",
                     }}
                 >
                     {position}

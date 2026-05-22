@@ -1,4 +1,10 @@
-import { FormControl, Select, MenuItem, InputBase } from "@mui/material";
+import {
+    FormControl,
+    Select,
+    MenuItem,
+    InputBase,
+    useTheme,
+} from "@mui/material";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { styled } from "@mui/material/styles";
 import checkLang from "@/utils/checkLang"; // Import ini jika ingin nama dropdown multilingual
@@ -15,14 +21,22 @@ const CustomInput = styled(InputBase)(({ theme }) => ({
         color: "#263238",
         fontWeight: 500,
         fontFamily: "sans-serif",
+        [theme.breakpoints.down("md")]: {
+            fontSize: 14,
+            padding: "10px 24px 10px 12px",
+        },
+        [theme.breakpoints.down("sm")]: {
+            fontSize: 12,
+            padding: "8px 20px 8px 10px",
+        },
         "&:focus": {
             backgroundColor: "#e3f2fd",
         },
     },
 }));
 
-// Ambil props value dan onChange dari parrent
 export default function CustomDropdown({ departmentsList, value, onChange }) {
+    const theme = useTheme();
     const { locale } = usePage().props;
 
     const handleChange = (event) => {
@@ -37,6 +51,12 @@ export default function CustomDropdown({ departmentsList, value, onChange }) {
                 display: "flex",
                 alignItems: "start",
                 fontSize: 20,
+                [theme.breakpoints.down("md")]: {
+                    fontSize: 16,
+                },
+                [theme.breakpoints.down("sm")]: {
+                    fontSize: 14,
+                },
             }}
         >
             <Select
@@ -55,6 +75,16 @@ export default function CustomDropdown({ departmentsList, value, onChange }) {
                             fontSize: "20px !important",
                             right: "12px !important",
                             top: "calc(50% - 10px) !important",
+                            [theme.breakpoints.down("md")]: {
+                                fontSize: "16px !important",
+                                right: "8px !important",
+                                top: "calc(50% - 8px) !important",
+                            },
+                            [theme.breakpoints.down("sm")]: {
+                                fontSize: "14px !important",
+                                right: "6px !important",
+                                top: "calc(50% - 7px) !important",
+                            },
                         }}
                     />
                 )}
@@ -78,6 +108,14 @@ export default function CustomDropdown({ departmentsList, value, onChange }) {
                                     "linear-gradient(to right, #aeddffff, #ffffff)",
                                 borderBottom: "1px solid #ffffff",
                                 whiteSpace: "normal",
+                                [theme.breakpoints.down("md")]: {
+                                    padding: "10px 12px",
+                                    fontSize: 14,
+                                },
+                                [theme.breakpoints.down("sm")]: {
+                                    padding: "8px 10px",
+                                    fontSize: 12,
+                                },
                                 "&:last-child": {
                                     borderBottom: "none",
                                 },
