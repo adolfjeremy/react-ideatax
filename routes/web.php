@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminArticleController;
 use App\Http\Controllers\Admin\AdminCareerController;
 use App\Http\Controllers\Admin\AdminTeamController;
 use App\Http\Controllers\Admin\ArticleCategoryController;
+use App\Http\Controllers\Admin\AwardController;
 use App\Http\Controllers\Admin\CompanyProfileController;
 use App\Http\Controllers\Admin\ConsultationMeetingController;
 use App\Http\Controllers\Admin\DepartementController;
@@ -188,6 +189,7 @@ Route::prefix('admin')
         Route::resource('team', AdminTeamController::class);
         Route::resource('department', DepartementController::class);
         Route::resource('position', PositionController::class);
+        Route::resource('award', AwardController::class);
         Route::resource('page', PageController::class);
         Route::resource('career', AdminCareerController::class);
         Route::resource('photo-galery', PhotoGaleryController::class);

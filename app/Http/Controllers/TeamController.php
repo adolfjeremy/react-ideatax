@@ -68,7 +68,7 @@ class TeamController extends Controller
 
     public function detail($id)
     {
-        $item = Team::where('slug', $id)->firstOrFail();
+        $item = Team::where('slug', $id)->with(["awards", "position"])->firstOrFail();
         return Inertia::render('Team/Detail/TeamDetail', [
             "item" => $item
         ]);

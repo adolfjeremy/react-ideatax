@@ -10,6 +10,7 @@ function TeamDetail() {
     const { locale, item } = usePage().props;
     const theme = useTheme();
     const { t } = useTranslation();
+    console.log(item);
     return (
         <Guest
             en={route("team-detail", item.slug)}
@@ -104,10 +105,10 @@ function TeamDetail() {
                     >
                         {checkLang(
                             locale,
-                            item.position,
-                            item.position_id,
-                            item.position_jp,
-                            item.position_ch,
+                            item.position.name_eng,
+                            item.position.name,
+                            item.position.name_jpn,
+                            item.position.name_ch,
                         )}
                     </Typography>
                 </Box>
@@ -233,6 +234,37 @@ function TeamDetail() {
                             }
                         </Box>
                     </div>
+                    {item.awards?.length > 0 && (
+                        <div className="row mt-5">
+                            <div className="col-12 text-center ">
+                                <Typography
+                                    as="h2"
+                                    sx={{
+                                        color: theme.palette.custom.darkBlue,
+                                        fontSize: "1.7282rem",
+                                        letterSpacing: "0.009em",
+                                        lineHeight: "line-height",
+                                        fontWeight: "700",
+                                        marginBottom: "1.5rem",
+                                    }}
+                                >
+                                    Awards
+                                </Typography>
+                            </div>
+                            <div className="row d-flex justify-content-center align0item">
+                                {item.awards?.map((award) => (
+                                    <div className="col-1" key={award.id}>
+                                        <img
+                                            src={award.image_url}
+                                            alt={award.title}
+                                            title={`${award.title} - ${award.year}`}
+                                            className="w-100"
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
                 <ConsultationButton />
             </Box>

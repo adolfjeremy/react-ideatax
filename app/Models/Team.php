@@ -40,15 +40,15 @@ class Team extends Model
         return $this->belongsTo(Department::class);
     }
 
-    // Pastikan fungsi ini ada dan namanya "position" (singular)
     public function position()
     {
         return $this->belongsTo(Position::class);
     }
 
-    // Relasi ke Award yang baru kita buat
     public function awards()
     {
-        return $this->hasMany(Award::class)->orderBy('year', 'desc');
+        // Parameter: ModelTarget, NamaTabelPivot, FK_ModelIni, FK_ModelTarget
+        return $this->belongsToMany(Award::class, 'award_team', 'team_id', 'award_team_id')
+            ->orderBy('year', 'desc');
     }
 }

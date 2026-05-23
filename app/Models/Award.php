@@ -6,10 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Award extends Model
 {
-    protected $fillable = ['team_id', 'title', 'institution', 'year'];
+    protected $fillable = ['title', 'institution', 'year', 'image'];
 
-    public function team()
+    public function teams()
     {
-        return $this->belongsTo(Team::class);
+        return $this->belongsToMany(Team::class, 'award_team', 'award_team_id', 'team_id');
+    }
+
+    protected $appends = ['image_url'];
+
+    public function getImageUrlAttribute()
+    {
+        if ($this->image) {
+            return asset('storage/' . $this->image);
+        }
     }
 }

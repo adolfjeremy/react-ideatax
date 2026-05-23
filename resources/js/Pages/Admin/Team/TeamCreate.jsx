@@ -9,6 +9,8 @@ import {
     MenuItem,
     FormControl,
     Select,
+    Autocomplete,
+    Chip,
 } from "@mui/material";
 import AuthLayout from "@/Layout/AuthLayout";
 import { TextField } from "@mui/material";
@@ -19,13 +21,14 @@ import { AlertContext } from "@/Context/AlertContext";
 import RichEditor from "@/Components/RichEditor";
 
 function TeamCreate() {
-    const { positions, departments } = usePage().props;
+    const { positions, departments, awards } = usePage().props;
     const [value, setValue] = useState(0);
     const { toggleSpinner } = useContext(SpinnerContext);
     const { toggleAlert } = useContext(AlertContext);
     const { data, setData, post, processing, errors, reset } = useForm({
         name: "",
         position_id: "",
+        award_ids: [],
         department_id: "",
         linkedin: "",
         email: "",
@@ -73,11 +76,17 @@ function TeamCreate() {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
+    console.log(awards);
     return (
         <AuthLayout sectionHeading="Create Team">
             <div className="container">
                 <div className="row">
-                    <form onSubmit={onHandleSubmit} className="col-12 border-1">
+                    <form
+                        onSubmit={onHandleSubmit}
+                        encType="multipart/form-data"
+                        className="col-12 border-1"
+                    >
                         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                             <Tabs
                                 value={value}
@@ -300,6 +309,64 @@ function TeamCreate() {
                                 sx={{ width: "100%", my: 2 }}
                                 required
                             />
+                            <Box sx={{ mt: 3, mb: 2 }}>
+                                <label
+                                    className="text-left block mb-1 font-medium"
+                                    htmlFor="awards-select"
+                                >
+                                    Assign Awards to Team Member
+                                </label>
+
+                                <Autocomplete
+                                    multiple
+                                    id="awards-select"
+                                    options={awards} // Daftar pilihan dari backend
+                                    // Filter berdasarkan kecocokan ID
+                                    getOptionLabel={(option) =>
+                                        `${option.title} (${option.year}) - ${option.institution || ""}`
+                                    }
+                                    // Menentukan data apa yang di-render saat opsi dipilih (menggunakan Chip/Tags)
+                                    renderTags={(value, getTagProps) =>
+                                        value.map((option, index) => (
+                                            <Chip
+                                                variant="outlined"
+                                                label={`${option.title} (${option.year})`}
+                                                {...getTagProps({ index })}
+                                                key={option.id}
+                                            />
+                                        ))
+                                    }
+                                    // Render input utama
+                                    renderInput={(params) => (
+                                        <TextField
+                                            {...params}
+                                            variant="outlined"
+                                            placeholder={
+                                                data.award_ids.length === 0
+                                                    ? "Choose awards..."
+                                                    : ""
+                                            }
+                                        />
+                                    )}
+                                    // Logika mendeteksi perubahan saat user memilih/menghapus award
+                                    onChange={(event, newValue) => {
+                                        // newValue berisi array of object award utuh yang dipilih.
+                                        // Kita hanya butuh mengambil ID-nya saja untuk dikirim ke Laravel.
+                                        const selectedIds = newValue.map(
+                                            (award) => award.id,
+                                        );
+                                        setData("award_ids", selectedIds);
+                                    }}
+                                    // Memastikan opsi dropdown dicocokkan berdasarkan ID, bukan referensi object memory
+                                    isOptionEqualToValue={(option, value) =>
+                                        option.id === value.id
+                                    }
+                                    sx={{
+                                        width: "100%",
+                                        bgcolor: "background.paper",
+                                    }}
+                                />
+                            </Box>
                             <TextField
                                 id="linkedin"
                                 value={data.linkedin}

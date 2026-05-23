@@ -92,7 +92,7 @@ function Team() {
                                     fontSize: "0.8rem",
                                     fontWeight: 500,
                                 }}
-                                href="#"
+                                href={route("award.index")}
                                 variant="contained"
                             >
                                 Award List
