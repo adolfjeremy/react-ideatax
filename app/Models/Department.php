@@ -11,6 +11,11 @@ class Department extends Model
         'name_eng',
         'name_jpn',
         'name_ch',
+        'description',
+        'description_eng',
+        'description_jpn',
+        'description_ch',
+        'image',
         'order'
     ];
 

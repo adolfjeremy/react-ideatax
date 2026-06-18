@@ -296,7 +296,7 @@ function Contact() {
                                 id="btn-schedule-meeting"
                                 sx={{
                                     backgroundColor:
-                                        theme.palette.custom.orange,
+                                        theme.palette.custom.yellow,
                                     textTransform: "none",
                                 }}
                                 variant="contained"

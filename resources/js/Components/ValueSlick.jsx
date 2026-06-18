@@ -4,10 +4,10 @@ import { Box, Typography, useTheme } from "@mui/material";
 import Slider from "react-slick";
 import { useTranslation } from "react-i18next";
 
-import professional from "@/assets/images/1.webp";
-import trustwothy from "@/assets/images/2.webp";
-import creativity from "@/assets/images/3.webp";
-import prudent from "@/assets/images/4.webp";
+import professional from "@/assets/images/profesional.png";
+import trustwothy from "@/assets/images/trustworthy.png";
+import creativity from "@/assets/images/creativity.png";
+import prudent from "@/assets/images/prudent.png";
 
 function ValueSlick() {
     const settings = {

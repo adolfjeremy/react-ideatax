@@ -2,7 +2,7 @@ export default {
     translation: {
         hero: "Indonesian Tax Expertise, Worldwide Trust.",
         heroButton: "Consultation Now",
-        about: "We combine a long running experience in tax consulting and tax authority to deliver thorough solutions to our clients. We also present essential approaches with problem-solving capabilities imbued with a full commitment for the most polished quality of service for our clients.",
+        about: "We combine long-standing experience in tax consulting and insights from tax authority background to deliver comprehensive solutions for corporate and multinational taxpayers, focused on the complex tax matters of large enterprises including tax disputes, tax refund and recovery, international tax and transfer pricing, and strategic tax planning, with a strong commitment to precision, governance, and service quality to help clients strengthen compliance, optimize tax positions, and support sustainable business growth.",
         comproButton: "Company Profile",
         expertise: "Expertise",
         serviceOneHead: "Tax Audit Assistance",
@@ -28,7 +28,7 @@ export default {
         serviceHead: "Our solutions for clients.",
         serviceDesc:
             "We strive to deliver the best service possible for our clients with the help of talents who continually develop their skills in improving the quality of our services.",
-        teamHead: "Our team at your service.",
+        teamHead: "Our team at your service",
         subs: "Ideatax Subscription",
         subButton: "News and Article",
         eventHead: "Events",
@@ -36,7 +36,7 @@ export default {
         teamDetailHead2: "Area of Expertise",
         careerHero: "Build Your Dream Career With Ideatax",
         latestArticle: "Latest Articles",
-        latestUpdates: "Latest Tax Updates",
+        updates: "Tax Updates",
         next: "Next",
         prev: "Previous",
         careerButton: "More Details",

@@ -25,7 +25,7 @@ import aw5 from "@/assets/images/award/aw-5.webp";
 import aw6 from "@/assets/images/award/aw-6.webp";
 import aw7 from "@/assets/images/award/aw-7.webp";
 import circle from "@/assets/images/circle.png";
-import circleOrange from "@/assets/images/circle-orange.png";
+import circleOrange from "@/assets/images/circle-yellow.png";
 import CustomBreadcrumb from "@/Components/CustomBreadcrumb";
 
 function TaxAudit() {
@@ -283,7 +283,7 @@ function TaxAudit() {
                                     color: theme.palette.custom.white,
                                     fontWeight: "500",
                                     backgroundColor:
-                                        theme.palette.custom.orange,
+                                        theme.palette.custom.yellow,
                                     padding: "15px",
                                     fontSize: "1.2rem",
                                     textTransform: "none",
@@ -496,7 +496,7 @@ function TaxAudit() {
                                     <Typography
                                         as="span"
                                         sx={{
-                                            color: theme.palette.custom.orange,
+                                            color: theme.palette.custom.yellow,
                                             fontSize: "2rem",
                                             letterSpacing: "0.009em",
                                             fontWeight: "600",
@@ -526,7 +526,7 @@ function TaxAudit() {
                                     <Typography
                                         as="span"
                                         sx={{
-                                            color: theme.palette.custom.orange,
+                                            color: theme.palette.custom.yellow,
                                             fontSize: "2rem",
                                             letterSpacing: "0.009em",
                                             fontWeight: "600",
@@ -555,7 +555,7 @@ function TaxAudit() {
                                     <Typography
                                         as="span"
                                         sx={{
-                                            color: theme.palette.custom.orange,
+                                            color: theme.palette.custom.yellow,
                                             fontSize: "2rem",
                                             letterSpacing: "0.009em",
                                             fontWeight: "600",
@@ -584,7 +584,7 @@ function TaxAudit() {
                                     <Typography
                                         as="span"
                                         sx={{
-                                            color: theme.palette.custom.orange,
+                                            color: theme.palette.custom.yellow,
                                             fontSize: "2rem",
                                             letterSpacing: "0.009em",
                                             fontWeight: "600",
@@ -650,7 +650,7 @@ function TaxAudit() {
                                             width: "40px",
                                             borderRadius: "50%",
                                             backgroundColor:
-                                                theme.palette.custom.orange,
+                                                theme.palette.custom.yellow,
                                             position: "relative",
                                             zIndex: 10,
                                         }}
@@ -1041,7 +1041,7 @@ function TaxAudit() {
                                         svg: {
                                             width: "48px",
                                             height: "48px",
-                                            color: theme.palette.custom.orange,
+                                            color: theme.palette.custom.yellow,
                                         },
                                     }}
                                 >
@@ -1376,7 +1376,7 @@ function TaxAudit() {
                                     color: theme.palette.custom.white,
                                     fontWeight: "500",
                                     backgroundColor:
-                                        theme.palette.custom.orange,
+                                        theme.palette.custom.yellow,
                                     padding: "15px",
                                     fontSize: "1.2rem",
                                     textTransform: "none",
@@ -1421,7 +1421,7 @@ function TaxAudit() {
                                     sx={{
                                         fontSize: "2rem",
                                         letterSpacing: "0.009em",
-                                        color: theme.palette.custom.orange,
+                                        color: theme.palette.custom.yellow,
                                         fontWeight: "700",
                                         mb: 2,
                                         [theme.breakpoints.down("sm")]: {
@@ -1448,7 +1448,7 @@ function TaxAudit() {
                                     <CounterLg target={stat.value} />
                                     <Typography
                                         sx={{
-                                            color: theme.palette.custom.orange,
+                                            color: theme.palette.custom.yellow,
                                             fontSize: "1.25rem",
                                             lineHeight: "1.390625em",
                                             textAlign: "center",
@@ -1626,7 +1626,7 @@ function TaxAudit() {
                             <div className="col-12 d-flex justify-content-center align-items-center text-center">
                                 <Typography
                                     sx={{
-                                        borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                        borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                         px: 2,
                                         fontWeight: 500,
                                         fontSize: "1.2rem",
@@ -1643,7 +1643,7 @@ function TaxAudit() {
                                 </Typography>
                                 <Typography
                                     sx={{
-                                        borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                        borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                         px: 2,
                                         fontWeight: 500,
                                         fontSize: "1.2rem",
@@ -1660,7 +1660,7 @@ function TaxAudit() {
                                 </Typography>
                                 <Typography
                                     sx={{
-                                        borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                        borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                         px: 2,
                                         fontWeight: 500,
                                         fontSize: "1.2rem",
@@ -1695,7 +1695,7 @@ function TaxAudit() {
                             <div className="col-12 mt-4 d-flex justify-content-center align-items-center text-center">
                                 <Typography
                                     sx={{
-                                        borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                        borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                         px: 2,
                                         fontWeight: 500,
                                         fontSize: "1.2rem",
@@ -1712,7 +1712,7 @@ function TaxAudit() {
                                 </Typography>
                                 <Typography
                                     sx={{
-                                        borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                        borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                         px: 2,
                                         fontWeight: 500,
                                         fontSize: "1.2rem",
@@ -1729,7 +1729,7 @@ function TaxAudit() {
                                 </Typography>
                                 <Typography
                                     sx={{
-                                        borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                        borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                         px: 2,
                                         fontWeight: 500,
                                         fontSize: "1.2rem",
@@ -1765,7 +1765,7 @@ function TaxAudit() {
                             <div className="col-12 mt-4 d-flex justify-content-center align-items-center text-center">
                                 <Typography
                                     sx={{
-                                        borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                        borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                         px: 2,
                                         fontWeight: 500,
                                         fontSize: "1.2rem",
@@ -1782,7 +1782,7 @@ function TaxAudit() {
                                 </Typography>
                                 <Typography
                                     sx={{
-                                        borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                        borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                         px: 2,
                                         fontWeight: 500,
                                         fontSize: "1.2rem",
@@ -1817,7 +1817,7 @@ function TaxAudit() {
                             <div className="col-12 mt-4 d-flex justify-content-center align-items-center text-center">
                                 <Typography
                                     sx={{
-                                        borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                        borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                         px: 2,
                                         fontWeight: 500,
                                         fontSize: "1.2rem",
@@ -1834,7 +1834,7 @@ function TaxAudit() {
                                 </Typography>
                                 <Typography
                                     sx={{
-                                        borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                        borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                         px: 2,
                                         fontWeight: 500,
                                         fontSize: "1.2rem",
@@ -1901,7 +1901,7 @@ function TaxAudit() {
                                     sx={{
                                         fontSize: "2rem",
                                         letterSpacing: "0.009em",
-                                        color: theme.palette.custom.orange,
+                                        color: theme.palette.custom.yellow,
                                         fontWeight: "700",
                                         mb: 2,
                                         [theme.breakpoints.down("sm")]: {
@@ -1935,7 +1935,7 @@ function TaxAudit() {
                                     color: theme.palette.custom.white,
                                     fontWeight: "500",
                                     backgroundColor:
-                                        theme.palette.custom.orange,
+                                        theme.palette.custom.yellow,
                                     padding: "15px",
                                     fontSize: "1.2rem",
                                     textTransform: "none",

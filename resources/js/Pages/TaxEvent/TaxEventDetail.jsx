@@ -264,7 +264,7 @@ function TaxEventDetail() {
                         <div className="col-12">
                             <Typography
                                 sx={{
-                                    color: theme.palette.custom.orange,
+                                    color: theme.palette.custom.yellow,
                                     fontSize: "2.30375rem",
                                     [theme.breakpoints.down("sm")]: {
                                         fontSize: "1.6rem",

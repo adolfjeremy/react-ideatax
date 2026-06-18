@@ -289,7 +289,7 @@ function CareerDetail() {
                                     disabled={processing}
                                     sx={{
                                         backgroundColor:
-                                            theme.palette.custom.orange,
+                                            theme.palette.custom.yellow,
                                     }}
                                 >
                                     Apply

@@ -26,7 +26,7 @@ function RoundedArticle({ img, title, category, timeStamp, detail }) {
                 <Typography
                     sx={{
                         fontSize: "1.2rem",
-                        color: theme.palette.custom.orange,
+                        color: theme.palette.custom.yellow,
                         lineHeight: "1.4062522em",
                         letterSpacing: "0.009em",
                         fontWeight: "600",
@@ -47,7 +47,7 @@ function RoundedArticle({ img, title, category, timeStamp, detail }) {
                         fontWeight: "400",
                         transition: "all 300ms ease-in-out",
                         "&:hover": {
-                            color: theme.palette.custom.orange,
+                            color: theme.palette.custom.yellow,
                         },
                         [theme.breakpoints.down("sm")]: {
                             fontSize: "1.06259rem",

@@ -194,7 +194,7 @@ function HeaderBar({ en, id, jp, ch }) {
                         justifyContent: "center",
                         padding: "0 12%",
                         ".active": {
-                            color: `${theme.palette.custom.orange} !important`,
+                            color: `${theme.palette.custom.yellow} !important`,
                         },
                     }}
                 >
@@ -215,7 +215,7 @@ function HeaderBar({ en, id, jp, ch }) {
                             textDecoration: "none",
                             padding: "0.5rem 0",
                             "&:hover": {
-                                color: theme.palette.custom.orange,
+                                color: theme.palette.custom.yellow,
                             },
                         }}
                     >
@@ -243,7 +243,7 @@ function HeaderBar({ en, id, jp, ch }) {
                             textDecoration: "none",
                             padding: "0.5rem 0",
                             "&:hover": {
-                                color: theme.palette.custom.orange,
+                                color: theme.palette.custom.yellow,
                             },
                         }}
                     >
@@ -271,7 +271,7 @@ function HeaderBar({ en, id, jp, ch }) {
                             textDecoration: "none",
                             padding: "0.5rem 0",
                             "&:hover": {
-                                color: theme.palette.custom.orange,
+                                color: theme.palette.custom.yellow,
                             },
                         }}
                     >
@@ -301,7 +301,7 @@ function HeaderBar({ en, id, jp, ch }) {
                             textDecoration: "none",
                             padding: "0.5rem 0",
                             "&:hover": {
-                                color: theme.palette.custom.orange,
+                                color: theme.palette.custom.yellow,
                             },
                         }}
                     >
@@ -337,7 +337,7 @@ function HeaderBar({ en, id, jp, ch }) {
                                     textDecoration: "none",
                                     padding: "0.5rem 0",
                                     "&:hover": {
-                                        color: theme.palette.custom.orange,
+                                        color: theme.palette.custom.yellow,
                                     },
                                 }}
                             >
@@ -363,7 +363,7 @@ function HeaderBar({ en, id, jp, ch }) {
                                     textDecoration: "none",
                                     padding: "0.5rem 0",
                                     "&:hover": {
-                                        color: theme.palette.custom.orange,
+                                        color: theme.palette.custom.yellow,
                                     },
                                 }}
                             >
@@ -392,7 +392,7 @@ function HeaderBar({ en, id, jp, ch }) {
                             textDecoration: "none",
                             padding: "0.5rem 0",
                             "&:hover": {
-                                color: theme.palette.custom.orange,
+                                color: theme.palette.custom.yellow,
                             },
                         }}
                     >
@@ -428,7 +428,7 @@ function HeaderBar({ en, id, jp, ch }) {
                                     textDecoration: "none",
                                     padding: "0.5rem 0",
                                     "&:hover": {
-                                        color: theme.palette.custom.orange,
+                                        color: theme.palette.custom.yellow,
                                     },
                                 }}
                             >
@@ -456,7 +456,7 @@ function HeaderBar({ en, id, jp, ch }) {
                                     textDecoration: "none",
                                     padding: "0.5rem 0",
                                     "&:hover": {
-                                        color: theme.palette.custom.orange,
+                                        color: theme.palette.custom.yellow,
                                     },
                                 }}
                             >
@@ -481,7 +481,7 @@ function HeaderBar({ en, id, jp, ch }) {
                             textDecoration: "none",
                             padding: "0.5rem 0",
                             "&:hover": {
-                                color: theme.palette.custom.orange,
+                                color: theme.palette.custom.yellow,
                             },
                         }}
                     >

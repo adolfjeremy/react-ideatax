@@ -51,7 +51,7 @@ function TeamItem({ theme, name, role, desc, image, index }) {
                             fontSize: "0.8125rem",
                             fontWeight: "700",
                             textAlign: "center",
-                            color: theme.palette.custom.orange,
+                            color: theme.palette.custom.yellow,
                             mt: "2px",
                             [theme.breakpoints.down("md")]: {
                                 fontSize: "0.625rem",

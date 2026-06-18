@@ -1,4 +1,5 @@
 import { Link, useTheme, Typography } from "@mui/material";
+import formatDate from "@/utils/formatDate";
 
 function EventItem({ route, date, title, image }) {
     const theme = useTheme();
@@ -11,7 +12,7 @@ function EventItem({ route, date, title, image }) {
                 cursor: "pointer",
                 "&:hover": {
                     h3: {
-                        color: theme.palette.custom.orange,
+                        color: theme.palette.custom.yellow,
                     },
                 },
             }}
@@ -24,11 +25,11 @@ function EventItem({ route, date, title, image }) {
             />
             <Typography
                 sx={{
-                    fontSize: "1.48125rem",
-                    color: theme.palette.custom.darkBlue,
+                    fontSize: "1.25rem",
+                    color: theme.palette.custom.black,
                     lineHeight: "1.42967633em",
                     letterSpacing: "0.009em",
-                    fontWeight: "600",
+                    fontWeight: "700",
                     marginTop: "10px",
                     transition: "all 300ms  e-in-out",
                     [theme.breakpoints.down("sm")]: {
@@ -36,15 +37,16 @@ function EventItem({ route, date, title, image }) {
                     },
                 }}
             >
-                {date}
+                {formatDate(date)}
             </Typography>
             <Typography
                 as="h3"
                 sx={{
-                    fontSize: "1.48125rem",
-                    color: theme.palette.custom.lightkBlue,
+                    fontSize: "1.5rem",
+                    color: theme.palette.custom.black,
                     lineHeight: "1.42967633em",
                     letterSpacing: "0.009em",
+                    fontWeight: 700,
                     transition: "all 300ms ease-in-out",
                     [theme.breakpoints.down("sm")]: {
                         fontSize: "0.9rem",

@@ -148,7 +148,7 @@ function TaxReport() {
                         sx={{
                             color: theme.palette.custom.white,
                             fontWeight: "500",
-                            backgroundColor: theme.palette.custom.orange,
+                            backgroundColor: theme.palette.custom.yellow,
                             padding: "15px",
                             fontSize: "1.2rem",
                             textTransform: "none",
@@ -373,7 +373,7 @@ function TaxReport() {
                                     <Typography
                                         fontSize="2rem"
                                         variant="span"
-                                        color={theme.palette.custom.orange}
+                                        color={theme.palette.custom.yellow}
                                     >
                                         Ideatax
                                     </Typography>{" "}
@@ -655,7 +655,7 @@ function TaxReport() {
                                     color: theme.palette.custom.white,
                                     fontWeight: "500",
                                     backgroundColor:
-                                        theme.palette.custom.orange,
+                                        theme.palette.custom.yellow,
                                     padding: "15px",
                                     fontSize: "1.3rem",
                                     textTransform: "none",
@@ -810,7 +810,7 @@ function TaxReport() {
                                     sx={{
                                         fontSize: "2rem",
                                         letterSpacing: "0.009em",
-                                        color: theme.palette.custom.orange,
+                                        color: theme.palette.custom.yellow,
                                         fontWeight: "700",
                                         mb: 2,
                                         [theme.breakpoints.down("sm")]: {
@@ -839,7 +839,7 @@ function TaxReport() {
                                 <CounterLg target={stat.value} />
                                 <Typography
                                     sx={{
-                                        color: theme.palette.custom.orange,
+                                        color: theme.palette.custom.yellow,
                                         fontSize: "1.25rem",
                                         lineHeight: "1.390625em",
                                         textAlign: "center",
@@ -889,7 +889,7 @@ function TaxReport() {
                                 <div className="col-12 d-flex justify-content-center align-items-center text-center">
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -910,7 +910,7 @@ function TaxReport() {
                                     </Typography>
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -931,7 +931,7 @@ function TaxReport() {
                                     </Typography>
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -974,7 +974,7 @@ function TaxReport() {
                                 <div className="col-12 mt-4 d-flex justify-content-center align-items-center text-center">
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -995,7 +995,7 @@ function TaxReport() {
                                     </Typography>
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -1016,7 +1016,7 @@ function TaxReport() {
                                     </Typography>
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -1059,7 +1059,7 @@ function TaxReport() {
                                 <div className="col-12 mt-4 d-flex justify-content-center align-items-center text-center">
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -1102,7 +1102,7 @@ function TaxReport() {
                                 <div className="col-12 mt-4 d-flex justify-content-center align-items-center text-center">
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -1123,7 +1123,7 @@ function TaxReport() {
                                     </Typography>
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -1212,8 +1212,8 @@ function TaxReport() {
                                 sx={{
                                     fontSize: "3rem",
                                     letterSpacing: "0.009em",
-                                    color: theme.palette.custom.orange,
-                                    fontFamily: "OpenSauceBold",
+                                    color: theme.palette.custom.yellow,
+                                    fontFamily: "Lato sans-serif",
                                     [theme.breakpoints.down("sm")]: {
                                         fontSize: "1.25rem",
                                     },
@@ -1258,7 +1258,7 @@ function TaxReport() {
                                     color: theme.palette.custom.white,
                                     fontWeight: "500",
                                     backgroundColor:
-                                        theme.palette.custom.orange,
+                                        theme.palette.custom.yellow,
                                     padding: "15px",
                                     fontSize: "1.3rem",
                                     textTransform: "none",

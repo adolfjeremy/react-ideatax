@@ -28,7 +28,7 @@ function WhyChoose({ checkLang, locale, theme }) {
                                 <Typography
                                     as="span"
                                     sx={{
-                                        color: theme.palette.custom.orange,
+                                        color: theme.palette.custom.yellow,
                                         fontSize: "2.25rem",
                                         letterSpacing: "0.009em",
                                         fontWeight: "600",
@@ -283,7 +283,7 @@ function WhyChoose({ checkLang, locale, theme }) {
                             sx={{
                                 color: theme.palette.custom.white,
                                 fontWeight: "500",
-                                backgroundColor: theme.palette.custom.orange,
+                                backgroundColor: theme.palette.custom.yellow,
                                 padding: "15px",
                                 fontSize: "1.2rem",
                                 textTransform: "none",

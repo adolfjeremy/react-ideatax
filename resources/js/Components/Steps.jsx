@@ -46,7 +46,7 @@ function Steps() {
                         height: "40px",
                         width: "40px",
                         borderRadius: "50%",
-                        backgroundColor: theme.palette.custom.orange,
+                        backgroundColor: theme.palette.custom.yellow,
                         position: "relative",
                         zIndex: 10,
                     }}

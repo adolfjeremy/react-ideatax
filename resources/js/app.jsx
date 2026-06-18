@@ -17,13 +17,15 @@ const theme = createTheme({
         custom: {
             lightBlue: "#005b96",
             darkBlue: "#03396c",
-            orange: "#ff844f",
+            yellow: "#FFBF00",
             white: "#fafafa",
             black: "#191919",
+            gray: "#F4F4F4",
+            blue: "#7090f0"
         },
     },
     typography: {
-        fontFamily: "OpenSauce",
+        fontFamily: "Lato, serif",
     },
 });
 

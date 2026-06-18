@@ -1,12 +1,5 @@
-@font-face {
-    font-family: OpenSauce;
-    src: url("../font/OpenSauce.ttf");
-}
-
-@font-face {
-    font-family: OpenSauceBold;
-    src: url("../font/OpenSauceBold.ttf");
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 .award_image {
     width: calc((100vw - 233px) / 12);
@@ -54,7 +47,7 @@
 
 
 .services h1,h2,h3,h4, .span_heading {
-    font-family: "OpenSauceBold" !important;
+    font-family: "Lato", serif !important;
 }
 
 
@@ -76,5 +69,5 @@
 }
 .embla__slide {
   flex: 0 0 100%;
-  min-width: 0;
+  min-width: 0; 
 }

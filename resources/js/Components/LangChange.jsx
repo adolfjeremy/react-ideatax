@@ -26,7 +26,7 @@ function LangChange({ en, id, jp, ch }) {
                 aria-haspopup="true"
                 aria-expanded={open ? "true" : undefined}
                 onClick={handleClick}
-                sx={{ backgroundColor: theme.palette.custom.orange }}
+                sx={{ backgroundColor: theme.palette.custom.yellow }}
             >
                 {locale === "en" && (
                     <LanguageOption

@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('name_eng');
-            $table->string('name_jpn');
-            $table->string('name_ch');
+            $table->string('name_eng')->nullable();
+            $table->string('name_jpn')->nullable();
+            $table->string('name_ch')->nullable();
             $table->integer('order')->default(0);
             $table->timestamps();
         });

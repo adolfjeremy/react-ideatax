@@ -30,7 +30,7 @@ const LanguageOption = ({ locale, currentLocale, href, label, flag }) => {
                             justifyContent: "space-between",
                             width: "100%",
                             "&:hover": {
-                                color: theme.palette.custom.orange,
+                                color: theme.palette.custom.yellow,
                             },
                         }}
                     >
@@ -54,7 +54,7 @@ const LanguageOption = ({ locale, currentLocale, href, label, flag }) => {
                         width: "100%",
                         gap: 1,
                         "&:hover": {
-                            color: theme.palette.custom.orange,
+                            color: theme.palette.custom.yellow,
                         },
                     }}
                 >

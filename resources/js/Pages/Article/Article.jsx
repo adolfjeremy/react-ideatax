@@ -110,7 +110,7 @@ function Article() {
                         <div className="col-12 col-md-6">
                             <Typography
                                 sx={{
-                                    color: theme.palette.custom.orange,
+                                    color: theme.palette.custom.yellow,
                                     fontSize: search
                                         ? "1.625rem"
                                         : "2.30375rem",

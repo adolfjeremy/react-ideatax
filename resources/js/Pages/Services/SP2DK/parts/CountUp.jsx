@@ -1,7 +1,7 @@
 import { Box, Typography, useMediaQuery } from "@mui/material";
 import CounterLg from "@/Components/CounterLg";
 import circle from "@/assets/images/circle.png";
-import circleOrange from "@/assets/images/circle-orange.png";
+import circleOrange from "@/assets/images/circle-yellow.png";
 
 function CountUp({ locale, theme, checkLang, stats }) {
     const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
@@ -29,7 +29,7 @@ function CountUp({ locale, theme, checkLang, stats }) {
                                 sx={{
                                     fontSize: "2rem",
                                     letterSpacing: "0.009em",
-                                    color: theme.palette.custom.orange,
+                                    color: theme.palette.custom.yellow,
                                     fontWeight: "700",
                                     mb: 2,
                                     [theme.breakpoints.down("sm")]: {
@@ -56,7 +56,7 @@ function CountUp({ locale, theme, checkLang, stats }) {
                             <CounterLg target={stat.value} />
                             <Typography
                                 sx={{
-                                    color: theme.palette.custom.orange,
+                                    color: theme.palette.custom.yellow,
                                     fontSize: "1.25rem",
                                     lineHeight: "1.390625em",
                                     textAlign: "center",
@@ -105,7 +105,7 @@ function CountUp({ locale, theme, checkLang, stats }) {
                                 <div className="col-12 d-flex justify-content-center align-items-center text-center">
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -125,7 +125,7 @@ function CountUp({ locale, theme, checkLang, stats }) {
                                     </Typography>
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -145,7 +145,7 @@ function CountUp({ locale, theme, checkLang, stats }) {
                                     </Typography>
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -184,7 +184,7 @@ function CountUp({ locale, theme, checkLang, stats }) {
                                 <div className="col-12 mt-4 d-flex justify-content-center align-items-center text-center">
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -204,7 +204,7 @@ function CountUp({ locale, theme, checkLang, stats }) {
                                     </Typography>
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -222,7 +222,7 @@ function CountUp({ locale, theme, checkLang, stats }) {
                                     </Typography>
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -261,7 +261,7 @@ function CountUp({ locale, theme, checkLang, stats }) {
                                 <div className="col-12 mt-4 d-flex justify-content-center align-items-center text-center">
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -279,7 +279,7 @@ function CountUp({ locale, theme, checkLang, stats }) {
                                     </Typography>
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -316,7 +316,7 @@ function CountUp({ locale, theme, checkLang, stats }) {
                                 <div className="col-12 mt-4 d-flex justify-content-center align-items-center text-center">
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -334,7 +334,7 @@ function CountUp({ locale, theme, checkLang, stats }) {
                                     </Typography>
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",
@@ -352,7 +352,7 @@ function CountUp({ locale, theme, checkLang, stats }) {
                                     </Typography>
                                     <Typography
                                         sx={{
-                                            borderRight: `2px solid ${theme.palette.custom.orange}`,
+                                            borderRight: `2px solid ${theme.palette.custom.yellow}`,
                                             px: 2,
                                             fontWeight: 500,
                                             fontSize: "1.2rem",

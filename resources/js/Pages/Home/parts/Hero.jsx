@@ -1,35 +1,38 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import OrangeButton from "@/Components/OrangeButton";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 function Hero({ heroes, t, theme, locale, checkLang }) {
+    const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()]);
     return (
-        <Box
-            component="section"
-            sx={{
-                position: "relative",
-                [theme.breakpoints.up("md")]: {
-                    maxHeight: "100vh",
-                    overflow: "hidden",
-                },
-            }}
-        >
-            {heroes.map((hero, i) => (
-                <div key={hero.id}>
-                    <img
-                        src={`/storage/${hero.hero}`}
-                        loading="eager"
-                        className="d-block w-100"
-                    />
-                </div>
-            ))}
-            <Box
+        <Box sx={{ position: "relative", height: "70svh", [theme.breakpoints.up("md")]: {
+                            height: "100svh",
+                        }}}>
+        <div className="embla h-100" ref={emblaRef}>
+            <div className="embla__container h-100">
+                {heroes.map((item) => (
+                    <div
+                        className="embla__slide position-relative h-100"
+                        key={item.id}
+                    >
+                        <Box sx={{height: "100%", overflow: "hidden"}}>
+                            <img
+                            src={`/storage/${item.hero}`}
+                            alt={item.title_eng}
+                            loading="lazy"
+                            className="w-100 h-100 object-fit-cover"
+                        />
+                        </Box>
+                        <Box
                 sx={{
                     position: "absolute",
                     inset: 0,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "start",
-                    padding: "0 4rem",
+                    padding: "0 6rem",
+                    zIndex: 100,
                     [theme.breakpoints.down("md")]: {
                         padding: "0 2rem",
                     },
@@ -37,7 +40,7 @@ function Hero({ heroes, t, theme, locale, checkLang }) {
             >
                 <Box className="row">
                     <Box
-                        className="col-12 col-md-8"
+                        className="col-12"
                         sx={{
                             display: "flex",
                             flexDirection: "column",
@@ -48,27 +51,38 @@ function Hero({ heroes, t, theme, locale, checkLang }) {
                         <Typography
                             sx={{
                                 color: theme.palette.custom.white,
-                                fontWeight: 700,
+                                fontWeight: 300,
+                                transition: 'color 0.3s ease',
+                                "&:hover": {
+                                    color: theme.palette.custom.yellow
+                                },
                                 [theme.breakpoints.down("md")]: {
-                                    fontSize: "1.6rem",
+                                    fontSize: "1.5rem",
                                     mt: 7,
                                 },
                                 [theme.breakpoints.up("md")]: {
-                                    fontSize: "2.822rem",
+                                    fontSize: "2.5rem",
                                 },
                                 [theme.breakpoints.up("lg")]: {
                                     fontSize: "4rem",
                                 },
-                                lineHeight: "1.01019687em",
-                                letterSpacing: "-.054em",
-                                textShadow:
-                                    "0 .0375em .159375em rgba(0,0,0,.325)",
+                                lineHeight: "100%",
+                                letterSpacing: "2px",
                             }}
                             variant="h1"
                         >
-                            {t("hero")}
+                            {item.title_eng} <br />
+                            <Typography
+                                sx={{
+                                    fontWeight: 700,
+                                }}
+                                variant="span"
+                            >
+                                {item.subtitle_eng}
+                            </Typography>
                         </Typography>
-                        <OrangeButton
+                        <div className="flex items-center justify-start gap-3 mt-2 mt-lg-3">
+                            {item.button_text_eng && <OrangeButton
                             href={checkLang(
                                 locale,
                                 route("contact"),
@@ -77,13 +91,50 @@ function Hero({ heroes, t, theme, locale, checkLang }) {
                                 route("contact.ch")
                             )}
                         >
-                            {t("heroButton")}
-                        </OrangeButton>
+                            {item.button_text_eng}
+                        </OrangeButton>}
+                        {
+                            item.button_link_eng && 
+                            (<Button
+                                variant="outlined"
+                                sx={{
+                                    backgroundColor: "transparent",
+                                    letterSpacing: "2%",
+                                    lineHeight: "100%",
+                                    color: theme.palette.custom.white,
+                                    fontWeight: 700,
+                                    border: `1px solid ${theme.palette.custom.white}`,
+                                    borderRadius: "16px",
+                                    textTransform: "capitalize",
+                                        [theme.breakpoints.down("md")]: {
+                                            fontSize: "0.625rem",
+                                            padding: "0.35rem 0.65rem",
+                                        },
+                                        [theme.breakpoints.up("md")]: {
+                                            fontSize: "1rem",
+                                            padding: "0.6875rem 1.5625rem",
+                                        },
+                                        [theme.breakpoints.up("lg")]: {
+                                            fontSize: "1.2rem",
+                                        },
+                                }}
+                                href={""}
+                            >
+                                {item.button_link_eng}
+                            </Button>)
+                        }
+                        </div>
                     </Box>
                 </Box>
             </Box>
+                    </div>
+                ))}
+            </div>
+        </div>
         </Box>
     );
 }
 
 export default Hero;
+
+

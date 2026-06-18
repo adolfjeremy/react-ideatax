@@ -1,6 +1,6 @@
 import { Box, Typography, useMediaQuery, Button } from "@mui/material";
 import circle from "@/assets/images/circle.png";
-import circleOrange from "@/assets/images/circle-orange.png";
+import circleOrange from "@/assets/images/circle-yellow.png";
 
 function Role({ theme, locale, checkLang }) {
     const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
@@ -27,7 +27,7 @@ function Role({ theme, locale, checkLang }) {
                                 <Typography
                                     as="span"
                                     sx={{
-                                        color: theme.palette.custom.orange,
+                                        color: theme.palette.custom.yellow,
                                         fontSize: "2rem",
                                         letterSpacing: "0.009em",
                                         fontWeight: "600",
@@ -58,7 +58,7 @@ function Role({ theme, locale, checkLang }) {
                                 <Typography
                                     as="span"
                                     sx={{
-                                        color: theme.palette.custom.orange,
+                                        color: theme.palette.custom.yellow,
                                         fontSize: "2rem",
                                         letterSpacing: "0.009em",
                                         fontWeight: "600",
@@ -111,7 +111,7 @@ function Role({ theme, locale, checkLang }) {
                                         width: "40px",
                                         borderRadius: "50%",
                                         backgroundColor:
-                                            theme.palette.custom.orange,
+                                            theme.palette.custom.yellow,
                                         position: "relative",
                                         zIndex: 10,
                                     }}
@@ -433,7 +433,7 @@ function Role({ theme, locale, checkLang }) {
                                     svg: {
                                         width: "48px",
                                         height: "48px",
-                                        color: theme.palette.custom.orange,
+                                        color: theme.palette.custom.yellow,
                                     },
                                 }}
                             >
@@ -512,7 +512,7 @@ function Role({ theme, locale, checkLang }) {
                             sx={{
                                 color: theme.palette.custom.white,
                                 fontWeight: "500",
-                                backgroundColor: theme.palette.custom.orange,
+                                backgroundColor: theme.palette.custom.yellow,
                                 padding: "15px",
                                 fontSize: "1.2rem",
                                 textTransform: "none",

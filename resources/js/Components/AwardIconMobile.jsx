@@ -18,20 +18,35 @@ import aw11 from "@/assets/images/award/aw-2025-6.jpg";
 
 function AwardIconMobile() {
     const settings = {
+        centerMode: true,
         dots: false,
         infinite: true,
-        slidesToShow: 3,
+        slidesToShow: 5,
+        centerPadding: "60px",
         slidesToScroll: 1,
-        autoplay: true,
+        autoplay: false,
         speed: 1000,
         autoplaySpeed: 3000,
         cssEase: "linear",
-        variableWidth: true,
         arrows: false,
         swipeToSlide: true,
     };
     return (
-        <div className="slider-container award_icon_mobile">
+        <Box
+            sx={{
+                "& .slick-slide": {
+                transition: "transform 0.3s ease",
+                },
+                "& .slick-slide img": {
+                transition: "transform 0.3s ease",
+                transform: "scale(0.85)", // default lebih kecil
+                },
+                "& .slick-center img": {
+                width: "125px", // center lebih besar
+                },
+            }}
+            className="slider-container award_icon_mobile"
+            >
             <Slider {...settings}>
                 <Box
                     sx={{
@@ -39,7 +54,6 @@ function AwardIconMobile() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        margin: "0 15px",
                         img: {
                             width: "120px",
                         },
@@ -53,7 +67,6 @@ function AwardIconMobile() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        margin: "0 15px",
                         img: {
                             width: "100px",
                         },
@@ -67,7 +80,6 @@ function AwardIconMobile() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        margin: "0 15px",
                         img: {
                             width: "100px",
                         },
@@ -81,7 +93,6 @@ function AwardIconMobile() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        margin: "0 15px",
                         img: {
                             width: "100px",
                         },
@@ -95,7 +106,6 @@ function AwardIconMobile() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        margin: "0 15px",
                         img: {
                             width: "100px",
                         },
@@ -109,7 +119,6 @@ function AwardIconMobile() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        margin: "0 15px",
                         img: {
                             width: "100px",
                         },
@@ -124,7 +133,6 @@ function AwardIconMobile() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        margin: "0 15px",
                         img: {
                             width: "100px",
                         },
@@ -139,7 +147,6 @@ function AwardIconMobile() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        margin: "0 15px",
                         img: {
                             width: "100px",
                         },
@@ -153,7 +160,6 @@ function AwardIconMobile() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        margin: "0 15px",
                         img: {
                             width: "100px",
                         },
@@ -167,7 +173,6 @@ function AwardIconMobile() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        margin: "0 15px",
                         img: {
                             width: "100px",
                         },
@@ -178,10 +183,9 @@ function AwardIconMobile() {
                 <Box
                     sx={{
                         width: "100px",
-                        display: "flex",
+                        display: "flex !important",
                         alignItems: "center",
                         justifyContent: "center",
-                        margin: "0 15px",
                         img: {
                             width: "100px",
                         },
@@ -204,7 +208,7 @@ function AwardIconMobile() {
                     <img src={aw11} alt="award" />
                 </Box>
             </Slider>
-        </div>
+        </Box>
     );
 }
 

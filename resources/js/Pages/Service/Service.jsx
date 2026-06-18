@@ -63,7 +63,7 @@ function Service() {
                                     fontSize: "3.4375rem",
                                     lineHeight: "1.19642857em",
                                     letterSpacing: "0.009em",
-                                    color: theme.palette.custom.orange,
+                                    color: theme.palette.custom.yellow,
                                     marginBottom: "10px",
                                     textAlign: "start",
                                     [theme.breakpoints.down("sm")]: {

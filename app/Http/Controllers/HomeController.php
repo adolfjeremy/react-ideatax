@@ -6,6 +6,7 @@ use App\Models\Page;
 use App\Models\Stat;
 use Inertia\Inertia;
 use App\Models\Article;
+use App\Models\TaxUpdate;
 use App\Models\Service;
 use App\Models\TaxEvent;
 use App\Models\subscribe;
@@ -14,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Models\CompanyProfile;
 use App\Models\ComproDownloader;
 use App\Models\ServiceCategory;
+use App\Models\Department;
 use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
@@ -27,7 +29,7 @@ class HomeController extends Controller
 
         // Cache heroes, stats, and categorized services
         $heroes = Cache::remember('home_heroes', 3600, function () {
-            return HeroSlider::select('id', 'hero')->get();
+            return HeroSlider::all();
         });
 
         $stats = Cache::remember('home_stats', 3600, function () {
@@ -38,13 +40,62 @@ class HomeController extends Controller
             return ServiceCategory::with('services')->get();
         });
 
-        // Cache articles and events
-        $articles = Cache::remember('home_articles', 60, function () {
-            return Article::latest()
-                ->take(4)
-                ->select('id', 'title', 'title_eng', 'title_jpn', 'slug', 'slug_eng', 'slug_jpn', 'thumbnail', 'created_at')
-                ->get();
+        $locale = app()->getLocale();
+
+        $titleColumn = match ($locale) {
+            'id' => 'title',
+            'en' => 'title_eng',
+            'jp' => 'title_jpn',
+            default => 'title_eng',
+        };
+
+        $bodyColumn = match ($locale) {
+            'id' => 'body',
+            'en' => 'body_eng',
+            'jp' => 'body_jpn',
+            default => 'body_eng',
+        };
+
+        $updates = TaxUpdate::query()
+        ->select(
+            'id',
+            "$titleColumn as title",
+            "$bodyColumn as body",
+            'slug',
+            'slug_eng',
+            'slug_jpn',
+            'updated_at',
+            'thumbnail'
+        )
+        ->latest()
+        ->take(3)
+        ->get()
+        ->map(function ($article) {
+            $article->body = Article::truncateRichText($article->body);
+            return $article;
         });
+
+        // Cache articles and events
+        $articles = Article::query()
+        ->select(
+            'id',
+            "$titleColumn as title",
+            "$bodyColumn as body",
+            'slug',
+            'slug_eng',
+            'slug_jpn',
+            'updated_at',
+            'thumbnail'
+        )
+        ->latest()
+        ->take(3)
+        ->get()
+        ->map(function ($article) {
+            $article->body = Article::truncateRichText($article->body);
+            return $article;
+        });
+
+        $departments = Department::orderBy('order', 'asc')->get();
 
         $events = Cache::remember('home_events', 60, function () {
             return TaxEvent::latest()
@@ -59,7 +110,9 @@ class HomeController extends Controller
             "stats" => $stats,
             "catogorizedservices" => $catogorizedservices,
             "articles" => $articles,
+            "updates" => $updates,
             "events" => $events,
+            "departments" => $departments,
             "page" => $page
         ]);
     }

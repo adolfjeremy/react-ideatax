@@ -303,7 +303,7 @@ function Why({ checkLang, locale, theme }) {
                                     color: theme.palette.custom.white,
                                     fontWeight: "500",
                                     backgroundColor:
-                                        theme.palette.custom.orange,
+                                        theme.palette.custom.yellow,
                                     padding: "15px",
                                     fontSize: "1.2rem",
                                     textTransform: "none",

@@ -1,0 +1,27 @@
+
+
+.embla_award {
+  overflow: hidden;
+}
+.embla__container_award {
+  display: flex;
+  gap: 16px
+}
+.embla__slide_award {
+  flex: 0 0 calc(33.33% - 16px);
+  min-width: 0; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s linear;
+
+  @media (min-width: 768px) {
+  flex: 0 0 calc(20% - 16px);
+  }
+}
+
+
+.embla__slide_award img {
+  width: 80%;
+  pointer-events: none;
+}

@@ -9,10 +9,15 @@ import {
     Typography,
     Box,
     TextField,
+    Tabs,
+    Tab
 } from "@mui/material";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { SpinnerContext } from "@/Context/SpinnerContext";
 import { AlertContext } from "@/Context/AlertContext";
+import a11yProps from "@/Components/a11yProps";
+import CustomTabPanel from "@/Components/CustomTabPanel";
+
 
 function ActionModalButton({ param, deleteRoute }) {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -28,8 +33,20 @@ function ActionModalButton({ param, deleteRoute }) {
         name_eng: param.row.name_eng || "",
         name_jpn: param.row.name_jpn || "",
         name_ch: param.row.name_ch || "",
+        description: param.row.description || "",
+        description_eng: param.row.description_eng || "",
+        description_jpn: param.row.description_jpn || "",
+        description_ch: param.row.description_ch || "",
         order: param.row.order || "",
+        oldImage: param.row.image
     });
+
+    console.log(data)
+
+    const [value, setValue] = useState(0);
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
 
     const handleMenuClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -60,7 +77,9 @@ function ActionModalButton({ param, deleteRoute }) {
                 toggleSpinner(false);
                 console.log(errors);
             },
-        });
+        },
+        { forceFormData: true }
+    );
     };
 
     const handleDelete = () => {
@@ -74,7 +93,8 @@ function ActionModalButton({ param, deleteRoute }) {
                 toggleSpinner(false);
                 toggleAlert(true);
             },
-        });
+        },
+    );
     };
 
     return (
@@ -101,7 +121,7 @@ function ActionModalButton({ param, deleteRoute }) {
                         top: "50%",
                         left: "50%",
                         transform: "translate(-50%, -50%)",
-                        width: 400,
+                        width: 500,
                         bgcolor: "background.paper",
                         border: "2px solid #000",
                         boxShadow: 24,
@@ -116,39 +136,96 @@ function ActionModalButton({ param, deleteRoute }) {
                         onSubmit={onHandleSubmit}
                         className="d-flex flex-column gap-3 mt-4"
                     >
+                        <Box sx={{ borderBottom: 1, width:"100%", borderColor: "divider" }}>
+                        <Tabs
+                            value={value}
+                            onChange={handleChange}
+                            variant="fullWidth"
+                            textColor="inherit"
+                            aria-label="basic tabs example"
+                        >
+                            <Tab label="English" {...a11yProps(0)} />
+                            <Tab label="Indonesian" {...a11yProps(1)} />
+                            <Tab label="Japanese" {...a11yProps(2)} />
+                            <Tab label="Chinese" {...a11yProps(3)} />
+                        </Tabs>
+                        </Box>
+                        <CustomTabPanel value={value} index={0}>
+                            <TextField
+                                label="Name English"
+                                variant="outlined"
+                                value={data.name_eng}
+                                onChange={(e) => setData("name_eng", e.target.value)}
+                                fullWidth
+                                required
+                            />
+                            <TextField
+                                label="Description English"
+                                variant="outlined"
+                                value={data.description_eng}
+                                sx={{mt:2}}
+                                onChange={(e) => setData("description_eng", e.target.value)}
+                                fullWidth
+                                required
+                            />
+                        </CustomTabPanel>
+                        <CustomTabPanel value={value} index={1}>
+                            <TextField
+                                label="Name Indonesian"
+                                variant="outlined"
+                                value={data.name}
+                                onChange={(e) => setData("name", e.target.value)}
+                                fullWidth
+                            />
+                            <TextField
+                                label="Description Indonesian"
+                                variant="outlined"
+                                value={data.description}
+                                sx={{mt:2}}
+                                onChange={(e) => setData("description", e.target.value)}
+                                fullWidth
+                            />
+                        </CustomTabPanel>
+                        <CustomTabPanel value={value} index={2}>
+                            <TextField
+                                label="Name Japanese"
+                                variant="outlined"
+                                value={data.name_jpn}
+                                onChange={(e) => setData("name_jpn", e.target.value)}
+                                fullWidth
+                            />
+                            <TextField
+                                label="Description Japanese"
+                                variant="outlined"
+                                value={data.description_jpn}
+                                sx={{mt:2}}
+                                onChange={(e) => setData("description_jpn", e.target.value)}
+                                fullWidth
+                            />
+                        </CustomTabPanel>
+                        <CustomTabPanel value={value} index={3}>
+                            <TextField
+                                label="Name Chinese"
+                                variant="outlined"
+                                value={data.name_ch}
+                                onChange={(e) => setData("name_ch", e.target.value)}
+                                fullWidth
+                            />
+                            <TextField
+                                label="Description Chinese"
+                                variant="outlined"
+                                value={data.description_ch}
+                                sx={{mt:2}}
+                                onChange={(e) => setData("description_ch", e.target.value)}
+                                fullWidth
+                            />
+                        </CustomTabPanel>
                         <TextField
-                            label="Name (Default)"
+                            id="image"
                             variant="outlined"
-                            value={data.name}
-                            onChange={(e) => setData("name", e.target.value)}
-                            fullWidth
-                            required
-                        />
-                        <TextField
-                            label="Name (English)"
-                            variant="outlined"
-                            value={data.name_eng}
-                            onChange={(e) =>
-                                setData("name_eng", e.target.value)
-                            }
-                            fullWidth
-                            required
-                        />
-                        <TextField
-                            label="Name (Japanese)"
-                            variant="outlined"
-                            value={data.name_jpn}
-                            onChange={(e) => setData("name_jp", e.target.value)}
-                            fullWidth
-                            required
-                        />
-                        <TextField
-                            label="Name (Chinese)"
-                            variant="outlined"
-                            value={data.name_ch}
-                            onChange={(e) => setData("name_ch", e.target.value)}
-                            fullWidth
-                            required
+                            type="file"
+                            onChange={(e) => setData("image", e.target.files[0])}
+                            sx={{ width: "100%" }}
                         />
                         <TextField
                             id="order"

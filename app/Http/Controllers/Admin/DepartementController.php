@@ -31,6 +31,10 @@ class DepartementController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        if($request->file('image'))
+        {
+            $data['image'] = $request->file('image')->store('department');
+        }  
         Department::create($data);
         return redirect()->back()->with([
             'message' => "Department Saved successfully",
@@ -59,15 +63,18 @@ class DepartementController extends Controller
     public function update(Request $request, $id)
     {
         $item = Department::findOrFail($id);
-
-        $data = $request->validate([
-            'name' => 'required',
-            'name_eng' => 'required',
-            'name_jpn' => 'required',
-            'name_ch' => 'required',
-            'order' => 'required',
-        ]);
-
+        $data = $request->all();
+        dd($data);
+        
+        if($request->file('image'))
+        {
+            if($request->oldImage)
+            {
+                Storage::delete($request->oldImage);
+            }
+            $data['image'] = $request->file('image')->store('department');
+        }        
+        
         $item->update($data);
         return redirect()->back()->with([
             'message' => "Department updated successfully",

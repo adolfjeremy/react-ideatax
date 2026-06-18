@@ -93,7 +93,7 @@ function TeamDetail() {
                             fontSize: "2.1603rem",
                             letterSpacing: "0.009em",
                             lineHeight: "1.09375em",
-                            color: theme.palette.custom.orange,
+                            color: theme.palette.custom.yellow,
                             fontWeight: "400",
                             fontStyle: "italic",
                             marginTop: "15px",
@@ -141,7 +141,7 @@ function TeamDetail() {
                                 </Link>
                                 <Typography
                                     sx={{
-                                        color: theme.palette.custom.orange,
+                                        color: theme.palette.custom.yellow,
                                         fontSize: "1.5636rem",
                                         letterSpacing: "0.009em",
                                         lineHeight: "line-height",
@@ -176,7 +176,7 @@ function TeamDetail() {
                                     letterSpacing: "0.009em",
                                     textAlign: "justify",
                                     color: theme.palette.custom.lightBlue,
-                                    fontFamily: "OpenSauce",
+                                    fontFamily: "Lato sans-serif",
                                 },
                             }}
                             className="col-12"
@@ -216,7 +216,7 @@ function TeamDetail() {
                                     letterSpacing: "0.009em",
                                     textAlign: "justify",
                                     color: theme.palette.custom.lightBlue,
-                                    fontFamily: "OpenSauce",
+                                    fontFamily: "Lato sans-serif",
                                 },
                             }}
                             className="col-12"

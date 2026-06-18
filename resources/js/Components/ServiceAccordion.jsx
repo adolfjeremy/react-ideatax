@@ -24,7 +24,7 @@ function ServiceAccordion({ categorized, locale }) {
     return (
         <Box
             sx={{
-                border: `2px solid ${theme.palette.custom.orange}`,
+                border: `2px solid ${theme.palette.custom.yellow}`,
                 padding: 1,
                 borderRadius: 2,
                 backgroundColor: "white",
@@ -48,7 +48,7 @@ function ServiceAccordion({ categorized, locale }) {
                         sx={{
                             "&:hover": {
                                 span: {
-                                    color: theme.palette.custom.orange,
+                                    color: theme.palette.custom.yellow,
                                 },
                             },
                         }}
@@ -61,7 +61,7 @@ function ServiceAccordion({ categorized, locale }) {
                                 transition: "color 200ms",
                                 color:
                                     expanded === `panel${idx + 1}`
-                                        ? theme.palette.custom.orange
+                                        ? theme.palette.custom.yellow
                                         : theme.palette.custom.black,
                             }}
                         >

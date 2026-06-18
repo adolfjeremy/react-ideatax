@@ -16,7 +16,7 @@ function Why({ theme, locale, checkLang }) {
                                 <Typography
                                     fontSize="2rem"
                                     variant="span"
-                                    color={theme.palette.custom.orange}
+                                    color={theme.palette.custom.yellow}
                                 >
                                     Ideatax
                                 </Typography>{" "}

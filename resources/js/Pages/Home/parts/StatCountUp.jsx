@@ -7,7 +7,7 @@ function StatCountUp({ stats, theme, locale, checkLang, isMobile }) {
             {stats.map((stat) => (
                 <Box
                     key={stat.id}
-                    className="col-4 col-md-3"
+                    className="col-6 col-md-3"
                     sx={{
                         display: "flex",
                         alignItems: "center",
@@ -19,14 +19,14 @@ function StatCountUp({ stats, theme, locale, checkLang, isMobile }) {
 
                     <Typography
                         sx={{
-                            color: theme.palette.custom.orange,
-                            fontSize: "1.25rem",
+                            color: theme.palette.custom.black,
+                            fontSize: "rem",
                             lineHeight: "1.390625em",
                             textAlign: "center",
-                            fontWeight: "500",
+                            fontWeight: "300",
                             textTransform: "capitalize",
                             [theme.breakpoints.down("md")]: {
-                                fontSize: "1rem",
+                                fontSize: "0.625rem",
                             },
                         }}
                         className="stat_head m-0"

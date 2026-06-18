@@ -22,7 +22,28 @@ class HeroRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'hero' => 'image|required'
+            'hero' => [
+                'nullable',
+                'file',
+                'mimes:jpg,jpeg,png,webp',
+                'max:5120'
+            ],
+            'title' => 'nullable|string',
+            'title_eng' => 'nullable|string',
+            'title_jpn' => 'nullable|string',
+            'title_ch' => 'nullable|string',
+            'subtitle' => 'nullable|string',
+            'subtitle_eng' => 'nullable|string',
+            'subtitle_jpn' => 'nullable|string',
+            'subtitle_ch' => 'nullable|string',
+            'button_text' => 'nullable|string',
+            'button_text_eng' => 'nullable|string',
+            'button_text_jpn' => 'nullable|string',
+            'button_text_ch' => 'nullable|string',
+            'button_link' => 'nullable|string',
+            'button_link_eng' => 'nullable|string',
+            'button_link_jpn' => 'nullable|string',
+            'button_link_ch' => 'nullable|string',
         ];
     }
 }

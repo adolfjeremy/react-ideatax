@@ -64,7 +64,7 @@ function UpdateDetailHero({ item, formatDate, checkLang, locale, theme }) {
                             <Link
                                 sx={{
                                     fontSize: "1.9751rem",
-                                    color: theme.palette.custom.orange,
+                                    color: theme.palette.custom.yellow,
                                     textDecoration: "none",
                                     lineHeight: "1.1875em",
                                     letterSpacing: "-0.054em",

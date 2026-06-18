@@ -26,7 +26,7 @@ function RoleHeading() {
                         <Typography
                             as="span"
                             sx={{
-                                color: theme.palette.custom.orange,
+                                color: theme.palette.custom.yellow,
                                 fontSize: "2rem",
                                 letterSpacing: "0.009em",
                                 fontWeight: "600",
@@ -58,7 +58,7 @@ function RoleHeading() {
                         <Typography
                             as="span"
                             sx={{
-                                color: theme.palette.custom.orange,
+                                color: theme.palette.custom.yellow,
                                 fontSize: "2rem",
                                 letterSpacing: "0.009em",
                                 fontWeight: "600",
@@ -89,7 +89,7 @@ function RoleHeading() {
                         <Typography
                             as="span"
                             sx={{
-                                color: theme.palette.custom.orange,
+                                color: theme.palette.custom.yellow,
                                 fontSize: "2rem",
                                 letterSpacing: "0.009em",
                                 fontWeight: "600",

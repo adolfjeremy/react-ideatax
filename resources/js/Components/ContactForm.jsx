@@ -58,7 +58,7 @@ function ContactForm() {
                 <Typography
                     sx={{
                         fontSize: "1.6rem",
-                        color: theme.palette.custom.orange,
+                        color: theme.palette.custom.yellow,
                     }}
                 >
                     {t("contactSubHead")}
@@ -234,7 +234,7 @@ function ContactForm() {
                 </div>
                 <Button
                     sx={{
-                        backgroundColor: theme.palette.custom.orange,
+                        backgroundColor: theme.palette.custom.yellow,
                         textTransform: "none",
                     }}
                     variant="contained"

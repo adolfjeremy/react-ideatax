@@ -80,7 +80,7 @@ function Hero({ locale, checkLang, theme }) {
                     sx={{
                         color: theme.palette.custom.white,
                         fontWeight: "500",
-                        backgroundColor: theme.palette.custom.orange,
+                        backgroundColor: theme.palette.custom.yellow,
                         padding: "15px",
                         fontSize: "1.2rem",
                         textTransform: "none",

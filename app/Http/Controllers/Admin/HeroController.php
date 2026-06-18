@@ -41,6 +41,7 @@ class HeroController extends Controller
         {
             $data['hero'] = $request->file('hero')->store('hero');
         }
+        
         HeroSlider::create($data);
         return redirect()->back()->with([
             'message' => "Hero Saved successfully",
@@ -74,6 +75,7 @@ class HeroController extends Controller
 
         if($request->file('hero'))
         {
+            // dd($request->file("hero"));
             if($request->oldImage)
             {
                 Storage::delete($request->oldImage);

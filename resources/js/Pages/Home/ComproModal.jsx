@@ -68,7 +68,7 @@ function ComproModal({ buttonText }) {
                 variant="contained"
                 size="large"
                 sx={{
-                    backgroundColor: theme.palette.custom.orange,
+                    backgroundColor: theme.palette.custom.yellow,
                     textTransform: "none",
                     [theme.breakpoints.down("md")]: {
                         fontSize: "0.8rem",
