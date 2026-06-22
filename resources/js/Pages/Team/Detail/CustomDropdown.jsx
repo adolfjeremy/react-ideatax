@@ -20,28 +20,12 @@ const CustomInput = styled(InputBase)(({ theme }) => ({
         display: "inline-flex",
         alignItems: "center",
         lineHeight: "normal",
-        fontSize: 24,
-        padding: "18px 60px 18px 28px",
-        [theme.breakpoints.down("xl")]: {
-            fontSize: 22,
-            padding: "16px 52px 16px 24px",
-        },
-        [theme.breakpoints.down("lg")]: {
-            fontSize: 18,
-            padding: "14px 44px 14px 20px",
-        },
-        [theme.breakpoints.down("md")]: {
-            fontSize: 15,
-            padding: "11px 36px 11px 14px",
-        },
-        [theme.breakpoints.down("sm")]: {
-            fontSize: 13,
-            padding: "8px 28px 8px 10px",
-        },
+        fontSize: 16,
+        padding: "8px 28px 8px 10px",
     },
 }));
 
-export default function CustomDropdown({ departmentsList, value, onChange, menuDropdown="Practice Area" }) {
+export default function CustomDropdown({ list, value, onChange, menuDropdown="Practice Area" }) {
     const theme = useTheme();
     const { locale } = usePage().props;
 
@@ -55,14 +39,7 @@ export default function CustomDropdown({ departmentsList, value, onChange, menuD
                 m: 1,
                 display: "flex",
                 alignItems: "start",
-
-                minWidth: 340,
                 fontSize: 26,
-
-                [theme.breakpoints.down("xl")]: { minWidth: 300 },
-                [theme.breakpoints.down("lg")]: { minWidth: 250 },
-                [theme.breakpoints.down("md")]: { minWidth: 190 },
-                [theme.breakpoints.down("sm")]: { minWidth: 150 },
             }}
         >
             <Select
@@ -173,15 +150,9 @@ export default function CustomDropdown({ departmentsList, value, onChange, menuD
                     {menuDropdown}
                 </MenuItem>
 
-                {departmentsList?.map((item, index) => (
+                {list?.map((item, index) => (
                     <MenuItem key={index} value={item.id}>
-                        {checkLang(
-                            locale,
-                            item.name_eng,
-                            item.name,
-                            item.name_jpn,
-                            item.name_ch,
-                        )}
+                        {item.name}
                     </MenuItem>
                 ))}
             </Select>

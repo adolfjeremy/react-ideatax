@@ -15,13 +15,20 @@ class TeamController extends Controller
     public function index(Request $request)
     {
         // 1. Ambil data statis dengan efisien
+        $locale = app()->getLocale();
         $page = Page::findOrFail(2);
+        $nameColumn = match ($locale) {
+            'id' => 'name',
+            'en' => 'name_eng',
+            'jp' => 'name_jpn',
+            default => 'name_eng',
+        };
 
         // 1. Ambil data dari DB dan urutkan berdasarkan order departemen
-        $departments = Department::orderBy('order', 'asc')
+        $departments = Department::orderBy('order', 'asc')->select("$nameColumn as name", "id")
             ->get();
 
-        $positions = Position::orderBy('order', 'asc')->get();    // Me-reset index array agar urut dari 0, 1, 2, dst (penting untuk JSON response)
+        $positions = Position::orderBy('order', 'asc')->select("$nameColumn as name", "id")->get();    // Me-reset index array agar urut dari 0, 1, 2, dst (penting untuk JSON response)
 
         $query = Team::with(['department', 'position'])->orderBy('order', 'asc');
 

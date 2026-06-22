@@ -23,7 +23,6 @@ function Team() {
         teams,
         filters, // 👈 kirim dari backend
     } = usePage().props;
-
     // ✅ sync dari backend (biar tidak reset saat reload)
     const [selectedExpertise, setSelectedExpertise] = useState(
         filters?.department_id || "all"
@@ -199,12 +198,12 @@ function Team() {
                     <div className="row py-4">
                         <div className="col-12 d-flex align-items-center justify-content-center">
                             <CustomDropdown
-                                departmentsList={departments}
+                                list={departments}
                                 value={selectedExpertise}
                                 onChange={handleDepartmentChange}
                             />
                             <CustomDropdown
-                                departmentsList={positions}
+                                list={positions}
                                 value={selectedPosition}
                                 onChange={handlePositionChange}
                                 menuDropdown="Title"

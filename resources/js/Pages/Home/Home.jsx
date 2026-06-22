@@ -67,7 +67,6 @@ function Home() {
         events,
     } = usePage().props;
 
-    console.log(regulations);
     return (
         <Guest
             en={route("home")}

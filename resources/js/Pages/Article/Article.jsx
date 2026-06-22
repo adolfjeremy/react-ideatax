@@ -5,20 +5,60 @@ import {
     useTheme,
     TextField,
     MenuItem,
+    InputBase,
     Button,
+    InputAdornment,
+    IconButton,
+    FormControl,
+    InputLabel,
+    OutlinedInput
 } from "@mui/material";
 import { usePage, router } from "@inertiajs/react";
 import { IoSearch } from "react-icons/io5";
 import Guest from "@/Layout/Guest";
+import CustomDropdown from "../Team/Detail/CustomDropdown";
 import LatestCarousel from "./parts/LatestCarousel";
+import ArticleHeroSlider from "./parts/ArticleHeroSlider";
 import ArticleLists from "./parts/ArticleLists";
 import checkLang from "@/utils/checkLang";
 import ComplexPaginaton from "@/Components/ComplexPaginaton";
 import { useTranslation } from "react-i18next";
 import { SpinnerContext } from "@/Context/SpinnerContext";
+import { styled } from "@mui/material/styles";
+import UpdateList from "./parts/UpdateList";
+
+const CustomInput = styled(InputBase)(({ theme }) => ({
+    "& .MuiInputBase-input": {
+        position: "relative",
+        border: "1px solid #191919",
+        fontFamily: "sans-serif",
+        color: "#191919",
+        fontWeight: 500,
+        display: "inline-flex",
+        alignItems: "center",
+        lineHeight: "normal",
+        borderRadius:"4px",
+        fontSize: 16,
+        padding: "8px 28px 8px 10px",
+        boxShadow: "none !important",
+        "&.Mui-focused .MuiInputBase-input": {
+        border: "none !important",
+        outline: "none",
+        },
+
+        "&:hover .MuiInputBase-input": {
+            border: "1px solid #191919",
+        },
+
+        "& .MuiInputBase-input:focus": {
+            outline: "none",
+            border: "1px solid #191919",
+        },
+    },
+}));
 
 function Article() {
-    const { locale, page, latest, articles, categories, filters } =
+    const { locale, page, latest, articles, categories, filters, updates } =
         usePage().props;
     const theme = useTheme();
     const { t } = useTranslation();
@@ -26,6 +66,19 @@ function Article() {
 
     const [search, setSearch] = useState(filters.search || "");
     const [categoryId, setCategoryId] = useState(filters.categoryId || "");
+
+    const [publicationType, setPublicationType] = useState(filters.publicationType || "all");
+    const publicationsList = [
+        {
+            name:"Article",
+            id: "Article",
+        },
+        {
+            name:"Tax Update",
+            id: "TaxUpdate",
+        }
+    ]
+
 
     const fetchArticles = (newFilters = {}) => {
         router.get(
@@ -89,31 +142,80 @@ function Article() {
                 route("articles.ch")
             )}
         >
-            <Box
-                component="section"
-                sx={{
-                    position: "relative",
-                    [theme.breakpoints.up("md")]: {
-                        maxHeight: "100vh",
-                        overflow: "hidden",
-                    },
-                    [theme.breakpoints.down("md")]: {
-                        paddingTop: "100px",
-                    },
-                }}
-            >
-                <LatestCarousel data={latest} locale={locale} theme={theme} />
-            </Box>
-            <Box className="py-3">
+            <ArticleHeroSlider 
+                datas={latest}
+                t={t}
+                theme={theme}
+                locale={locale}
+                checkLang={checkLang}
+            />
+            
+            <Box sx={{
+                        backgroundColor: theme.palette.custom.gray,
+                        padding: "10px",
+                    }}  className="py-3">
                 <div className="container">
                     <div className="row mt-3">
+                        <div className="col-12 d-flex justify-content-center align-items-center gap-3">
+                            <CustomDropdown
+                                list={publicationsList}
+                                value={publicationType}
+                                onChange={setPublicationType}
+                                menuDropdown="Publication Type"
+                            />
+                            <form
+                                onSubmit={onHandleSearch}
+                                className="d-flex align-items-center justify-content-center"
+                            >
+                                <CustomInput sx={{position: "relative", height: "100%", paddingRight: "10px"}} placeholder="search" value={search} onChange={(e) => setSearch(e.target.value)}
+                                    endAdornment={
+                                        <InputAdornment position="end" sx={{
+                                            position: "absolute",
+                                            right: "10px",
+                                            top: "50%",
+                                            transform: "translateY(-50%)",
+                                        }}>
+                                            <IoSearch size={30} color="#191919"/>
+                                        </InputAdornment>}
+                                />
+                            </form>
+                        </div>
+                    </div>
+                   {
+                    filters?.search && (
+                         <div className="row">
+                            <div className="col-12 mb-4">
+                                <Typography
+                                    sx={{
+                                        color: theme.palette.custom.black,
+                                        fontSize: "1.256rem",
+                                        fontWeight: 300,
+                                        [theme.breakpoints.down("sm")]: {
+                                            fontSize: "1.6rem",
+                                        },
+                                        lineHeight: "1.17857248em",
+                                        letterSpacing: "0.009em",
+                                    }}
+                                    variant="h2"
+                                >
+                                    {checkLang(
+                                        locale,
+                                        `Search results for "${filters?.search}"`,
+                                        `Hasil pencarian untuk "${filters?.search}"`
+                                    )}
+                                </Typography>
+                            </div>
+                        </div>
+                    )
+                   }
+                   {(publicationType == "Article" || publicationType == "all") && (
+                    <div className="row">
                         <div className="col-12 col-md-6">
                             <Typography
                                 sx={{
-                                    color: theme.palette.custom.yellow,
-                                    fontSize: search
-                                        ? "1.625rem"
-                                        : "2.30375rem",
+                                    color: theme.palette.custom.black,
+                                    fontSize: "3rem",
+                                        fontWeight: 700,
                                     [theme.breakpoints.down("sm")]: {
                                         fontSize: "1.6rem",
                                     },
@@ -122,98 +224,107 @@ function Article() {
                                 }}
                                 variant="h2"
                             >
-                                {search
-                                    ? checkLang(
-                                          locale,
-                                          `Search results for "${search}"`,
-                                          `Hasil pencarian untuk "${search}"`
-                                      )
-                                    : t("latestArticle")}
+                                {t("articleHead")}
                             </Typography>
                         </div>
-                        <div className="col-12 col-md-6 d-flex justify-content-end align-items-flex-start gap-3">
-                            <TextField
-                                id="outlined-select-currency"
-                                select
-                                label="Category"
-                                size="small"
-                                helperText="Please select category"
-                                onChange={onHandleCategoryChange}
-                                defaultValue={categoryId}
-                                value={categoryId}
-                            >
-                                <MenuItem
-                                    sx={{ color: theme.palette.custom.white }}
-                                    key="reset"
-                                    value=""
-                                >
-                                    Category
-                                </MenuItem>
-                                {categories.map((option) => (
-                                    <MenuItem
-                                        sx={{
-                                            color: theme.palette.custom.white,
-                                        }}
-                                        key={option.id}
-                                        value={option.id}
-                                    >
-                                        {option.title}
-                                    </MenuItem>
-                                ))}
-                            </TextField>
-                            <form
-                                onSubmit={onHandleSearch}
-                                className="d-flex align-items-start justify-content-center"
-                            >
-                                <TextField
-                                    id="outlined-basic"
-                                    label="Search"
-                                    variant="outlined"
-                                    size="small"
-                                    onChange={(e) => setSearch(e.target.value)}
-                                    value={search}
+                    </div>
+                   )}
+                    
+                    {
+                        (publicationType == "Article" || publicationType == "all") && (
+                            <div className="row">
+                                <ArticleLists
+                                    articles={articles}
+                                    locale={locale}
+                                    theme={theme}
                                 />
-                                <Button
-                                    variant="contained"
-                                    type="submit"
-                                    sx={{
-                                        padding: "8.5px 14px",
-                                        svg: { fontSize: "1.35rem" },
-                                    }}
-                                >
-                                    <IoSearch />
-                                </Button>
-                            </form>
+                            </div>
+                        )
+                            
+                    }
+                     {(publicationType == "Article" || publicationType == "all") && (
+                        <div className="row my-4">
+                            <ComplexPaginaton
+                                currentPage={articles.current_page}
+                                lastPage={articles.last_page}
+                                onPageChange={(page) => {
+                                    router.get(
+                                        checkLang(
+                                            locale,
+                                            route("articles"),
+                                            route("articles.id"),
+                                            route("articles.jp"),
+                                            route("articles.ch")
+                                        ),
+                                        { page },
+                                        {
+                                            preserveState: true,
+                                        }
+                                    );
+                                }}
+                            />
                         </div>
-                    </div>
-                    <div className="row">
-                        <ArticleLists
-                            articles={articles}
-                            locale={locale}
-                            theme={theme}
-                        />
-                    </div>
-                    <div className="row mt-5">
-                        <ComplexPaginaton
-                            currentPage={articles.current_page}
-                            lastPage={articles.last_page}
-                            onPageChange={(page) => {
-                                router.get(
-                                    checkLang(
-                                        locale,
-                                        route("articles"),
-                                        route("articles.id"),
-                                        route("articles.jp"),
-                                        route("articles.ch")
-                                    ),
-                                    { page },
-                                    {
-                                        preserveState: true,
-                                    }
-                                );
-                            }}
-                        />
-                    </div>
+                   )}
+                    {
+                        (publicationType == "TaxUpdate" || publicationType == "all") && (
+                            <div className="row mt-4">
+                                <div className="col-12 col-md-6">
+                                    <Typography
+                                        sx={{
+                                            color: theme.palette.custom.black,
+                                            fontSize: "3rem",
+                                                fontWeight: 700,
+                                            [theme.breakpoints.down("sm")]: {
+                                                fontSize: "1.6rem",
+                                            },
+                                            lineHeight: "1.17857248em",
+                                            letterSpacing: "0.009em",
+                                        }}
+                                        variant="h2"
+                                    >
+                                        {t("updates")}
+                                    </Typography>
+                                </div>
+                            </div>
+                        )
+                    }
+                    
+                    {
+                        (publicationType == "TaxUpdate" || publicationType == "all") && (
+                            <div className="row mt-4">
+                                <UpdateList
+                                    updates={updates}
+                                    locale={locale}
+                                    theme={theme}
+                                />
+                            </div>
+                        )
+                    }
+                    {
+                        (publicationType == "TaxUpdate" || publicationType == "all") && (
+                            <div className="row my-5">
+                                <ComplexPaginaton
+                                    currentPage={updates.current_page}
+                                    lastPage={updates.last_page}
+                                    onPageChange={(page) => {
+                                        router.get(
+                                            checkLang(
+                                                locale,
+                                                route("articles"),
+                                                route("articles.id"),
+                                                route("articles.jp"),
+                                                route("articles.ch")
+                                            ),
+                                            { page },
+                                            {
+                                                preserveState: true,
+                                            }
+                                        );
+                                    }}
+                                />
+                            </div>
+                        )
+                    }
                 </div>
             </Box>
         </Guest>

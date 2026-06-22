@@ -2,7 +2,6 @@ import { Box, Typography, Link } from "@mui/material";
 import renderTitle from "../../../../utils/renderTitle";
 
 function DetailHero({ item, formatDate, checkLang, locale, theme }) {
-    console.log(item.title)
     return (
         <Box
             component="section"

@@ -88,8 +88,6 @@ function TeamCreate() {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
-    console.log(awards);
     return (
         <AuthLayout sectionHeading="Create Team">
             <div className="container">

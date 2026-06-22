@@ -4,7 +4,6 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 
 export default function AdvisoryHighlight({advisory, idx}) {
     const theme = useTheme();
-    console.log(advisory.highlight)
     return (
        <>
         {

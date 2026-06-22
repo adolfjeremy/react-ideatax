@@ -10,7 +10,6 @@ function TeamDetail() {
     const { locale, item } = usePage().props;
     const theme = useTheme();
     const { t } = useTranslation();
-    console.log(item);
     return (
         <Guest
             en={route("team-detail", item.slug)}

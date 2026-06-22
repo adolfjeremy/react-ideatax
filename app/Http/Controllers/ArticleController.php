@@ -7,6 +7,8 @@ use App\Models\Page;
 use Inertia\Inertia;
 use App\Models\Article;
 use App\Models\ArticleCategory;
+use App\Models\TaxUpdate;
+use App\Models\TaxUpdateCategory;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
@@ -37,23 +39,35 @@ class ArticleController extends Controller
     $page = Page::select('id', 'title')->findOrFail(5);
 
     // 🔹 Latest
-    $latest = Article::query()
+    $latestArticle = Article::query()
         ->select(
             'id',
             "$titleColumn as title",
-            "$bodyColumn as body",
             'slug',
             'slug_eng',
             'slug_jpn',
-            'photo'
+            'photo',
+            'article_categories_id'
         )
         ->latest()
-        ->take(5)
-        ->get()
-        ->map(function ($article) {
-            $article->body = Article::truncateRichText($article->body);
-            return $article;
-        });
+        ->take(3)
+        ->get();
+
+    $latestUpdate = TaxUpdate::query()
+        ->select(
+            'id',
+            "$titleColumn as title",
+            'slug',
+            'slug_eng',
+            'slug_jpn',
+            'photo',
+            'tax_update_categories_id'
+        )
+        ->latest()
+        ->take(3)
+        ->get();
+
+    $latest = $latestArticle->merge($latestUpdate);
 
     // 🔹 Articles
     $articles = Article::query()
@@ -70,6 +84,7 @@ class ArticleController extends Controller
             'slug',
             'slug_eng',
             'slug_jpn',
+            'created_at',
             'thumbnail'
         )
         ->latest()
@@ -81,17 +96,49 @@ class ArticleController extends Controller
         return $article;
     });
 
+    $updates = TaxUpdate::query()
+        ->when($search, function ($query) use ($search, $titleColumn) {
+            $query->where($titleColumn, 'like', '%' . $search . '%');
+        })
+        ->when($categoryId, function ($query) use ($categoryId) {
+            $query->where('article_categories_id', $categoryId);
+        })
+        ->select(
+            'id',
+            "$titleColumn as title",
+            "$bodyColumn as body",
+            'slug',
+            'slug_eng',
+            'slug_jpn',
+            'created_at',
+            'thumbnail'
+        )
+        ->latest()
+        ->paginate(9)
+        ->withQueryString();
+    $updates->through(function ($update) {
+        $update->body = Article::truncateRichText($update->body);
+        return $update;
+    });
+     
+
+    $titleCategory = 'title';
+
     // 🔹 Categories (cache optional)
-    $categories = cache()->remember('article_categories', 3600, function () {
-        return ArticleCategory::select('id', 'title')
+    $article_categories = ArticleCategory::select('id', "$titleCategory as name")
             ->orderBy('title')
             ->get();
-    });
+
+    $taxupdate_categories = TaxUpdateCategory::select('id', "$titleCategory as name")
+            ->orderBy('title')
+            ->get();
+    $categories = $article_categories->merge($taxupdate_categories);
 
     return Inertia::render('Article/Article', [
         "latest" => $latest,
         "categories" => $categories,
         "articles" => $articles,
+        "updates" => $updates,
         "page" => $page,
         "filters" => [
             "search" => $search,

@@ -3,10 +3,10 @@ import TruncateRichText from "@/Components/TruncateRichText";
 import checkLang from "@/utils/checkLang";
 import ArticleItem from "../../Home/parts/ArticleItem"
 
-function ArticleLists({ articles, locale, theme }) {
+function UpdateList({ updates, locale, theme }) {
     return (
         <>
-            {articles.data.map((item) => (
+            {updates.data.map((item) => (
                 <div className="col-12 mt-4">
                     <ArticleItem
                     key={item.id}
@@ -45,4 +45,4 @@ function ArticleLists({ articles, locale, theme }) {
     );
 }
 
-export default ArticleLists;
+export default UpdateList;

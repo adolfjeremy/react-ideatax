@@ -25,7 +25,6 @@ function TeamEdit() {
     const [value, setValue] = useState(0);
     const { toggleSpinner } = useContext(SpinnerContext);
     const { toggleAlert } = useContext(AlertContext);
-    console.log(departments);
     const { data, setData, post, processing, errors, reset } = useForm({
         name: item.name,
         position_id: item.position_id,

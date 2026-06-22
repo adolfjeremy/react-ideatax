@@ -74,7 +74,7 @@ export default function ArticleItem({image, title, description, date, route, idx
                     [theme.breakpoints.down("md")]: {
                         fontSize: "0.5rem",
                     },
-                }} href={route} variant="body2" component="p">
+                }} href={route} variant="body2" component="a">
                     Read Full {type}
                 </Link>
             </Box>
