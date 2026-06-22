@@ -48,7 +48,7 @@ function ArticleDetail() {
                 locale={locale}
                 checkLang={checkLang}
             />
-            <Box component="article">
+            <Box sx={{ px: 20 }} component="article">
                 <div className="container">
                     <div className="row px-md-5">
                         <Box

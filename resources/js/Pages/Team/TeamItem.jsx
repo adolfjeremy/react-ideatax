@@ -16,39 +16,37 @@ function TeamItem({ image, name, position, destination }) {
                 },
             }}
             href={destination}
-            className="col-4 p-0 position-relative"
+            className="col-3 col-md-2 p-0 position-relative"
         >
             <img src={image} alt={name} className="w-100" />
             <Box
                 sx={{
                     position: "absolute",
-                    top: { xs: "auto", sm: "14px", md: "20px" },
+                    top: { xs: "0", sm: "14px", md: "8px" },
                     bottom: { xs: "8px", sm: "auto" },
                     left: 0,
                     right: 0,
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                    justifyContent: "center",
+                    justifyContent: "start",
                     padding: "0 6px",
                 }}
             >
                 <Typography
                     sx={{
-                        fontSize: {
-                            xs: "0.75rem",
-                            sm: "1rem",
-                            md: "1.35rem",
-                            lg: "1.704rem",
-                        },
-                        fontWeight: "700",
-                        color: theme.palette.custom.yellow,
+                        fontSize: "1rem",
+                        fontWeight: 700,
+                        color: theme.palette.custom.black,
                         lineHeight: "1.1em",
                         padding: 0,
                         margin: 0,
                         letterSpacing: "0.009em",
                         textAlign: "center",
                         textTransform: "capitalize",
+                        [theme.breakpoints.down("md")]: {
+                            fontSize: "0.5625rem",
+                        },
                     }}
                 >
                     {name}
@@ -59,9 +57,10 @@ function TeamItem({ image, name, position, destination }) {
                             xs: "0.65rem",
                             sm: "0.85rem",
                             md: "1.2rem",
-                            lg: "1.704rem",
+                            lg: "1rem",
                         },
-                        color: theme.palette.custom.yellow,
+                        color: theme.palette.custom.black,
+                        fontWeight: 300,
                         lineHeight: "1.1em",
                         padding: 0,
                         margin: 0,

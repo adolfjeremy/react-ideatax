@@ -13,12 +13,10 @@ import { usePage } from "@inertiajs/react";
 const CustomInput = styled(InputBase)(({ theme }) => ({
     "& .MuiInputBase-input": {
         position: "relative",
-        backgroundColor: "#e3f2fd",
-        background: "linear-gradient(to right, #8dcfffff, #ffffff)",
-        border: "1px solid #ffffff",
+        border: "1px solid #191919",
         fontFamily: "sans-serif",
-        color: "#263238",
-        fontWeight: 600,
+        color: "#191919",
+        fontWeight: 500,
         display: "inline-flex",
         alignItems: "center",
         lineHeight: "normal",
@@ -40,13 +38,10 @@ const CustomInput = styled(InputBase)(({ theme }) => ({
             fontSize: 13,
             padding: "8px 28px 8px 10px",
         },
-        "&:focus": {
-            backgroundColor: "#e3f2fd",
-        },
     },
 }));
 
-export default function CustomDropdown({ departmentsList, value, onChange }) {
+export default function CustomDropdown({ departmentsList, value, onChange, menuDropdown="Practice Area" }) {
     const theme = useTheme();
     const { locale } = usePage().props;
 
@@ -135,13 +130,10 @@ export default function CustomDropdown({ departmentsList, value, onChange }) {
                                 paddingBottom: 0,
                             },
                             "& .MuiMenuItem-root": {
-                                color: "#37474f",
+                                color: "#191919",
                                 fontWeight: 500,
-                                background:
-                                    "linear-gradient(to right, #aeddffff, #ffffff)",
-                                borderBottom: "1px solid #ffffff",
                                 whiteSpace: "normal",
-
+                                border: `1px solid ${theme.palette.custom.black}`,
                                 padding: "22px 28px",
                                 fontSize: 20,
 
@@ -162,20 +154,13 @@ export default function CustomDropdown({ departmentsList, value, onChange }) {
                                     fontSize: 12,
                                 },
                                 "&:last-child": {
-                                    borderBottom: "none",
-                                },
-                                "&:hover": {
-                                    background: "#bbdefb !important",
+                                    // borderBottom: "none",
                                 },
                                 "&:focus": {
                                     background: "transparent",
                                 },
                                 "&.Mui-selected": {
-                                    background: "#bbdefb",
                                     fontWeight: 600,
-                                    "&:hover": {
-                                        background: "#bbdefb",
-                                    },
                                 },
                             },
                         },
@@ -183,13 +168,9 @@ export default function CustomDropdown({ departmentsList, value, onChange }) {
                 }}
             >
                 <MenuItem
-                    sx={{
-                        background:
-                            "linear-gradient(to right, #aeddffff, #ffffff)",
-                    }}
                     value="all"
                 >
-                    Practice Areas
+                    {menuDropdown}
                 </MenuItem>
 
                 {departmentsList?.map((item, index) => (

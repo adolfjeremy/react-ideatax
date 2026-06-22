@@ -13,6 +13,7 @@ function Pagination({ prev, next }) {
                 alignItems: "center",
                 justifyContent: "center",
                 gap: 1,
+                mt:7
             }}
         >
             <Button

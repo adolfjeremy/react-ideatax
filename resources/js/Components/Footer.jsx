@@ -39,7 +39,7 @@ function Footer() {
                             className="mt-1"
                             href="mailto:consultant@ideatax.id"
                         >
-                            Consultant@ideatax.id
+                            consultant@ideatax.id
                         </a>
                         <p className="m-0 mt-1">
                             <a target="_blank" href="tel:+622127883327">
@@ -68,7 +68,7 @@ function Footer() {
                                 alignItems: "center",
                                 a: {
                                     svg: {
-                                        color: theme.palette.custom.darkBlue,
+                                        color: theme.palette.custom.black,
                                         fontSize: "2.2rem",
                                     },
                                 },

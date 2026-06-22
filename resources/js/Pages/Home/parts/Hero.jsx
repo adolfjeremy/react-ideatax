@@ -25,108 +25,108 @@ function Hero({ heroes, t, theme, locale, checkLang }) {
                         />
                         </Box>
                         <Box
-                sx={{
-                    position: "absolute",
-                    inset: 0,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "start",
-                    padding: "0 6rem",
-                    zIndex: 100,
-                    [theme.breakpoints.down("md")]: {
-                        padding: "0 2rem",
-                    },
-                }}
-            >
-                <Box className="row">
-                    <Box
-                        className="col-12"
                         sx={{
+                            position: "absolute",
+                            inset: 0,
                             display: "flex",
-                            flexDirection: "column",
-                            alignItems: "start",
-                            gap: 2,
+                            alignItems: "center",
+                            justifyContent: "start",
+                            padding: "0 6rem",
+                            zIndex: 100,
+                            [theme.breakpoints.down("md")]: {
+                                padding: "0 2rem",
+                            },
                         }}
                     >
-                        <Typography
-                            sx={{
-                                color: theme.palette.custom.white,
-                                fontWeight: 300,
-                                transition: 'color 0.3s ease',
-                                "&:hover": {
-                                    color: theme.palette.custom.yellow
-                                },
-                                [theme.breakpoints.down("md")]: {
-                                    fontSize: "1.5rem",
-                                    mt: 7,
-                                },
-                                [theme.breakpoints.up("md")]: {
-                                    fontSize: "2.5rem",
-                                },
-                                [theme.breakpoints.up("lg")]: {
-                                    fontSize: "4rem",
-                                },
-                                lineHeight: "100%",
-                                letterSpacing: "2px",
-                            }}
-                            variant="h1"
-                        >
-                            {item.title_eng} <br />
-                            <Typography
+                        <Box className="row">
+                            <Box
+                                className="col-12"
                                 sx={{
-                                    fontWeight: 700,
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "start",
+                                    gap: 2,
                                 }}
-                                variant="span"
                             >
-                                {item.subtitle_eng}
-                            </Typography>
-                        </Typography>
-                        <div className="flex items-center justify-start gap-3 mt-2 mt-lg-3">
-                            {item.button_text_eng && <OrangeButton
-                            href={checkLang(
-                                locale,
-                                route("contact"),
-                                route("contact.id"),
-                                route("contact.jp"),
-                                route("contact.ch")
-                            )}
-                        >
-                            {item.button_text_eng}
-                        </OrangeButton>}
-                        {
-                            item.button_link_eng && 
-                            (<Button
-                                variant="outlined"
-                                sx={{
-                                    backgroundColor: "transparent",
-                                    letterSpacing: "2%",
-                                    lineHeight: "100%",
-                                    color: theme.palette.custom.white,
-                                    fontWeight: 700,
-                                    border: `1px solid ${theme.palette.custom.white}`,
-                                    borderRadius: "16px",
-                                    textTransform: "capitalize",
+                                <Typography
+                                    sx={{
+                                        color: theme.palette.custom.white,
+                                        fontWeight: 300,
+                                        transition: 'color 0.3s ease',
+                                        "&:hover": {
+                                            color: theme.palette.custom.yellow
+                                        },
                                         [theme.breakpoints.down("md")]: {
-                                            fontSize: "0.625rem",
-                                            padding: "0.35rem 0.65rem",
+                                            fontSize: "1.5rem",
+                                            mt: 7,
                                         },
                                         [theme.breakpoints.up("md")]: {
-                                            fontSize: "1rem",
-                                            padding: "0.6875rem 1.5625rem",
+                                            fontSize: "2.5rem",
                                         },
                                         [theme.breakpoints.up("lg")]: {
-                                            fontSize: "1.2rem",
+                                            fontSize: "4rem",
                                         },
-                                }}
-                                href={""}
-                            >
-                                {item.button_link_eng}
-                            </Button>)
-                        }
-                        </div>
+                                        lineHeight: "100%",
+                                        letterSpacing: "2px",
+                                    }}
+                                    variant="h1"
+                                >
+                                    {item.title_eng} <br />
+                                    <Typography
+                                        sx={{
+                                            fontWeight: 700,
+                                        }}
+                                        variant="span"
+                                    >
+                                        {item.subtitle_eng}
+                                    </Typography>
+                                </Typography>
+                                <div className="flex items-center justify-start gap-3 mt-2 mt-lg-3">
+                                    {item.button_text_eng && <OrangeButton
+                                    href={checkLang(
+                                        locale,
+                                        route("contact"),
+                                        route("contact.id"),
+                                        route("contact.jp"),
+                                        route("contact.ch")
+                                    )}
+                                >
+                                    {item.button_text_eng}
+                                </OrangeButton>}
+                                {
+                                    item.button_link_eng && 
+                                    (<Button
+                                        variant="outlined"
+                                        sx={{
+                                            backgroundColor: "transparent",
+                                            letterSpacing: "2%",
+                                            lineHeight: "100%",
+                                            color: theme.palette.custom.white,
+                                            fontWeight: 700,
+                                            border: `1px solid ${theme.palette.custom.white}`,
+                                            borderRadius: "16px",
+                                            textTransform: "capitalize",
+                                                [theme.breakpoints.down("md")]: {
+                                                    fontSize: "0.625rem",
+                                                    padding: "0.35rem 0.65rem",
+                                                },
+                                                [theme.breakpoints.up("md")]: {
+                                                    fontSize: "1rem",
+                                                    padding: "0.6875rem 1.5625rem",
+                                                },
+                                                [theme.breakpoints.up("lg")]: {
+                                                    fontSize: "1.2rem",
+                                                },
+                                        }}
+                                        href={""}
+                                    >
+                                        {item.button_link_eng}
+                                    </Button>)
+                                }
+                                </div>
+                            </Box>
+                        </Box>
                     </Box>
-                </Box>
-            </Box>
                     </div>
                 ))}
             </div>

@@ -3,15 +3,16 @@ footer {
     line-height: 1.42967633em;
     letter-spacing: 0.009em;
     .left {
-        color: #005b96;
+        color: #191919;
         h2 {
-            color: #03396c;
-            font-weight: 600;
+            color: #191919;
+            font-weight: 300;
         }
         a {
             text-decoration: none;
-            color: #005b96;
+            color: #191919;
             transition: 300ms ease;
+            font-weight: 300;
             &:hover {
                 color: #ff844f;
             }
@@ -19,15 +20,14 @@ footer {
     }
     .right {
         .b_border {
-            border-bottom: 3px solid #03396c;
+            border-bottom: 1px solid #191919;
             a {
                 text-decoration: none;
-                color: #005b96;
-                color: #03396c;
-                font-weight: 500;
+                color: #191919;
                 transition: 300ms ease;
+                font-weight: 300;
                 &:hover {
-                    color: #ff844f;
+                    color: #FFBF00;
                 }
             }
         }

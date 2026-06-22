@@ -1,6 +1,8 @@
 import { Box, Typography, Link } from "@mui/material";
+import renderTitle from "../../../../utils/renderTitle";
 
 function DetailHero({ item, formatDate, checkLang, locale, theme }) {
+    console.log(item.title)
     return (
         <Box
             component="section"
@@ -34,38 +36,35 @@ function DetailHero({ item, formatDate, checkLang, locale, theme }) {
                                 flexDirection: "column",
                                 alignItems: "flex-start",
                                 justifyContent: "center",
-                                paddingLeft: "3rem",
+                                paddingLeft: "6.25rem",
                                 gap: "0.5rem",
                             }}
                         >
                             <Typography
                                 sx={{
-                                    color: theme.palette.custom.darkBlue,
-                                    fontSize: "4.0325rem",
+                                    color: theme.palette.custom.black,
+                                    fontSize: "4rem",
                                     [theme.breakpoints.down("md")]: {
-                                        fontSize: "3rem",
-                                    },
-                                    [theme.breakpoints.down("sm")]: {
-                                        fontSize: " 1.125rem",
+                                        fontSize: "1.5  rem",
                                     },
                                     lineHeight: "1.01561707em",
-                                    letterSpacing: "0.009em",
+                                    letterSpacing: "13%",
                                     fontWeight: "700",
                                 }}
                                 variant="h1"
                             >
-                                {item.title}
+                                {renderTitle(item.title)}
                             </Typography>
                             <Link
                                 sx={{
-                                    fontSize: "1.9751rem",
+                                    fontSize: "2rem",
                                     color: theme.palette.custom.yellow,
                                     textDecoration: "none",
                                     lineHeight: "1.1875em",
-                                    letterSpacing: "-0.054em",
+                                    letterSpacing: "2%",
                                     fontWeight: "700",
                                     [theme.breakpoints.down("sm")]: {
-                                        fontSize: "0.8",
+                                        fontSize: "0.625",
                                     },
                                 }}
                                 href="#"
@@ -74,10 +73,10 @@ function DetailHero({ item, formatDate, checkLang, locale, theme }) {
                             </Link>
                             <Typography
                                 sx={{
-                                    color: theme.palette.custom.lightBlue,
-                                    fontSize: "1.4459rem",
+                                    color: theme.palette.custom.black,
+                                    fontSize: "2rem",
                                     [theme.breakpoints.down("sm")]: {
-                                        fontSize: "0.8rem",
+                                        fontSize: "0.625",
                                     },
                                     margin: 0,
                                     padding: 0,

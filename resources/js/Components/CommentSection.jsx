@@ -77,9 +77,9 @@ function CommentSection({ article_id, comment, shareUrl, likeCount }) {
     };
 
     return (
-        <Box mt={4}>
+        <Box mt={7}>
             <div className="container">
-                <div className="row">
+                <div className="row d-flex align-items-center justify-content-center">
                     <Box
                         sx={{ backgroundColor: theme.palette.grey[200] }}
                         className="col-12 col-lg-8 px-5 py-3"
@@ -124,7 +124,7 @@ function CommentSection({ article_id, comment, shareUrl, likeCount }) {
                                             sx={{
                                                 svg: {
                                                     color: theme.palette.custom
-                                                        .darkBlue,
+                                                        .black,
                                                 },
                                             }}
                                         >
@@ -168,7 +168,7 @@ function CommentSection({ article_id, comment, shareUrl, likeCount }) {
                                             width: 36,
                                             height: 36,
                                             borderRadius: "50%",
-                                            border: `1px solid ${theme.palette.custom.darkBlue}`,
+                                            border: `1px solid ${theme.palette.custom.black}`,
                                             overflow: "hidden",
                                         }}
                                     >
@@ -210,6 +210,8 @@ function CommentSection({ article_id, comment, shareUrl, likeCount }) {
                                             sx={{
                                                 mt: 2,
                                                 textTransform: "none",
+                                                color: theme.palette.custom.black,
+                                                backgroundColor: theme.palette.custom.yellow
                                             }}
                                             type="submit"
                                             variant="contained"
@@ -245,7 +247,7 @@ function CommentSection({ article_id, comment, shareUrl, likeCount }) {
                                                 fontSize: "1.25rem",
                                                 fontWeight: 700,
                                                 color: theme.palette.custom
-                                                    .darkBlue,
+                                                    .black,
                                             }}
                                         >
                                             Masuk ke Akun Ideatax
@@ -281,7 +283,7 @@ function CommentSection({ article_id, comment, shareUrl, likeCount }) {
                                                     textTransform: "none",
                                                     backgroundColor:
                                                         theme.palette.custom
-                                                            .darkBlue,
+                                                            .black,
                                                     fontSize: "0.8125rem",
                                                 }}
                                             >

@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Models\ServiceCategory;
+use App\Models\CompanyProfile;
 
 class ServiceController extends Controller
 {
@@ -15,10 +16,12 @@ class ServiceController extends Controller
         $page = Page::findOrFail(3);
         $catogorizedservices  = ServiceCategory::with("services")->get();
         $services = Service::all();
+        $compro = CompanyProfile::orderBy('updated_at', 'desc')->first();
         return Inertia::render('Service/Service', [
             "catogorizedservices" => $catogorizedservices,
             "page" => $page,
             "services" => $services,
+            "compro" => $compro
         ]);
     }
     public function Detail($id)

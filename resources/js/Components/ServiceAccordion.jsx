@@ -59,6 +59,13 @@ function ServiceAccordion({ categorized, locale }) {
                             component="span"
                             sx={{
                                 transition: "color 200ms",
+                                fontSize:"1.5rem",
+                                fontWeight:"300",
+                                letterSpacing: "12%",
+                                lineHeight:"15px",
+                                [theme.breakpoints.down("md")]: {
+                                    fontSize: "0.75rem",
+                                },
                                 color:
                                     expanded === `panel${idx + 1}`
                                         ? theme.palette.custom.yellow
@@ -97,6 +104,16 @@ function ServiceAccordion({ categorized, locale }) {
                                         <MdExpandMore />
                                     </Box>
                                     <ListItemText
+                                        sx={{
+                                            fontSize:"1.5rem",
+                                            fontWeight:"300",
+                                            letterSpacing: "12%",
+                                            lineHeight:"15px",
+                                            [theme.breakpoints.down("md")]: {
+                                                fontSize: "0.75rem",
+                                            },
+                                            color: theme.palette.custom.black,
+                                        }}
                                         primary={checkLang(
                                             locale,
                                             "Annual Tax Return Reporting Service for Corporations and Individuals",
@@ -128,6 +145,17 @@ function ServiceAccordion({ categorized, locale }) {
                                             <MdExpandMore />
                                         </Box>
                                         <ListItemText
+                                            sx={{
+
+                                            fontSize:"1.5rem",
+                                            fontWeight:"300",
+                                            letterSpacing: "12%",
+                                            lineHeight:"15px",
+                                            [theme.breakpoints.down("md")]: {
+                                                fontSize: "0.75rem",
+                                            },
+                                            color: theme.palette.custom.black,
+                                            }}
                                             primary={checkLang(
                                                 locale,
                                                 "Tax Audit Assistance",
@@ -156,6 +184,16 @@ function ServiceAccordion({ categorized, locale }) {
                                             <MdExpandMore />
                                         </Box>
                                         <ListItemText
+                                            sx={{
+                                            fontSize:"1.5rem",
+                                            fontWeight:"300",
+                                            letterSpacing: "12%",
+                                            lineHeight:"15px",
+                                            [theme.breakpoints.down("md")]: {
+                                                fontSize: "0.75rem",
+                                            },
+                                            color: theme.palette.custom.black,
+                                        }}
                                             primary={checkLang(
                                                 locale,
                                                 "Tax Refund Assistance",
@@ -185,6 +223,16 @@ function ServiceAccordion({ categorized, locale }) {
                                             <MdExpandMore />
                                         </Box>
                                         <ListItemText
+                                            sx={{
+                                            fontSize:"1.5rem",
+                                            fontWeight:"300",
+                                            letterSpacing: "12%",
+                                            lineHeight:"15px",
+                                            [theme.breakpoints.down("md")]: {
+                                                fontSize: "0.75rem",
+                                            },
+                                            color: theme.palette.custom.black,
+                                        }}
                                             primary={checkLang(
                                                 locale,
                                                 "SP2DK Assistance",
@@ -216,6 +264,16 @@ function ServiceAccordion({ categorized, locale }) {
                                         <MdExpandMore />
                                     </Box>
                                     <ListItemText
+                                        sx={{
+                                            fontSize:"1.5rem",
+                                            fontWeight:"300",
+                                            letterSpacing: "12%",
+                                            lineHeight:"15px",
+                                            [theme.breakpoints.down("md")]: {
+                                                fontSize: "0.75rem",
+                                            },
+                                            color: theme.palette.custom.black,
+                                        }}
                                         primary={checkLang(
                                             locale,
                                             "Tax Planning",
@@ -246,6 +304,16 @@ function ServiceAccordion({ categorized, locale }) {
                                         <MdExpandMore />
                                     </Box>
                                     <ListItemText
+                                        sx={{
+                                            fontSize:"1.5rem",
+                                            fontWeight:"300",
+                                            letterSpacing: "12%",
+                                            lineHeight:"15px",
+                                            [theme.breakpoints.down("md")]: {
+                                                fontSize: "0.75rem",
+                                            },
+                                            color: theme.palette.custom.black,
+                                        }}
                                         primary={checkLang(
                                             locale,
                                             "Customs Solutions for Authorized Economic Operator (AEO)",
@@ -290,6 +358,16 @@ function ServiceAccordion({ categorized, locale }) {
                                         <MdExpandMore />
                                     </Box>
                                     <ListItemText
+                                        sx={{
+                                            fontSize:"1.5rem",
+                                            fontWeight:"300",
+                                            letterSpacing: "12%",
+                                            lineHeight:"15px",
+                                            [theme.breakpoints.down("md")]: {
+                                                fontSize: "0.75rem",
+                                            },
+                                            color: theme.palette.custom.black,
+                                        }}  
                                         primary={checkLang(
                                             locale,
                                             service.title_eng,
