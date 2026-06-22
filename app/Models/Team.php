@@ -33,6 +33,18 @@ class Team extends Model
         'description_eng',
         'description_jpn',
         'description_ch',
+        'capabilities',
+        'capabilities_eng',
+        'capabilities_jpn',
+        'capabilities_ch',
+        'credentials',
+        'credentials_eng',
+        'credentials_jpn',
+        'credentials_ch',
+        'education',
+        'education_eng',
+        'education_jpn',
+        'education_ch',
     ];
 
     public function department()

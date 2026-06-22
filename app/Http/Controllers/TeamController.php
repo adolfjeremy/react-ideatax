@@ -23,7 +23,7 @@ class TeamController extends Controller
 
         $positions = Position::orderBy('order', 'asc')->get();    // Me-reset index array agar urut dari 0, 1, 2, dst (penting untuk JSON response)
 
-        $query = Team::with(['department', 'position']);
+        $query = Team::with(['department', 'position'])->orderBy('order', 'asc');
 
         if ($request->filled('department_id') && $request->department_id !== 'all') {
             $query->where('department_id', $request->department_id);
@@ -48,7 +48,36 @@ class TeamController extends Controller
 
     public function detail($id)
     {
-        $item = Team::where('slug', $id)->with(["awards", "position"])->firstOrFail();
+        $locale = app()->getLocale();
+        $capabilitiesColumn = match ($locale) {
+            'id' => 'capabilities',
+            'en' => 'capabilities_eng',
+            'jp' => 'capabilities_jpn',
+            'ch' => 'capabilities_ch',
+            default => 'capabilities_eng',
+        };
+        $credentialsColumn = match ($locale) {
+            'id' => 'credentials',
+            'en' => 'credentials_eng',
+            'jp' => 'credentials_jpn',
+            'ch' => 'credentials_ch',
+            default => 'credentials_eng',
+        };
+        $educationColumn = match ($locale) {
+            'id' => 'education',
+            'en' => 'education_eng',
+            'jp' => 'education_jpn',
+            'ch' => 'education_ch',
+            default => 'education_eng',
+        };
+        $biographyColumn = match ($locale) {
+            'id' => 'biography',
+            'en' => 'biography_eng',
+            'jp' => 'biography_jpn',
+            'ch' => 'biography_ch',
+            default => 'biography_eng',
+        };
+        $item = Team::where('slug', $id)->with(["awards", "position"])->select("id", "name", "slug", "email", "phone", "photo", "profile_picture", "SEO_title", "SEO_title_eng", "SEO_title_jpn", "SEO_title_ch", "description", "description_eng", "description_jpn", "description_ch", "$capabilitiesColumn as capabilities", "$credentialsColumn as credentials", "$educationColumn as education", "$biographyColumn as biography", "position_id")->firstOrFail();
         return Inertia::render('Team/Detail/TeamDetail', [
             "item" => $item
         ]);

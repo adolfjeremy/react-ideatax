@@ -59,7 +59,7 @@ function TeamDetail() {
                         transform: "translateY(-50%)",
                         left: "50%",
                         display: "flex",
-                        alignItems: "center",
+                        alignItems: "start",
                         justifyContent: "center",
                         flexDirection: "column",
                         padding: "0 12px",
@@ -71,17 +71,16 @@ function TeamDetail() {
                     <Typography
                         as="h1"
                         sx={{
-                            fontSize: "2.6334rem",
-                            letterSpacing: "0.009em",
+                            fontSize: "4rem",
+                            letterSpacing: "5%",
                             lineHeight: "1.07812416em",
-                            color: theme.palette.custom.darkBlue,
+                            color: theme.palette.custom.black,
                             fontWeight: "700",
                             paddingBottom: "20px",
-                            borderBottom: `2px solid ${theme.palette.custom.darkBlue}`,
                             textAlign: "center",
                             textTransform: "capitalize",
                             [theme.breakpoints.down("sm")]: {
-                                fontSize: "0.8rem",
+                                fontSize: "1.5rem",
                             },
                         }}
                     >
@@ -90,16 +89,15 @@ function TeamDetail() {
                     <Typography
                         as="h1"
                         sx={{
-                            fontSize: "2.1603rem",
-                            letterSpacing: "0.009em",
+                            fontSize: "2rem",
+                            letterSpacing: "5%",
                             lineHeight: "1.09375em",
                             color: theme.palette.custom.yellow,
-                            fontWeight: "400",
-                            fontStyle: "italic",
+                            fontWeight: "300",
                             marginTop: "15px",
-                            textAlign: "center",
-                            [theme.breakpoints.down("sm")]: {
-                                fontSize: "0.6rem",
+                            textAlign: "start",
+                            [theme.breakpoints.down("md")]: {
+                                fontSize: "0.75rem",
                             },
                         }}
                     >
@@ -113,124 +111,111 @@ function TeamDetail() {
                     </Typography>
                 </Box>
             </Box>
-            <Box className="py-4">
+            <Box className="py-3">
                 <div className="container">
-                    <div className="row">
-                        <div className="col-12">
-                            <Breadcrumbs aria-label="breadcrumb">
-                                <Link
-                                    underline="hover"
-                                    color="inherit"
-                                    href={
-                                        locale == "en"
-                                            ? route("team")
-                                            : locale == "id"
-                                              ? route("team.id")
-                                              : locale == "jp"
-                                                ? route("team.jp")
-                                                : route("team.ch")
-                                    }
-                                    sx={{
-                                        color: theme.palette.custom.darkBlue,
-                                        fontSize: "1.5636rem",
-                                        letterSpacing: "0.009em",
-                                        lineHeight: "line-height",
-                                    }}
-                                >
-                                    Team
-                                </Link>
-                                <Typography
-                                    sx={{
-                                        color: theme.palette.custom.yellow,
-                                        fontSize: "1.5636rem",
-                                        letterSpacing: "0.009em",
-                                        lineHeight: "line-height",
-                                    }}
-                                >
-                                    {item.name}
-                                </Typography>
-                            </Breadcrumbs>
-                        </div>
-                    </div>
-                    <div className="row mt-5">
-                        <div className="col-12 text-center">
-                            <Typography
-                                as="h2"
-                                sx={{
-                                    color: theme.palette.custom.darkBlue,
-                                    fontSize: "1.7282rem",
-                                    letterSpacing: "0.009em",
-                                    lineHeight: "line-height",
-                                    fontWeight: "700",
-                                    marginBottom: "1.5rem",
-                                }}
-                            >
-                                {t("teamDetailHead1")}
-                            </Typography>
-                        </div>
+                    <div className="row mt-2">
                         <Box
                             sx={{
+                                ul: {
+                                    listStyleType: "disc",
+                                },
                                 p: {
-                                    fontSize: "1.15215rem",
+                                    fontSize: "1.5rem",
                                     lineHeight: "1.44642599em",
-                                    letterSpacing: "0.009em",
-                                    textAlign: "justify",
-                                    color: theme.palette.custom.lightBlue,
-                                    fontFamily: "Lato sans-serif",
+                                    letterSpacing: "7%",
+                                    textAlign: "left",
+                                    fontWeight: 300,
+                                    color: theme.palette.custom.black,
+                                    [theme.breakpoints.down("sm")]: {
+                                        fontSize: "0.625rem",
+                                    },
                                 },
                             }}
-                            className="col-12"
+                            className="col-12 col-md-8"
                         >
                             {
                                 <RichText
-                                    htmlContent={checkLang(
-                                        locale,
-                                        item.biography_eng,
-                                        item.biography,
-                                        item.biography_jpn,
-                                        item.biography_ch,
-                                    )}
+                                    htmlContent={item.biography}
                                 />
                             }
                         </Box>
-                        <div className="col-12 text-center">
-                            <Typography
-                                as="h2"
-                                sx={{
-                                    color: theme.palette.custom.darkBlue,
-                                    fontSize: "1.7282rem",
-                                    letterSpacing: "0.009em",
-                                    lineHeight: "line-height",
-                                    fontWeight: "700",
-                                    marginBottom: "1.5rem",
-                                }}
-                            >
-                                {t("teamDetailHead2")}
-                            </Typography>
-                        </div>
-                        <Box
-                            sx={{
-                                p: {
-                                    fontSize: "1.15215rem",
-                                    lineHeight: "1.44642599em",
-                                    letterSpacing: "0.009em",
-                                    textAlign: "justify",
-                                    color: theme.palette.custom.lightBlue,
-                                    fontFamily: "Lato sans-serif",
+                        <Box sx={{
+                                ul: {
+                                    listStyleType: "disc",
                                 },
-                            }}
-                            className="col-12"
-                        >
-                            {
-                                <RichText
-                                    htmlContent={checkLang(
-                                        locale,
-                                        item.area_of_expertise_eng,
-                                        item.area_of_expertise,
-                                        item.area_of_expertise_jpn,
-                                        item.area_of_expertise_ch,
-                                    )}
-                                />
+                                p: {
+                                    fontSize: "1.5rem",
+                                    lineHeight: "1.44642599em",
+                                    letterSpacing: "7%",
+                                    textAlign: "left",
+                                    fontWeight: 300,
+                                    color: theme.palette.custom.black,
+                                    fontFamily: "Lato",
+                                    [theme.breakpoints.down("sm")]: {
+                                        fontSize: "0.625rem",
+                                    },
+                                },
+                            }} className="col-12 col-md-4 d-flex flex-column gap-3">
+                                {
+                                <>
+                                    <Typography
+                                    sx={{
+                                        fontSize: "1.5rem",
+                                        lineHeight: "1.44642599em",
+                                        letterSpacing: "7%",
+                                        textAlign: "left",
+                                        fontWeight: 700,
+                                        color: theme.palette.custom.black,
+                                        fontFamily: "Lato",
+                                        [theme.breakpoints.down("sm")]: {
+                                            fontSize: "0.625rem",
+                                        },
+                                    }}
+                                    >
+                                        Capabilities
+                                    </Typography>
+                                    <RichText
+                                    htmlContent={item.capabilities}
+                                    />
+                                    <Typography
+                                    sx={{
+                                        fontSize: "1.5rem",
+                                        lineHeight: "1.44642599em",
+                                        letterSpacing: "7%",
+                                        textAlign: "left",
+                                        fontWeight: 700,
+                                        color: theme.palette.custom.black,
+                                        fontFamily: "Lato",
+                                        [theme.breakpoints.down("sm")]: {
+                                            fontSize: "0.625rem",
+                                        },
+                                    }}
+                                    >
+                                        Credentials
+                                    </Typography>
+                                    <RichText
+                                        htmlContent={item.credentials}
+                                    />
+                                    <Typography
+                                    sx={{
+                                        fontSize: "1.5rem",
+                                        lineHeight: "1.44642599em",
+                                        letterSpacing: "7%",
+                                        textAlign: "left",
+                                        fontWeight: 700,
+                                        color: theme.palette.custom.black,
+                                        fontFamily: "Lato",
+                                        [theme.breakpoints.down("sm")]: {
+                                            fontSize: "0.625rem",
+                                        },
+                                    }}
+                                    >
+                                        Education
+                                    </Typography>
+                                    <RichText
+                                        htmlContent={item.education}
+                                    />
+                                </>
                             }
                         </Box>
                     </div>
@@ -266,7 +251,6 @@ function TeamDetail() {
                         </div>
                     )}
                 </div>
-                <ConsultationButton />
             </Box>
         </Guest>
     );

@@ -41,6 +41,18 @@ function TeamCreate() {
         area_of_expertise_eng: "",
         area_of_expertise_jpn: "",
         area_of_expertise_ch: "",
+        capabilities: "",
+        capabilities_eng: "",
+        capabilities_jpn: "",
+        capabilities_ch: "",
+        credentials: "",
+        credentials_eng: "",
+        credentials_jpn: "",
+        credentials_ch: "",
+        education: "",
+        education_eng: "",
+        education_jpn: "",
+        education_ch: "",
         SEO_title: "",
         SEO_title_eng: "",
         SEO_title_jpn: "",
@@ -116,6 +128,27 @@ function TeamCreate() {
                                     setData("area_of_expertise_eng", data)
                                 }
                             />
+                            <RichEditor
+                                placeholder="Capabilities English"
+                                value={data.capabilities_eng}
+                                handleInput={(data) =>
+                                    setData("capabilities_eng", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Credentials English"
+                                value={data.credentials_eng}
+                                handleInput={(data) =>
+                                    setData("credentials_eng", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Education English"
+                                value={data.education_eng}
+                                handleInput={(data) =>
+                                    setData("education_eng", data)
+                                }
+                            />
                             <TextField
                                 id="SEO_title_eng"
                                 value={data.SEO_title_eng}
@@ -153,6 +186,27 @@ function TeamCreate() {
                                 value={data.area_of_expertise}
                                 handleInput={(data) =>
                                     setData("area_of_expertise", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Capabilities Indonesia"
+                                value={data.capabilities}
+                                handleInput={(data) =>
+                                    setData("capabilities", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Credentials Indonesia"
+                                value={data.credentials}
+                                handleInput={(data) =>
+                                    setData("credentials", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Education Indonesia"
+                                value={data.education}
+                                handleInput={(data) =>
+                                    setData("education", data)
                                 }
                             />
                             <TextField
@@ -194,6 +248,27 @@ function TeamCreate() {
                                     setData("area_of_expertise_jpn", data)
                                 }
                             />
+                            <RichEditor
+                                placeholder="Capabilities Japan"
+                                value={data.capabilities_jpn}
+                                handleInput={(data) =>
+                                    setData("capabilities_jpn", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Credentials Japan"
+                                value={data.credentials_jpn}
+                                handleInput={(data) =>
+                                    setData("credentials_jpn", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Education Japan"
+                                value={data.education_jpn}
+                                handleInput={(data) =>
+                                    setData("education_jpn", data)
+                                }
+                            />
                             <TextField
                                 id="SEO_title_jpn"
                                 value={data.SEO_title_jpn}
@@ -233,6 +308,27 @@ function TeamCreate() {
                                     setData("area_of_expertise_ch", data)
                                 }
                             />
+                            <RichEditor
+                                placeholder="Capabilities China"
+                                value={data.capabilities_ch}
+                                handleInput={(data) =>
+                                    setData("capabilities_ch", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Credentials China"
+                                value={data.credentials_ch}
+                                handleInput={(data) =>
+                                    setData("credentials_ch", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Education China"
+                                value={data.education_ch}
+                                handleInput={(data) =>
+                                    setData("education_ch", data)
+                                }
+                            />
                             <TextField
                                 id="SEO_title_ch"
                                 value={data.SEO_title_ch}
@@ -257,7 +353,7 @@ function TeamCreate() {
                                 required
                             />
                         </CustomTabPanel>
-                        <Box px={3}>
+                        <Box>
                             <FormControl fullWidth>
                                 <InputLabel id="demo-simple-select-label">
                                     Department

@@ -34,22 +34,34 @@ function TeamEdit() {
         linkedin: item.linkedin || "",
         email: item.email || "",
         phone: item.phone || "",
-        biography: item.biography,
-        biography_eng: item.biography_eng,
-        biography_jpn: item.biography_jpn,
-        biography_ch: item.biography_ch,
-        area_of_expertise: item.area_of_expertise,
-        area_of_expertise_eng: item.area_of_expertise_eng,
-        area_of_expertise_jpn: item.area_of_expertise_jpn,
-        area_of_expertise_ch: item.area_of_expertise_ch,
-        SEO_title: item.SEO_title,
-        SEO_title_eng: item.SEO_title_eng,
-        SEO_title_jpn: item.SEO_title_jpn,
-        SEO_title_ch: item.SEO_title_ch,
-        description: item.description,
-        description_eng: item.description_eng,
-        description_jpn: item.description_jpn,
-        description_ch: item.description_ch,
+        biography: item.biography || "",
+        biography_eng: item.biography_eng || "",
+        biography_jpn: item.biography_jpn || "",
+        biography_ch: item.biography_ch || "",
+        area_of_expertise: item.area_of_expertise || "",
+        area_of_expertise_eng: item.area_of_expertise_eng || "",
+        area_of_expertise_jpn: item.area_of_expertise_jpn || "",
+        area_of_expertise_ch: item.area_of_expertise_ch || "",
+        capabilities: item.capabilities || "",
+        capabilities_eng: item.capabilities_eng || "",
+        capabilities_jpn: item.capabilities_jpn || "",
+        capabilities_ch: item.capabilities_ch || "",
+        credentials: item.credentials || "",
+        credentials_eng: item.credentials_eng || "",
+        credentials_jpn: item.credentials_jpn || "",
+        credentials_ch: item.credentials_ch || "",
+        education: item.education || "",
+        education_eng: item.education_eng || "",
+        education_jpn: item.education_jpn || "",
+        education_ch: item.education_ch || "",
+        SEO_title: item.SEO_title || "",
+        SEO_title_eng: item.SEO_title_eng || "",
+        SEO_title_jpn: item.SEO_title_jpn || "",
+        SEO_title_ch: item.SEO_title_ch || "",
+        description: item.description || "",
+        description_eng: item.description_eng || "",
+        description_jpn: item.description_jpn || "",
+        description_ch: item.description_ch || "",
         oldPhoto: item.photo,
         oldProfilePicture: item.profile_picture,
         _method: "put",
@@ -114,6 +126,27 @@ function TeamEdit() {
                                     setData("area_of_expertise_eng", data)
                                 }
                             />
+                            <RichEditor
+                                placeholder="Capabilities English"
+                                value={data.capabilities_eng}
+                                handleInput={(data) =>
+                                    setData("capabilities_eng", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Credentials English"
+                                value={data.credentials_eng}
+                                handleInput={(data) =>
+                                    setData("credentials_eng", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Education English"
+                                value={data.education_eng}
+                                handleInput={(data) =>
+                                    setData("education_eng", data)
+                                }
+                            />
                             <TextField
                                 id="SEO_title_eng"
                                 value={data.SEO_title_eng}
@@ -151,6 +184,27 @@ function TeamEdit() {
                                 value={data.area_of_expertise}
                                 handleInput={(data) =>
                                     setData("area_of_expertise", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Capabilities Indonesia"
+                                value={data.capabilities}
+                                handleInput={(data) =>
+                                    setData("capabilities", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Credentials Indonesia"
+                                value={data.credentials}
+                                handleInput={(data) =>
+                                    setData("credentials", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Education Indonesia"
+                                value={data.education}
+                                handleInput={(data) =>
+                                    setData("education", data)
                                 }
                             />
                             <TextField
@@ -192,6 +246,27 @@ function TeamEdit() {
                                     setData("area_of_expertise_jpn", data)
                                 }
                             />
+                            <RichEditor
+                                placeholder="Capabilities Japan"
+                                value={data.capabilities_jpn}
+                                handleInput={(data) =>
+                                    setData("capabilities_jpn", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Credentials Japan"
+                                value={data.credentials_jpn}
+                                handleInput={(data) =>
+                                    setData("credentials_jpn", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Education Japan"
+                                value={data.education_jpn}
+                                handleInput={(data) =>
+                                    setData("education_jpn", data)
+                                }
+                            />
                             <TextField
                                 id="SEO_title_jpn"
                                 value={data.SEO_title_jpn}
@@ -229,6 +304,27 @@ function TeamEdit() {
                                 value={data.area_of_expertise_ch}
                                 handleInput={(data) =>
                                     setData("area_of_expertise_ch", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Capabilities China"
+                                value={data.capabilities_ch}
+                                handleInput={(data) =>
+                                    setData("capabilities_ch", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Credentials China"
+                                value={data.credentials_ch}
+                                handleInput={(data) =>
+                                    setData("credentials_ch", data)
+                                }
+                            />
+                            <RichEditor
+                                placeholder="Education China"
+                                value={data.education_ch}
+                                handleInput={(data) =>
+                                    setData("education_ch", data)
                                 }
                             />
                             <TextField
