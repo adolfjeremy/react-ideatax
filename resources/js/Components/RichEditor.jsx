@@ -56,7 +56,10 @@ function RichEditor({ handleInput, value, placeholder }) {
             >
                 <div className="main-container w-100">
                     <div className="editor-container editor-container_classic-editor editor-container_include-style">
-                        <div className="editor-container__editor">
+                        <Box sx={{
+                            width: "100% !important",
+                            maxWidth: "100% !important"
+                        }} className="editor-container__editor">
                             <label>{placeholder}</label>
                             <CKEditor
                                 editor={ClassicEditor}
@@ -66,7 +69,7 @@ function RichEditor({ handleInput, value, placeholder }) {
                                     handleInput(data);
                                 }}
                             />
-                        </div>
+                        </Box>
                     </div>
                 </div>
             </Box>

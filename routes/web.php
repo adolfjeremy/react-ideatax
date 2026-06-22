@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PhotoGaleryController;
 use App\Http\Controllers\Admin\PositionController;
 use App\Http\Controllers\Admin\StatController;
+use App\Http\Controllers\Admin\AdvisoryController;
+use App\Http\Controllers\Admin\RegulationController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
@@ -183,6 +185,8 @@ Route::prefix('admin')
         Route::resource('stat', StatController::class);
         Route::resource('services', AdminServiceController::class);
         Route::resource('articles', AdminArticleController::class);
+        Route::resource('advisories', AdvisoryController::class);
+        Route::resource('regulations', RegulationController::class);
         Route::resource('updates', AdminTaxUpdateController::class);
         Route::resource('article-category', ArticleCategoryController::class);
         Route::resource('tax-event', TaxEventController::class);

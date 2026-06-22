@@ -1,0 +1,27 @@
+.embla_advisory {
+  overflow: hidden;
+}
+.embla__container_advisory {
+  display: flex;
+  gap: 26px;
+  @media (max-width: 448px) {
+    gap: 8px;
+  }
+}
+.embla__slide_advisory {
+  flex: 0 0 calc(33.33% - 26px);
+  min-width: 0; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s linear;
+  @media (max-width: 448px) {
+    flex: 0 0 calc(50% - 8px);
+  }
+}
+
+
+.embla__slide_advisory img {
+  width: 80%;
+  pointer-events: none;
+}

@@ -41,6 +41,7 @@
         "react-slick": "^0.30.3",
         "sass": "^1.79.4",
         "slick-carousel": "^1.8.1",
+        "truncate-html": "^1.2.2",
         "yet-another-react-lightbox": "^3.21.6"
     }
 }

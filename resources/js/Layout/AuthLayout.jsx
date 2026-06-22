@@ -32,6 +32,7 @@ import { FaStarOfLife } from "react-icons/fa";
 import { RiProfileFill } from "react-icons/ri";
 import { SiGooglemeet } from "react-icons/si";
 import { MdSubscriptions } from "react-icons/md";
+import { GiArtificialIntelligence } from "react-icons/gi";
 import Spinner from "@/Components/Spinner";
 import AlertBar from "@/Components/AlertBar";
 
@@ -131,6 +132,21 @@ function AuthLayout({ children, sectionHeading }) {
                             <FaSuitcase />
                         </ListItemIcon>
                         <ListItemText primary="Services" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem
+                    disablePadding
+                    component="a"
+                    href={route("advisories.index")}
+                    className={`${
+                        route().current("advisories*") ? "active" : ""
+                    }`}
+                >
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <GiArtificialIntelligence />
+                        </ListItemIcon>
+                        <ListItemText primary="Advisory" />
                     </ListItemButton>
                 </ListItem>
                 <ListItem

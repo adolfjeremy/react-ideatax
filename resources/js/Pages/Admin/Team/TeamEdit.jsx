@@ -25,7 +25,7 @@ function TeamEdit() {
     const [value, setValue] = useState(0);
     const { toggleSpinner } = useContext(SpinnerContext);
     const { toggleAlert } = useContext(AlertContext);
-
+    console.log(departments);
     const { data, setData, post, processing, errors, reset } = useForm({
         name: item.name,
         position_id: item.position_id,
@@ -255,10 +255,10 @@ function TeamEdit() {
                                 required
                             />
                         </CustomTabPanel>
-                        <Box px={3}>
+                        <Box>
                             <FormControl fullWidth>
                                 <InputLabel id="demo-simple-select-label">
-                                    Department
+                                    Divisi
                                 </InputLabel>
                                 <Select
                                     labelId="demo-simple-select-label"
@@ -271,7 +271,7 @@ function TeamEdit() {
                                 >
                                     {departments.map((item) => (
                                         <MenuItem key={item.id} value={item.id}>
-                                            {item.name}
+                                            {item.name_eng}
                                         </MenuItem>
                                     ))}
                                 </Select>

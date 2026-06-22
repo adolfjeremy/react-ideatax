@@ -26,7 +26,7 @@ function Team() {
             field: "department",
             headerName: "Department",
             flex: 1,
-            renderCell: (params) => params.row.department?.name || "-",
+            renderCell: (params) => params.row.department?.name_eng || "-",
             headerAlign: "center",
             align: "center",
         },

@@ -16,6 +16,9 @@ use App\Models\CompanyProfile;
 use App\Models\ComproDownloader;
 use App\Models\ServiceCategory;
 use App\Models\Department;
+use App\Models\Advisory;
+use App\Models\Regulation;
+
 use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
@@ -56,6 +59,27 @@ class HomeController extends Controller
             default => 'body_eng',
         };
 
+        $slugColumn = match ($locale) {
+            'id' => 'slug',
+            'en' => 'slug_eng',
+            'jp' => 'slug_jpn',
+            default => 'slug_eng',
+        };
+
+        $highlightColumn = match ($locale) {
+            'id' => 'highlight',
+            'en' => 'highlight_eng',
+            'jp' => 'highlight_jpn',
+            default => 'highlight_eng',
+        };
+
+        $subtitleColumn = match ($locale) {
+            'id' => 'subtitle',
+            'en' => 'subtitle_eng',
+            'jp' => 'subtitle_jpn',
+            default => 'subtitle_eng',
+        };
+
         $updates = TaxUpdate::query()
         ->select(
             'id',
@@ -70,9 +94,9 @@ class HomeController extends Controller
         ->latest()
         ->take(3)
         ->get()
-        ->map(function ($article) {
-            $article->body = Article::truncateRichText($article->body);
-            return $article;
+        ->map(function ($update) {
+            $update->body = Article::truncateRichText($update->body);
+            return $update;
         });
 
         // Cache articles and events
@@ -97,6 +121,29 @@ class HomeController extends Controller
 
         $departments = Department::orderBy('order', 'asc')->get();
 
+        $advisories = Advisory::with('team.position')
+        ->select(
+            'id',
+            "$titleColumn as title",
+            "$highlightColumn as highlight",
+            "$slugColumn as slug",
+            "$subtitleColumn as subtitle",
+            'team_id'
+        )
+        ->latest()
+        ->take(6)
+        ->get();
+        $regulations = Regulation::
+        select(
+            'id',
+            'document',
+            "$titleColumn as title",
+            "$slugColumn as slug",
+        )
+        ->latest()
+        ->take(6)
+        ->get();
+
         $events = Cache::remember('home_events', 60, function () {
             return TaxEvent::latest()
                 ->take(4)
@@ -113,6 +160,8 @@ class HomeController extends Controller
             "updates" => $updates,
             "events" => $events,
             "departments" => $departments,
+            "advisories" => $advisories,
+            "regulations" => $regulations,
             "page" => $page
         ]);
     }

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Box, Typography, useTheme, useMediaQuery, Button } from "@mui/material";
+import { Box, Typography, useTheme, useMediaQuery, Button, Link } from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
@@ -8,6 +8,11 @@ import ExpertiseList from "./parts/ExpertiseList";
 import StatCountUp from "./parts/StatCountUp";
 import ArticleList from "./parts/ArticleList";
 import UpdateList from "./parts/UpdateList";
+import AdvisoryHighlight from "./parts/AdvisoryHighlight";
+import AdvisoryList from "./parts/AdvisoryList";
+import RegulationList from "./parts/RegulationList";
+import RegulationBg from "../../assets/images/reguation-bg.png"
+import { MdArrowForwardIos } from "react-icons/md";
 import ComproModal from "./ComproModal";
 import ConsultationButton from "@/Components/ConsultationButton";
 import SubsModal from "./SubsModal";
@@ -57,12 +62,12 @@ function Home() {
         articles,
         updates,
         departments,
+        advisories,
+        regulations,
         events,
     } = usePage().props;
 
-    console.log(updates);
-
-    const [swipeData, setSwipeData] = useState(articles);
+    console.log(regulations);
     return (
         <Guest
             en={route("home")}
@@ -464,6 +469,74 @@ function Home() {
                         </div>
                     </div>
                     <UpdateList t={t} data={updates} />
+                </div>
+            </Box>
+            <Box sx={{ 
+                    backgroundColor: theme.palette.custom.gray, 
+                    py: 10, 
+                    [theme.breakpoints.down("md")]: {
+                        py:6,
+                        mt: 6
+                    },}}>
+                <div className="container">
+                    {advisories.map((advisory, idx) => (
+                        <AdvisoryHighlight key={advisory.id} advisory={advisory} idx={idx} />
+                    ))}
+                    <div className="row">
+                        <div className="col-12 mt-4 position-relative">
+                            <AdvisoryList advisories={advisories} />
+                        </div>
+                    </div>
+                </div>
+            </Box>
+            <Box sx={{ 
+                    backgroundImage: `url(${RegulationBg})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center top",
+                    py: 8, 
+                    [theme.breakpoints.down("md")]: {
+                        py:4,
+                        mt: 6
+                    },}}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12 ">
+                            <Typography
+                                sx={{
+                                    fontSize: "3rem",
+                                    lineHeight: "1.43749551em",
+                                    fontWeight: "700",
+                                    color: theme.palette.custom.white,
+                                    textAlign: "start",
+                                    [theme.breakpoints.down("md")]: {
+                                        fontSize: "1.5rem",
+                                    },
+                                }}
+                                as="h2"
+                            >
+                                Library
+                            </Typography>
+                        </div>
+                    </div>
+                    <RegulationList regulations={regulations} />
+                    <div className="row">
+                        <div className="col-12 d-flex align-items-center justify-content-start">
+                            <Link href="" sx={{
+                                color: theme.palette.custom.yellow,
+                                fontSize: "1.5rem",
+                                fontWeight: "700",
+                                lineHeight: "1.42498753em",
+                                letterSpacing: ".009em",
+                                textDecoration: "none",
+                                display:"flex",
+                                alignItems:"center",
+                                gap:"10px",
+                                [theme.breakpoints.down("md")]: {
+                                    fontSize: "0.5rem",
+                                },
+                            }}>More Regulations <MdArrowForwardIos size={15} /></Link>
+                        </div>
+                    </div>
                 </div>
             </Box>
             <Box component="section" sx={{ py: "3.5rem" }}>
