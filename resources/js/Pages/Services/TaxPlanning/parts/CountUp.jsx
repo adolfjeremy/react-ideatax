@@ -1,7 +1,7 @@
 import { Box, Typography, useMediaQuery } from "@mui/material";
 import CounterLg from "@/Components/CounterLg";
 import circle from "@/assets/images/circle.png";
-import circleOrange from "@/assets/images/circle-yellow.png";
+import circleOrange from "@/assets/images/circle-orange.png";
 
 function CountUp({ locale, theme, checkLang, stats }) {
     const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));

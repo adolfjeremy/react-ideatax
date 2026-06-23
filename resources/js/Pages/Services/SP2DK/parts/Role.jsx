@@ -1,6 +1,6 @@
 import { Box, Typography, useMediaQuery, Button } from "@mui/material";
 import circle from "@/assets/images/circle.png";
-import circleOrange from "@/assets/images/circle-yellow.png";
+import circleOrange from "@/assets/images/circle-orange.png";
 
 function Role({ theme, locale, checkLang }) {
     const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
