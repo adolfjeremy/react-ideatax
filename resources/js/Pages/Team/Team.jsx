@@ -164,10 +164,14 @@ function Team() {
                                 lineHeight: "100%",
                                 color: theme.palette.custom.white,
                                 fontWeight: 700,
-                                border: `1px solid ${theme.palette.custom.white}`,
+                                border: `0.7px solid ${theme.palette.custom.white}`,
                                 borderRadius: "16px",
                                 textTransform: "capitalize",
                                 textDecoration: "none",
+                                "&:hover": {
+                                    backgroundColor: theme.palette.custom.white,
+                                    color: theme.palette.custom.black,
+                                },
                                     [theme.breakpoints.down("md")]: {
                                         fontSize: "0.625rem",
                                         padding: "0.35rem 0.65rem",
