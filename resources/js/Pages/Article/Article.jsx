@@ -149,17 +149,22 @@ function Article() {
                 locale={locale}
                 checkLang={checkLang}
             />
-            
+
             <Box sx={{
-                    backgroundColor: theme.palette.custom.gray,
-                    padding: "10px",
-                }}  className="py-3 relative">
+                    position:"sticky",
+                    top:"120px",
+                    zIndex:3000,
+                    backgroundColor: theme.palette.custom.white,
+                    [theme.breakpoints.down("lg")]: {
+                        top: "90px",
+                    },
+                    [theme.breakpoints.down("md")]: {
+                        top: "80px",
+                    },
+            }} 
+            >
                 <div className="container">
-                    <Box sx={{
-                        position:"sticky",
-                        top:"120px",
-                        zIndex:3000
-                    }} className="row mt-3 ">
+                    <Box className="row">
                         <div className="col-12 d-flex justify-content-center align-items-center gap-3">
                             <CustomDropdown
                                 list={publicationsList}
@@ -185,6 +190,10 @@ function Article() {
                             </form>
                         </div>
                     </Box>
+                </div>
+            </Box>
+            <Box sx={{backgroundColor: theme.palette.custom.gray}} className="py-3 relative">
+                <div className="container">
                    {
                     filters?.search && (
                          <div className="row">
