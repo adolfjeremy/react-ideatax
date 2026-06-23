@@ -21,6 +21,7 @@ use Illuminate\Foundation\Application;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\CareerController;
+use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
@@ -76,11 +77,12 @@ Route::get('/our-service/sp2dk-assistance', [Sp2dkController::class, 'index'])->
 Route::get('/our-service/tax-planning', [TaxPlanningController::class, 'index'])->name('tax-planning');
 Route::get('/our-service/authorized-economic-operator', [AEOController::class, 'index'])->name('aeo');
 
-Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
+Route::get('/publications', [PublicationController::class, 'index'])->name('publications');
+// Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 Route::get('/articles/{slug_eng}', [ArticleController::class, 'detail'])->name('article-detail');
 Route::get('/articles/event/{slug_eng}', [ControllersTaxEventController::class, 'detail'])->name('event-detail');
 
-Route::get('/tax-updates', [TaxUpdateController::class, 'index'])->name('updates');
+// Route::get('/tax-updates', [TaxUpdateController::class, 'index'])->name('updates');
 Route::get('/tax-updates/{slug_eng}', [TaxUpdateController::class, 'detail'])->name('update-detail');
 
 Route::get('/careers', [CareerController::class, 'index'])->name('career');
@@ -108,11 +110,11 @@ Route::prefix('id')
         Route::get('/our-service/authorized-economic-operator', [AEOController::class, 'index'])->name('aeo.id');
 
 
-        Route::get('/articles', [ArticleController::class, 'index'])->name('articles.id');
+        // Route::get('/articles', [ArticleController::class, 'index'])->name('articles.id');
         Route::get('/articles/{slug}', [ArticleController::class, 'detail'])->name('article-detail.id');
         Route::get('/articles/event/{slug}', [ControllersTaxEventController::class, 'detail'])->name('event-detail.id');
-
-        Route::get('/tax-updates', [TaxUpdateController::class, 'index'])->name('updates.id');
+        Route::get('/publications', [PublicationController::class, 'index'])->name('publications.id');
+        // Route::get('/tax-updates', [TaxUpdateController::class, 'index'])->name('updates.id');
         Route::get('/tax-updates/{slug}', [TaxUpdateController::class, 'detail'])->name('update-detail.id');
 
         Route::get('/careers', [CareerController::class, 'index'])->name('career.id');
@@ -137,11 +139,12 @@ Route::prefix('jp')
         Route::get('/our-service/tax-planning', [TaxPlanningController::class, 'index'])->name('tax-planning.jp');
         Route::get('/our-service/authorized-economic-operator', [AEOController::class, 'index'])->name('aeo.jp');
 
-        Route::get('/articles', [ArticleController::class, 'index'])->name('articles.jp');
+        // Route::get('/articles', [ArticleController::class, 'index'])->name('articles.jp');
         Route::get('/articles/{slug_jpn}', [ArticleController::class, 'detail'])->name('article-detail.jp');
         Route::get('/articles/event/{slug_jpn}', [ControllersTaxEventController::class, 'detail'])->name('event-detail.jp');
+        Route::get('/publications', [PublicationController::class, 'index'])->name('publications.jp');
 
-        Route::get('/tax-updates', [TaxUpdateController::class, 'index'])->name('updates.jp');
+        // Route::get('/tax-updates', [TaxUpdateController::class, 'index'])->name('updates.jp');
         Route::get('/tax-updates/{slug_jpn}', [TaxUpdateController::class, 'detail'])->name('update-detail.jp');
 
         Route::get('/careers', [CareerController::class, 'index'])->name('career.jp');
@@ -165,10 +168,11 @@ Route::prefix('zh-CN')
         Route::get('/our-service/tax-planning', [TaxPlanningController::class, 'index'])->name('tax-planning.ch');
         Route::get('/our-service/authorized-economic-operator', [AEOController::class, 'index'])->name('aeo.ch');
 
-        Route::get('/articles', [ArticleController::class, 'index'])->name('articles.ch');
+        // Route::get('/articles', [ArticleController::class, 'index'])->name('articles.ch');
         Route::get('/articles/{slug_ch}', [ArticleController::class, 'detail'])->name('article-detail.ch');
+        Route::get('/publications', [PublicationController::class, 'index'])->name('publications.ch');
 
-        Route::get('/tax-updates', [TaxUpdateController::class, 'index'])->name('updates.ch');
+        // Route::get('/tax-updates', [TaxUpdateController::class, 'index'])->name('updates.ch');
         Route::get('/tax-updates/{slug_ch}', [TaxUpdateController::class, 'detail'])->name('update-detail.ch');
 
         // Route::get('/articles/event/{slug_jpn}', [ControllersTaxEventController::class, 'detail'])->name('event-detail.jp');

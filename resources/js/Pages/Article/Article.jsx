@@ -84,10 +84,10 @@ function Article() {
         router.get(
             checkLang(
                 locale,
-                route("articles"),
-                route("articles.id"),
-                route("articles.jp"),
-                route("articles.ch")
+                route("publications"),
+                route("publications.id"),
+                route("publications.jp"),
+                route("publications.ch")
             ),
             {
                 search: search,
@@ -116,10 +116,10 @@ function Article() {
 
     return (
         <Guest
-            en={route("articles")}
-            id={route("articles.id")}
-            jp={route("articles.jp")}
-            ch={route("articles.ch")}
+            en={route("publications")}
+            id={route("publications.id")}
+            jp={route("publications.jp")}
+            ch={route("publications.ch")}
             description={checkLang(
                 locale,
                 page.description_eng,
@@ -136,10 +136,10 @@ function Article() {
             )}
             href={checkLang(
                 locale,
-                route("articles"),
-                route("articles.id"),
-                route("articles.jp"),
-                route("articles.ch")
+                route("publications"),
+                route("publications.id"),
+                route("publications.jp"),
+                route("publications.ch")
             )}
         >
             <ArticleHeroSlider 
@@ -151,11 +151,15 @@ function Article() {
             />
             
             <Box sx={{
-                        backgroundColor: theme.palette.custom.gray,
-                        padding: "10px",
-                    }}  className="py-3">
+                    backgroundColor: theme.palette.custom.gray,
+                    padding: "10px",
+                }}  className="py-3 relative">
                 <div className="container">
-                    <div className="row mt-3">
+                    <Box sx={{
+                        position:"sticky",
+                        top:"120px",
+                        zIndex:3000
+                    }} className="row mt-3 ">
                         <div className="col-12 d-flex justify-content-center align-items-center gap-3">
                             <CustomDropdown
                                 list={publicationsList}
@@ -165,7 +169,7 @@ function Article() {
                             />
                             <form
                                 onSubmit={onHandleSearch}
-                                className="d-flex align-items-center justify-content-center"
+                                className="d-flex align-items-center justify-content-center bg-white"
                             >
                                 <CustomInput sx={{position: "relative", height: "100%", paddingRight: "10px"}} placeholder="search" value={search} onChange={(e) => setSearch(e.target.value)}
                                     endAdornment={
@@ -180,7 +184,7 @@ function Article() {
                                 />
                             </form>
                         </div>
-                    </div>
+                    </Box>
                    {
                     filters?.search && (
                          <div className="row">
@@ -251,10 +255,10 @@ function Article() {
                                     router.get(
                                         checkLang(
                                             locale,
-                                            route("articles"),
-                                            route("articles.id"),
-                                            route("articles.jp"),
-                                            route("articles.ch")
+                                            route("publications"),
+                                            route("publications.id"),
+                                            route("publications.jp"),
+                                            route("publications.ch")
                                         ),
                                         { page },
                                         {
@@ -310,10 +314,10 @@ function Article() {
                                         router.get(
                                             checkLang(
                                                 locale,
-                                                route("articles"),
-                                                route("articles.id"),
-                                                route("articles.jp"),
-                                                route("articles.ch")
+                                                route("publications"),
+                                                route("publications.id"),
+                                                route("publications.jp"),
+                                                route("publications.ch")
                                             ),
                                             { page },
                                             {

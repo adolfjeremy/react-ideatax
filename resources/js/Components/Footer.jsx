@@ -125,10 +125,10 @@ function Footer() {
                             <a
                                 href={checkLang(
                                     locale,
-                                    route("articles"),
-                                    route("articles.id"),
-                                    route("articles.jp"),
-                                    route("articles.ch")
+                                    route("publications"),
+                                    route("publications.id"),
+                                    route("publications.jp"),
+                                    route("publications.ch")
                                 )}
                             >
                                 {checkLang(

@@ -25,7 +25,7 @@ import aw5 from "@/assets/images/award/aw-5.webp";
 import aw6 from "@/assets/images/award/aw-6.webp";
 import aw7 from "@/assets/images/award/aw-7.webp";
 import circle from "@/assets/images/circle.png";
-import circleOrange from "@/assets/images/circle-yellow.png";
+import circleOrange from "@/assets/images/circle-orange.png";
 import CustomBreadcrumb from "@/Components/CustomBreadcrumb";
 
 function TaxAudit() {

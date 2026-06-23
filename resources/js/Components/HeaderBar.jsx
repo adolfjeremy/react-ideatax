@@ -17,6 +17,7 @@ import LangChange from "./LangChange";
 import checkLang from "@/utils/checkLang";
 import logo from "@/assets/images/logo.png";
 import logoClear from "@/assets/images/logo-clear.png";
+import { LiquidGlass } from "@liquidglass/react";
 
 import "@/assets/sass/header.scss";
 
@@ -76,125 +77,85 @@ function HeaderBar({ en, id, jp, ch }) {
         }
     };
     return (
-        <Box
-            component="header"
-            sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: `${
-                    !route().current("team") &&
-                    !route().current("team.id") &&
-                    !route().current("team.id")
-                        ? "space-between"
-                        : "flex-end"
-                }`,
-                padding: `${navbarStatus ? "1.5rem 6% 0 6%" : "3rem 6% 0 6%"}`,
-                position: "fixed",
-                top: 0,
-                left: 0,
-                right: 0,
-                zIndex: "1201",
-                backgroundColor: `${
-                    navbarStatus ? "rgba(0,0,0,.2)" : "transparent"
-                }`,
-                transition: "all ease 350ms",
-            }}
+        <>
+            <Box sx={{
+            position:"fixed",
+            top:0,
+            left: 0,
+            right: 0,
+            zIndex:30000,
+        }}>
+            <LiquidGlass
+                borderRadius={0}
+                blur={1.5}
+                contrast={1.2}
+                brightness={1.05}
+                saturation={1.1}
+                elasticity={0.5}
         >
-            {(() => {
-                if (
-                    !route().current("team") &&
-                    !route().current("team.id") &&
-                    !route().current("team.jp") &&
-                    !route().current("team.ch")
-                ) {
-                    return (
-                        <Link
-                            sx={{
-                                img: {
-                                    width: "160px",
-                                    [theme.breakpoints.down("md")]: {
-                                        width: "120px",
-                                    },
-                                },
-                            }}
-                            href={checkLang(
-                                locale,
-                                route("home"),
-                                route("home.id"),
-                                route("home.jp"),
-                                route("home.ch")
-                            )}
-                        >
-                            <img
-                                src={
-                                    route().current("home") ||
-                                    route().current("home.id") ||
-                                    route().current("home.jp") ||
-                                    route().current("home.ch")
-                                        ? logoClear
-                                        : logo
-                                }
-                                alt="Ideatax"
-                            />
-                        </Link>
-                    );
-                }
-            })()}
-            <IconButton
-                onClick={toggleDrawer()}
-                aria-label="open side menu"
-                sx={{
-                    position: "absolute",
-                    right: "6%",
-                    zIndex: "1202",
-                    svg: {
-                        fontSize: "2.5rem",
-                        color: `${
-                            route().current("home")
-                                ? theme.palette.custom.white
-                                : theme.palette.custom.darkBlue
-                        }`,
-                    },
-                }}
-            >
-                {state ? <AiOutlineClose /> : <RxHamburgerMenu />}
-            </IconButton>
-            <Drawer
-                sx={{
-                    display: state ? "" : "none",
-                    ".css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop": {
-                        backgroundColor: "transparent",
-                    },
-                    ".MuiDrawer-paperAnchorRight": {
-                        background:
-                            "linear-gradient(90deg,rgba(165,114,240,0),rgba(0,90,150,.72),#005b96 90%)",
-                        width: "50vw",
-
-                        boxShadow: "none",
-                        [theme.breakpoints.down("md")]: {
-                            width: "75vw",
+            <Box sx={{
+                display:"flex",
+                alignItems: "center",
+                justifyContent:"space-between",
+                width: "100%",
+                py: "1.5rem",
+                px: "6%",
+                backgroundColor: "rgba(0,0,0,.3)"
+            }}>
+                <Link
+                    sx={{
+                        img: {
+                            width: "160px",
+                            [theme.breakpoints.down("md")]: {
+                                width: "120px",
+                            },
                         },
-                    },
-                    ".MuiDrawer-paper": {
-                        border: "none",
-                    },
-                }}
-                variant="persistent"
-                anchor="right"
-                open={state}
-                onClose={toggleDrawer(false)}
-            >
+                    }}
+                    href={checkLang(
+                        locale,
+                        route("home"),
+                        route("home.id"),
+                        route("home.jp"),
+                        route("home.ch")
+                    )}
+                >
+                    <img
+                        src={logoClear}
+                        alt="Ideatax"
+                    />
+                </Link>
+                <IconButton
+                    onClick={toggleDrawer()}
+                    aria-label="open side menu"
+                    sx={{
+                        position: "absolute",
+                        right: "6%",
+                        zIndex: "1202",
+                        cursor:"pointer",
+                        display:"flex",
+                        [theme.breakpoints.up("lg")]: {
+                            display: "none"
+                        },
+                        svg: {
+                            fontSize: "1rem",
+                            color: `${
+                                route().current("home")
+                                    ? theme.palette.custom.white
+                                    : theme.palette.custom.darkBlue
+                            }`,
+                        },
+                    }}
+                >
+                    {state ? <AiOutlineClose /> : <RxHamburgerMenu />}
+                </IconButton>
                 <Box
                     sx={{
-                        width: "100%",
-                        height: "100%",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "flex-end",
-                        justifyContent: "center",
-                        padding: "0 12%",
-                        ".active": {
-                            color: `${theme.palette.custom.yellow} !important`,
+                        display:"flex",
+                        alignItems:"center",
+                        justifyContent:"end",
+                        gap:"1.625rem",
+                        [theme.breakpoints.down("lg")]: {
+                            display: "none"
                         },
                     }}
                 >
@@ -208,8 +169,9 @@ function HeaderBar({ en, id, jp, ch }) {
                         )}
                         className={route().current("home") ? "active" : ""}
                         sx={{
-                            fontSize: "1.7rem",
+                            fontSize: "1.5rem",
                             color: theme.palette.custom.white,
+                            fontWeight: 400,
                             letterSpacing: ".009em",
                             textTransform: "capitalize",
                             textDecoration: "none",
@@ -218,7 +180,7 @@ function HeaderBar({ en, id, jp, ch }) {
                                 color: theme.palette.custom.yellow,
                             },
                         }}
-                    >
+                    >   
                         Home
                     </Link>
                     <Link
@@ -236,8 +198,9 @@ function HeaderBar({ en, id, jp, ch }) {
                                 : ""
                         }
                         sx={{
-                            fontSize: "1.7rem",
+                            fontSize: "1.5rem",
                             color: theme.palette.custom.white,
+                            fontWeight: 400,
                             letterSpacing: ".009em",
                             textTransform: "capitalize",
                             textDecoration: "none",
@@ -264,12 +227,14 @@ function HeaderBar({ en, id, jp, ch }) {
                                 : ""
                         }
                         sx={{
-                            fontSize: "1.7rem",
+                            fontSize: "1.5rem",
                             color: theme.palette.custom.white,
+                            fontWeight: 400,
                             letterSpacing: ".009em",
                             textTransform: "capitalize",
                             textDecoration: "none",
                             padding: "0.5rem 0",
+                            whiteSpace:"nowrap",
                             "&:hover": {
                                 color: theme.palette.custom.yellow,
                             },
@@ -277,101 +242,38 @@ function HeaderBar({ en, id, jp, ch }) {
                     >
                         Our Services
                     </Link>
-                    <Button
+                    <Link
+                        href={checkLang(
+                            locale,
+                            route("publications"),
+                            route("publications.id"),
+                            route("publications.jp"),
+                            route("publications.ch")
+                        )}
                         className={
-                            route().current("articles") ||
+                            route().current("publications") ||
                             route().current("article-detail") ||
-                            route().current("updates") ||
                             route().current("updates-detail")
                                 ? "active"
                                 : ""
                         }
-                        id="basic-button"
-                        aria-controls={
-                            openPublication ? "dropdown-menu" : undefined
-                        }
-                        aria-haspopup="true"
-                        aria-expanded={openPublication ? "true" : undefined}
-                        onClick={handleClickPublication}
                         sx={{
-                            fontSize: "1.7rem",
+                            fontSize: "1.5rem",
                             color: theme.palette.custom.white,
+                            fontWeight: 400,
                             letterSpacing: ".009em",
                             textTransform: "capitalize",
                             textDecoration: "none",
                             padding: "0.5rem 0",
+                            whiteSpace:"nowrap",
                             "&:hover": {
                                 color: theme.palette.custom.yellow,
                             },
                         }}
                     >
-                        Publication
-                        <MdOutlineArrowDropDown />
-                    </Button>
-                    <Menu
-                        id="dropdown-menu"
-                        anchorEl={anchor}
-                        open={openPublication}
-                        onClose={handleClosePublication}
-                        className="dropdown-react"
-                        MenuListProps={{
-                            "aria-labelledby": "dropdown-menu",
-                        }}
-                    >
-                        <MenuItem>
-                            <Link
-                                href={checkLang(
-                                    locale,
-                                    route("articles"),
-                                    route("articles.id"),
-                                    route("articles.jp")
-                                )}
-                                className={
-                                    route().current("articles") ? "active" : ""
-                                }
-                                sx={{
-                                    fontSize: "1.7rem",
-                                    color: theme.palette.custom.white,
-                                    letterSpacing: ".009em",
-                                    textTransform: "capitalize",
-                                    textDecoration: "none",
-                                    padding: "0.5rem 0",
-                                    "&:hover": {
-                                        color: theme.palette.custom.yellow,
-                                    },
-                                }}
-                            >
-                                Articles
-                            </Link>
-                        </MenuItem>
-                        <MenuItem>
-                            <Link
-                                href={checkLang(
-                                    locale,
-                                    route("updates"),
-                                    route("updates.id"),
-                                    route("updates.jp")
-                                )}
-                                className={
-                                    route().current("updates") ? "active" : ""
-                                }
-                                sx={{
-                                    fontSize: "1.7rem",
-                                    color: theme.palette.custom.white,
-                                    letterSpacing: ".009em",
-                                    textTransform: "capitalize",
-                                    textDecoration: "none",
-                                    padding: "0.5rem 0",
-                                    "&:hover": {
-                                        color: theme.palette.custom.yellow,
-                                    },
-                                }}
-                            >
-                                Tax Updates
-                            </Link>
-                        </MenuItem>
-                    </Menu>
-                    <Button
+                        Publications
+                    </Link>
+                     <Button
                         className={
                             route().current("career") ||
                             route().current("career-detail") ||
@@ -385,12 +287,15 @@ function HeaderBar({ en, id, jp, ch }) {
                         aria-expanded={open ? "true" : undefined}
                         onClick={handleClick}
                         sx={{
-                            fontSize: "1.7rem",
+                            fontSize: "1.5rem",
+                            color: theme.palette.custom.white,
+                            fontWeight: 400,
                             color: theme.palette.custom.white,
                             letterSpacing: ".009em",
                             textTransform: "capitalize",
                             textDecoration: "none",
                             padding: "0.5rem 0",
+                            minWidth:"auto",
                             "&:hover": {
                                 color: theme.palette.custom.yellow,
                             },
@@ -421,8 +326,9 @@ function HeaderBar({ en, id, jp, ch }) {
                                     route().current("career") ? "active" : ""
                                 }
                                 sx={{
-                                    fontSize: "1.7rem",
+                                    fontSize: "1.5rem",
                                     color: theme.palette.custom.white,
+                                    fontWeight: 400,
                                     letterSpacing: ".009em",
                                     textTransform: "capitalize",
                                     textDecoration: "none",
@@ -474,12 +380,14 @@ function HeaderBar({ en, id, jp, ch }) {
                         )}
                         className={route().current("contact") ? "active" : ""}
                         sx={{
-                            fontSize: "1.7rem",
+                            fontSize: "1.5rem",
                             color: theme.palette.custom.white,
+                            fontWeight: 400,
                             letterSpacing: ".009em",
                             textTransform: "capitalize",
                             textDecoration: "none",
                             padding: "0.5rem 0",
+                            textWrap: "nowrap",
                             "&:hover": {
                                 color: theme.palette.custom.yellow,
                             },
@@ -489,8 +397,696 @@ function HeaderBar({ en, id, jp, ch }) {
                     </Link>
                     <LangChange en={en} id={id} jp={jp} ch={ch} />
                 </Box>
-            </Drawer>
+            </Box>
+        </LiquidGlass>
         </Box>
+        <Drawer
+            sx={{
+                display: state ? "" : "none",
+                ".css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop": {
+                    backgroundColor: "transparent",
+                },
+                ".MuiDrawer-paperAnchorRight": {
+                    background:
+                        "linear-gradient(90deg,rgba(165,114,240,0),rgba(0,90,150,.72),#005b96 90%)",
+                    width: "50vw",
+
+                    boxShadow: "none",
+                    [theme.breakpoints.down("md")]: {
+                        width: "75vw",
+                    },
+                },
+                ".MuiDrawer-paper": {
+                    border: "none",
+                },
+            }}
+            variant="persistent"
+            anchor="right"
+            open={state}
+            onClose={toggleDrawer(false)}
+        >
+            <Box
+                sx={{
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-end",
+                    justifyContent: "center",
+                    padding: "0 12%",
+                    ".active": {
+                        color: `${theme.palette.custom.yellow} !important`,
+                    },
+                }}
+            >
+                <Link
+                    href={checkLang(
+                        locale,
+                        route("home"),
+                        route("home.id"),
+                        route("home.jp"),
+                        route("home.ch")
+                    )}
+                    className={route().current("home") ? "active" : ""}
+                    sx={{
+                        fontSize: "1.7rem",
+                        color: theme.palette.custom.white,
+                        letterSpacing: ".009em",
+                        textTransform: "capitalize",
+                        textDecoration: "none",
+                        padding: "0.5rem 0",
+                        "&:hover": {
+                            color: theme.palette.custom.yellow,
+                        },
+                    }}
+                >
+                    Home
+                </Link>
+                <Link
+                    href={checkLang(
+                        locale,
+                        route("team"),
+                        route("team.id"),
+                        route("team.jp"),
+                        route("team.ch")
+                    )}
+                    className={
+                        route().current("team") ||
+                        route().current("team-detail")
+                            ? "active"
+                            : ""
+                    }
+                    sx={{
+                        fontSize: "1.7rem",
+                        color: theme.palette.custom.white,
+                        letterSpacing: ".009em",
+                        textTransform: "capitalize",
+                        textDecoration: "none",
+                        padding: "0.5rem 0",
+                        "&:hover": {
+                            color: theme.palette.custom.yellow,
+                        },
+                    }}
+                >
+                    Team
+                </Link>
+                <Link
+                    href={checkLang(
+                        locale,
+                        route("service"),
+                        route("service.id"),
+                        route("service.jp"),
+                        route("service.ch")
+                    )}
+                    className={
+                        route().current("service") ||
+                        route().current("service-detail")
+                            ? "active"
+                            : ""
+                    }
+                    sx={{
+                        fontSize: "1.7rem",
+                        color: theme.palette.custom.white,
+                        letterSpacing: ".009em",
+                        textTransform: "capitalize",
+                        textDecoration: "none",
+                        padding: "0.5rem 0",
+                        "&:hover": {
+                            color: theme.palette.custom.yellow,
+                        },
+                    }}
+                >
+                    Our Services
+                </Link>
+                <Link
+                    href={checkLang(
+                        locale,
+                        route("publications"),
+                        route("publications.id"),
+                        route("publications.jp"),
+                        route("publications.ch")
+                    )}
+                    className={
+                        route().current("publications") ||
+                        route().current("article-detail") ||
+                        route().current("updates-detail")
+                            ? "active"
+                            : ""
+                    }
+                    sx={{
+                        fontSize: "1.5rem",
+                        color: theme.palette.custom.white,
+                        fontWeight: 400,
+                        letterSpacing: ".009em",
+                        textTransform: "capitalize",
+                        textDecoration: "none",
+                        padding: "0.5rem 0",
+                        whiteSpace:"nowrap",
+                        "&:hover": {
+                            color: theme.palette.custom.yellow,
+                        },
+                    }}
+                >
+                    Publications
+                </Link>
+                <Button
+                    className={
+                        route().current("career") ||
+                        route().current("career-detail") ||
+                        route().current("life-at-ideatax")
+                            ? "active"
+                            : ""
+                    }
+                    id="basic-button"
+                    aria-controls={open ? "dropdown-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? "true" : undefined}
+                    onClick={handleClick}
+                    sx={{
+                        fontSize: "1.7rem",
+                        color: theme.palette.custom.white,
+                        letterSpacing: ".009em",
+                        textTransform: "capitalize",
+                        textDecoration: "none",
+                        padding: "0.5rem 0",
+                        "&:hover": {
+                            color: theme.palette.custom.yellow,
+                        },
+                    }}
+                >
+                    Career
+                    <MdOutlineArrowDropDown />
+                </Button>
+                <Menu
+                    id="dropdown-menu"
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    className="dropdown-react"
+                    MenuListProps={{
+                        "aria-labelledby": "dropdown-menu",
+                    }}
+                >
+                    <MenuItem>
+                        <Link
+                            href={checkLang(
+                                locale,
+                                route("career"),
+                                route("career.id"),
+                                route("career.jp")
+                            )}
+                            className={
+                                route().current("career") ? "active" : ""
+                            }
+                            sx={{
+                                fontSize: "1.7rem",
+                                color: theme.palette.custom.white,
+                                letterSpacing: ".009em",
+                                textTransform: "capitalize",
+                                textDecoration: "none",
+                                padding: "0.5rem 0",
+                                "&:hover": {
+                                    color: theme.palette.custom.yellow,
+                                },
+                            }}
+                        >
+                            Career
+                        </Link>
+                    </MenuItem>
+                    <MenuItem>
+                        <Link
+                            href={checkLang(
+                                locale,
+                                route("life-at-ideatax"),
+                                route("life-at-ideatax.id"),
+                                route("life-at-ideatax.jp")
+                            )}
+                            className={
+                                route().current("life-at-ideatax")
+                                    ? "active"
+                                    : ""
+                            }
+                            sx={{
+                                fontSize: "1.7rem",
+                                color: theme.palette.custom.white,
+                                letterSpacing: ".009em",
+                                textTransform: "capitalize",
+                                textDecoration: "none",
+                                padding: "0.5rem 0",
+                                "&:hover": {
+                                    color: theme.palette.custom.yellow,
+                                },
+                            }}
+                        >
+                            Life at Ideatax
+                        </Link>
+                    </MenuItem>
+                </Menu>
+                <Link
+                    href={checkLang(
+                        locale,
+                        route("contact"),
+                        route("contact.id"),
+                        route("contact.jp"),
+                        route("contact.ch")
+                    )}
+                    className={route().current("contact") ? "active" : ""}
+                    sx={{
+                        fontSize: "1.7rem",
+                        color: theme.palette.custom.white,
+                        letterSpacing: ".009em",
+                        textTransform: "capitalize",
+                        textDecoration: "none",
+                        padding: "0.5rem 0",
+                        "&:hover": {
+                            color: theme.palette.custom.yellow,
+                        },
+                    }}
+                >
+                    Contact Us
+                </Link>
+                <LangChange en={en} id={id} jp={jp} ch={ch} />
+            </Box>
+        </Drawer>
+        </>
+
+
+
+        // <Box
+        //     component="header"
+        //     sx={{
+        //         display: "flex",
+        //         alignItems: "center",
+        //         justifyContent: `${
+        //             !route().current("team") &&
+        //             !route().current("team.id") &&
+        //             !route().current("team.id")
+        //                 ? "space-between"
+        //                 : "flex-end"
+        //         }`,
+        //         padding: `${navbarStatus ? "1.5rem 6% 0 6%" : "3rem 6% 0 6%"}`,
+        //         position: "fixed",
+        //         top: 0,
+        //         left: 0,
+        //         right: 0,
+        //         zIndex: "1201",
+        //         backgroundColor: `${
+        //             navbarStatus ? "rgba(0,0,0,.2)" : "transparent"
+        //         }`,
+        //         transition: "all ease 350ms",
+        //     }}
+        // >
+        //     {(() => {
+        //         if (
+        //             !route().current("team") &&
+        //             !route().current("team.id") &&
+        //             !route().current("team.jp") &&
+        //             !route().current("team.ch")
+        //         ) {
+        //             return (
+        //                 <Link
+        //                     sx={{
+        //                         img: {
+        //                             width: "160px",
+        //                             [theme.breakpoints.down("md")]: {
+        //                                 width: "120px",
+        //                             },
+        //                         },
+        //                     }}
+        //                     href={checkLang(
+        //                         locale,
+        //                         route("home"),
+        //                         route("home.id"),
+        //                         route("home.jp"),
+        //                         route("home.ch")
+        //                     )}
+        //                 >
+        //                     <img
+        //                         src={
+        //                             route().current("home") ||
+        //                             route().current("home.id") ||
+        //                             route().current("home.jp") ||
+        //                             route().current("home.ch")
+        //                                 ? logoClear
+        //                                 : logo
+        //                         }
+        //                         alt="Ideatax"
+        //                     />
+        //                 </Link>
+        //             );
+        //         }
+        //     })()}
+        //     <IconButton
+        //         onClick={toggleDrawer()}
+        //         aria-label="open side menu"
+        //         sx={{
+        //             position: "absolute",
+        //             right: "6%",
+        //             zIndex: "1202",
+        //             svg: {
+        //                 fontSize: "2.5rem",
+        //                 color: `${
+        //                     route().current("home")
+        //                         ? theme.palette.custom.white
+        //                         : theme.palette.custom.darkBlue
+        //                 }`,
+        //             },
+        //         }}
+        //     >
+        //         {state ? <AiOutlineClose /> : <RxHamburgerMenu />}
+        //     </IconButton>
+        //     <Drawer
+        //         sx={{
+        //             display: state ? "" : "none",
+        //             ".css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop": {
+        //                 backgroundColor: "transparent",
+        //             },
+        //             ".MuiDrawer-paperAnchorRight": {
+        //                 background:
+        //                     "linear-gradient(90deg,rgba(165,114,240,0),rgba(0,90,150,.72),#005b96 90%)",
+        //                 width: "50vw",
+
+        //                 boxShadow: "none",
+        //                 [theme.breakpoints.down("md")]: {
+        //                     width: "75vw",
+        //                 },
+        //             },
+        //             ".MuiDrawer-paper": {
+        //                 border: "none",
+        //             },
+        //         }}
+        //         variant="persistent"
+        //         anchor="right"
+        //         open={state}
+        //         onClose={toggleDrawer(false)}
+        //     >
+        //         <Box
+        //             sx={{
+        //                 width: "100%",
+        //                 height: "100%",
+        //                 display: "flex",
+        //                 flexDirection: "column",
+        //                 alignItems: "flex-end",
+        //                 justifyContent: "center",
+        //                 padding: "0 12%",
+        //                 ".active": {
+        //                     color: `${theme.palette.custom.yellow} !important`,
+        //                 },
+        //             }}
+        //         >
+        //             <Link
+        //                 href={checkLang(
+        //                     locale,
+        //                     route("home"),
+        //                     route("home.id"),
+        //                     route("home.jp"),
+        //                     route("home.ch")
+        //                 )}
+        //                 className={route().current("home") ? "active" : ""}
+        //                 sx={{
+        //                     fontSize: "1.7rem",
+        //                     color: theme.palette.custom.white,
+        //                     letterSpacing: ".009em",
+        //                     textTransform: "capitalize",
+        //                     textDecoration: "none",
+        //                     padding: "0.5rem 0",
+        //                     "&:hover": {
+        //                         color: theme.palette.custom.yellow,
+        //                     },
+        //                 }}
+        //             >
+        //                 Home
+        //             </Link>
+        //             <Link
+        //                 href={checkLang(
+        //                     locale,
+        //                     route("team"),
+        //                     route("team.id"),
+        //                     route("team.jp"),
+        //                     route("team.ch")
+        //                 )}
+        //                 className={
+        //                     route().current("team") ||
+        //                     route().current("team-detail")
+        //                         ? "active"
+        //                         : ""
+        //                 }
+        //                 sx={{
+        //                     fontSize: "1.7rem",
+        //                     color: theme.palette.custom.white,
+        //                     letterSpacing: ".009em",
+        //                     textTransform: "capitalize",
+        //                     textDecoration: "none",
+        //                     padding: "0.5rem 0",
+        //                     "&:hover": {
+        //                         color: theme.palette.custom.yellow,
+        //                     },
+        //                 }}
+        //             >
+        //                 Team
+        //             </Link>
+        //             <Link
+        //                 href={checkLang(
+        //                     locale,
+        //                     route("service"),
+        //                     route("service.id"),
+        //                     route("service.jp"),
+        //                     route("service.ch")
+        //                 )}
+        //                 className={
+        //                     route().current("service") ||
+        //                     route().current("service-detail")
+        //                         ? "active"
+        //                         : ""
+        //                 }
+        //                 sx={{
+        //                     fontSize: "1.7rem",
+        //                     color: theme.palette.custom.white,
+        //                     letterSpacing: ".009em",
+        //                     textTransform: "capitalize",
+        //                     textDecoration: "none",
+        //                     padding: "0.5rem 0",
+        //                     "&:hover": {
+        //                         color: theme.palette.custom.yellow,
+        //                     },
+        //                 }}
+        //             >
+        //                 Our Services
+        //             </Link>
+        //             <Button
+        //                 className={
+        //                     route().current("articles") ||
+        //                     route().current("article-detail") ||
+        //                     route().current("updates") ||
+        //                     route().current("updates-detail")
+        //                         ? "active"
+        //                         : ""
+        //                 }
+        //                 id="basic-button"
+        //                 aria-controls={
+        //                     openPublication ? "dropdown-menu" : undefined
+        //                 }
+        //                 aria-haspopup="true"
+        //                 aria-expanded={openPublication ? "true" : undefined}
+        //                 onClick={handleClickPublication}
+        //                 sx={{
+        //                     fontSize: "1.7rem",
+        //                     color: theme.palette.custom.white,
+        //                     letterSpacing: ".009em",
+        //                     textTransform: "capitalize",
+        //                     textDecoration: "none",
+        //                     padding: "0.5rem 0",
+        //                     "&:hover": {
+        //                         color: theme.palette.custom.yellow,
+        //                     },
+        //                 }}
+        //             >
+        //                 Publication
+        //                 <MdOutlineArrowDropDown />
+        //             </Button>
+        //             <Menu
+        //                 id="dropdown-menu"
+        //                 anchorEl={anchor}
+        //                 open={openPublication}
+        //                 onClose={handleClosePublication}
+        //                 className="dropdown-react"
+        //                 MenuListProps={{
+        //                     "aria-labelledby": "dropdown-menu",
+        //                 }}
+        //             >
+        //                 <MenuItem>
+        //                     <Link
+        //                         href={checkLang(
+        //                             locale,
+        //                             route("articles"),
+        //                             route("articles.id"),
+        //                             route("articles.jp")
+        //                         )}
+        //                         className={
+        //                             route().current("articles") ? "active" : ""
+        //                         }
+        //                         sx={{
+        //                             fontSize: "1.7rem",
+        //                             color: theme.palette.custom.white,
+        //                             letterSpacing: ".009em",
+        //                             textTransform: "capitalize",
+        //                             textDecoration: "none",
+        //                             padding: "0.5rem 0",
+        //                             "&:hover": {
+        //                                 color: theme.palette.custom.yellow,
+        //                             },
+        //                         }}
+        //                     >
+        //                         Articles
+        //                     </Link>
+        //                 </MenuItem>
+        //                 <MenuItem>
+        //                     <Link
+        //                         href={checkLang(
+        //                             locale,
+        //                             route("updates"),
+        //                             route("updates.id"),
+        //                             route("updates.jp")
+        //                         )}
+        //                         className={
+        //                             route().current("updates") ? "active" : ""
+        //                         }
+        //                         sx={{
+        //                             fontSize: "1.7rem",
+        //                             color: theme.palette.custom.white,
+        //                             letterSpacing: ".009em",
+        //                             textTransform: "capitalize",
+        //                             textDecoration: "none",
+        //                             padding: "0.5rem 0",
+        //                             "&:hover": {
+        //                                 color: theme.palette.custom.yellow,
+        //                             },
+        //                         }}
+        //                     >
+        //                         Tax Updates
+        //                     </Link>
+        //                 </MenuItem>
+        //             </Menu>
+        //             <Button
+        //                 className={
+        //                     route().current("career") ||
+        //                     route().current("career-detail") ||
+        //                     route().current("life-at-ideatax")
+        //                         ? "active"
+        //                         : ""
+        //                 }
+        //                 id="basic-button"
+        //                 aria-controls={open ? "dropdown-menu" : undefined}
+        //                 aria-haspopup="true"
+        //                 aria-expanded={open ? "true" : undefined}
+        //                 onClick={handleClick}
+        //                 sx={{
+        //                     fontSize: "1.7rem",
+        //                     color: theme.palette.custom.white,
+        //                     letterSpacing: ".009em",
+        //                     textTransform: "capitalize",
+        //                     textDecoration: "none",
+        //                     padding: "0.5rem 0",
+        //                     "&:hover": {
+        //                         color: theme.palette.custom.yellow,
+        //                     },
+        //                 }}
+        //             >
+        //                 Career
+        //                 <MdOutlineArrowDropDown />
+        //             </Button>
+        //             <Menu
+        //                 id="dropdown-menu"
+        //                 anchorEl={anchorEl}
+        //                 open={open}
+        //                 onClose={handleClose}
+        //                 className="dropdown-react"
+        //                 MenuListProps={{
+        //                     "aria-labelledby": "dropdown-menu",
+        //                 }}
+        //             >
+        //                 <MenuItem>
+        //                     <Link
+        //                         href={checkLang(
+        //                             locale,
+        //                             route("career"),
+        //                             route("career.id"),
+        //                             route("career.jp")
+        //                         )}
+        //                         className={
+        //                             route().current("career") ? "active" : ""
+        //                         }
+        //                         sx={{
+        //                             fontSize: "1.7rem",
+        //                             color: theme.palette.custom.white,
+        //                             letterSpacing: ".009em",
+        //                             textTransform: "capitalize",
+        //                             textDecoration: "none",
+        //                             padding: "0.5rem 0",
+        //                             "&:hover": {
+        //                                 color: theme.palette.custom.yellow,
+        //                             },
+        //                         }}
+        //                     >
+        //                         Career
+        //                     </Link>
+        //                 </MenuItem>
+        //                 <MenuItem>
+        //                     <Link
+        //                         href={checkLang(
+        //                             locale,
+        //                             route("life-at-ideatax"),
+        //                             route("life-at-ideatax.id"),
+        //                             route("life-at-ideatax.jp")
+        //                         )}
+        //                         className={
+        //                             route().current("life-at-ideatax")
+        //                                 ? "active"
+        //                                 : ""
+        //                         }
+        //                         sx={{
+        //                             fontSize: "1.7rem",
+        //                             color: theme.palette.custom.white,
+        //                             letterSpacing: ".009em",
+        //                             textTransform: "capitalize",
+        //                             textDecoration: "none",
+        //                             padding: "0.5rem 0",
+        //                             "&:hover": {
+        //                                 color: theme.palette.custom.yellow,
+        //                             },
+        //                         }}
+        //                     >
+        //                         Life at Ideatax
+        //                     </Link>
+        //                 </MenuItem>
+        //             </Menu>
+        //             <Link
+        //                 href={checkLang(
+        //                     locale,
+        //                     route("contact"),
+        //                     route("contact.id"),
+        //                     route("contact.jp"),
+        //                     route("contact.ch")
+        //                 )}
+        //                 className={route().current("contact") ? "active" : ""}
+        //                 sx={{
+        //                     fontSize: "1.7rem",
+        //                     color: theme.palette.custom.white,
+        //                     letterSpacing: ".009em",
+        //                     textTransform: "capitalize",
+        //                     textDecoration: "none",
+        //                     padding: "0.5rem 0",
+        //                     "&:hover": {
+        //                         color: theme.palette.custom.yellow,
+        //                     },
+        //                 }}
+        //             >
+        //                 Contact Us
+        //             </Link>
+        //             <LangChange en={en} id={id} jp={jp} ch={ch} />
+        //         </Box>
+        //     </Drawer>
+        // </Box>
     );
 }
 

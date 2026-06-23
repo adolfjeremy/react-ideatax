@@ -16,10 +16,10 @@ function UpdateList({ updates, locale, theme }) {
                     date={item.created_at}
                     route={checkLang(
                         locale,
-                        item.slug_eng,
-                        item.slug,
-                        item.slug_jpn,
-                        item.slug_eng
+                        route("update-detail", item.slug_eng),
+                        route("update-detail.id", item.slug),
+                        route("update-detail.jp", item.slug_jpn),
+                        route("update-detail.ch", item.slug_ch? item.slug_ch : item.slug_eng),
                     )}
                     locale={locale}
                     desc={

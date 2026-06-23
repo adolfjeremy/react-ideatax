@@ -22,6 +22,7 @@ const CustomInput = styled(InputBase)(({ theme }) => ({
         lineHeight: "normal",
         fontSize: 16,
         padding: "8px 28px 8px 10px",
+        backgroundColor: "#ffffff"
     },
 }));
 

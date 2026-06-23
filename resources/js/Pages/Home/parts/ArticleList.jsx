@@ -2,7 +2,7 @@ import {Typography, useTheme, Box} from "@mui/material"
 import ArticleItem from "./ArticleItem"
 import checkLang from "@/utils/checkLang"
 
-export default function ArticleList({data, t}) {
+export default function ArticleList({data, t, locale}) {
     const theme = useTheme();
     return (
         <>
@@ -37,7 +37,13 @@ export default function ArticleList({data, t}) {
                     }}>
                         {
                         data.map((item, idx) => (
-                            <ArticleItem key={item.id} image={item.thumbnail} title={item.title} description={item.body} date={item.updated_at} idx={idx} route=""/>
+                            <ArticleItem key={item.id} image={item.thumbnail} title={item.title} description={item.body} date={item.updated_at} idx={idx} route={checkLang(
+                                                    locale,
+                                                    route("article-detail", item.slug_eng),
+                                                    route("article-detail.id", item.slug),
+                                                    route("article-detail.jp", item.slug_jpn),
+                                                    route("article-detail.ch", item.slug_ch? item.slug_ch : item.slug_eng),
+                                                )}/>
                         ))
                     }
                     </Box>

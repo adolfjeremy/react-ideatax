@@ -193,7 +193,11 @@ function Team() {
                     </div>
                 </Box>
             </Box>
-            <Box>
+            <Box sx={{
+                position:"sticky",
+                top:"70px",
+                zIndex:3000
+            }}>
                 <div className="container">
                     <div className="row py-4">
                         <div className="col-12 d-flex align-items-center justify-content-center">

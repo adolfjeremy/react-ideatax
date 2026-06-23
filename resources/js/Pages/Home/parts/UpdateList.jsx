@@ -1,7 +1,8 @@
 import {Typography, useTheme, Box} from "@mui/material"
 import ArticleItem from "./ArticleItem"
+import checkLang from "@/utils/checkLang";
 
-export default function UpdateList({data, t}) {
+export default function UpdateList({data, t, locale}) {
     const theme = useTheme();
     return (
         <>
@@ -37,7 +38,13 @@ export default function UpdateList({data, t}) {
                     }}>
                         {
                         data.map((item, idx) => (
-                            <ArticleItem key={item.id} image={item.thumbnail} title={item.title} description={item.body} date={item.updated_at} idx={idx} type="Updates" route=""/>
+                            <ArticleItem key={item.id} image={item.thumbnail} title={item.title} description={item.body} date={item.updated_at} idx={idx} type="Updates" route={checkLang(
+                        locale,
+                        route("update-detail", item.slug_eng),
+                        route("update-detail.id", item.slug),
+                        route("update-detail.jp", item.slug_jpn),
+                        route("update-detail.ch", item.slug_ch? item.slug_ch : item.slug_eng),
+                    )}/>
                         ))
                     }
                     </Box>

@@ -461,13 +461,13 @@ function Home() {
                             </Typography>
                         </div>
                     </div>
-                    <ArticleList t={t} data={articles} />
+                    <ArticleList t={t} data={articles} locale={locale} />
                     <div className="row">
                         <div className="col-12">
                             <hr />
                         </div>
                     </div>
-                    <UpdateList t={t} data={updates} />
+                    <UpdateList t={t} data={updates} locale={locale} />
                 </div>
             </Box>
             <Box sx={{ 

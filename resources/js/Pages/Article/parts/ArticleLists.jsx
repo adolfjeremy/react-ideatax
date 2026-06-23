@@ -16,10 +16,10 @@ function ArticleLists({ articles, locale, theme }) {
                     date={item.created_at}
                     route={checkLang(
                         locale,
-                        item.slug_eng,
-                        item.slug,
-                        item.slug_jpn,
-                        item.slug_eng
+                        route("article-detail", item.slug_eng),
+                        route("article-detail.id", item.slug),
+                        route("article-detail.jp", item.slug_jpn),
+                        route("article-detail.ch", item.slug_ch? item.slug_ch : item.slug_eng),
                     )}
                     locale={locale}
                     desc={
