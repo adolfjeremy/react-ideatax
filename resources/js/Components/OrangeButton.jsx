@@ -15,6 +15,10 @@ function OrangeButton({ children, href }) {
                 fontWeight: 500,
                 textTransform: "capitalize",
                 borderRadius: "16px",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                    backgroundColor: theme.palette.custom.white,
+                },
                 [theme.breakpoints.down("md")]: {
                     fontSize: "0.625rem",
                     padding: "0.35rem 0.65rem",
@@ -24,7 +28,7 @@ function OrangeButton({ children, href }) {
                     padding: "0.6875rem 1.5625rem",
                 },
                 [theme.breakpoints.up("lg")]: {
-                    fontSize: "1.2rem",
+                    fontSize: "1.5rem",
                 },
             }}
             href={href}

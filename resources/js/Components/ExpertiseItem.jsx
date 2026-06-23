@@ -19,19 +19,21 @@ function ExpertiseItem({ head, desc, image, route }) {
             <Box sx={{
                 display: "flex",
                 alignItems: "start",
+                mt: 1,
+                fontWeight: 300,
                 [theme.breakpoints.down("md")]: {
                     display:"none"
                 },
             }}>
                 {image}
             </Box>
-            <div className="ms-0 ms-md-2">
+            <div className="ms-0 ms-md-3">
                 <Link
                     sx={{
                         fontWeight: 700,
                         color: theme.palette.custom.black,
-                        lineHeight: "1.42856633em",
-                        letterSpacing: "0.009em",
+                        lineHeight: "39px",
+                        letterSpacing: "12%",
                         fontSize: "1.5rem",
                         textDecoration:"none",
                         transition:"all 0.3s ease",
@@ -49,8 +51,8 @@ function ExpertiseItem({ head, desc, image, route }) {
             <Typography
                 sx={{
                     color: theme.palette.custom.black,
-                    lineHeight: "1.42856633em",
-                    letterSpacing: "0.009em",
+                    lineHeight: "35px",
+                    letterSpacing: "12%",
                     fontWeight: 300,
                     fontSize: "1.25rem",
                     margin: "0",

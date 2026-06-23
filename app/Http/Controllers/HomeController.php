@@ -151,6 +151,8 @@ class HomeController extends Controller
                 ->get();
         });
 
+        $compro = CompanyProfile::orderBy('updated_at', 'desc')->first();
+
         // Return the data to the Inertia view
         return Inertia::render('Home/Home', [
             "heroes" => $heroes,
@@ -162,7 +164,8 @@ class HomeController extends Controller
             "departments" => $departments,
             "advisories" => $advisories,
             "regulations" => $regulations,
-            "page" => $page
+            "page" => $page,
+            "compro" => $compro,
         ]);
     }
 

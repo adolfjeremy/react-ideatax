@@ -65,6 +65,7 @@ function Home() {
         advisories,
         regulations,
         events,
+        compro
     } = usePage().props;
 
     return (
@@ -100,6 +101,7 @@ function Home() {
                 t={t}
                 theme={theme}
                 locale={locale}
+                compro={compro}
                 checkLang={checkLang}
             />
             <Box
@@ -216,7 +218,13 @@ function Home() {
                         <div className="col-12 text-center">
                             <Button
                                 as="a"
-                                href="/service"
+                                href={checkLang(
+                                    locale,
+                                    route("service"),
+                                    route("service.id"),
+                                    route("service.jp"),
+                                    route("service.ch")
+                                )}
                                 sx={{
                                     backgroundColor: "transparent",
                                     letterSpacing: "2%",

@@ -3,7 +3,7 @@ import OrangeButton from "@/Components/OrangeButton";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 
-function Hero({ heroes, t, theme, locale, checkLang }) {
+function Hero({ heroes, t, theme, locale, compro, checkLang }) {
     const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()]);
     return (
         <Box sx={{ position: "relative", height: "70svh", [theme.breakpoints.up("md")]: {
@@ -82,7 +82,7 @@ function Hero({ heroes, t, theme, locale, checkLang }) {
                                     </Typography>
                                 </Typography>
                                 <div className="flex items-center justify-start gap-3 mt-2 mt-lg-3">
-                                    {item.button_text_eng && <OrangeButton
+                                 <OrangeButton
                                     href={checkLang(
                                         locale,
                                         route("contact"),
@@ -91,11 +91,9 @@ function Hero({ heroes, t, theme, locale, checkLang }) {
                                         route("contact.ch")
                                     )}
                                 >
-                                    {item.button_text_eng}
-                                </OrangeButton>}
-                                {
-                                    item.button_link_eng && 
-                                    (<Button
+                                    {t("consult")}
+                                </OrangeButton>``
+                                <Button
                                         variant="outlined"
                                         sx={{
                                             backgroundColor: "transparent",
@@ -103,9 +101,14 @@ function Hero({ heroes, t, theme, locale, checkLang }) {
                                             lineHeight: "100%",
                                             color: theme.palette.custom.white,
                                             fontWeight: 700,
-                                            border: `1px solid ${theme.palette.custom.white}`,
+                                            border: `0.7px solid ${theme.palette.custom.white}`,
                                             borderRadius: "16px",
                                             textTransform: "capitalize",
+                                            transition: "all 0.3s ease",
+                                            "&:hover": {
+                                                backgroundColor: theme.palette.custom.white,
+                                                color: theme.palette.custom.black,
+                                            },
                                                 [theme.breakpoints.down("md")]: {
                                                     fontSize: "0.625rem",
                                                     padding: "0.35rem 0.65rem",
@@ -115,14 +118,14 @@ function Hero({ heroes, t, theme, locale, checkLang }) {
                                                     padding: "0.6875rem 1.5625rem",
                                                 },
                                                 [theme.breakpoints.up("lg")]: {
-                                                    fontSize: "1.2rem",
+                                                    fontSize: "1.5rem",
                                                 },
                                         }}
-                                        href={""}
+                                        target="_blank"
+                                        href={`/storage/${compro.compro}`}
                                     >
-                                        {item.button_link_eng}
-                                    </Button>)
-                                }
+                                        {t("comproButton")}
+                                    </Button>
                                 </div>
                             </Box>
                         </Box>
