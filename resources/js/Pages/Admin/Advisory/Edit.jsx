@@ -288,7 +288,7 @@ function Create() {
                                             key={item.id}
                                             value={item.id}
                                         >
-                                            {`${item.name} - ${item.position_eng} - ${item.department?.name_eng}`}
+                                            {`${item.name}`}
                                         </MenuItem>
                                     ))}
                                 </Select>

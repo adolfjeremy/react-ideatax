@@ -70,7 +70,7 @@ class AdvisoryController extends Controller
      */
     public function edit($id)
     {
-        $item = Advisory::findOrFail($id);
+        $item = Advisory::with("team")->findOrFail($id);
         $teams = Team::with(['department', 'position'])->get();
         return Inertia::render('Admin/Advisory/Edit', [
             "item" => $item,

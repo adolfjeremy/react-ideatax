@@ -17,7 +17,7 @@ function Advisory() {
         {
             field: "team_name_eng",
             headerName: "Team name",
-            renderCell: (params) => `${params.row.team?.name } - ${params.row.team?.position }`|| "-",
+            renderCell: (params) => `${params.row.team?.name }`|| "-",
             flex: 1,
             headerAlign: "center",
             align: "center",

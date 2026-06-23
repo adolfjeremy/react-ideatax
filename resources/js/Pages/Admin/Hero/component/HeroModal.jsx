@@ -17,14 +17,6 @@ function HeroModal() {
         subtitle_eng: "",
         subtitle_jpn: "",
         subtitle_ch: "",
-        button_text: "",
-        button_text_eng: "",
-        button_text_jpn: "",
-        button_text_ch: "",
-        button_link: "",
-        button_link_eng: "",
-        button_link_jpn: "",
-        button_link_ch: "",
     });
     
     const [value, setValue] = useState(0);
@@ -134,17 +126,6 @@ function HeroModal() {
                                 sx={{ width: "100%", mb: 2 }}
                             />
                             <TextField
-                                id="button_link_eng"
-                                value={data.button_link_eng}
-                                onChange={(e) =>
-                                    setData("button_link_eng", e.target.value)
-                                }
-                                label="Button Link English"
-                                variant="outlined"
-                                sx={{ width: "100%", mb: 2 }}
-                            />
-
-                            <TextField
                                 id="button_text_eng"
                                 value={data.button_text_eng}
                                 onChange={(e) =>
@@ -187,17 +168,6 @@ function HeroModal() {
                                 variant="outlined"
                                 sx={{ width: "100%", mb: 2 }}
                             />
-
-                            <TextField
-                                id="button_text"
-                                value={data.button_text}
-                                onChange={(e) =>
-                                    setData("button_text", e.target.value)
-                                }
-                                label="Button Text"
-                                variant="outlined"
-                                sx={{ width: "100%" }}
-                            />
                         </CustomTabPanel>
                         <CustomTabPanel value={value} index={2}>
                             <TextField
@@ -231,17 +201,6 @@ function HeroModal() {
                                 variant="outlined"
                                 sx={{ width: "100%", mb: 2 }}
                             />
-
-                            <TextField
-                                id="button_text_jpn"
-                                value={data.button_text_jpn}
-                                onChange={(e) =>
-                                    setData("button_text_jpn", e.target.value)
-                                }
-                                label="Button Text Japanese"
-                                variant="outlined"
-                                sx={{ width: "100%" }}
-                            />
                         </CustomTabPanel>
                         <CustomTabPanel value={value} index={3}>
                             <TextField
@@ -264,27 +223,6 @@ function HeroModal() {
                                 label="Subtitle Chinese"
                                 variant="outlined"
                                 sx={{ width: "100%", mb: 2 }}
-                            />
-                            <TextField
-                                id="button_link_ch"
-                                value={data.button_link_ch}
-                                onChange={(e) =>
-                                    setData("button_link_ch", e.target.value)
-                                }
-                                label="Button Link Chinese"
-                                variant="outlined"
-                                sx={{ width: "100%", mb: 2 }}
-                            />
-
-                            <TextField
-                                id="button_text_ch"
-                                value={data.button_text_ch}
-                                onChange={(e) =>
-                                    setData("button_text_ch", e.target.value)
-                                }
-                                label="Button Text Chinese"
-                                variant="outlined"
-                                sx={{ width: "100%" }}
                             />
                         </CustomTabPanel>
                         <TextField

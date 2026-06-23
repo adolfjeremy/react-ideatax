@@ -26,14 +26,6 @@ function HeroEdit({ hero }) {
         subtitle_eng: hero.subtitle_eng || "",
         subtitle_jpn: hero.subtitle_jpn || "",
         subtitle_ch: hero.subtitle_ch || "",
-        button_text: hero.button_text || "",
-        button_text_eng: hero.button_text_eng || "",
-        button_text_jpn: hero.button_text_jpn || "",
-        button_text_ch: hero.button_text_ch || "",
-        button_link: hero.button_link || "",
-        button_link_eng: hero.button_link_eng || "",
-        button_link_jpn: hero.button_link_jpn || "",
-        button_link_ch: hero.button_link_ch || "",
 
     });
 
@@ -188,27 +180,6 @@ function HeroEdit({ hero }) {
                                 variant="outlined"
                                 sx={{ width: "100%", mb: 2 }}
                             />
-                            <TextField
-                                id="button_link_eng"
-                                value={data.button_link_eng}
-                                onChange={(e) =>
-                                    setData("button_link_eng", e.target.value)
-                                }
-                                label="Button Link English"
-                                variant="outlined"
-                                sx={{ width: "100%", mb: 2 }}
-                            />
-
-                            <TextField
-                                id="button_text_eng"
-                                value={data.button_text_eng}
-                                onChange={(e) =>
-                                    setData("button_text_eng", e.target.value)
-                                }
-                                label="Button Text English"
-                                variant="outlined"
-                                sx={{ width: "100%" }}
-                            />
                         </CustomTabPanel>
                             <CustomTabPanel value={value} index={1}>
                             <TextField
@@ -231,27 +202,6 @@ function HeroEdit({ hero }) {
                                 label="Subtitle"
                                 variant="outlined"
                                 sx={{ width: "100%", mb: 2 }}
-                            />
-                            <TextField
-                                id="button_link"
-                                value={data.button_link}
-                                onChange={(e) =>
-                                    setData("button_link", e.target.value)
-                                }
-                                label="Button Link"
-                                variant="outlined"
-                                sx={{ width: "100%", mb: 2 }}
-                            />
-
-                            <TextField
-                                id="button_text"
-                                value={data.button_text}
-                                onChange={(e) =>
-                                    setData("button_text", e.target.value)
-                                }
-                                label="Button Text"
-                                variant="outlined"
-                                sx={{ width: "100%" }}
                             />
                         </CustomTabPanel>
                         <CustomTabPanel value={value} index={2}>
@@ -276,27 +226,6 @@ function HeroEdit({ hero }) {
                                 variant="outlined"
                                 sx={{ width: "100%", mb: 2 }}
                             />
-                            <TextField
-                                id="button_link_jpn"
-                                value={data.button_link_jpn}
-                                onChange={(e) =>
-                                    setData("button_link_jpn", e.target.value)
-                                }
-                                label="Button Link Japanese"
-                                variant="outlined"
-                                sx={{ width: "100%", mb: 2 }}
-                            />
-
-                            <TextField
-                                id="button_text_jpn"
-                                value={data.button_text_jpn}
-                                onChange={(e) =>
-                                    setData("button_text_jpn", e.target.value)
-                                }
-                                label="Button Text Japanese"
-                                variant="outlined"
-                                sx={{ width: "100%" }}
-                            />
                         </CustomTabPanel>
                         <CustomTabPanel value={value} index={3}>
                             <TextField
@@ -319,27 +248,6 @@ function HeroEdit({ hero }) {
                                 label="Subtitle Chinese"
                                 variant="outlined"
                                 sx={{ width: "100%", mb: 2 }}
-                            />
-                            <TextField
-                                id="button_link_ch"
-                                value={data.button_link_ch}
-                                onChange={(e) =>
-                                    setData("button_link_ch", e.target.value)
-                                }
-                                label="Button Link Chinese"
-                                variant="outlined"
-                                sx={{ width: "100%", mb: 2 }}
-                            />
-
-                            <TextField
-                                id="button_text_ch"
-                                value={data.button_text_ch}
-                                onChange={(e) =>
-                                    setData("button_text_ch", e.target.value)
-                                }
-                                label="Button Text Chinese"
-                                variant="outlined"
-                                sx={{ width: "100%" }}
                             />
                         </CustomTabPanel>   
                         <TextField

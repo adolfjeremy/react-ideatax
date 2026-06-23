@@ -16,13 +16,5 @@ class HeroSlider extends Model
         'subtitle_eng', 
         'subtitle_jpn', 
         'subtitle_ch', 
-        'button_text', 
-        'button_text_eng', 
-        'button_text_jpn', 
-        'button_text_ch', 
-        'button_link', 
-        'button_link_eng', 
-        'button_link_jpn', 
-        'button_link_ch'
     ];
 }
