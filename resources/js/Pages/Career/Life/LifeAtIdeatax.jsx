@@ -12,11 +12,6 @@ import "react-photo-album/rows.css";
 import "yet-another-react-lightbox/styles.css";
 import checkLang from "@/utils/checkLang";
 
-import one from "@/assets/images/1.webp";
-import two from "@/assets/images/2.webp";
-import three from "@/assets/images/3.webp";
-import four from "@/assets/images/4.webp";
-
 function LifeAtIdeatax() {
     const { locale, page, galeries } = usePage().props;
     const theme = useTheme();
