@@ -31,26 +31,32 @@ function OurTeamSlider({theme,checkLang, locale, departments}) {
         </div>
       </div>
     </div>
-    <Button sx={{
-        position: "absolute",
-        top: "50%",
-        left: "0",
-        transform: "translateY(-50%)",
-        "svg": {
-            color: theme.palette.custom.black
-        }
-    }} onClick={goToPrev}><IoIosArrowDropleft size={36} /></Button>
-    <Button sx={{
-        position: "absolute",
-        top: "50%",
-        right: "0",
-        transform: "translateY(-50%)",
-        "svg": {
-            color: theme.palette.custom.black
-        }
-    }} onClick={goToNext}><IoIosArrowDropright size={36} /></Button>
+    {
+        departments.length > 1 && (
+            <>
+            <Button sx={{
+                position: "absolute",
+                top: "50%",
+                left: "0",
+                transform: "translateY(-50%)",
+                "svg": {
+                    color: theme.palette.custom.black
+                }
+            }} onClick={goToPrev}><IoIosArrowDropleft size={36} /></Button>
+            <Button sx={{
+                position: "absolute",
+                top: "50%",
+                right: "0",
+                transform: "translateY(-50%)",
+                "svg": {
+                    color: theme.palette.custom.black
+                }
+            }} onClick={goToNext}><IoIosArrowDropright size={36} /></Button>
+            </>
+        )
+    }
     </>
-  )
-}
+  )}
+
 
 export default OurTeamSlider

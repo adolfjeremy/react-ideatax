@@ -470,74 +470,82 @@ function Home() {
                     <UpdateList t={t} data={updates} locale={locale} />
                 </div>
             </Box>
-            <Box sx={{ 
-                    backgroundColor: theme.palette.custom.gray, 
-                    py: 10, 
-                    [theme.breakpoints.down("md")]: {
-                        py:6,
-                        mt: 6
-                    },}}>
-                <div className="container">
-                    {advisories.map((advisory, idx) => (
-                        <AdvisoryHighlight key={advisory.id} advisory={advisory} idx={idx} />
-                    ))}
-                    <div className="row">
-                        <div className="col-12 mt-4 position-relative">
-                            <AdvisoryList advisories={advisories} />
-                        </div>
-                    </div>
-                </div>
-            </Box>
-            <Box sx={{ 
-                    backgroundImage: `url(${RegulationBg})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center top",
-                    py: 8, 
-                    [theme.breakpoints.down("md")]: {
-                        py:4,
-                        mt: 6
-                    },}}>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12 ">
-                            <Typography
-                                sx={{
-                                    fontSize: "3rem",
-                                    lineHeight: "1.43749551em",
-                                    fontWeight: "700",
-                                    color: theme.palette.custom.white,
-                                    textAlign: "start",
-                                    [theme.breakpoints.down("md")]: {
-                                        fontSize: "1.5rem",
-                                    },
-                                }}
-                                as="h2"
-                            >
-                                Library
-                            </Typography>
-                        </div>
-                    </div>
-                    <RegulationList regulations={regulations} />
-                    <div className="row">
-                        <div className="col-12 d-flex align-items-center justify-content-start">
-                            <Link href="" sx={{
-                                color: theme.palette.custom.yellow,
-                                fontSize: "1.5rem",
-                                fontWeight: "700",
-                                lineHeight: "1.42498753em",
-                                letterSpacing: ".009em",
-                                textDecoration: "none",
-                                display:"flex",
-                                alignItems:"center",
-                                gap:"10px",
+            {
+                advisories.length > 0 && (
+                    <Box sx={{ 
+                                backgroundColor: theme.palette.custom.gray, 
+                                py: 10, 
                                 [theme.breakpoints.down("md")]: {
-                                    fontSize: "0.5rem",
-                                },
-                            }}>More Regulations <MdArrowForwardIos size={15} /></Link>
+                                    py:6,
+                                    mt: 6
+                                },}}>
+                                <div className="container">
+                                    {advisories.map((advisory, idx) => (
+                                        <AdvisoryHighlight key={advisory.id} advisory={advisory} idx={idx} />
+                                    ))}
+                                    <div className="row">
+                                        <div className="col-12 mt-4 position-relative">
+                                            <AdvisoryList advisories={advisories} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </Box>
+                        )
+                    }
+                    {
+                        regulations.length > 0 && (
+                            <Box sx={{ 
+                            backgroundImage: `url(${RegulationBg})`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "center top",
+                            py: 8, 
+                            [theme.breakpoints.down("md")]: {
+                                py:4,
+                                mt: 6
+                            },}}>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-12 ">
+                                    <Typography
+                                        sx={{
+                                            fontSize: "3rem",
+                                            lineHeight: "1.43749551em",
+                                            fontWeight: "700",
+                                            color: theme.palette.custom.white,
+                                            textAlign: "start",
+                                            [theme.breakpoints.down("md")]: {
+                                                fontSize: "1.5rem",
+                                            },
+                                        }}
+                                        as="h2"
+                                    >
+                                        Library
+                                    </Typography>
+                                </div>
+                            </div>
+                            <RegulationList regulations={regulations} />
+                            <div className="row">
+                                <div className="col-12 d-flex align-items-center justify-content-start">
+                                    <Link href="" sx={{
+                                        color: theme.palette.custom.yellow,
+                                        fontSize: "1.5rem",
+                                        fontWeight: "700",
+                                        lineHeight: "1.42498753em",
+                                        letterSpacing: ".009em",
+                                        textDecoration: "none",
+                                        display:"flex",
+                                        alignItems:"center",
+                                        gap:"10px",
+                                        [theme.breakpoints.down("md")]: {
+                                            fontSize: "0.5rem",
+                                        },
+                                    }}>More Regulations <MdArrowForwardIos size={15} /></Link>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </Box>
+                    </Box>
+                )
+            }
             <Box component="section" sx={{ py: "3.5rem" }}>
                 <div className="container">
                     <div className="row">
