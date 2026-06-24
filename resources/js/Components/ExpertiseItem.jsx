@@ -27,7 +27,11 @@ function ExpertiseItem({ head, desc, image, route }) {
             }}>
                 {image}
             </Box>
-            <div className="ms-0 ms-md-3">
+            <Box sx={{
+                display: "grid",
+                gridTemplateColumns: "1fr",
+                gridTemplateRows:"0.8fr 3fr",
+            }} className="ms-0 ms-md-3">
                 <Link
                     sx={{
                         fontWeight: 700,
@@ -48,22 +52,22 @@ function ExpertiseItem({ head, desc, image, route }) {
                 >
                     {head}
                 </Link>
-            <Typography
-                sx={{
-                    color: theme.palette.custom.black,
-                    lineHeight: "35px",
-                    letterSpacing: "12%",
-                    fontWeight: 300,
-                    fontSize: "1.25rem",
-                    margin: "0",
-                    [theme.breakpoints.down("md")]: {
-                        fontSize: "0.9rem",
-                    },
-                }}
-            >
-                {desc}
-            </Typography>
-            </div>
+                <Typography
+                    sx={{
+                        color: theme.palette.custom.black,
+                        lineHeight: "35px",
+                        letterSpacing: "12%",
+                        fontWeight: 300,
+                        fontSize: "1.25rem",
+                        margin: "0",
+                        [theme.breakpoints.down("md")]: {
+                            fontSize: "0.9rem",
+                        },
+                    }}
+                >
+                    {desc}
+                </Typography>
+            </Box>
         </Box>
     );
 }

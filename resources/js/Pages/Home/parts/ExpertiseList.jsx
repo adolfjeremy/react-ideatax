@@ -13,11 +13,12 @@ function ExpertiseList({ checkLang, locale, t, theme }) {
                 gridTemplateColumns: "repeat(2, 1fr)",
                 gridTemplateRows: "repeat(2, 1fr)",
                 gap: "1rem",
+                padding: "0 !important",
                 [theme.breakpoints.down("md")]: {
                     gridTemplateColumns: "repeat(1, 1fr)",
                     gridTemplateRows: "repeat(1, 1fr)",
                 },
-            }} className="col-12">
+            }} className="col-12 p-0">
                 <ExpertiseItem
                     head="Tax Dispute Resolution"
                     desc="Representing corporate taxpayers throughout the tax controversy lifecycle including SP2DK responses, tax audits, objections, appeals, and tax court proceedings with structured defense and risk mitigation strategies at every stage."

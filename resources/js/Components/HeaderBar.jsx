@@ -79,7 +79,6 @@ function HeaderBar({ en, id, jp, ch }) {
     };
 
     const isMobile = useMediaQuery((theme) => theme.breakpoints.down("lg"));
-    console.log(state, isMobile)
     return (
         <>
             <Box sx={{
@@ -292,7 +291,6 @@ function HeaderBar({ en, id, jp, ch }) {
                             fontSize: "1.5rem",
                             color: theme.palette.custom.white,
                             fontWeight: 400,
-                            color: theme.palette.custom.white,
                             letterSpacing: ".009em",
                             textTransform: "capitalize",
                             textDecoration: "none",

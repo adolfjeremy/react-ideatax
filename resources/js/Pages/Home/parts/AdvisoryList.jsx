@@ -18,7 +18,6 @@ export default function AdvisoryList ({advisories}){
     const goToPrev = () => emblaApi?.scrollPrev()
     const goToNext = () => emblaApi?.scrollNext()
     const theme = useTheme()
-    console.log(advisories)
     return (
         <>
             <div className="embla position-relative mt-4">
