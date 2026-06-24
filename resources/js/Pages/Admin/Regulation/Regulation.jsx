@@ -51,7 +51,7 @@ function Regulation() {
                             href={route("regulations.create")}
                             variant="contained"
                         >
-                            Create new Regulation
+                            Create new Library
                         </Button>
                     </div>
                 </div>

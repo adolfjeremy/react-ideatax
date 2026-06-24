@@ -35,6 +35,7 @@ import { MdSubscriptions } from "react-icons/md";
 import { GiArtificialIntelligence } from "react-icons/gi";
 import Spinner from "@/Components/Spinner";
 import AlertBar from "@/Components/AlertBar";
+import { MdLibraryBooks } from "react-icons/md";
 
 const drawerWidth = 240;
 
@@ -147,6 +148,21 @@ function AuthLayout({ children, sectionHeading }) {
                             <GiArtificialIntelligence />
                         </ListItemIcon>
                         <ListItemText primary="Advisory" />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem
+                    disablePadding
+                    component="a"
+                    href={route("regulations.index")}
+                    className={`${
+                        route().current("regulations*") ? "active" : ""
+                    }`}
+                >
+                    <ListItemButton>
+                        <ListItemIcon>
+                            <MdLibraryBooks />
+                        </ListItemIcon>
+                        <ListItemText primary="Library" />
                     </ListItemButton>
                 </ListItem>
                 <ListItem
