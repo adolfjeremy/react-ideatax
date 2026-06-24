@@ -14,9 +14,9 @@ export default {
         serviceThreeHead: "Dokumentasi Transfer Harga",
         serviceThreeDesc:
             "Dokumentasi transfer pricing memastikan bahwa transaksi antar-perusahaan, baik perusahaan nasional maupun multinasional, mematuhi peraturan perpajakan. Hal ini menunjukkan penetapan harga yang sesuai dengan prinsip kewajaran (arm's length) untuk menghindari penghindaran pajak dan memastikan transparansi bagi otoritas pajak.",
-        serviceFourHead: "Kepatuhan Pajak",
+        serviceFourHead: "Perencanaan Pajak & Konsultasi Strategis",
         serviceFourDesc:
-            "Perushaan perlu mengotomatiskan proses pajak agar tetap patuh terhadap peraturan. Ideatax menawarkan solusi dengan otomatisasi dan dukungan ahli, sehingga dapat meminimalkan risiko dan membebaskan waktu Anda untuk fokus menjalankan bisnis.",
+            "Menyediakan perencanaan pajak terintegrasi, restrukturisasi korporasi, dan advisory transaksi untuk meningkatkan efisiensi pajak, memperkuat tata kelola, dan mendukung pertumbuhan bisnis jangka panjang serta kepatuhan yang berkelanjutan.",
         read: "Baca Selengkapnya",
         articleHead: "Artikel",
         consult: "Konsultasi Sekarang",

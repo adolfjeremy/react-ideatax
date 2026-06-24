@@ -14,9 +14,9 @@ export default {
         serviceThreeHead: "Transfer Pricing Documentation",
         serviceThreeDesc:
             "Transfer pricing documentation ensures that both national and multinational companies intra-group transactions comply with tax regulations, demonstrating arm's length pricing to avoid tax avoidance and ensuring transparency for tax authorities.",
-        serviceFourHead: "Tax Compliances",
+        serviceFourHead: "Tax Tax Planning & Strategic Advisory",
         serviceFourDesc:
-            "Companies need to automate tax processes to stay compliant with regulations. Ideatax offers a solution with automation and expert support, minimizing risk and freeing your time to focus on running your business.",
+            "Providing integrated tax planning, corporate restructuring, and transaction advisory to improve tax efficiency, strengthen governance, and support long-term business growth and sustainable compliance.",
         read: "Read More",
         articleHead: "Articles",
         consult: "Consultation Now",

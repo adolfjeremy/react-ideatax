@@ -108,7 +108,7 @@ function TeamCreate() {
                                 <Tab label="Team En" {...a11yProps(0)} />
                                 <Tab label="Team Id" {...a11yProps(1)} />
                                 <Tab label="Team Jp" {...a11yProps(2)} />
-                                <Tab label="Team Jp" {...a11yProps(3)} />
+                                <Tab label="Team Ch" {...a11yProps(3)} />
                             </Tabs>
                         </Box>
                         <CustomTabPanel value={value} index={0}>
@@ -367,7 +367,7 @@ function TeamCreate() {
                                 >
                                     {departments.map((item) => (
                                         <MenuItem key={item.id} value={item.id}>
-                                            {item.name}
+                                            {item.name_eng}
                                         </MenuItem>
                                     ))}
                                 </Select>

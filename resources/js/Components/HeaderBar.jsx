@@ -88,15 +88,14 @@ function HeaderBar({ en, id, jp, ch }) {
             left: 0,
             right: 0,
             zIndex:30000,
+            backdropFilter: !navbarStatus ? "" :
+            "blur(3px) brightness(100%) saturate(87.5%) hue-rotate(10deg)",
+          WebkitBackdropFilter:
+            "blur(3px) brightness(100%) saturate(87.5%) hue-rotate(10deg)",
+          boxShadow: !navbarStatus ? "" : 
+            "inset 1px 0 0 rgba(255,255,255,0.32), inset -1px 0 2px rgba(0,0,0,0.16)",
+          background: !navbarStatus ? "transparent" :  "linear-gradient(90deg, rgba(17,17,17,0.3) 0%, rgba(49,32,5,0.3) 100%)",
         }}>
-            <LiquidGlass
-                borderRadius={0}
-                blur={1.5}
-                contrast={1.2}
-                brightness={1.05}
-                saturation={1.1}
-                elasticity={0.5}
-        >
             <Box sx={{
                 display:"flex",
                 alignItems: "center",
@@ -104,7 +103,6 @@ function HeaderBar({ en, id, jp, ch }) {
                 width: "100%",
                 py: "1.5rem",
                 px: "6%",
-                backgroundColor: "rgba(0,0,0,.3)"
             }}>
                 <Link
                     sx={{
@@ -402,7 +400,6 @@ function HeaderBar({ en, id, jp, ch }) {
                     <LangChange en={en} id={id} jp={jp} ch={ch} />
                 </Box>
             </Box>
-        </LiquidGlass>
         </Box>
         <Drawer
             sx={{
@@ -586,7 +583,7 @@ function HeaderBar({ en, id, jp, ch }) {
                     anchorEl={anchorEl}
                     open={open}
                     onClose={handleClose}
-                    className="dropdown-react"
+                    className="dropdown-react mt-4"
                     MenuListProps={{
                         "aria-labelledby": "dropdown-menu",
                     }}

@@ -18,7 +18,7 @@ export default function AdvisoryList ({advisories}){
     const goToPrev = () => emblaApi?.scrollPrev()
     const goToNext = () => emblaApi?.scrollNext()
     const theme = useTheme()
-
+    console.log(advisories)
     return (
         <>
             <div className="embla position-relative mt-4">
@@ -27,7 +27,7 @@ export default function AdvisoryList ({advisories}){
                     {
                         advisories.map(advisory => (
                             <div className="embla__slide_advisory" key={advisory.id}>
-                                <AdvisoryItem key={advisory.id} image={advisory?.team?.profile_picture} position={advisory?.team?.position.name_eng} name={advisory?.team?.name} highlight={advisory.highlight} title={advisory.title} />
+                                <AdvisoryItem key={advisory.id} image={advisory?.team?.profile_picture} position={advisory?.team?.position?.name_eng} name={advisory?.team?.name} highlight={advisory.highlight} title={advisory.title} />
                             </div>
                         ))
                     }

@@ -64,7 +64,6 @@ class DepartementController extends Controller
     {
         $item = Department::findOrFail($id);
         $data = $request->all();
-        dd($data);
         
         if($request->file('image'))
         {
