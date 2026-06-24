@@ -387,7 +387,7 @@ function TeamCreate() {
                                 >
                                     {positions.map((item) => (
                                         <MenuItem key={item.id} value={item.id}>
-                                            {item.name}
+                                            {item.name_eng}
                                         </MenuItem>
                                     ))}
                                 </Select>
