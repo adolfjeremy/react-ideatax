@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect, useCallback } from 'react'; // Tambahkan import ini
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import aw from "@/assets/images/award/aw.webp";
@@ -19,55 +19,50 @@ import { IoIosArrowForward } from "react-icons/io";
 import "./award.scss"
 
 export function AwardCarousel({theme}) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ align: 'center', containScroll: 'trim' }, [Autoplay()])
-  const scrollPrev = () => emblaApi?.scrollPrev()
-  const scrollNext = () => emblaApi?.scrollNext()
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align: 'center', loop:true }, [Autoplay()])
+  
+  // 1. Buat state untuk menyimpan index slide yang sedang di tengah
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi])
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi])
+
+  // 2. Fungsi untuk mengupdate state berdasarkan slide yang sedang dipilih Embla
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  // 3. Gunakan useEffect untuk mendengarkan event 'select' dari Embla
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect(); // Set state awal saat komponen dimuat
+    emblaApi.on('select', onSelect); // Update saat bergeser
+    emblaApi.on('reInit', onSelect); // Update saat ukuran layar berubah
+  }, [emblaApi, onSelect]);
+
+  const slides = [aw, aw1, aw2, aw3, aw4, aw5, aw6, aw7, aw8, aw9, aw10, aw11];
 
   return (
     <>
     <div className="embla_award relative">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container_award">
-          <div className="embla__slide_award">
-            <img src={aw} alt="" />
-          </div>
-          <div className="embla__slide_award">
-            <img src={aw1} alt="" />
-          </div>
-          <div className="embla__slide_award">
-            <img src={aw2} alt="" />
-          </div>
-          <div className="embla__slide_award">
-            <img src={aw3} alt="" />
-          </div>
-          <div className="embla__slide_award">
-            <img src={aw4} alt="" />
-          </div>
-          <div className="embla__slide_award">
-            <img src={aw5} alt="" />
-          </div>
-          <div className="embla__slide_award">
-            <img src={aw6} alt="" />
-          </div>
-          <div className="embla__slide_award">
-            <img src={aw7} alt="" />
-          </div>
-          <div className="embla__slide_award">
-            <img src={aw8} alt="" />
-          </div>
-          <div className="embla__slide_award">
-            <img src={aw9} alt="" />
-          </div>
-          <div className="embla__slide_award">
-            <img src={aw10} alt="" />
-          </div>
-          <div className="embla__slide_award">
-            <img src={aw11} alt="" />
-          </div>
+          {slides.map((img, index) => (
+            <div
+              // 4. Tambahkan class dinamis 'is-center' jika index sama dengan selectedIndex
+              className={`embla__slide_award ${index === selectedIndex ? 'is-center' : ''}`}
+              key={index}
+            >
+              <img src={img} alt="Award Logo" />
+            </div>
+          ))}
         </div>
       </div>
     </div>
-    <button className="embla__prev" onClick={scrollPrev} style={{
+    
+    {/* Tombol navigasi Anda tetap sama */}
+    <button type="button" className="embla__prev" onClick={scrollPrev} style={{
         position: "absolute",
         top: "50%",
         left: "-5px",
@@ -80,7 +75,7 @@ export function AwardCarousel({theme}) {
       }}>
         <IoIosArrowBack color={theme.palette.custom.black} size={30} />
       </button>
-      <button className="embla__next" onClick={scrollNext} style={{
+      <button type="button" className="embla__next" onClick={scrollNext} style={{
         position: "absolute",
         top: "50%",
         right: "-5px",

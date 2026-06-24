@@ -1,27 +1,58 @@
-
-
 .embla_award {
-  overflow: hidden;
+  position: relative;
+  /* Biarkan pembungkus luar bersih tanpa overflow agar bayangan/scale tidak terpotong */
 }
+
+.embla__viewport {
+  overflow: hidden;
+  
+  /* SOLUSI MASALAH 2: Tambahkan padding atas & bawah yang cukup.
+     Ini memberikan 'ruang napas' saat gambar di-scale(1.2) agar tidak terbentur wall overflow hidden */
+  padding: 25px 0; 
+}
+
 .embla__container_award {
   display: flex;
-  gap: 16px
+  
+  /* SOLUSI MASALAH 1: HAPUS `gap: 16px`. Kita ganti dengan padding pada slide di bawah */
 }
+
 .embla__slide_award {
-  flex: 0 0 calc(33.33% - 16px);
+  /* Di Mobile: Menampilkan 3 item (100% / 3 = 33.33%) */
+  flex: 0 0 33.3333%;
   min-width: 0; 
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.2s linear;
+  
+  /* SOLUSI MASALAH 1: Gunakan padding kanan-kiri sebagai pengganti gap.
+     Padding 8px di kiri + 8px di kanan akan menghasilkan total jarak antar item yang konsisten sebesar 16px, 
+     bahkan pada titik pertemuan loop sekalipun. */
+  padding: 0 8px; 
 
   @media (min-width: 768px) {
-  flex: 0 0 calc(20% - 16px);
+    /* Di Desktop: Menampilkan 5 item (100% / 5 = 20%) */
+    flex: 0 0 20%;
   }
 }
 
-
 .embla__slide_award img {
-  width: 80%;
+  /* Ubah width ke 100% agar mengikuti ukuran container slide yang sudah dipotong padding */
+  width: 100%;
+  max-width: 110px; /* Batasi maksimum lebar gambar agar proporsinya tetap estetik */
+  height: auto;
   pointer-events: none;
+  
+  /* Transisi halus */
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+  
+  /* Gambar default dibuat sedikit lebih kecil dan redup */
+  transform: scale(0.85);
+  opacity: 0.7; 
+}
+
+/* KONDISI SAAT DI TENGAH (ACTIVE SLIDE) */
+.embla__slide_award.is-center img {
+  transform: scale(1.25); /* Perbesar gambar secara proporsional */
+  opacity: 1;            /* Terangkan gambar */
 }
