@@ -504,7 +504,7 @@ function TeamCreate() {
                                 required
                             />
                             <label htmlFor="profile_picture">
-                                Profile Picture
+                                Hero Image
                             </label>
                             <TextField
                                 id="profile_picture"
