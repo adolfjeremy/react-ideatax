@@ -65,7 +65,7 @@ const CustomInput = styled(InputBase)(({ theme }) => ({
 }));
 
 function Article() {
-    const { locale, page, latest, articles, categories, filters, updates, regulations } =
+    const { locale, page, latest, articles, article_categories, taxupdate_categories, filters, updates, regulations } =
         usePage().props;
         console.log(regulations)
     const theme = useTheme();
@@ -184,6 +184,18 @@ function Article() {
                                 value={publicationType}
                                 onChange={setPublicationType}
                                 menuDropdown="Publication Type"
+                            />
+                            <CustomDropdown
+                                list={articleCategoriesList}
+                                value={publicationType}
+                                onChange={setPublicationType}
+                                menuDropdown="Article Categories"
+                            />
+                            <CustomDropdown
+                                list={taxupdateCategoriesList}
+                                value={publicationType}
+                                onChange={setPublicationType}
+                                menuDropdown="Tax Update Categories"
                             />
                             <form
                                 onSubmit={onHandleSearch}
@@ -346,7 +358,7 @@ function Article() {
             </Box>
             {
                
-                regulations.data.length > 0 && publicationType == "regulation" || publicationType == "all" && (
+                regulations.data.length > 0 && publicationType == "Library" || publicationType == "all" && (
                      <>
                     <Box sx={{ 
                         backgroundImage: `url(${RegulationBg})`,

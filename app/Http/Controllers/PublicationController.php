@@ -154,11 +154,11 @@ class PublicationController extends Controller
     $taxupdate_categories = TaxUpdateCategory::select('id', "$titleCategory as name")
             ->orderBy('title')
             ->get();
-    $categories = $article_categories->merge($taxupdate_categories);
 
     return Inertia::render('Article/Article', [
         "latest" => $latest,
-        "categories" => $categories,
+        "article_categories" => $article_categories,
+        "taxupdate_categories" => $taxupdate_categories,
         "articles" => $articles,
         "updates" => $updates,
         "page" => $page,
