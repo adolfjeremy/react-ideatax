@@ -226,14 +226,9 @@ function Contact() {
                                     Services
                                 </label>
                                 <FormControl fullWidth>
-                                    <InputLabel id="demo-simple-select-label">
-                                        {t("contactService")}
-                                    </InputLabel>
                                     <Select
-                                        labelId="demo-simple-select-label"
                                         id="demo-simple-select"
                                         value={data.service_id}
-                                        label="Services"
                                         onChange={(e) =>
                                             setData(
                                                 "service_id",
@@ -245,6 +240,7 @@ function Contact() {
                                             <MenuItem
                                                 key={item.id}
                                                 value={item.id}
+                                                sx={{color: theme.palette.custom.white, backdropFilter: "blur(20px)"}}
                                             >
                                                 {checkLang(
                                                     locale,
