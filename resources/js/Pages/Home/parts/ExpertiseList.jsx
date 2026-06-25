@@ -22,7 +22,7 @@ function ExpertiseList({ checkLang, locale, t, theme }) {
                 <ExpertiseItem
                     head="Tax Dispute Resolution"
                     desc="Representing corporate taxpayers throughout the tax controversy lifecycle including SP2DK responses, tax audits, objections, appeals, and tax court proceedings with structured defense and risk mitigation strategies at every stage."
-                    image={<TbGavel strokeWidth={1}  />}
+                    image={<TbGavel strokeWidth={0.5}  />}
                     isEven={false}
                     route={checkLang(
                         locale,
@@ -35,7 +35,7 @@ function ExpertiseList({ checkLang, locale, t, theme }) {
                 <ExpertiseItem
                     head="Tax Refund Optimization"
                     desc="Assisting tax refund and overpayment recovery processes through compliance review, documentation readiness, and audit support to optimize restitution outcomes while ensuring full regulatory compliance and procedural accuracy."
-                    image={<HiOutlineReceiptRefund strokeWidth={1} />}
+                    image={<HiOutlineReceiptRefund strokeWidth={0.5} />}
                     route={checkLang(
                         locale,
                         route("tax-refund"),
@@ -47,7 +47,7 @@ function ExpertiseList({ checkLang, locale, t, theme }) {
                 <ExpertiseItem
                     head={t("serviceThreeHead")}
                     desc={t("serviceThreeDesc")}
-                    image={<TbWorldDollar strokeWidth={1}/>}
+                    image={<TbWorldDollar strokeWidth={0.5}/>}
                     isEven={false}
                     route={checkLang(
                         locale,
@@ -66,7 +66,7 @@ function ExpertiseList({ checkLang, locale, t, theme }) {
                 <ExpertiseItem
                     head={t("serviceFourHead")}
                     desc={t("serviceFourDesc")}
-                    image={<LuListChecks strokeWidth={1} />}
+                    image={<LuListChecks strokeWidth={0.5} />}
                     route={checkLang(
                         locale,
                         route("service-detail", "monthly-tax-compliance"),
