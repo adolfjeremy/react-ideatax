@@ -7,7 +7,7 @@ import { FiArrowLeftCircle } from "react-icons/fi";
 import { FiArrowRightCircle } from "react-icons/fi";
 
 function OurTeamSlider({theme,checkLang, locale, departments}) {
-    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, delay: 3000 }, [Autoplay()])
+    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, delay: 3000 })
     const goToPrev = () => emblaApi?.scrollPrev()
     const goToNext = () => emblaApi?.scrollNext()
 

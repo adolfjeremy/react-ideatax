@@ -11,6 +11,11 @@ import {
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { usePage, useForm } from "@inertiajs/react";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+import { DesktopDateTimePicker } from "@mui/x-date-pickers/DesktopDateTimePicker";
+import dayjs from "dayjs";
 import Guest from "@/Layout/Guest";
 import wall from "@/assets/images/wall.webp";
 import checkLang from "@/utils/checkLang";
@@ -259,17 +264,39 @@ function Contact() {
                                 >
                                     {t("contactDate")}
                                 </label>
-                                <input
-                                    type="datetime-local"
-                                    name="schedule"
-                                    className="form-control"
-                                    id="schedule"
-                                    value={data.schedule}
-                                    onChange={(e) =>
-                                        setData("schedule", e.target.value)
-                                    }
-                                    required
-                                />
+                                <div>
+                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                        <DesktopDateTimePicker
+                                            label={t("contactDate")}
+                                            value={data.schedule ? dayjs(data.schedule) : null}
+                                            onChange={(newValue) => {
+                                                // Format kembali ke string YYYY-MM-DDTHH:mm agar sesuai dengan backend Anda
+                                                if (newValue && newValue.isValid()) {
+                                                    setData("schedule", newValue.format("YYYY-MM-DDTHH:mm"));
+                                                } else {
+                                                    setData("schedule", "");
+                                                }
+                                            }}
+                                            minutesStep={30} // 👈 KUNCI UTAMA: UI hanya akan menampilkan menit 00 & 30
+                                            ampm={true}     // Paksa format 24 jam (menghilangkan AM/PM jika diinginkan)
+                                            slotProps={{
+                                                textField: {
+                                                    fullWidth: true,
+                                                    required: true,
+                                                    size: "small",
+                                                },
+                                                popper: {
+                                                    sx: {
+                                                        "& .MuiMultiSectionDigitalClockSection-item.Mui-disabled": {
+                                                            display: "none !important",
+                                                        },
+                                                    },
+                                                },
+                                            }}
+                                        />
+                                    </LocalizationProvider>
+                                    {errors.schedule && <div className="text-danger small mt-1">{errors.schedule}</div>}
+                                </div>
                             </div>
                         </div>
                         <div className="col-12 col-lg-4">

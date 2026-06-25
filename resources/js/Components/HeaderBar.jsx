@@ -86,7 +86,7 @@ function HeaderBar({ en, id, jp, ch }) {
             top:0,
             left: 0,
             right: 0,
-            zIndex:3000,
+            zIndex:5600,
             backdropFilter: !navbarStatus ? "" :
             "blur(3px) brightness(100%) saturate(87.5%) hue-rotate(10deg)",
           WebkitBackdropFilter:

@@ -1,9 +1,10 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, useTheme } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 function ComplexPaginaton({ currentPage, lastPage, onPageChange }) {
+    const theme = useTheme()
     let startPage = currentPage - 1;
 
     // Kasus awal (jangan negatif)
@@ -38,6 +39,7 @@ function ComplexPaginaton({ currentPage, lastPage, onPageChange }) {
                 onClick={() => onPageChange(1)}
                 disabled={currentPage === 1}
                 className="d-none d-md-flex px-2 px-md-3 py-1 border rounded disabled:opacity-50"
+                sx={{color:theme.palette.custom.black, borderColor:theme.palette.custom.black}}
             >
                 First
             </Button>
@@ -46,6 +48,7 @@ function ComplexPaginaton({ currentPage, lastPage, onPageChange }) {
                 onClick={() => onPageChange(currentPage - 1)}
                 disabled={currentPage === 1}
                 variant="outlined"
+                sx={{color:theme.palette.custom.black, borderColor:theme.palette.custom.black}}
             >
                 <MdKeyboardDoubleArrowLeft />
                 {t("prev")}
@@ -57,6 +60,7 @@ function ComplexPaginaton({ currentPage, lastPage, onPageChange }) {
                     className={`px-2 px-md-3 py-1 border rounded ${
                         page === currentPage ? "bg-black text-white" : ""
                     }`}
+                    sx={{color:theme.palette.custom.black, borderColor:theme.palette.custom.black}}
                 >
                     {page}
                 </Button>
@@ -65,13 +69,15 @@ function ComplexPaginaton({ currentPage, lastPage, onPageChange }) {
                 onClick={() => onPageChange(currentPage + 1)}
                 disabled={currentPage === lastPage}
                 variant="outlined"
-            >
+                sx={{color:theme.palette.custom.black, borderColor:theme.palette.custom.black}}
+                >
                 {t("next")} <MdKeyboardDoubleArrowRight />
             </Button>
             <Button
                 onClick={() => onPageChange(lastPage)}
                 disabled={currentPage === lastPage}
                 className="d-none d-md-flex px-3 py-1 border rounded disabled:opacity-50"
+                sx={{color:theme.palette.custom.black, borderColor:theme.palette.custom.black}}
             >
                 Last
             </Button>

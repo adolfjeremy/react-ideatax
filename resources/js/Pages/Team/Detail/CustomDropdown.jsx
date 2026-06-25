@@ -96,7 +96,7 @@ export default function CustomDropdown({ list, value, onChange, menuDropdown="Pr
                         horizontal: "left",
                     },
                     style: {
-                        zIndex: 5500, // <--- Naikkan zIndex melewati nilai zIndex container sticky induk (3000)
+                        zIndex: 500, // <--- Naikkan zIndex melewati nilai zIndex container sticky induk (3000)
                     },
                     PaperProps: {
                         sx: {

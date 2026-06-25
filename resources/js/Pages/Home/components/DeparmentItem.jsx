@@ -5,6 +5,7 @@ export default function DepartmentItem({image, name, desc, theme}) {
         <Box sx={{
             display:"grid",
             gridTemplateColumns: "repeat(2, 1fr)",
+            gap: "1.625rem",
             [theme.breakpoints.down("md")]: {
                 gridTemplateColumns: "1fr",
                 gap: "1.625rem"
@@ -40,10 +41,10 @@ export default function DepartmentItem({image, name, desc, theme}) {
                     color: theme.palette.custom.black,
                     lineHeight: "35px",
                     letterSpacing: "7%",
-                    fontSize: "2rem",
+                    fontSize: "1.5rem",
                     fontWeight: "300",
                     [theme.breakpoints.down("sm")]: {
-                        fontSize: "1.25rem",
+                        fontSize: "1rem",
                     },
                 }} as="h3">
                     {desc}

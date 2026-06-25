@@ -171,7 +171,7 @@ function Article() {
             <Box sx={{
                     position:"sticky",
                     top:"90px",
-                    zIndex:3000,
+                    zIndex:100,
                     backgroundColor: theme.palette.custom.white,
                     py: 2,
                     [theme.breakpoints.down("lg")]: {
