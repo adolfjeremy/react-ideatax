@@ -103,8 +103,9 @@ function Article() {
             ),
             {
                 search: search,
-                categoryId: categoryId,
-                ...newFilters, // untuk override jika diperlukan
+                articleCategory: articleCategory,   // <-- TAMBAHKAN INI
+                taxUpdateCategory: taxUpdateCategory, // <-- TAMBAHKAN INI
+                ...newFilters, // untuk override parameter saat state baru dipilih
             },
             {
                 preserveState: true,
@@ -120,14 +121,16 @@ function Article() {
         e.preventDefault();
         fetchArticles();
     };
-    const onHandleCategoryChange = (e) => {
-        const selectedCategoryId = e.target.value;
-        setCategoryId(selectedCategoryId);
-        fetchArticles({ categoryId: selectedCategoryId });
+    const onHandleArticleCategoryChange = (value) => {
+        setArticleCategory(value);
+        fetchArticles({ articleCategory: value });
     };
 
-    console.log(publicationType)
-    publicationType == "Library" || publicationType == "all" && (console.log("anjay") )
+    // 4. Buat handler khusus untuk Kategori Tax Update
+    const onHandleTaxUpdateCategoryChange = (value) => {
+        setTaxUpdateCategory(value);
+        fetchArticles({ taxUpdateCategory: value });
+    };  
 
     return (
         <Guest
@@ -179,7 +182,7 @@ function Article() {
                     },
             }} 
             >
-                <div className="container">
+                <div className="container-fluid">
                     <Box className="row">
                         <div className="col-12 d-flex justify-content-center align-items-center gap-3">
                             <CustomDropdown
@@ -188,18 +191,22 @@ function Article() {
                                 onChange={setPublicationType}
                                 menuDropdown="Publication Type"
                             />
-                            {/* <CustomDropdown
-                                list={article_categories}
-                                value={articleCategory}
-                                onChange={setArticleCategory}
-                                menuDropdown="Article Categories"
-                            />
-                            <CustomDropdown
-                                list={taxupdate_categories}
-                                value={taxUpdateCategory}
-                                onChange={setTaxUpdateCategory}
-                                menuDropdown="Tax Update Categories"
-                            /> */}
+                            {(publicationType === "Article" || publicationType === "all") && (
+                                <CustomDropdown
+                                    list={article_categories}
+                                    value={articleCategory}
+                                    onChange={onHandleArticleCategoryChange} // Menggunakan handler baru
+                                    menuDropdown="Article Categories"
+                                />
+                            )}
+                            {(publicationType === "TaxUpdate" || publicationType === "all") && (
+                                <CustomDropdown
+                                    list={taxupdate_categories}
+                                    value={taxUpdateCategory}
+                                    onChange={onHandleTaxUpdateCategoryChange} // Menggunakan handler baru
+                                    menuDropdown="Tax Update Categories"
+                                />
+                            )}
                             <form
                                 onSubmit={onHandleSearch}
                                 className="d-flex align-items-center justify-content-center bg-white"

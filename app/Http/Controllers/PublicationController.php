@@ -17,155 +17,89 @@ class PublicationController extends Controller
 {
     public function index(Request $request)
 {
+    // 1. Tangkap semua input filter dari frontend
     $search = $request->input('search');
-    $categoryId = $request->input('categoryId');
+    $publicationType = $request->input('publicationType', 'all'); // Tetap ditangkap untuk menjaga state frontend
 
+    $articleCategory = $request->input('articleCategory');
+    $articleCategoryId = ($articleCategory && $articleCategory !== 'all') ? $articleCategory : null;
+
+    $taxUpdateCategory = $request->input('taxUpdateCategory');
+    $taxUpdateCategoryId = ($taxUpdateCategory && $taxUpdateCategory !== 'all') ? $taxUpdateCategory : null;
+
+    // 2. Lokalisasi Kolom secara Dinamis (Clean & Ringkas)
     $locale = app()->getLocale();
-
-    $titleColumn = match ($locale) {
-        'id' => 'title',
-        'en' => 'title_eng',
-        'jp' => 'title_jpn',
-        default => 'title_eng',
+    $suffix = match ($locale) {
+        'id' => '',
+        'en' => '_eng',
+        'jp' => '_jpn',
+        default => '_eng',
     };
 
-    $bodyColumn = match ($locale) {
-        'id' => 'body',
-        'en' => 'body_eng',
-        'jp' => 'body_jpn',
-        default => 'body_eng',
-    };
+    $titleColumn = "title{$suffix}";
+    $bodyColumn = "body{$suffix}";
+    $slugColumn = "slug{$suffix}";
 
-    $slugColumn = match ($locale) {
-            'id' => 'slug',
-            'en' => 'slug_eng',
-            'jp' => 'slug_jpn',
-            default => 'slug_eng',
-        };
-
-    // Page
+    // 3. Mengambil Data Page Statis
     $page = Page::select('id', 'title')->findOrFail(5);
 
-    // 🔹 Latest
-    $latestArticle = Article::query()
-        ->select(
-            'id',
-            "$titleColumn as title",
-            'slug',
-            'slug_eng',
-            'slug_jpn',
-            'photo',
-            'article_categories_id'
-        )
-        ->latest()
-        ->take(3)
-        ->get();
+    // 4. Slider Data "Latest" (Selalu di-load)
+    $latestArticle = Article::select('id', "{$titleColumn} as title", 'slug', 'slug_eng', 'slug_jpn', 'photo', 'article_categories_id')
+        ->latest()->take(3)->get();
 
-    $latestUpdate = TaxUpdate::query()
-        ->select(
-            'id',
-            "$titleColumn as title",
-            'slug',
-            'slug_eng',
-            'slug_jpn',
-            'photo',
-            'tax_update_categories_id'
-        )
-        ->latest()
-        ->take(3)
-        ->get();
+    $latestUpdate = TaxUpdate::select('id', "{$titleColumn} as title", 'slug', 'slug_eng', 'slug_jpn', 'photo', 'tax_update_categories_id')
+        ->latest()->take(3)->get();
 
     $latest = $latestArticle->merge($latestUpdate);
 
-    // 🔹 Articles
+    // 5. 🔹 Query: ARTICLES (Selalu dieksekusi)
     $articles = Article::query()
-        ->when($search, function ($query) use ($search, $titleColumn) {
-            $query->where($titleColumn, 'like', '%' . $search . '%');
-        })
-        ->when($categoryId, function ($query) use ($categoryId) {
-            $query->where('article_categories_id', $categoryId);
-        })
-        ->select(
-            'id',
-            "$titleColumn as title",
-            "$bodyColumn as body",
-            'slug',
-            'slug_eng',
-            'slug_jpn',
-            'created_at',
-            'thumbnail'
-        )
-        ->latest()
-        ->paginate(9)
-        ->withQueryString();
+        ->when($search, fn($q) => $q->where($titleColumn, 'like', "%{$search}%"))
+        ->when($articleCategoryId, fn($q) => $q->where('article_categories_id', $articleCategoryId))
+        ->select('id', "{$titleColumn} as title", "{$bodyColumn} as body", 'slug', 'slug_eng', 'slug_jpn', 'created_at', 'thumbnail')
+        ->latest()->paginate(9)->withQueryString();
 
     $articles->through(function ($article) {
         $article->body = Article::truncateRichText($article->body);
         return $article;
     });
 
+    // 6. 🔹 Query: TAX UPDATES (Selalu dieksekusi & Menggunakan Kategori yang Benar)
     $updates = TaxUpdate::query()
-        ->when($search, function ($query) use ($search, $titleColumn) {
-            $query->where($titleColumn, 'like', '%' . $search . '%');
-        })
-        ->when($categoryId, function ($query) use ($categoryId) {
-            $query->where('article_categories_id', $categoryId);
-        })
-        ->select(
-            'id',
-            "$titleColumn as title",
-            "$bodyColumn as body",
-            'slug',
-            'slug_eng',
-            'slug_jpn',
-            'created_at',
-            'thumbnail'
-        )
-        ->latest()
-        ->paginate(9)
-        ->withQueryString();
+        ->when($search, fn($q) => $q->where($titleColumn, 'like', "%{$search}%"))
+        ->when($taxUpdateCategoryId, fn($q) => $q->where('tax_update_categories_id', $taxUpdateCategoryId)) // Fixed Bug Mismatch Category!
+        ->select('id', "{$titleColumn} as title", "{$bodyColumn} as body", 'slug', 'slug_eng', 'slug_jpn', 'created_at', 'thumbnail')
+        ->latest()->paginate(9)->withQueryString();
+
     $updates->through(function ($update) {
         $update->body = Article::truncateRichText($update->body);
         return $update;
     });
 
+    // 7. 🔹 Query: REGULATIONS / LIBRARY (Selalu dieksekusi)
     $regulations = Regulation::query()
-        ->when($search, function ($query) use ($search, $titleColumn) {
-            $query->where($titleColumn, 'like', '%' . $search . '%');
-        })
-        ->select(
-            'id',
-            'document',
-            "$titleColumn as title",
-            "$slugColumn as slug",
-        )
-        ->latest()
-        ->paginate(9)
-        ->withQueryString();
-     
+        ->when($search, fn($q) => $q->where($titleColumn, 'like', "%{$search}%"))
+        ->select('id', 'document', "{$titleColumn} as title", "{$slugColumn} as slug")
+        ->latest()->paginate(9)->withQueryString();
 
-    $titleCategory = 'title';
+    // 8. Data Master Kategori untuk Dropdown Pemilih
+    $article_categories = ArticleCategory::select('id', "title as name")->orderBy('title')->get();
+    $taxupdate_categories = TaxUpdateCategory::select('id', "title as name")->orderBy('title')->get();
 
-    // 🔹 Categories (cache optional)
-    $article_categories = ArticleCategory::select('id', "$titleCategory as name")
-            ->orderBy('title')
-            ->get();
-
-    $taxupdate_categories = TaxUpdateCategory::select('id', "$titleCategory as name")
-            ->orderBy('title')
-            ->get();
-
+    // 9. Kirim Payload ke Inertia View
     return Inertia::render('Article/Article', [
-        "latest" => $latest,
-        "article_categories" => $article_categories,
+        "latest"               => $latest,
+        "article_categories"   => $article_categories,
         "taxupdate_categories" => $taxupdate_categories,
-        "articles" => $articles,
-        "updates" => $updates,
-        "page" => $page,
-        "regulations" => $regulations,
-        "filters" => [
-            "search" => $search,
-            "categoryId" => $categoryId,
+        "articles"             => $articles,
+        "updates"              => $updates,
+        "regulations"          => $regulations,
+        "page"                 => $page,
+        "filters"              => [
+            "search"            => $search,
+            "publicationType"   => $publicationType,   // PENTING: Dikembalikan ke frontend agar Dropdown tidak reset
+            "articleCategory"   => $articleCategory,   // PENTING: Sinkronisasi filter kategori artikel
+            "taxUpdateCategory" => $taxUpdateCategory, // PENTING: Sinkronisasi filter kategori tax update
         ],
     ]);
 }
