@@ -95,6 +95,9 @@ export default function CustomDropdown({ list, value, onChange, menuDropdown="Pr
                         vertical: "top",
                         horizontal: "left",
                     },
+                    style: {
+                        zIndex: 5500, // <--- Naikkan zIndex melewati nilai zIndex container sticky induk (3000)
+                    },
                     PaperProps: {
                         sx: {
                             mt: "4px",
@@ -102,6 +105,7 @@ export default function CustomDropdown({ list, value, onChange, menuDropdown="Pr
                             boxShadow: "0px 8px 32px rgba(0,0,0,0.12)",
                             border: "1px solid #ffffff",
                             minWidth: "100%",
+                            zIndex: 4000,
 
                             "& .MuiMenu-list": {
                                 paddingTop: 0,

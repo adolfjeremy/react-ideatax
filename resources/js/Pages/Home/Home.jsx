@@ -117,8 +117,8 @@ function Home() {
                 }}
             >
                 <div className="container">
-                    <div className="row px-3 px-md-0">
-                        <div className="col-12 col-md-7 py-4 py-md-0 d-flex flex-column align-items-center justify-content-center">
+                    <div className="row px-3 px-md-0 d-flex align-items-center justify-content-between">
+                        <div className="col-12 col-md-6 py-4 py-md-0 d-flex flex-column align-items-center justify-content-center">
                             <div className="row mb-md-4">
                                 <StatCountUp
                                 stats={stats}
@@ -133,7 +133,7 @@ function Home() {
                                     <hr style={{backgroundColor: theme.palette.custom.gray, height: "2px"}} />
                                 </div>
                             </div>
-                            <div className="row mt-md-4 pe-lg-5 pb">
+                            <div className="row mt-md-4">
                                 <div className="col-12 relative">
                                     <AwardCarousel theme={theme}/> 
                                 </div>
@@ -286,7 +286,8 @@ function Home() {
                     <div className="row">
                         <Box
                             sx={{
-                                px: "3rem"}} 
+                                px: "3rem",
+                            }} 
                             className="col-12 position-relative"
                         >
                             <OurTeamSlider 
@@ -299,7 +300,7 @@ function Home() {
                     </div>
                 </div>
             </Box>
-            <Box component="section" sx={{ py: "3rem", overflow: "hidden", }}>
+            <Box component="section" sx={{ pt: "3rem", backgroundColor: theme.palette.custom.gray, overflow: "hidden", }}>
                 <div className="container-fluid p-0 m-0">
                     <div className="row">
                         <div className="col-12 ">
@@ -534,7 +535,13 @@ function Home() {
                             <RegulationList regulations={regulations} />
                             <div className="row">
                                 <div className="col-12 d-flex align-items-center justify-content-start">
-                                    <Link href="" sx={{
+                                    <Link href={checkLang(
+                                                locale,
+                                                route("publications"),
+                                                route("publications.id"),
+                                                route("publications.jp"),
+                                                route("publications.ch")
+                                            )} sx={{
                                         color: theme.palette.custom.yellow,
                                         fontSize: "1.5rem",
                                         fontWeight: "700",

@@ -11,12 +11,16 @@ import {
     IconButton,
     FormControl,
     InputLabel,
-    OutlinedInput
+    OutlinedInput,
+    Link
+
 } from "@mui/material";
 import { usePage, router } from "@inertiajs/react";
+import { MdArrowForwardIos } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
 import Guest from "@/Layout/Guest";
 import CustomDropdown from "../Team/Detail/CustomDropdown";
+import RegulationList from "../Home/parts/RegulationList";
 import LatestCarousel from "./parts/LatestCarousel";
 import ArticleHeroSlider from "./parts/ArticleHeroSlider";
 import ArticleLists from "./parts/ArticleLists";
@@ -26,6 +30,9 @@ import { useTranslation } from "react-i18next";
 import { SpinnerContext } from "@/Context/SpinnerContext";
 import { styled } from "@mui/material/styles";
 import UpdateList from "./parts/UpdateList";
+
+
+import RegulationBg from "../../assets/images/reguation-bg.png"
 
 const CustomInput = styled(InputBase)(({ theme }) => ({
     "& .MuiInputBase-input": {
@@ -58,8 +65,9 @@ const CustomInput = styled(InputBase)(({ theme }) => ({
 }));
 
 function Article() {
-    const { locale, page, latest, articles, categories, filters, updates } =
+    const { locale, page, latest, articles, categories, filters, updates, regulations } =
         usePage().props;
+        console.log(regulations)
     const theme = useTheme();
     const { t } = useTranslation();
     const { toggleSpinner } = useContext(SpinnerContext);
@@ -76,6 +84,10 @@ function Article() {
         {
             name:"Tax Update",
             id: "TaxUpdate",
+        },
+        {
+            name:"Library",
+            id: "Library",
         }
     ]
 
@@ -152,11 +164,12 @@ function Article() {
 
             <Box sx={{
                     position:"sticky",
-                    top:"120px",
+                    top:"90px",
                     zIndex:3000,
                     backgroundColor: theme.palette.custom.white,
+                    py: 2,
                     [theme.breakpoints.down("lg")]: {
-                        top: "90px",
+                        top: "80px",
                     },
                     [theme.breakpoints.down("md")]: {
                         top: "80px",
@@ -221,125 +234,177 @@ function Article() {
                         </div>
                     )
                    }
-                   {(publicationType == "Article" || publicationType == "all") && (
-                    <div className="row">
-                        <div className="col-12 col-md-6">
-                            <Typography
-                                sx={{
-                                    color: theme.palette.custom.black,
-                                    fontSize: "3rem",
-                                        fontWeight: 700,
-                                    [theme.breakpoints.down("sm")]: {
-                                        fontSize: "1.6rem",
-                                    },
-                                    lineHeight: "1.17857248em",
-                                    letterSpacing: "0.009em",
-                                }}
-                                variant="h2"
-                            >
-                                {t("articleHead")}
-                            </Typography>
-                        </div>
-                    </div>
-                   )}
                     
                     {
                         (publicationType == "Article" || publicationType == "all") && (
-                            <div className="row">
+                            <>
+                                <div className="row">
+                                    <div className="col-12 col-md-6">
+                                        <Typography
+                                            sx={{
+                                                color: theme.palette.custom.black,
+                                                fontSize: "3rem",
+                                                    fontWeight: 700,
+                                                [theme.breakpoints.down("sm")]: {
+                                                    fontSize: "1.6rem",
+                                                },
+                                                lineHeight: "1.17857248em",
+                                                letterSpacing: "0.009em",
+                                            }}
+                                            variant="h2"
+                                        >
+                                            {t("articleHead")}
+                                        </Typography>
+                                    </div>
+                                </div>
+                                <div className="row">
                                 <ArticleLists
                                     articles={articles}
                                     locale={locale}
                                     theme={theme}
                                 />
-                            </div>
+                                </div>
+                                <div className="row my-4">
+                                    <ComplexPaginaton
+                                        currentPage={articles.current_page}
+                                        lastPage={articles.last_page}
+                                        onPageChange={(page) => {
+                                            router.get(
+                                                checkLang(
+                                                    locale,
+                                                    route("publications"),
+                                                    route("publications.id"),
+                                                    route("publications.jp"),
+                                                    route("publications.ch")
+                                                ),
+                                                { page },
+                                                {
+                                                    preserveState: true,
+                                                }
+                                            );
+                                        }}
+                                    />
+                                </div>
+                            </>
                         )
                             
                     }
-                     {(publicationType == "Article" || publicationType == "all") && (
-                        <div className="row my-4">
-                            <ComplexPaginaton
-                                currentPage={articles.current_page}
-                                lastPage={articles.last_page}
-                                onPageChange={(page) => {
-                                    router.get(
-                                        checkLang(
-                                            locale,
-                                            route("publications"),
-                                            route("publications.id"),
-                                            route("publications.jp"),
-                                            route("publications.ch")
-                                        ),
-                                        { page },
-                                        {
-                                            preserveState: true,
-                                        }
-                                    );
-                                }}
-                            />
-                        </div>
-                   )}
                     {
                         (publicationType == "TaxUpdate" || publicationType == "all") && (
-                            <div className="row mt-4">
-                                <div className="col-12 col-md-6">
-                                    <Typography
-                                        sx={{
-                                            color: theme.palette.custom.black,
-                                            fontSize: "3rem",
-                                                fontWeight: 700,
-                                            [theme.breakpoints.down("sm")]: {
-                                                fontSize: "1.6rem",
-                                            },
-                                            lineHeight: "1.17857248em",
-                                            letterSpacing: "0.009em",
-                                        }}
-                                        variant="h2"
-                                    >
-                                        {t("updates")}
-                                    </Typography>
+                            <>
+                                <div className="row mt-4">
+                                    <div className="col-12 col-md-6">
+                                        <Typography
+                                            sx={{
+                                                color: theme.palette.custom.black,
+                                                fontSize: "3rem",
+                                                    fontWeight: 700,
+                                                [theme.breakpoints.down("sm")]: {
+                                                    fontSize: "1.6rem",
+                                                },
+                                                lineHeight: "1.17857248em",
+                                                letterSpacing: "0.009em",
+                                            }}
+                                            variant="h2"
+                                        >
+                                            {t("updates")}
+                                        </Typography>
+                                    </div>
                                 </div>
-                            </div>
-                        )
-                    }
-                    
-                    {
-                        (publicationType == "TaxUpdate" || publicationType == "all") && (
-                            <div className="row mt-4">
-                                <UpdateList
-                                    updates={updates}
-                                    locale={locale}
-                                    theme={theme}
-                                />
-                            </div>
-                        )
-                    }
-                    {
-                        (publicationType == "TaxUpdate" || publicationType == "all") && (
-                            <div className="row my-5">
-                                <ComplexPaginaton
-                                    currentPage={updates.current_page}
-                                    lastPage={updates.last_page}
-                                    onPageChange={(page) => {
-                                        router.get(
-                                            checkLang(
-                                                locale,
-                                                route("publications"),
-                                                route("publications.id"),
-                                                route("publications.jp"),
-                                                route("publications.ch")
-                                            ),
-                                            { page },
-                                            {
-                                                preserveState: true,
-                                            }
-                                        );
-                                    }}
-                                />
-                            </div>
+                                <div className="row mt-4">
+                                    <UpdateList
+                                        updates={updates}
+                                        locale={locale}
+                                        theme={theme}
+                                    />
+                                </div>
+                                <div className="row my-5">
+                                    <ComplexPaginaton
+                                        currentPage={updates.current_page}
+                                        lastPage={updates.last_page}
+                                        onPageChange={(page) => {
+                                            router.get(
+                                                checkLang(
+                                                    locale,
+                                                    route("publications"),
+                                                    route("publications.id"),
+                                                    route("publications.jp"),
+                                                    route("publications.ch")
+                                                ),
+                                                { page },
+                                                {
+                                                    preserveState: true,
+                                                }
+                                            );
+                                        }}
+                                    />
+                                </div>
+                            </>
                         )
                     }
                 </div>
             </Box>
+            {
+               
+                regulations.data.length > 0 && publicationType == "regulation" || publicationType == "all" && (
+                     <>
+                    <Box sx={{ 
+                        backgroundImage: `url(${RegulationBg})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center top",
+                        py: 8, 
+                        [theme.breakpoints.down("md")]: {
+                            py:4,
+                            mt: 6
+                        },}}>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-12 ">
+                                    <Typography
+                                        sx={{
+                                            fontSize: "3rem",
+                                            lineHeight: "1.43749551em",
+                                            fontWeight: "700",
+                                            color: theme.palette.custom.white,
+                                            textAlign: "start",
+                                            [theme.breakpoints.down("md")]: {
+                                                fontSize: "1.5rem",
+                                            },
+                                        }}
+                                        as="h2"
+                                    >
+                                        Library
+                                    </Typography>
+                                </div>
+                            </div>
+                            <RegulationList regulations={regulations.data} />
+                        </div>
+                    </Box>
+                    <div className="row my-4">
+                        <ComplexPaginaton
+                            currentPage={regulations.current_page}
+                            lastPage={regulations.last_page}
+                            onPageChange={(page) => {
+                                router.get(
+                                    checkLang(
+                                        locale,
+                                        route("publications"),
+                                        route("publications.id"),
+                                        route("publications.jp"),
+                                        route("publications.ch")
+                                    ),
+                                    { page },
+                                    {
+                                        preserveState: true,
+                                    }
+                                );
+                            }}
+                        />
+                    </div>
+                    </>
+                )
+                    
+            }
         </Guest>
     );
 }

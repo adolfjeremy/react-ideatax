@@ -51,7 +51,7 @@ function ArticleHeroSlider({ datas, t, theme, locale, checkLang }) {
                             >
                                 <Typography
                                     sx={{
-                                        color: theme.palette.custom.black,
+                                        color: theme.palette.custom.white,
                                         fontWeight: 300,
                                         transition: 'color 0.3s ease',
                                         "&:hover": {

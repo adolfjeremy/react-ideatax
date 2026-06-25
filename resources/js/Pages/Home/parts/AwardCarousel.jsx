@@ -65,7 +65,7 @@ export function AwardCarousel({theme}) {
     <button type="button" className="embla__prev" onClick={scrollPrev} style={{
         position: "absolute",
         top: "50%",
-        left: "-5px",
+        left: "-20px",
         transform: "translateY(-50%)",
         zIndex: 100,
         backgroundColor: "transparent",
@@ -78,7 +78,7 @@ export function AwardCarousel({theme}) {
       <button type="button" className="embla__next" onClick={scrollNext} style={{
         position: "absolute",
         top: "50%",
-        right: "-5px",
+        right: "-20px",
         transform: "translateY(-50%)",
         zIndex: 100,
         backgroundColor: "transparent",

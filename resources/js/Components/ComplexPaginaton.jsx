@@ -37,7 +37,7 @@ function ComplexPaginaton({ currentPage, lastPage, onPageChange }) {
             <Button
                 onClick={() => onPageChange(1)}
                 disabled={currentPage === 1}
-                className="px-3 py-1 border rounded disabled:opacity-50"
+                className="d-none d-md-flex px-2 px-md-3 py-1 border rounded disabled:opacity-50"
             >
                 First
             </Button>
@@ -54,7 +54,7 @@ function ComplexPaginaton({ currentPage, lastPage, onPageChange }) {
                 <Button
                     key={page}
                     onClick={() => onPageChange(page)}
-                    className={`px-3 py-1 border rounded ${
+                    className={`px-2 px-md-3 py-1 border rounded ${
                         page === currentPage ? "bg-black text-white" : ""
                     }`}
                 >
@@ -71,7 +71,7 @@ function ComplexPaginaton({ currentPage, lastPage, onPageChange }) {
             <Button
                 onClick={() => onPageChange(lastPage)}
                 disabled={currentPage === lastPage}
-                className="px-3 py-1 border rounded disabled:opacity-50"
+                className="d-none d-md-flex px-3 py-1 border rounded disabled:opacity-50"
             >
                 Last
             </Button>

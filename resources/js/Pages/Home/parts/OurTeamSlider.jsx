@@ -3,8 +3,8 @@ import useEmblaCarousel from 'embla-carousel-react'
 import DepartmentItem from '../components/DeparmentItem'
 import Autoplay from "embla-carousel-autoplay";
 import { Button } from '@mui/material';
-import { IoIosArrowDropleft } from "react-icons/io";
-import { IoIosArrowDropright } from "react-icons/io";
+import { FiArrowLeftCircle } from "react-icons/fi";
+import { FiArrowRightCircle } from "react-icons/fi";
 
 function OurTeamSlider({theme,checkLang, locale, departments}) {
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, delay: 3000 }, [Autoplay()])
@@ -37,21 +37,21 @@ function OurTeamSlider({theme,checkLang, locale, departments}) {
             <Button sx={{
                 position: "absolute",
                 top: "50%",
-                left: "0",
+                left: "-25px",
                 transform: "translateY(-50%)",
                 "svg": {
                     color: theme.palette.custom.black
                 }
-            }} onClick={goToPrev}><IoIosArrowDropleft size={36} /></Button>
+            }} onClick={goToPrev}><FiArrowLeftCircle strokeWidth={1} size={36} /></Button>
             <Button sx={{
                 position: "absolute",
                 top: "50%",
-                right: "0",
+                right: "-25px",
                 transform: "translateY(-50%)",
                 "svg": {
                     color: theme.palette.custom.black
                 }
-            }} onClick={goToNext}><IoIosArrowDropright size={36} /></Button>
+            }} onClick={goToNext}><FiArrowRightCircle strokeWidth={1} size={36} /></Button>
             </>
         )
     }

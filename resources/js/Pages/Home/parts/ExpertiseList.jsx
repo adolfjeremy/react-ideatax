@@ -1,6 +1,6 @@
 import ExpertiseItem from "@/Components/ExpertiseItem";
 import { Box } from "@mui/material"
-import { VscLaw } from "react-icons/vsc";
+import { TbGavel } from "react-icons/tb";
 import { HiOutlineReceiptRefund } from "react-icons/hi2";
 import { TbWorldDollar } from "react-icons/tb";
 import { LuListChecks } from "react-icons/lu";
@@ -22,7 +22,7 @@ function ExpertiseList({ checkLang, locale, t, theme }) {
                 <ExpertiseItem
                     head="Tax Dispute Resolution"
                     desc="Representing corporate taxpayers throughout the tax controversy lifecycle including SP2DK responses, tax audits, objections, appeals, and tax court proceedings with structured defense and risk mitigation strategies at every stage."
-                    image={<VscLaw />}
+                    image={<TbGavel strokeWidth={1}  />}
                     isEven={false}
                     route={checkLang(
                         locale,
@@ -35,7 +35,7 @@ function ExpertiseList({ checkLang, locale, t, theme }) {
                 <ExpertiseItem
                     head="Tax Refund Optimization"
                     desc="Assisting tax refund and overpayment recovery processes through compliance review, documentation readiness, and audit support to optimize restitution outcomes while ensuring full regulatory compliance and procedural accuracy."
-                    image={<HiOutlineReceiptRefund />}
+                    image={<HiOutlineReceiptRefund strokeWidth={1} />}
                     route={checkLang(
                         locale,
                         route("tax-refund"),
@@ -47,7 +47,7 @@ function ExpertiseList({ checkLang, locale, t, theme }) {
                 <ExpertiseItem
                     head={t("serviceThreeHead")}
                     desc={t("serviceThreeDesc")}
-                    image={<TbWorldDollar />}
+                    image={<TbWorldDollar strokeWidth={1}/>}
                     isEven={false}
                     route={checkLang(
                         locale,
@@ -66,7 +66,7 @@ function ExpertiseList({ checkLang, locale, t, theme }) {
                 <ExpertiseItem
                     head={t("serviceFourHead")}
                     desc={t("serviceFourDesc")}
-                    image={<LuListChecks />}
+                    image={<LuListChecks strokeWidth={1} />}
                     route={checkLang(
                         locale,
                         route("service-detail", "monthly-tax-compliance"),

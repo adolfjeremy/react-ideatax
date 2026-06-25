@@ -9,6 +9,7 @@ use App\Models\Article;
 use App\Models\ArticleCategory;
 use App\Models\TaxUpdate;
 use App\Models\TaxUpdateCategory;
+use App\Models\Regulation;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
@@ -34,6 +35,13 @@ class PublicationController extends Controller
         'jp' => 'body_jpn',
         default => 'body_eng',
     };
+
+    $slugColumn = match ($locale) {
+            'id' => 'slug',
+            'en' => 'slug_eng',
+            'jp' => 'slug_jpn',
+            default => 'slug_eng',
+        };
 
     // Page
     $page = Page::select('id', 'title')->findOrFail(5);
@@ -120,6 +128,20 @@ class PublicationController extends Controller
         $update->body = Article::truncateRichText($update->body);
         return $update;
     });
+
+    $regulations = Regulation::query()
+        ->when($search, function ($query) use ($search, $titleColumn) {
+            $query->where($titleColumn, 'like', '%' . $search . '%');
+        })
+        ->select(
+            'id',
+            'document',
+            "$titleColumn as title",
+            "$slugColumn as slug",
+        )
+        ->latest()
+        ->paginate(9)
+        ->withQueryString();
      
 
     $titleCategory = 'title';
@@ -140,6 +162,7 @@ class PublicationController extends Controller
         "articles" => $articles,
         "updates" => $updates,
         "page" => $page,
+        "regulations" => $regulations,
         "filters" => [
             "search" => $search,
             "categoryId" => $categoryId,
