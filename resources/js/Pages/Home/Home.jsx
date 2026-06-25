@@ -128,7 +128,7 @@ function Home() {
                                 isMobile={isMobile}
                             />
                             </div>
-                            <div className="row w-100 pe-lg-5 ps-lg-1 py-2">
+                            <div className="row w-100 py-2">
                                 <div className="col-12">
                                     <hr style={{backgroundColor: theme.palette.custom.gray, height: "2px"}} />
                                 </div>
