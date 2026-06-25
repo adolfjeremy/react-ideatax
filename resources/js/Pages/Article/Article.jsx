@@ -67,7 +67,6 @@ const CustomInput = styled(InputBase)(({ theme }) => ({
 function Article() {
     const { locale, page, latest, articles, article_categories, taxupdate_categories, filters, updates, regulations } =
         usePage().props;
-        console.log(regulations)
     const theme = useTheme();
     const { t } = useTranslation();
     const { toggleSpinner } = useContext(SpinnerContext);
@@ -76,6 +75,8 @@ function Article() {
     const [categoryId, setCategoryId] = useState(filters.categoryId || "");
 
     const [publicationType, setPublicationType] = useState(filters.publicationType || "all");
+    const [articleCategory, setArticleCategory] = useState(filters.articleCategory || "all");
+    const [taxUpdateCategory, setTaxUpdateCategory] = useState(filters.taxUpdateCategory || "all");
     const publicationsList = [
         {
             name:"Article",
@@ -90,7 +91,6 @@ function Article() {
             id: "Library",
         }
     ]
-
 
     const fetchArticles = (newFilters = {}) => {
         router.get(
@@ -125,6 +125,9 @@ function Article() {
         setCategoryId(selectedCategoryId);
         fetchArticles({ categoryId: selectedCategoryId });
     };
+
+    console.log(publicationType)
+    publicationType == "Library" || publicationType == "all" && (console.log("anjay") )
 
     return (
         <Guest
@@ -185,18 +188,18 @@ function Article() {
                                 onChange={setPublicationType}
                                 menuDropdown="Publication Type"
                             />
-                            <CustomDropdown
-                                list={articleCategoriesList}
-                                value={publicationType}
-                                onChange={setPublicationType}
+                            {/* <CustomDropdown
+                                list={article_categories}
+                                value={articleCategory}
+                                onChange={setArticleCategory}
                                 menuDropdown="Article Categories"
                             />
                             <CustomDropdown
-                                list={taxupdateCategoriesList}
-                                value={publicationType}
-                                onChange={setPublicationType}
+                                list={taxupdate_categories}
+                                value={taxUpdateCategory}
+                                onChange={setTaxUpdateCategory}
                                 menuDropdown="Tax Update Categories"
-                            />
+                            /> */}
                             <form
                                 onSubmit={onHandleSearch}
                                 className="d-flex align-items-center justify-content-center bg-white"
@@ -220,31 +223,31 @@ function Article() {
             <Box sx={{backgroundColor: theme.palette.custom.gray}} className="py-3 relative">
                 <div className="container">
                    {
-                    filters?.search && (
-                         <div className="row">
-                            <div className="col-12 mb-4">
-                                <Typography
-                                    sx={{
-                                        color: theme.palette.custom.black,
-                                        fontSize: "1.256rem",
-                                        fontWeight: 300,
-                                        [theme.breakpoints.down("sm")]: {
-                                            fontSize: "1.6rem",
-                                        },
-                                        lineHeight: "1.17857248em",
-                                        letterSpacing: "0.009em",
-                                    }}
-                                    variant="h2"
-                                >
-                                    {checkLang(
-                                        locale,
-                                        `Search results for "${filters?.search}"`,
-                                        `Hasil pencarian untuk "${filters?.search}"`
-                                    )}
-                                </Typography>
+                        filters?.search && (
+                            <div className="row">
+                                <div className="col-12 mb-4">
+                                    <Typography
+                                        sx={{
+                                            color: theme.palette.custom.black,
+                                            fontSize: "1.256rem",
+                                            fontWeight: 300,
+                                            [theme.breakpoints.down("sm")]: {
+                                                fontSize: "1.6rem",
+                                            },
+                                            lineHeight: "1.17857248em",
+                                            letterSpacing: "0.009em",
+                                        }}
+                                        variant="h2"
+                                    >
+                                        {checkLang(
+                                            locale,
+                                            `Search results for "${filters?.search}"`,
+                                            `Hasil pencarian untuk "${filters?.search}"`
+                                        )}
+                                    </Typography>
+                                </div>
                             </div>
-                        </div>
-                    )
+                        )
                    }
                     
                     {
@@ -356,67 +359,68 @@ function Article() {
                     }
                 </div>
             </Box>
-            {
-               
-                regulations.data.length > 0 && publicationType == "Library" || publicationType == "all" && (
-                     <>
-                    <Box sx={{ 
-                        backgroundImage: `url(${RegulationBg})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center top",
-                        py: 8, 
-                        [theme.breakpoints.down("md")]: {
-                            py:4,
-                            mt: 6
-                        },}}>
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-12 ">
-                                    <Typography
-                                        sx={{
-                                            fontSize: "3rem",
-                                            lineHeight: "1.43749551em",
-                                            fontWeight: "700",
-                                            color: theme.palette.custom.white,
-                                            textAlign: "start",
-                                            [theme.breakpoints.down("md")]: {
-                                                fontSize: "1.5rem",
-                                            },
-                                        }}
-                                        as="h2"
-                                    >
-                                        Library
-                                    </Typography>
+            <Box>
+                {
+                    (publicationType == "Library" || publicationType == "all") && (
+                        <>
+                            <Box sx={{ 
+                                backgroundImage: `url(${RegulationBg})`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center top",
+                                py: 8, 
+                                [theme.breakpoints.down("md")]: {
+                                    py:4,
+                                    mt: 6
+                                },}}>
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col-12 ">
+                                            <Typography
+                                                sx={{
+                                                    fontSize: "3rem",
+                                                    lineHeight: "1.43749551em",
+                                                    fontWeight: "700",
+                                                    color: theme.palette.custom.white,
+                                                    textAlign: "start",
+                                                    [theme.breakpoints.down("md")]: {
+                                                        fontSize: "1.5rem",
+                                                    },
+                                                }}
+                                                as="h2"
+                                            >
+                                                Library
+                                            </Typography>
+                                        </div>
+                                    </div>
+                                    <RegulationList regulations={regulations.data} />
                                 </div>
+                            </Box>
+                            <div className="row my-4">
+                                <ComplexPaginaton
+                                    currentPage={regulations.current_page}
+                                    lastPage={regulations.last_page}
+                                    onPageChange={(page) => {
+                                        router.get(
+                                            checkLang(
+                                                locale,
+                                                route("publications"),
+                                                route("publications.id"),
+                                                route("publications.jp"),
+                                                route("publications.ch")
+                                            ),
+                                            { page },
+                                            {
+                                                preserveState: true,
+                                            }
+                                        );
+                                    }}
+                                />
                             </div>
-                            <RegulationList regulations={regulations.data} />
-                        </div>
-                    </Box>
-                    <div className="row my-4">
-                        <ComplexPaginaton
-                            currentPage={regulations.current_page}
-                            lastPage={regulations.last_page}
-                            onPageChange={(page) => {
-                                router.get(
-                                    checkLang(
-                                        locale,
-                                        route("publications"),
-                                        route("publications.id"),
-                                        route("publications.jp"),
-                                        route("publications.ch")
-                                    ),
-                                    { page },
-                                    {
-                                        preserveState: true,
-                                    }
-                                );
-                            }}
-                        />
-                    </div>
-                    </>
-                )
-                    
-            }
+                        </>
+                    )
+                }
+            </Box>
+            
         </Guest>
     );
 }
