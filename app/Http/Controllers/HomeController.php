@@ -141,7 +141,7 @@ class HomeController extends Controller
             "$slugColumn as slug",
         )
         ->latest()
-        ->take(9)
+        ->take(10)
         ->get();
 
         $events = Cache::remember('home_events', 60, function () {

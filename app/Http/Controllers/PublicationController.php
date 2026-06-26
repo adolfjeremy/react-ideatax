@@ -80,7 +80,7 @@ class PublicationController extends Controller
     $regulations = Regulation::query()
         ->when($search, fn($q) => $q->where($titleColumn, 'like', "%{$search}%"))
         ->select('id', 'document', "{$titleColumn} as title", "{$slugColumn} as slug")
-        ->latest()->paginate(9)->withQueryString();
+        ->latest()->paginate(10)->withQueryString();
 
     // 8. Data Master Kategori untuk Dropdown Pemilih
     $article_categories = ArticleCategory::select('id', "title as name")->orderBy('title')->get();
