@@ -41,7 +41,7 @@ class PublicationController extends Controller
     $slugColumn = "slug{$suffix}";
 
     // 3. Mengambil Data Page Statis
-    $page = Page::select('id', 'title')->findOrFail(5);
+    $page = Page::findOrFail(5);
 
     // 4. Slider Data "Latest" (Selalu di-load)
     $latestArticle = Article::select('id', "{$titleColumn} as title", 'slug', 'slug_eng', 'slug_jpn', 'photo', 'article_categories_id')
