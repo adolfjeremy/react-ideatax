@@ -18,19 +18,20 @@ function Edit() {
     const [value, setValue] = useState(0);
     const { toggleSpinner } = useContext(SpinnerContext);
     const { toggleAlert } = useContext(AlertContext);
-    const { data, setData, put, processing, errors, reset } = useForm({
+    const { data, setData, post, processing, errors, reset } = useForm({
         title: item.title || "",
         title_eng: item.title_eng || "",
         title_jpn: item.title_jpn || "",
         slug: item.slug || "",
         slug_eng: item.slug_eng || "",
         slug_jpn: item.slug_jpn || "",
-        oldDocument: item.document || ""
+        oldDocument: item.document || "",
+        _method: "put",
     });
 
     const onHandleSubmit = (e) => {
         e.preventDefault();
-        put(
+        post(
             route("regulations.update", item.id),
             {
                 onStart: () => {

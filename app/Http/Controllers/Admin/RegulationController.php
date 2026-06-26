@@ -39,12 +39,17 @@ class RegulationController extends Controller
         $data = $request->all();
 
         $data['slug_eng'] = Str::slug($request->title_eng);
+        
         if($request->title_jpn) {
             $data['slug_jpn'] = Str::slug($request->title_jpn, language:"ja-JP");
         }
         if($request->title) {
             $data['slug'] = Str::slug($request->title);
-        } 
+        }
+
+        if ($request->file('document')) {
+            $data['document'] = $request->file('document')->store('regulations/pdf');
+        }
         
 
         Regulation::create($data);
@@ -91,9 +96,10 @@ class RegulationController extends Controller
         if($request->title) {
             $data['slug'] = Str::slug($request->title);
         }
-        
         if ($request->file('document')) {
-            Storage::delete($request->oldDocument);
+            if($request->oldDocument) {
+                Storage::delete($request->oldDocument);
+            }
             $data['document'] = $request->file('document')->store('regulations/pdf');
         }
 

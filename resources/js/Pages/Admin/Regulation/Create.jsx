@@ -43,8 +43,8 @@ function Create() {
                     toggleSpinner(false);
                     console.log(error);
                 },
+                forceFormData: true
             },
-            { forceFormData: true }
         );
     };
 
