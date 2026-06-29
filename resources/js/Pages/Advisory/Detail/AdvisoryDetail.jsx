@@ -26,46 +26,60 @@ function AdvisoryDetailHero({ item, formatDate, theme }) {
             <div>
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        {item.team?.profile_picture ? (
-                            <img
-                                src={`/storage/${item.team.profile_picture}`}
-                                className="d-block w-100"
-                                alt={item.title}
-                                style={{
-                                    objectFit: "cover",
-                                    height: "80vh",
-                                    objectPosition: "center top",
-                                }}
-                            />
+                        {item.team?.profile_picture || item.team?.photo ? (
+                            <>
+                                <Box
+                                    component="img"
+                                    src={`/storage/${item.team.profile_picture || item.team.photo}`}
+                                    className="w-100"
+                                    alt={item.title}
+                                    sx={{
+                                        display: { xs: "none", md: "block" },
+                                        objectFit: "cover",
+                                        height: "80vh",
+                                        objectPosition: "center top",
+                                    }}
+                                />
+                                <Box
+                                    component="img"
+                                    src={`/storage/${item.team.photo || item.team.profile_picture}`}
+                                    className="w-100"
+                                    alt={item.title}
+                                    sx={{
+                                        display: { xs: "block", md: "none" },
+                                        objectFit: "cover",
+                                        height: "80vh",
+                                        objectPosition: "left top",
+                                    }}
+                                />
+                            </>
                         ) : (
-                            <Box sx={{ width: "100%", height: "50vh", backgroundColor: theme.palette.custom.gray }}></Box>
+                            <Box sx={{ width: "100%", height: "50vh" }}></Box>
                         )}
                         
                         <Box
                             sx={{
                                 position: "absolute",
-                                left: 0,
+                                right: 0,
                                 bottom: 0,
                                 top: 0,
-                                right: "35vw",
+                                left: { xs: 0, md: "35vw" },
                                 display: "flex",
                                 flexDirection: "column",
-                                alignItems: "flex-start",
+                                alignItems: { xs: "flex-start", md: "flex-end" },
+                                textAlign: { xs: "left", md: "right" },
                                 justifyContent: "center",
-                                paddingLeft: "6.25rem",
+                                paddingRight: { xs: "2rem", md: "6.25rem" },
+                                paddingLeft: { xs: "2rem", md: 0 },
                                 gap: "0.5rem",
-                                background: "linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%)",
                                 [theme.breakpoints.down("md")]: {
-                                    right: 0,
-                                    paddingLeft: "2rem",
-                                    paddingRight: "2rem",
-                                    background: "rgba(255,255,255,0.8)",
+                                    background: "rgba(0,0,0,0.5)",
                                 },
                             }}
                         >
                             <Typography
                                 sx={{
-                                    color: theme.palette.custom.black,
+                                    color: { xs: theme.palette.custom.white, md: theme.palette.custom.black },
                                     fontSize: "4rem",
                                     [theme.breakpoints.down("md")]: {
                                         fontSize: "1.5rem",
@@ -98,7 +112,7 @@ function AdvisoryDetailHero({ item, formatDate, theme }) {
                             )}
                             <Typography
                                 sx={{
-                                    color: theme.palette.custom.black,
+                                    color: { xs: theme.palette.custom.white, md: theme.palette.custom.black },
                                     fontSize: "2rem",
                                     [theme.breakpoints.down("sm")]: {
                                         fontSize: "1rem",

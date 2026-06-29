@@ -148,14 +148,19 @@ export default function AdvisoryHighlight({advisory, idx}) {
                                 fontSize: "2rem",
                                 letterSpacing:"7%",
                                 fontWeight: 700,
-                                color: theme.palette.custom.white
-
+                                color: theme.palette.custom.white,
+                                [theme.breakpoints.down("md")]: {
+                                    fontSize: "1rem",
+                                },
                             }}>{advisory?.team?.name}</Typography>
                             <Typography sx={{
                                 fontSize: "1.25rem",
                                 letterSpacing:"7%",
                                 fontWeight: 300,
-                                color: theme.palette.custom.white
+                                color: theme.palette.custom.white,
+                                [theme.breakpoints.down("md")]: {
+                                    fontSize: "0.625rem",
+                                },
 
                             }}>{advisory?.team?.position?.name}</Typography>
                         </Box>
