@@ -95,7 +95,7 @@ function Hero({ heroes, t, theme, locale, compro, checkLang }) {
                                     )}
                                 >
                                     {t("consult")}
-                                </OrangeButton>``
+                                </OrangeButton>
                                 <Button
                                         variant="outlined"
                                         sx={{

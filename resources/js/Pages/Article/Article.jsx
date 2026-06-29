@@ -169,7 +169,7 @@ function Article() {
             />
 
             <Box sx={{
-                    position:"sticky",
+                    position: { xs: "static", md: "sticky" },
                     top:"90px",
                     zIndex:100,
                     backgroundColor: theme.palette.custom.white,

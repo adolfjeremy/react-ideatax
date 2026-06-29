@@ -143,7 +143,7 @@ function Team() {
                     >
                         Turning tax complexity <br /><strong> into strategic opportunities.</strong>
                     </Typography>
-                    <div className="flex items-center justify-start gap-0 gap-md-3 mt-4 mt-lg-3">
+                    <div className="flex items-center justify-start gap-2 gap-md-3 mt-4 mt-lg-3">
                        <OrangeButton
                             href={checkLang(
                                 locale,
@@ -211,7 +211,7 @@ function Team() {
             }}>
                 <div className="container">
                     <div className="row py-4">
-                        <div className="col-12 d-flex align-items-center justify-content-center">
+                        <div className="col-12 d-flex gap-1 gap-md-3 align-items-center justify-content-center">
                             <CustomDropdown
                                 list={departments}
                                 value={selectedExpertise}

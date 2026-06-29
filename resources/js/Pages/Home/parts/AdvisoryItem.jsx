@@ -95,6 +95,7 @@ export default function AdvisoryItem ({advisory, image, position, name, title, h
                             letterSpacing: "5%",
                             [theme.breakpoints.down("md")]: {
                                 fontSize: "0.5rem",
+                                lineHeight: "15px"
                             }
                     }}>{title}</Typography>
                 </Box>
@@ -102,7 +103,7 @@ export default function AdvisoryItem ({advisory, image, position, name, title, h
                     ".rich_container h3, .rich_container h4":{
                         fontSize:"1.125rem",
                         fontWeight: 300,
-                        lineHeight: "40px",
+                        lineHeight: "15px",
                         letterSpacing:"11%",
                         [theme.breakpoints.down("md")]: {
                             fontSize: "0.5rem",
@@ -122,7 +123,7 @@ export default function AdvisoryItem ({advisory, image, position, name, title, h
                         textWrap: "balance",
                         [theme.breakpoints.down("md")]: {
                             fontSize: "0.625rem",
-                            lineHeight: "20px",
+                            lineHeight: "15px",
                         },
                         strong: {
                             fontWeight: 700,
