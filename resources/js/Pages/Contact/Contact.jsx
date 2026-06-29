@@ -275,6 +275,7 @@ function Contact() {
                                             }}
                                             minutesStep={30} // 👈 KUNCI UTAMA: UI hanya akan menampilkan menit 00 & 30
                                             ampm={true}     // Paksa format 24 jam (menghilangkan AM/PM jika diinginkan)
+                                            minDate={dayjs().add(1, 'day')} // Menonaktifkan tanggal hari ini dan sebelumnya
                                             slotProps={{
                                                 textField: {
                                                     fullWidth: true,
