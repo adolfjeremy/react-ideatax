@@ -45,7 +45,10 @@ function Hero({ heroes, t, theme, locale, compro, checkLang }) {
                                     display: "flex",
                                     flexDirection: "column",
                                     alignItems: "start",
-                                    gap: 2,
+                                    gap: 3,
+                                    [theme.breakpoints.down("md")]: {
+                                        gap: 2,
+                                    },
                                 }}
                             >
                                 <Typography
@@ -81,7 +84,7 @@ function Hero({ heroes, t, theme, locale, compro, checkLang }) {
                                         {item.subtitle_eng}
                                     </Typography>
                                 </Typography>
-                                <div className="flex items-center justify-start gap-3 mt-2 mt-lg-3">
+                                <div className="flex items-center justify-start gap-0 gap-md-3 mt-2 mt-lg-3">
                                  <OrangeButton
                                     href={checkLang(
                                         locale,

@@ -16,13 +16,13 @@ function TeamItem({ image, name, position, destination }) {
                 },
             }}
             href={destination}
-            className="col-3 col-md-2 p-0 position-relative"
+            className="col-4 col-md-2 p-0 position-relative"
         >
             <img src={image} alt={name} className="w-100" />
             <Box
                 sx={{
                     position: "absolute",
-                    top: { xs: "0", sm: "14px", md: "8px" },
+                    top: { xs: "4px", sm: "14px", md: "8px" },
                     bottom: { xs: "8px", sm: "auto" },
                     left: 0,
                     right: 0,
@@ -31,6 +31,7 @@ function TeamItem({ image, name, position, destination }) {
                     alignItems: "center",
                     justifyContent: "start",
                     padding: "0 6px",
+                    
                 }}
             >
                 <Typography

@@ -7,13 +7,12 @@ import { LuListChecks } from "react-icons/lu";
 
 function ExpertiseList({ checkLang, locale, t, theme }) {
     return (
-        <div className="row expertise mt-2 mt-md-4 py-2 px-4">
+        <div className="row expertise mt-2 mt-md-4 py-2 px-4 mx-1 mx-md-0">
             <Box sx={{
                 display:"grid",
                 gridTemplateColumns: "repeat(2, 1fr)",
                 gridTemplateRows: "repeat(2, 1fr)",
                 gap: "1rem",
-                padding: "0 !important",
                 [theme.breakpoints.down("md")]: {
                     gridTemplateColumns: "repeat(1, 1fr)",
                     gridTemplateRows: "repeat(1, 1fr)",

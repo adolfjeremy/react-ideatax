@@ -158,7 +158,7 @@ function Home() {
                                 sx={{
                                     color: theme.palette.custom.black,
                                     textAlign: "start",
-                                    fontSize: "3rem",
+                                    PontSize: "3rem",
                                     fontWeight: "300",
                                     lineHeight: "107.3%",
                                     [theme.breakpoints.down("md")]: {
@@ -194,7 +194,7 @@ function Home() {
                             </Typography>
                         </Box>
                     </div>
-                    <div className="row">
+                    <div className="row m-1 mx-md-0">
                         <div className="col-12 text-center mt-5">
                             <Typography
                                 sx={{
@@ -454,7 +454,7 @@ function Home() {
                     </div>
                 </div>
             </Box>
-            <Box>
+            <Box sx={{mx: 1, [theme.breakpoints.up("md")]: {mx: 0,}}}>
                 <div className="container">
                     <div className="row mt-5">
                         <div className="col-12">

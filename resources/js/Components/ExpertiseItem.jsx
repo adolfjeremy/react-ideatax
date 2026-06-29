@@ -45,7 +45,8 @@ function ExpertiseItem({ head, desc, image, route }) {
                             color:theme.palette.custom.yellow
                         },
                         [theme.breakpoints.down("md")]: {
-                            fontSize: "1.4rem",
+                            fontSize: "0.9rem",
+                            lineHeight:"15px"
                         },
                     }}
                     href={route}
@@ -62,6 +63,7 @@ function ExpertiseItem({ head, desc, image, route }) {
                         margin: "0",
                         [theme.breakpoints.down("md")]: {
                             fontSize: "0.9rem",
+                            lineHeight:"15px"
                         },
                     }}
                 >

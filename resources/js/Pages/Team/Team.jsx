@@ -143,7 +143,7 @@ function Team() {
                     >
                         Turning tax complexity <br /><strong> into strategic opportunities.</strong>
                     </Typography>
-                    <div className="flex items-center justify-start gap-3 mt-4 mt-lg-3">
+                    <div className="flex items-center justify-start gap-0 gap-md-3 mt-4 mt-lg-3">
                        <OrangeButton
                             href={checkLang(
                                 locale,
