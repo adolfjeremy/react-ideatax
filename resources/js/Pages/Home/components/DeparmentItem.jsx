@@ -13,8 +13,11 @@ export default function DepartmentItem({image, name, desc, theme}) {
         }} >
             <Box sx={{
                 img:{
-                    borderRadius: "44px"
-                }
+                    borderRadius: "44px",
+                    [theme.breakpoints.down("md")]: {
+                        borderRadius: "10px",
+                    },
+                },
             }}>
                 <img src={`/storage/${image}`} alt={`department ${name}`} />
             </Box>
@@ -45,6 +48,8 @@ export default function DepartmentItem({image, name, desc, theme}) {
                     fontWeight: "300",
                     [theme.breakpoints.down("sm")]: {
                         fontSize: "1rem",
+                        letterSpacing: "13%",
+                        lineHeight: "15px",
                     },
                 }} as="h3">
                     {desc}

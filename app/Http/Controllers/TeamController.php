@@ -30,7 +30,13 @@ class TeamController extends Controller
 
         $positions = Position::orderBy('order', 'asc')->select("$nameColumn as name", "id")->get();    // Me-reset index array agar urut dari 0, 1, 2, dst (penting untuk JSON response)
 
-        $query = Team::with(['department', 'position'])->orderBy('order', 'asc');
+        $query = Team::with(['department', 'position'])
+            ->leftJoin('departments', 'teams.department_id', '=', 'departments.id')
+            ->leftJoin('positions', 'teams.position_id', '=', 'positions.id')
+            ->select('teams.*')
+            ->orderBy('departments.order', 'asc')
+            ->orderBy('positions.order', 'asc')
+            ->orderBy('teams.order', 'asc');
 
         if ($request->filled('department_id') && $request->department_id !== 'all') {
             $query->where('department_id', $request->department_id);
