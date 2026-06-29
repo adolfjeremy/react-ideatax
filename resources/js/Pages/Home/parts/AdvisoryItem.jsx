@@ -88,16 +88,16 @@ export default function AdvisoryItem ({advisory, image, position, name, title, h
                     </Box>
                 </Box>
                 <Box>
-                    <Typography variant="p" sx={{
+                    <Typography as="h3" sx={{
                         color: theme.palette.custom.black,
                             fontSize: "1.5rem",
                             fontWeight:700,
                             letterSpacing: "5%",
                             [theme.breakpoints.down("md")]: {
-                                fontSize: "0.5rem",
-                                lineHeight: "15px"
+                                fontSize: "0.625rem",
+                                lineHeight: "15px !"
                             }
-                    }}>{title}</Typography>
+                    }}>Demurrage and Offshore VAT: How Operational</Typography>
                 </Box>
                 <Box sx={{
                     ".rich_container h3, .rich_container h4":{
@@ -122,14 +122,14 @@ export default function AdvisoryItem ({advisory, image, position, name, title, h
                         textAlign: "left",
                         textWrap: "balance",
                         [theme.breakpoints.down("md")]: {
-                            fontSize: "0.625rem",
+                            fontSize: "0.5rem",
                             lineHeight: "15px",
                         },
                         strong: {
                             fontWeight: 700,
                             fontSize: "1.5rem",
                             [theme.breakpoints.down("md")]: {
-                                fontSize: "0.625rem",
+                                fontSize: "0.5rem",
                             },
                             
                         }
