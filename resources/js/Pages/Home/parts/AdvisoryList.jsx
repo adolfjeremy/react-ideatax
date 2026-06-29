@@ -26,7 +26,7 @@ export default function AdvisoryList ({advisories}){
                     {
                         advisories.map(advisory => (
                             <div className="embla__slide_advisory" key={advisory.id}>
-                                <AdvisoryItem key={advisory.id} image={advisory?.team?.profile_picture} position={advisory?.team?.position?.name_eng} name={advisory?.team?.name} highlight={advisory.highlight} title={advisory.title} />
+                                <AdvisoryItem advisory={advisory} key={advisory.id} image={advisory?.team?.profile_picture} position={advisory?.team?.position?.name_eng} name={advisory?.team?.name} highlight={advisory.highlight} title={advisory.title} />
                             </div>
                         ))
                     }

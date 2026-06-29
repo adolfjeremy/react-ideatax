@@ -39,9 +39,8 @@ function ArticleHeroSlider({ datas, t, theme, locale, checkLang }) {
                             },
                         }}
                     >
-                        <Box className="row">
+                        <Box>
                             <Box
-                                className="col-12"
                                 sx={{
                                     display: "flex",
                                     flexDirection: "column",

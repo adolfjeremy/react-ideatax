@@ -1,4 +1,5 @@
 const renderTitle = (title) => {
+  if (!title) return null;
   const words = title.trim().split(" ");
 
   if (words.length <= 2) {

@@ -184,45 +184,53 @@ function Article() {
             >
                 <div className="container-fluid">
                     <Box className="row">
-                        <div className="col-12 d-flex justify-content-center align-items-center gap-3">
-                            <CustomDropdown
-                                list={publicationsList}
-                                value={publicationType}
-                                onChange={setPublicationType}
-                                menuDropdown="Publication Type"
-                            />
-                            {(publicationType === "Article" || publicationType === "all") && (
+                        <div className="col-12 d-flex flex-column flex-md-row flex-wrap justify-content-center align-items-stretch align-items-md-center gap-2 gap-md-3">
+                            <Box sx={{ width: { xs: "100%", md: "auto" } }}>
                                 <CustomDropdown
-                                    list={article_categories}
-                                    value={articleCategory}
-                                    onChange={onHandleArticleCategoryChange} // Menggunakan handler baru
-                                    menuDropdown="Article Categories"
+                                    list={publicationsList}
+                                    value={publicationType}
+                                    onChange={setPublicationType}
+                                    menuDropdown="Publication Type"
                                 />
+                            </Box>
+                            {(publicationType === "Article" || publicationType === "all") && (
+                                <Box sx={{ width: { xs: "100%", md: "auto" } }}>
+                                    <CustomDropdown
+                                        list={article_categories}
+                                        value={articleCategory}
+                                        onChange={onHandleArticleCategoryChange}
+                                        menuDropdown="Article Categories"
+                                    />
+                                </Box>
                             )}
                             {(publicationType === "TaxUpdate" || publicationType === "all") && (
-                                <CustomDropdown
-                                    list={taxupdate_categories}
-                                    value={taxUpdateCategory}
-                                    onChange={onHandleTaxUpdateCategoryChange} // Menggunakan handler baru
-                                    menuDropdown="Tax Update Categories"
-                                />
+                                <Box sx={{ width: { xs: "100%", md: "auto" } }}>
+                                    <CustomDropdown
+                                        list={taxupdate_categories}
+                                        value={taxUpdateCategory}
+                                        onChange={onHandleTaxUpdateCategoryChange}
+                                        menuDropdown="Tax Update Categories"
+                                    />
+                                </Box>
                             )}
-                            <form
-                                onSubmit={onHandleSearch}
-                                className="d-flex align-items-center justify-content-center bg-white"
-                            >
-                                <CustomInput sx={{position: "relative", height: "100%", paddingRight: "10px"}} placeholder="search" value={search} onChange={(e) => setSearch(e.target.value)}
-                                    endAdornment={
-                                        <InputAdornment position="end" sx={{
-                                            position: "absolute",
-                                            right: "10px",
-                                            top: "50%",
-                                            transform: "translateY(-50%)",
-                                        }}>
-                                            <IoSearch size={30} color="#191919"/>
-                                        </InputAdornment>}
-                                />
-                            </form>
+                            <Box sx={{ width: { xs: "100%", md: "300px" }, display: "flex" }}>
+                                <form
+                                    onSubmit={onHandleSearch}
+                                    className="d-flex align-items-center justify-content-center bg-white w-100"
+                                >
+                                    <CustomInput sx={{position: "relative", height: "100%", paddingRight: "10px", width: "100%", minHeight: "56px"}} placeholder="search" value={search} onChange={(e) => setSearch(e.target.value)}
+                                        endAdornment={
+                                            <InputAdornment position="end" sx={{
+                                                position: "absolute",
+                                                right: "10px",
+                                                top: "50%",
+                                                transform: "translateY(-50%)",
+                                            }}>
+                                                <IoSearch size={30} color="#191919"/>
+                                            </InputAdornment>}
+                                    />
+                                </form>
+                            </Box>
                         </div>
                     </Box>
                 </div>
@@ -402,26 +410,28 @@ function Article() {
                                     <RegulationList regulations={regulations.data} />
                                 </div>
                             </Box>
-                            <div className="row my-4">
-                                <ComplexPaginaton
-                                    currentPage={regulations.current_page}
-                                    lastPage={regulations.last_page}
-                                    onPageChange={(page) => {
-                                        router.get(
-                                            checkLang(
-                                                locale,
-                                                route("publications"),
-                                                route("publications.id"),
-                                                route("publications.jp"),
-                                                route("publications.ch")
-                                            ),
-                                            { page },
-                                            {
-                                                preserveState: true,
-                                            }
-                                        );
-                                    }}
-                                />
+                            <div className="container">
+                                <div className="row my-4">
+                                    <ComplexPaginaton
+                                        currentPage={regulations.current_page}
+                                        lastPage={regulations.last_page}
+                                        onPageChange={(page) => {
+                                            router.get(
+                                                checkLang(
+                                                    locale,
+                                                    route("publications"),
+                                                    route("publications.id"),
+                                                    route("publications.jp"),
+                                                    route("publications.ch")
+                                                ),
+                                                { page },
+                                                {
+                                                    preserveState: true,
+                                                }
+                                            );
+                                        }}
+                                    />
+                                </div>
                             </div>
                         </>
                     )

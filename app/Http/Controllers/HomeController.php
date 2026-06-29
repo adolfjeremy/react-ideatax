@@ -124,10 +124,12 @@ class HomeController extends Controller
         $advisories = Advisory::with('team.position')
         ->select(
             'id',
-            "$titleColumn as title",
-            "$highlightColumn as highlight",
-            "$slugColumn as slug",
-            "$subtitleColumn as subtitle",
+            \Illuminate\Support\Facades\DB::raw("COALESCE($titleColumn, title_eng) as title"),
+            \Illuminate\Support\Facades\DB::raw("COALESCE($highlightColumn, highlight_eng) as highlight"),
+            \Illuminate\Support\Facades\DB::raw("COALESCE($slugColumn, slug_eng) as slug"),
+            'slug_eng',
+            'slug_jpn',
+            \Illuminate\Support\Facades\DB::raw("COALESCE($subtitleColumn, subtitle_eng) as subtitle"),
             'team_id'
         )
         ->latest()

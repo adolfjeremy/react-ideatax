@@ -78,7 +78,16 @@ function HeaderBar({ en, id, jp, ch }) {
         }
     };
 
+
     const isMobile = useMediaQuery((theme) => theme.breakpoints.down("lg"));
+
+    const isActive = (routes) => {
+        if (!Array.isArray(routes)) {
+            routes = [routes];
+        }
+        return routes.some((r) => route().current(r) || route().current(`${r}.*`));
+    };
+
     return (
         <>
             <Box sx={{
@@ -138,12 +147,8 @@ function HeaderBar({ en, id, jp, ch }) {
                             display: "none"
                         },
                         svg: {
-                            fontSize: "1rem",
-                            color: `${
-                                route().current("home")
-                                    ? theme.palette.custom.white
-                                    : theme.palette.custom.darkBlue
-                            }`,
+                            fontSize: "2rem",
+                            color: theme.palette.custom.white
                         },
                     }}
                 >
@@ -158,6 +163,9 @@ function HeaderBar({ en, id, jp, ch }) {
                         [theme.breakpoints.down("lg")]: {
                             display: "none"
                         },
+                        ".active": {
+                            color: `${theme.palette.custom.yellow} !important`,
+                        },
                     }}
                 >
                     <Link
@@ -168,7 +176,7 @@ function HeaderBar({ en, id, jp, ch }) {
                             route("home.jp"),
                             route("home.ch")
                         )}
-                        className={route().current("home") ? "active" : ""}
+                        className={isActive("home") ? "active" : ""}
                         sx={{
                             fontSize: "1.5rem",
                             color: theme.palette.custom.white,
@@ -192,12 +200,7 @@ function HeaderBar({ en, id, jp, ch }) {
                             route("team.jp"),
                             route("team.ch")
                         )}
-                        className={
-                            route().current("team") ||
-                            route().current("team-detail")
-                                ? "active"
-                                : ""
-                        }
+                        className={isActive(["team", "team-detail"]) ? "active" : ""}
                         sx={{
                             fontSize: "1.5rem",
                             color: theme.palette.custom.white,
@@ -221,12 +224,7 @@ function HeaderBar({ en, id, jp, ch }) {
                             route("service.jp"),
                             route("service.ch")
                         )}
-                        className={
-                            route().current("service") ||
-                            route().current("service-detail")
-                                ? "active"
-                                : ""
-                        }
+                        className={isActive(["service", "service-detail"]) ? "active" : ""}
                         sx={{
                             fontSize: "1.5rem",
                             color: theme.palette.custom.white,
@@ -251,13 +249,7 @@ function HeaderBar({ en, id, jp, ch }) {
                             route("publications.jp"),
                             route("publications.ch")
                         )}
-                        className={
-                            route().current("publications") ||
-                            route().current("article-detail") ||
-                            route().current("updates-detail")
-                                ? "active"
-                                : ""
-                        }
+                        className={isActive(["publications", "article-detail", "updates-detail"]) ? "active" : ""}
                         sx={{
                             fontSize: "1.5rem",
                             color: theme.palette.custom.white,
@@ -275,13 +267,7 @@ function HeaderBar({ en, id, jp, ch }) {
                         Publications
                     </Link>
                      <Button
-                        className={
-                            route().current("career") ||
-                            route().current("career-detail") ||
-                            route().current("life-at-ideatax")
-                                ? "active"
-                                : ""
-                        }
+                        className={isActive(["career", "career-detail", "life-at-ideatax"]) ? "active" : ""}
                         id="basic-button"
                         aria-controls={openCareerDekstop ? "dropdown-menu-career-dekstop" : undefined}
                         aria-haspopup="true"
@@ -313,6 +299,11 @@ function HeaderBar({ en, id, jp, ch }) {
                         MenuListProps={{
                             "aria-labelledby": "dropdown-menu-career-dekstop",
                         }}
+                        sx={{
+                            ".active": {
+                                color: `${theme.palette.custom.yellow} !important`,
+                            },
+                        }}
                     >
                         <MenuItem>
                             <Link
@@ -322,9 +313,7 @@ function HeaderBar({ en, id, jp, ch }) {
                                     route("career.id"),
                                     route("career.jp")
                                 )}
-                                className={
-                                    route().current("career") ? "active" : ""
-                                }
+                                className={isActive("career") ? "active" : ""}
                                 sx={{
                                     fontSize: "1.5rem",
                                     color: theme.palette.custom.white,
@@ -349,11 +338,7 @@ function HeaderBar({ en, id, jp, ch }) {
                                     route("life-at-ideatax.id"),
                                     route("life-at-ideatax.jp")
                                 )}
-                                className={
-                                    route().current("life-at-ideatax")
-                                        ? "active"
-                                        : ""
-                                }
+                                className={isActive("life-at-ideatax") ? "active" : ""}
                                 sx={{
                                     fontSize: "1.7rem",
                                     color: theme.palette.custom.white,
@@ -378,7 +363,7 @@ function HeaderBar({ en, id, jp, ch }) {
                             route("contact.jp"),
                             route("contact.ch")
                         )}
-                        className={route().current("contact") ? "active" : ""}
+                        className={isActive("contact") ? "active" : ""}
                         sx={{
                             fontSize: "1.5rem",
                             color: theme.palette.custom.white,
@@ -446,7 +431,7 @@ function HeaderBar({ en, id, jp, ch }) {
                         route("home.jp"),
                         route("home.ch")
                     )}
-                    className={route().current("home") ? "active" : ""}
+                    className={isActive("home") ? "active" : ""}
                     sx={{
                         fontSize: "1.7rem",
                         color: theme.palette.custom.white,
@@ -469,12 +454,7 @@ function HeaderBar({ en, id, jp, ch }) {
                         route("team.jp"),
                         route("team.ch")
                     )}
-                    className={
-                        route().current("team") ||
-                        route().current("team-detail")
-                            ? "active"
-                            : ""
-                    }
+                    className={isActive(["team", "team-detail"]) ? "active" : ""}
                     sx={{
                         fontSize: "1.7rem",
                         color: theme.palette.custom.white,
@@ -497,12 +477,7 @@ function HeaderBar({ en, id, jp, ch }) {
                         route("service.jp"),
                         route("service.ch")
                     )}
-                    className={
-                        route().current("service") ||
-                        route().current("service-detail")
-                            ? "active"
-                            : ""
-                    }
+                    className={isActive(["service", "service-detail"]) ? "active" : ""}
                     sx={{
                         fontSize: "1.7rem",
                         color: theme.palette.custom.white,
@@ -525,13 +500,7 @@ function HeaderBar({ en, id, jp, ch }) {
                         route("publications.jp"),
                         route("publications.ch")
                     )}
-                    className={
-                        route().current("publications") ||
-                        route().current("article-detail") ||
-                        route().current("updates-detail")
-                            ? "active"
-                            : ""
-                    }
+                    className={isActive(["publications", "article-detail", "updates-detail"]) ? "active" : ""}
                     sx={{
                         fontSize: "1.5rem",
                         color: theme.palette.custom.white,
@@ -549,13 +518,7 @@ function HeaderBar({ en, id, jp, ch }) {
                     Publications
                 </Link>
                 <Button
-                    className={
-                        route().current("career") ||
-                        route().current("career-detail") ||
-                        route().current("life-at-ideatax")
-                            ? "active"
-                            : ""
-                    }
+                    className={isActive(["career", "career-detail", "life-at-ideatax"]) ? "active" : ""}
                     id="basic-button"
                     aria-controls={open ? "dropdown-menu" : undefined}
                     aria-haspopup="true"
@@ -585,6 +548,11 @@ function HeaderBar({ en, id, jp, ch }) {
                     MenuListProps={{
                         "aria-labelledby": "dropdown-menu",
                     }}
+                    sx={{
+                        ".active": {
+                            color: `${theme.palette.custom.yellow} !important`,
+                        },
+                    }}
                 >
                     <MenuItem>
                         <Link
@@ -594,9 +562,7 @@ function HeaderBar({ en, id, jp, ch }) {
                                 route("career.id"),
                                 route("career.jp")
                             )}
-                            className={
-                                route().current("career") ? "active" : ""
-                            }
+                            className={isActive("career") ? "active" : ""}
                             sx={{
                                 fontSize: "1.7rem",
                                 color: theme.palette.custom.white,
@@ -620,11 +586,7 @@ function HeaderBar({ en, id, jp, ch }) {
                                 route("life-at-ideatax.id"),
                                 route("life-at-ideatax.jp")
                             )}
-                            className={
-                                route().current("life-at-ideatax")
-                                    ? "active"
-                                    : ""
-                            }
+                            className={isActive("life-at-ideatax") ? "active" : ""}
                             sx={{
                                 fontSize: "1.7rem",
                                 color: theme.palette.custom.white,
@@ -649,7 +611,7 @@ function HeaderBar({ en, id, jp, ch }) {
                         route("contact.jp"),
                         route("contact.ch")
                     )}
-                    className={route().current("contact") ? "active" : ""}
+                    className={isActive("contact") ? "active" : ""}
                     sx={{
                         fontSize: "1.7rem",
                         color: theme.palette.custom.white,

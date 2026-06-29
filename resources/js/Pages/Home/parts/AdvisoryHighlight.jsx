@@ -1,9 +1,21 @@
 import { Box, Typography, useTheme, Link } from "@mui/material";
 import RichText from "@/Components/RichText";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { usePage } from "@inertiajs/react";
+import checkLang from "@/utils/checkLang";
 
 export default function AdvisoryHighlight({advisory, idx}) {
     const theme = useTheme();
+    const { locale } = usePage().props;
+
+    const href = advisory ? checkLang(
+        locale,
+        route("advisory-detail", { slug_eng: advisory.slug_eng }),
+        route("advisory-detail.id", { slug: advisory.slug || advisory.slug_eng }),
+        route("advisory-detail.jp", { slug_jpn: advisory.slug_jpn || advisory.slug_eng }),
+        route("advisory-detail.ch", { slug: advisory.slug || advisory.slug_eng })
+    ) : "#";
+
     return (
        <>
         {
@@ -88,7 +100,7 @@ export default function AdvisoryHighlight({advisory, idx}) {
                             </Typography>
                             <RichText className="rich_container mt-4 text-justify" htmlContent={advisory.highlight} />
                          </Box>
-                        <Link className="text-decoration-none" href='{route("advisory-detail", advisory.slug)}'>
+                        <Link className="text-decoration-none" href={href}>
                             <Typography variant="h6" component="h6" sx={{
                                 color: theme.palette.custom.black,
                                 textAlign: "start",

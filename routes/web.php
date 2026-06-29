@@ -23,6 +23,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AdvisoryController as FrontAdvisoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
@@ -80,6 +81,7 @@ Route::get('/our-service/authorized-economic-operator', [AEOController::class, '
 Route::get('/publications', [PublicationController::class, 'index'])->name('publications');
 // Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
 Route::get('/articles/{slug_eng}', [ArticleController::class, 'detail'])->name('article-detail');
+Route::get('/advisories/{slug_eng}', [FrontAdvisoryController::class, 'detail'])->name('advisory-detail');
 Route::get('/articles/event/{slug_eng}', [ControllersTaxEventController::class, 'detail'])->name('event-detail');
 
 // Route::get('/tax-updates', [TaxUpdateController::class, 'index'])->name('updates');
@@ -112,6 +114,7 @@ Route::prefix('id')
 
         // Route::get('/articles', [ArticleController::class, 'index'])->name('articles.id');
         Route::get('/articles/{slug}', [ArticleController::class, 'detail'])->name('article-detail.id');
+        Route::get('/advisories/{slug}', [FrontAdvisoryController::class, 'detail'])->name('advisory-detail.id');
         Route::get('/articles/event/{slug}', [ControllersTaxEventController::class, 'detail'])->name('event-detail.id');
         Route::get('/publications', [PublicationController::class, 'index'])->name('publications.id');
         // Route::get('/tax-updates', [TaxUpdateController::class, 'index'])->name('updates.id');
@@ -141,6 +144,7 @@ Route::prefix('jp')
 
         // Route::get('/articles', [ArticleController::class, 'index'])->name('articles.jp');
         Route::get('/articles/{slug_jpn}', [ArticleController::class, 'detail'])->name('article-detail.jp');
+        Route::get('/advisories/{slug_jpn}', [FrontAdvisoryController::class, 'detail'])->name('advisory-detail.jp');
         Route::get('/articles/event/{slug_jpn}', [ControllersTaxEventController::class, 'detail'])->name('event-detail.jp');
         Route::get('/publications', [PublicationController::class, 'index'])->name('publications.jp');
 
@@ -170,6 +174,7 @@ Route::prefix('zh-CN')
 
         // Route::get('/articles', [ArticleController::class, 'index'])->name('articles.ch');
         Route::get('/articles/{slug_ch}', [ArticleController::class, 'detail'])->name('article-detail.ch');
+        Route::get('/advisories/{slug}', [FrontAdvisoryController::class, 'detail'])->name('advisory-detail.ch');
         Route::get('/publications', [PublicationController::class, 'index'])->name('publications.ch');
 
         // Route::get('/tax-updates', [TaxUpdateController::class, 'index'])->name('updates.ch');

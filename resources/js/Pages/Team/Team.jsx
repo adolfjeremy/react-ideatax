@@ -200,13 +200,13 @@ function Team() {
             <Box sx={{
                 position:"sticky",
                 top:"100px",
-                zIndex:3000,
+                zIndex:1100,
                 backgroundColor: theme.palette.custom.white,
                 [theme.breakpoints.down("lg")]: {
                     top: "60px",
                 },
                 [theme.breakpoints.down("md")]: {
-                    top: "50px",
+                    top: "75px",
                 },
             }}>
                 <div className="container">

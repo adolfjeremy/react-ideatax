@@ -37,7 +37,7 @@ export default function CustomDropdown({ list, value, onChange, menuDropdown="Pr
     return (
         <FormControl
             sx={{
-                m: 1,
+                m: 0,
                 display: "flex",
                 alignItems: "start",
                 fontSize: 26,
@@ -61,6 +61,7 @@ export default function CustomDropdown({ list, value, onChange, menuDropdown="Pr
                             position: "absolute",
                             top: "50% !important",
                             transform: "translateY(-50%) !important", // Geser ke atas setengah dari tinggi ikon itu sendiri
+                            pointerEvents: "none", // Memastikan klik pada ikon diteruskan ke elemen Select
 
                             // --- UKURAN DESKTOP JUMBO ---
                             fontSize: "32px !important",
@@ -96,7 +97,7 @@ export default function CustomDropdown({ list, value, onChange, menuDropdown="Pr
                         horizontal: "left",
                     },
                     style: {
-                        zIndex: 500, // <--- Naikkan zIndex melewati nilai zIndex container sticky induk (3000)
+                        zIndex: 9999, // <--- Naikkan zIndex melewati nilai zIndex container sticky induk (3000)
                     },
                     PaperProps: {
                         sx: {
@@ -105,7 +106,7 @@ export default function CustomDropdown({ list, value, onChange, menuDropdown="Pr
                             boxShadow: "0px 8px 32px rgba(0,0,0,0.12)",
                             border: "1px solid #ffffff",
                             minWidth: "100%",
-                            zIndex: 4000,
+                            zIndex: 9999,
 
                             "& .MuiMenu-list": {
                                 paddingTop: 0,
