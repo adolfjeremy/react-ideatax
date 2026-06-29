@@ -28,7 +28,7 @@ function ActionModalButton({ param, deleteRoute }) {
     const { toggleAlert } = useContext(AlertContext);
 
     // Menggunakan field baru yang diminta
-    const { data, setData, put, errors, reset } = useForm({
+    const { data, setData, post, errors, reset } = useForm({
         name: param.row.name || "",
         name_eng: param.row.name_eng || "",
         name_jpn: param.row.name_jpn || "",
@@ -38,7 +38,8 @@ function ActionModalButton({ param, deleteRoute }) {
         description_jpn: param.row.description_jpn || "",
         description_ch: param.row.description_ch || "",
         order: param.row.order || "",
-        oldImage: param.row.image
+        oldImage: param.row.image,
+        _method: "put",
     });
 
     const [value, setValue] = useState(0);
@@ -61,7 +62,7 @@ function ActionModalButton({ param, deleteRoute }) {
 
     const onHandleSubmit = (e) => {
         e.preventDefault();
-        put(route("department.update", param.row.id), {
+        post(route("department.update", param.row.id), {
             onStart: () => {
                 toggleSpinner(true);
             },
