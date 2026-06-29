@@ -20,7 +20,7 @@ export default function AdvisoryList ({advisories}){
     const theme = useTheme()
     return (
         <>
-            <div className="embla position-relative mt-4">
+            <div className="embla embla_advisory position-relative mt-4">
                 <div className="embla__viewport_advisory" ref={emblaRef}>
                 <div className="embla__container_advisory">
                     {
@@ -36,21 +36,39 @@ export default function AdvisoryList ({advisories}){
             <Button sx={{
                     position: "absolute",
                     top: "50%",
-                    left: "-45px",
+                    left: "-30px",
                     transform: "translateY(-50%)",
+                    p:0,
+                    minWidth: 0,
                     "svg": {
-                        color: theme.palette.custom.black
-                    }
-                }} onClick={goToPrev}><IoIosArrowDropleft size={36} /></Button>
+                        color: theme.palette.custom.black,
+                        fontSize: "36px",
+                        [theme.breakpoints.down("md")]: {
+                            fontSize: "26px",
+                        }
+                    },
+                    [theme.breakpoints.down("md")]: {
+                        left: "5px",
+                    },
+                }} onClick={goToPrev}><IoIosArrowDropleft /></Button>
                 <Button sx={{
                     position: "absolute",
                     top: "50%",
-                    right: "-45px",
+                    right: "-30px",
                     transform: "translateY(-50%)",
+                    p:0,
+                    minWidth: 0,
                     "svg": {
-                        color: theme.palette.custom.black
-                    }
-                }} onClick={goToNext}><IoIosArrowDropright size={36} /></Button>
+                        color: theme.palette.custom.black,
+                        fontSize: "36px",
+                        [theme.breakpoints.down("md")]: {
+                            fontSize: "26px",
+                        }
+                    },
+                    [theme.breakpoints.down("md")]: {
+                        right: "5px",
+                    },
+                }} onClick={goToNext}><IoIosArrowDropright /></Button>
         </>
     )
 }

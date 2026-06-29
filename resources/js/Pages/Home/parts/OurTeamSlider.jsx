@@ -39,19 +39,37 @@ function OurTeamSlider({theme,checkLang, locale, departments}) {
                 top: "50%",
                 left: "-25px",
                 transform: "translateY(-50%)",
+                p:0,
+                minWidth: 0,
                 "svg": {
-                    color: theme.palette.custom.black
-                }
-            }} onClick={goToPrev}><FiArrowLeftCircle strokeWidth={1} size={36} /></Button>
+                    color: theme.palette.custom.black,
+                    fontSize: "36px",
+                    [theme.breakpoints.down("md")]: {
+                        fontSize: "26px",
+                    }
+                },
+                [theme.breakpoints.down("md")]: {
+                    left: "5px",
+                },
+            }} onClick={goToPrev}><FiArrowLeftCircle strokeWidth={1} /></Button>
             <Button sx={{
                 position: "absolute",
                 top: "50%",
                 right: "-25px",
                 transform: "translateY(-50%)",
+                p:0,
+                minWidth: 0,
                 "svg": {
-                    color: theme.palette.custom.black
-                }
-            }} onClick={goToNext}><FiArrowRightCircle strokeWidth={1} size={36} /></Button>
+                    color: theme.palette.custom.black,
+                    fontSize: "36px",
+                    [theme.breakpoints.down("md")]: {
+                        fontSize: "26px",
+                    }
+                },
+                [theme.breakpoints.down("md")]: {
+                    right: "5px",
+                },
+            }} onClick={goToNext}><FiArrowRightCircle strokeWidth={1} /></Button>
             </>
         )
     }

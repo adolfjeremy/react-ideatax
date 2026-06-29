@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'; // Tambahkan import ini
 import useEmblaCarousel from 'embla-carousel-react'
+import {Button} from '@mui/material'
 import Autoplay from 'embla-carousel-autoplay'
 import aw from "@/assets/images/award/aw.webp";
 import aw1 from "@/assets/images/award/aw-2025-2.png";
@@ -62,7 +63,7 @@ export function AwardCarousel({theme}) {
     </div>
     
     {/* Tombol navigasi Anda tetap sama */}
-    <button type="button" className="embla__prev" onClick={scrollPrev} style={{
+    <Button type="button" className="embla__prev" onClick={scrollPrev} sx={{
         position: "absolute",
         top: "50%",
         left: "-20px",
@@ -72,10 +73,20 @@ export function AwardCarousel({theme}) {
         border: "none",
         cursor: "pointer",
         padding: "0",
+        "svg": {
+            color: theme.palette.custom.black,
+            fontSize: "36px",
+            [theme.breakpoints.down("md")]: {
+                fontSize: "26px",
+            }
+        },
+        [theme.breakpoints.down("md")]: {
+            left: "-15px",
+        },
       }}>
-        <IoIosArrowBack color={theme.palette.custom.black} size={30} />
-      </button>
-      <button type="button" className="embla__next" onClick={scrollNext} style={{
+        <IoIosArrowBack strokeWidth={1} />
+      </Button>
+      <Button type="button" className="embla__next" onClick={scrollNext} sx={{
         position: "absolute",
         top: "50%",
         right: "-20px",
@@ -85,9 +96,19 @@ export function AwardCarousel({theme}) {
         border: "none",
         cursor: "pointer",
         padding: "0",
+        "svg": {
+            color: theme.palette.custom.black,
+            fontSize: "36px",
+            [theme.breakpoints.down("md")]: {
+                fontSize: "26px",
+            }
+        },
+        [theme.breakpoints.down("md")]: {
+            right: "-15px",
+        },
       }}>
-        <IoIosArrowForward color={theme.palette.custom.black} size={30} />
-      </button>
+        <IoIosArrowForward strokeWidth={1} />
+      </Button>
     </>
   )
 }

@@ -134,9 +134,14 @@ function Home() {
                                 </div>
                             </div>
                             <div className="row mt-md-4">
-                                <div className="col-12 relative">
+                                <Box sx={{
+                                    width: "100%",
+                                    [theme.breakpoints.down("md")]: {
+                                        px:2,
+                                    }
+                                }} className="col-12 relative">
                                     <AwardCarousel theme={theme}/> 
-                                </div>
+                                </Box>
                             </div>
                         </div>
                         <Box sx={{
@@ -214,7 +219,7 @@ function Home() {
                         t={t}
                         theme={theme}
                     />
-                    <div className="row mt-4">
+                    <div className="row pb-3">
                         <div className="col-12 text-center">
                             <Button
                                 as="a"
@@ -493,9 +498,13 @@ function Home() {
                                         <AdvisoryHighlight key={advisory.id} advisory={advisory} idx={idx} />
                                     ))}
                                     <div className="row">
-                                        <div className="col-12 mt-4 position-relative">
+                                        <Box sx={{
+                                            [theme.breakpoints.down("md")]: {
+                                                px: 4
+                                            }
+                                        }} className="col-12 mt-4 position-relative">
                                             <AdvisoryList advisories={advisories} />
-                                        </div>
+                                        </Box>
                                     </div>
                                 </div>
                             </Box>
