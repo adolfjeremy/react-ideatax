@@ -41,8 +41,6 @@ function ActionModalButton({ param, deleteRoute }) {
         oldImage: param.row.image
     });
 
-    console.log(data)
-
     const [value, setValue] = useState(0);
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -77,8 +75,8 @@ function ActionModalButton({ param, deleteRoute }) {
                 toggleSpinner(false);
                 console.log(errors);
             },
+            forceFormData: true
         },
-        { forceFormData: true }
     );
     };
 

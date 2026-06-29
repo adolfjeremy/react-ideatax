@@ -50,6 +50,7 @@ function Index() {
                 toggleSpinner(false);
                 console.log(errors);
             },
+            forceFormData: true
         });
     };
     const columns = [
