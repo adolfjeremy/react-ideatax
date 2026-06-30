@@ -61,6 +61,11 @@ function ArticleDetail() {
                                 ul: {
                                     listStyle: "auto",
                                 },
+                                p: {
+                                    [theme.breakpoints.down("md")]: {
+                                        lineHeight: "15px !important",
+                                    }
+                                }
                             }}
                             className="col-12 px-md-4 mt-5 article_body"
                         >

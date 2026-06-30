@@ -6,89 +6,82 @@ function DetailHero({ item, formatDate, checkLang, locale, theme }) {
         <Box
             component="section"
             sx={{
-                position: "relative",
+                height: "70svh",
                 [theme.breakpoints.up("md")]: {
-                    maxHeight: "100vh",
-                    overflow: "hidden",
+                    height: "100svh",
                 },
-                [theme.breakpoints.down("md")]: {
-                    paddingTop: "100px",
-                },
+                overflow: "hidden",
+                position:"relative"
             }}
         >
-            <div>
-                <div className="carousel-inner">
-                    <div className="carousel-item active">
-                        <img
-                            src={`/storage/${item.photo}`}
-                            className="d-block w-100"
-                            alt="title"
-                        />
-                        <Box
-                            sx={{
-                                position: "absolute",
-                                left: 0,
-                                bottom: 0,
-                                top: 0,
-                                right: "35vw",
-                                display: "flex",
-                                flexDirection: "column",
-                                alignItems: "flex-start",
-                                justifyContent: "center",
-                                paddingLeft: "6.25rem",
-                                gap: "0.5rem",
-                            }}
-                        >
-                            <Typography
-                                sx={{
-                                    color: theme.palette.custom.white,
-                                    fontSize: "4rem",
-                                    [theme.breakpoints.down("md")]: {
-                                        fontSize: "1.5  rem",
-                                    },
-                                    lineHeight: "1.01561707em",
-                                    letterSpacing: "13%",
-                                    fontWeight: "700",
-                                }}
-                                variant="h1"
-                            >
-                                {renderTitle(item.title)}
-                            </Typography>
-                            <Link
-                                sx={{
-                                    fontSize: "2rem",
-                                    color: theme.palette.custom.yellow,
-                                    textDecoration: "none",
-                                    lineHeight: "1.1875em",
-                                    letterSpacing: "2%",
-                                    fontWeight: "700",
-                                    [theme.breakpoints.down("sm")]: {
-                                        fontSize: "0.625",
-                                    },
-                                }}
-                                href="#"
-                            >
-                                {item.article_category.title}
-                            </Link>
-                            <Typography
-                                sx={{
-                                    color: theme.palette.custom.white,
-                                    fontSize: "2rem",
-                                    [theme.breakpoints.down("sm")]: {
-                                        fontSize: "0.625",
-                                    },
-                                    margin: 0,
-                                    padding: 0,
-                                    lineHeight: "1.42498753em",
-                                    letterSpacing: "0.009em",
-                                }}
-                            >
-                                {formatDate(item.created_at)}
-                            </Typography>
-                        </Box>
-                    </div>
-                </div>
-            </div>
+            <img
+                src={`/storage/${item.photo}`}
+                alt={item.title || "title"}
+                className="w-100 h-100 object-fit-cover"
+            />
+            <Box
+                sx={{
+                    position: "absolute",
+                    inset: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                    justifyContent: "center",
+                    padding: "0 6rem",
+                    zIndex: 100,
+                    [theme.breakpoints.down("md")]: {
+                        padding: "0 2rem",
+                    },
+                    gap: "0.5rem",
+                }}
+            >
+                <Typography
+                    sx={{
+                        color: theme.palette.custom.white,
+                        fontSize: "4rem",
+                        [theme.breakpoints.down("md")]: {
+                            fontSize: "1.5rem",
+                        },
+                        lineHeight: "1.01561707em",
+                        letterSpacing: "13%",
+                        fontWeight: "700",
+                    }}
+                    variant="h1"
+                >
+                    {renderTitle(item.title)}
+                </Typography>
+                <Link
+                    sx={{
+                        fontSize: "2rem",
+                        color: theme.palette.custom.yellow,
+                        textDecoration: "none",
+                        lineHeight: "1.1875em",
+                        letterSpacing: "2%",
+                        fontWeight: "700",
+                        [theme.breakpoints.down("sm")]: {
+                            fontSize: "0.625rem", // fixed missing unit
+                        },
+                    }}
+                    href="#"
+                >
+                    {item.article_category?.title || ""}
+                </Link>
+                <Typography
+                    sx={{
+                        color: theme.palette.custom.white,
+                        fontSize: "2rem",
+                        [theme.breakpoints.down("sm")]: {
+                            fontSize: "0.625rem", // fixed missing unit
+                        },
+                        margin: 0,
+                        padding: 0,
+                        lineHeight: "1.42498753em",
+                        letterSpacing: "0.009em",
+                    }}
+                >
+                    {formatDate(item.created_at)}
+                </Typography>
+            </Box>
         </Box>
     );
 }

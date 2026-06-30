@@ -60,7 +60,9 @@ function UpdateDetail() {
                 locale={locale}
                 checkLang={checkLang}
             />
-            <Box sx={{ px: 20 }} component="article">
+            <Box sx={{ px: 20, [theme.breakpoints.down("md")]: {
+                        px:0
+                    } }} component="article">
                 <div className="container">
                     <div className="row px-md-5">
                         <Box

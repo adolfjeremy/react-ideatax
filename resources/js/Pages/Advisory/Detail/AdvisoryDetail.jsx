@@ -18,9 +18,6 @@ function AdvisoryDetailHero({ item, formatDate, theme }) {
                     maxHeight: "100vh",
                     overflow: "hidden",
                 },
-                [theme.breakpoints.down("md")]: {
-                    paddingTop: "100px",
-                },
             }}
         >
             <div>
