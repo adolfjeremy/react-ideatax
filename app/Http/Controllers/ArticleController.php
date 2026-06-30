@@ -234,7 +234,7 @@ class ArticleController extends Controller
         ->where("article_id", $item->id)
         ->select('id', 'user_id', 'comment', 'created_at')
         ->with(['user:id,name'])
-        ->latest()->get(); // ⬅️ penting banget
+        ->latest()->take(10)->get(); // ⬅️ penting banget
 
     return Inertia::render('Article/Detail/ArticleDetail', [
         "item" => $item,

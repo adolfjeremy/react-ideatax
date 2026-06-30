@@ -77,7 +77,7 @@ class TaxUpdateController extends Controller
             $item = TaxUpdate::where('slug_eng', $id)->with("taxUpdateCategory")->firstOrFail();
         } else if (app()->getLocale() == "id") {
             $item = TaxUpdate::where('slug', $id)->with("taxUpdateCategory")->firstOrFail();
-        } else if (app()->getLocale() == "id") {
+        } else if (app()->getLocale() == "jp") {
             $item = TaxUpdate::where('slug_jpn', $id)->with("taxUpdateCategory")->firstOrFail();
         } else {
             $item = TaxUpdate::where('slug_eng', $id)->with("taxUpdateCategory")->firstOrFail();
@@ -87,8 +87,10 @@ class TaxUpdateController extends Controller
         //     $item = Article::where('slug_ch', $id)->withCount('likes')->with("articleCategory")->firstOrFail();
         // }
 
-        $previousArticle = TaxUpdate::where('id', '<', $item->id)->orderBy('id', 'desc')->first();
-        $nextArticle = TaxUpdate::where('id', '>', $item->id)->orderBy('id', 'asc')->first();
+        $previousArticle = TaxUpdate::select('id', 'slug', 'slug_eng', 'slug_jpn', 'title', 'title_eng', 'title_jpn')
+            ->where('id', '<', $item->id)->orderBy('id', 'desc')->first();
+        $nextArticle = TaxUpdate::select('id', 'slug', 'slug_eng', 'slug_jpn', 'title', 'title_eng', 'title_jpn')
+            ->where('id', '>', $item->id)->orderBy('id', 'asc')->first();
 
         return Inertia::render('Updates/Detail/UpdateDetail', [
             "item" => $item,

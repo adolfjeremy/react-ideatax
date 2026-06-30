@@ -37,7 +37,7 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user(),
             ],
             'ziggy' => fn() => [
-                ...(new Ziggy)->toArray(),
+                ...\Illuminate\Support\Facades\Cache::remember('ziggy_routes', 3600, fn() => (new Ziggy)->toArray()),
                 'location' => $request->url(),
             ],
             'flashMessage' => [

@@ -80,71 +80,82 @@ class HomeController extends Controller
             default => 'subtitle_eng',
         };
 
-        $updates = TaxUpdate::query()
-        ->select(
-            'id',
-            "$titleColumn as title",
-            "$bodyColumn as body",
-            'slug',
-            'slug_eng',
-            'slug_jpn',
-            'updated_at',
-            'thumbnail'
-        )
-        ->latest()
-        ->take(3)
-        ->get()
-        ->map(function ($update) {
-            $update->body = Article::truncateRichText($update->body);
-            return $update;
+        $updates = Cache::remember("home_updates_{$locale}", 3600, function () use ($titleColumn, $bodyColumn) {
+            return TaxUpdate::query()
+            ->select(
+                'id',
+                "$titleColumn as title",
+                "$bodyColumn as body",
+                'slug',
+                'slug_eng',
+                'slug_jpn',
+                'updated_at',
+                'thumbnail'
+            )
+            ->latest()
+            ->take(3)
+            ->get()
+            ->map(function ($update) {
+                $update->body = Article::truncateRichText($update->body);
+                return $update;
+            });
         });
 
         // Cache articles and events
-        $articles = Article::query()
-        ->select(
-            'id',
-            "$titleColumn as title",
-            "$bodyColumn as body",
-            'slug',
-            'slug_eng',
-            'slug_jpn',
-            'updated_at',
-            'thumbnail'
-        )
-        ->latest()
-        ->take(3)
-        ->get()
-        ->map(function ($article) {
-            $article->body = Article::truncateRichText($article->body);
-            return $article;
+        $articles = Cache::remember("home_articles_{$locale}", 3600, function () use ($titleColumn, $bodyColumn) {
+            return Article::query()
+            ->select(
+                'id',
+                "$titleColumn as title",
+                "$bodyColumn as body",
+                'slug',
+                'slug_eng',
+                'slug_jpn',
+                'updated_at',
+                'thumbnail'
+            )
+            ->latest()
+            ->take(3)
+            ->get()
+            ->map(function ($article) {
+                $article->body = Article::truncateRichText($article->body);
+                return $article;
+            });
         });
 
-        $departments = Department::orderBy('order', 'asc')->get();
+        $departments = Cache::remember('home_departments', 3600, function () {
+            return Department::orderBy('order', 'asc')->get();
+        });
 
-        $advisories = Advisory::with('team.position')
-        ->select(
-            'id',
-            \Illuminate\Support\Facades\DB::raw("COALESCE($titleColumn, title_eng) as title"),
-            \Illuminate\Support\Facades\DB::raw("COALESCE($highlightColumn, highlight_eng) as highlight"),
-            \Illuminate\Support\Facades\DB::raw("COALESCE($slugColumn, slug_eng) as slug"),
-            'slug_eng',
-            'slug_jpn',
-            \Illuminate\Support\Facades\DB::raw("COALESCE($subtitleColumn, subtitle_eng) as subtitle"),
-            'team_id'
-        )
-        ->latest()
-        ->take(6)
-        ->get();
-        $regulations = Regulation::
-        select(
-            'id',
-            'document',
-            "$titleColumn as title",
-            "$slugColumn as slug",
-        )
-        ->latest()
-        ->take(10)
-        ->get();
+        $advisories = Cache::remember("home_advisories_{$locale}", 3600, function () use ($titleColumn, $highlightColumn, $slugColumn, $subtitleColumn) {
+            return Advisory::with('team.position')
+            ->select(
+                'id',
+                \Illuminate\Support\Facades\DB::raw("COALESCE($titleColumn, title_eng) as title"),
+                \Illuminate\Support\Facades\DB::raw("COALESCE($highlightColumn, highlight_eng) as highlight"),
+                \Illuminate\Support\Facades\DB::raw("COALESCE($slugColumn, slug_eng) as slug"),
+                'slug_eng',
+                'slug_jpn',
+                \Illuminate\Support\Facades\DB::raw("COALESCE($subtitleColumn, subtitle_eng) as subtitle"),
+                'team_id'
+            )
+            ->latest()
+            ->take(6)
+            ->get();
+        });
+
+        $regulations = Cache::remember("home_regulations_{$locale}", 3600, function () use ($titleColumn, $slugColumn) {
+            return Regulation::
+            select(
+                'id',
+                'document',
+                "$titleColumn as title",
+                "$slugColumn as slug",
+            )
+            ->latest()
+            ->take(10)
+            ->get();
+        });
 
         $events = Cache::remember('home_events', 60, function () {
             return TaxEvent::latest()
@@ -153,7 +164,9 @@ class HomeController extends Controller
                 ->get();
         });
 
-        $compro = CompanyProfile::orderBy('updated_at', 'desc')->first();
+        $compro = Cache::remember('home_compro', 3600, function () {
+            return CompanyProfile::orderBy('updated_at', 'desc')->first();
+        });
 
         // Return the data to the Inertia view
         return Inertia::render('Home/Home', [
