@@ -14,6 +14,8 @@ function HeroCTA({ image, children, padding = "100px" }) {
             <img
                 src={image}
                 alt="Pemeriksaan Pajak Lancar, Perusahaan Aman"
+                fetchPriority="high"
+                loading="eager"
                 className="w-100"
             />
             <Box

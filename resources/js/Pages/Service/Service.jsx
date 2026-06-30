@@ -55,6 +55,8 @@ function Service() {
                 <img
                     src={serviceBg}
                     alt={page.title_eng}
+                    fetchPriority="high"
+                    loading="eager"
                     sx={{
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",

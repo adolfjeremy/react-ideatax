@@ -12,7 +12,7 @@ function ArticleHeroSlider({ datas, t, theme, locale, checkLang }) {
                         }}}>
         <div className="embla h-100" ref={emblaRef}>
             <div className="embla__container h-100">
-                {datas.map((item) => (
+                {datas.map((item, index) => (
                     <div
                         className="embla__slide position-relative h-100"
                         key={item.id}
@@ -21,7 +21,8 @@ function ArticleHeroSlider({ datas, t, theme, locale, checkLang }) {
                             <img
                             src={`/storage/${item.photo}`}
                             alt={item.title}
-                            loading="lazy"
+                            fetchPriority={index === 0 ? "high" : "auto"}
+                            loading={index === 0 ? "eager" : "lazy"}
                             className="w-100 h-100 object-fit-cover"
                         />
                         </Box>

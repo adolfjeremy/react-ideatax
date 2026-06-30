@@ -42,7 +42,7 @@ function Career() {
                 }}
                 className="position-relative"
             >
-                <img src={hero} alt="" className="w-100" />
+                <img src={hero} alt="" fetchPriority="high" loading="eager" className="w-100" />
                 <Box
                     sx={{
                         position: "absolute",

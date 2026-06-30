@@ -105,6 +105,8 @@ function Team() {
                 <img
                     src={teamHero}
                     alt={page.title_eng}
+                    fetchPriority="high"
+                    loading="eager"
                     sx={{
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",

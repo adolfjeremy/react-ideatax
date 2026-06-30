@@ -53,6 +53,8 @@ function TaxEventDetail() {
                         <div className="col-12 col-md-8">
                             <img
                                 src={`/storage/${item.photo}`}
+                                fetchPriority="high"
+                                loading="eager"
                                 alt={checkLang(
                                     locale,
                                     item.title_eng,

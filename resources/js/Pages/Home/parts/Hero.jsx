@@ -11,7 +11,7 @@ function Hero({ heroes, t, theme, locale, compro, checkLang }) {
                         }}}>
         <div className="embla h-100" ref={emblaRef}>
             <div className="embla__container h-100">
-                {heroes.map((item) => (
+                {heroes.map((item, index) => (
                     <div
                         className="embla__slide position-relative h-100"
                         key={item.id}
@@ -20,7 +20,8 @@ function Hero({ heroes, t, theme, locale, compro, checkLang }) {
                             <img
                             src={`/storage/${item.hero}`}
                             alt={item.title_eng}
-                            loading="lazy"
+                            fetchPriority={index === 0 ? "high" : "auto"}
+                            loading={index === 0 ? "eager" : "lazy"}
                             className="w-100 h-100 object-fit-cover"
                         />
                         </Box>

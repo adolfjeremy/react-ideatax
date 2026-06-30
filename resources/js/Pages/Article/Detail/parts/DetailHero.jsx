@@ -17,6 +17,8 @@ function DetailHero({ item, formatDate, checkLang, locale, theme }) {
             <img
                 src={`/storage/${item.photo}`}
                 alt={item.title || "title"}
+                fetchPriority="high"
+                loading="eager"
                 className="w-100 h-100 object-fit-cover"
             />
             <Box

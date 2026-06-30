@@ -49,6 +49,8 @@ function TeamDetail() {
                 <img
                     src={`/storage/${item.profile_picture}`}
                     alt={item.name}
+                    fetchPriority="high"
+                    loading="eager"
                     className="w-100"
                 />
                 <Box

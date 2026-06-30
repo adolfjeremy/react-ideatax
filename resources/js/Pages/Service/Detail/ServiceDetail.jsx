@@ -45,7 +45,7 @@ function ServiceDetail() {
                 }}
                 className="position-relative"
             >
-                <img src={`/storage/${item.image}`} alt="" className="w-100" />
+                <img src={`/storage/${item.image}`} alt="" fetchPriority="high" loading="eager" className="w-100" />
                 <Box
                     sx={{
                         position: "absolute",
