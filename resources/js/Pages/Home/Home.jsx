@@ -41,7 +41,12 @@ import "./home.scss";
 function Home() {
     const [visible, setIsVisible] = useState(false);
 
-    const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
+    const isMobileQuery = useMediaQuery((theme) => theme.breakpoints.down("md"));
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        setIsMobile(isMobileQuery);
+    }, [isMobileQuery]);
 
     const callbackFunction = (entries) => {
         const [entry] = entries;
