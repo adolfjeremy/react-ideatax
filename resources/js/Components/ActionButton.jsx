@@ -9,6 +9,8 @@ function ActionButton({
     destination,
     deleteRoute,
     needEdit = true,
+    needView = false,
+    onView = null,
     method = "delete",
 }) {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -70,6 +72,14 @@ function ActionButton({
                     "aria-labelledby": "basic-button",
                 }}
             >
+                {needView && (
+                    <MenuItem onClick={() => {
+                        handleClose();
+                        if(onView) onView();
+                    }}>
+                        View
+                    </MenuItem>
+                )}
                 {needEdit && (
                     <MenuItem onClick={() => router.visit(destination)}>
                         Edit

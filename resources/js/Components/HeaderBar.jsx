@@ -88,6 +88,9 @@ function HeaderBar({ en, id, jp, ch }) {
         return routes.some((r) => route().current(r) || route().current(`${r}.*`));
     };
 
+    const isDarkNav = isActive(["life-at-ideatax", "contact"]) && !navbarStatus;
+    const navColor = isDarkNav ? theme.palette.custom.black : theme.palette.custom.white;
+
     return (
         <>
             <Box sx={{
@@ -130,7 +133,7 @@ function HeaderBar({ en, id, jp, ch }) {
                     )}
                 >
                     <img
-                        src={logoClear}
+                        src={isDarkNav ? logo : logoClear}
                         alt="Ideatax"
                     />
                 </Link>
@@ -148,7 +151,7 @@ function HeaderBar({ en, id, jp, ch }) {
                         },
                         svg: {
                             fontSize: "2rem",
-                            color: theme.palette.custom.white
+                            color: navColor
                         },
                     }}
                 >
@@ -179,7 +182,7 @@ function HeaderBar({ en, id, jp, ch }) {
                         className={isActive("home") ? "active" : ""}
                         sx={{
                             fontSize: "1.5rem",
-                            color: theme.palette.custom.white,
+                            color: navColor,
                             fontWeight: 400,
                             letterSpacing: ".009em",
                             textTransform: "capitalize",
@@ -203,7 +206,7 @@ function HeaderBar({ en, id, jp, ch }) {
                         className={isActive(["team", "team-detail"]) ? "active" : ""}
                         sx={{
                             fontSize: "1.5rem",
-                            color: theme.palette.custom.white,
+                            color: navColor,
                             fontWeight: 400,
                             letterSpacing: ".009em",
                             textTransform: "capitalize",
@@ -227,7 +230,7 @@ function HeaderBar({ en, id, jp, ch }) {
                         className={isActive(["service", "service-detail"]) ? "active" : ""}
                         sx={{
                             fontSize: "1.5rem",
-                            color: theme.palette.custom.white,
+                            color: navColor,
                             fontWeight: 400,
                             letterSpacing: ".009em",
                             textTransform: "capitalize",
@@ -252,7 +255,7 @@ function HeaderBar({ en, id, jp, ch }) {
                         className={isActive(["publications", "article-detail", "updates-detail"]) ? "active" : ""}
                         sx={{
                             fontSize: "1.5rem",
-                            color: theme.palette.custom.white,
+                            color: navColor,
                             fontWeight: 400,
                             letterSpacing: ".009em",
                             textTransform: "capitalize",
@@ -275,7 +278,7 @@ function HeaderBar({ en, id, jp, ch }) {
                         onClick={handleClickCareerDekstop}
                         sx={{
                             fontSize: "1.5rem",
-                            color: theme.palette.custom.white,
+                            color: navColor,
                             fontWeight: 400,
                             letterSpacing: ".009em",
                             textTransform: "capitalize",
@@ -316,10 +319,11 @@ function HeaderBar({ en, id, jp, ch }) {
                                 className={isActive("career") ? "active" : ""}
                                 sx={{
                                     fontSize: "1.5rem",
-                                    color: theme.palette.custom.white,
+                                    color: navColor,
                                     fontWeight: 400,
                                     letterSpacing: ".009em",
                                     textTransform: "capitalize",
+                                    color: theme.palette.custom.white,
                                     textDecoration: "none",
                                     padding: "0.5rem 0",
                                     "&:hover": {
@@ -340,8 +344,8 @@ function HeaderBar({ en, id, jp, ch }) {
                                 )}
                                 className={isActive("life-at-ideatax") ? "active" : ""}
                                 sx={{
-                                    fontSize: "1.7rem",
                                     color: theme.palette.custom.white,
+                                    fontSize: "1.7rem",
                                     letterSpacing: ".009em",
                                     textTransform: "capitalize",
                                     textDecoration: "none",
@@ -366,7 +370,7 @@ function HeaderBar({ en, id, jp, ch }) {
                         className={isActive("contact") ? "active" : ""}
                         sx={{
                             fontSize: "1.5rem",
-                            color: theme.palette.custom.white,
+                            color: navColor,
                             fontWeight: 400,
                             letterSpacing: ".009em",
                             textTransform: "capitalize",

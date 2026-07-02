@@ -14,6 +14,7 @@ class ConsultationMeetings extends Model
         'service_id',
         'schedule',
         'description',
+        'source',
     ];
 
     public function service()

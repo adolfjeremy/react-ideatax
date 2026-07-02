@@ -8,6 +8,7 @@ import {
     MenuItem,
     FormControl,
     Select,
+    TextField,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { usePage, useForm } from "@inertiajs/react";
@@ -36,6 +37,7 @@ function Contact() {
         schedule: "",
         description: "",
         service_id: "",
+        source: "",
     });
     const onHandleSubmit = (e) => {
         e.preventDefault();
@@ -147,11 +149,11 @@ function Contact() {
                                 >
                                     {t("contactName")}
                                 </label>
-                                <input
+                                <TextField
+                                    fullWidth
+                                    size="small"
                                     type="text"
                                     name="name"
-                                    className="form-control"
-                                    id="name"
                                     value={data.name}
                                     onChange={(e) =>
                                         setData("name", e.target.value)
@@ -166,11 +168,11 @@ function Contact() {
                                 >
                                     {t("contactEmail")}
                                 </label>
-                                <input
+                                <TextField
+                                    fullWidth
+                                    size="small"
                                     type="email"
                                     name="email"
-                                    className="form-control"
-                                    id="email"
                                     value={data.email}
                                     onChange={(e) =>
                                         setData("email", e.target.value)
@@ -185,11 +187,11 @@ function Contact() {
                                 >
                                     {t("contactNumber")}
                                 </label>
-                                <input
+                                <TextField
+                                    fullWidth
+                                    size="small"
                                     type="tel"
                                     name="phone"
-                                    className="form-control"
-                                    id="phone"
                                     value={data.phone}
                                     onChange={(e) =>
                                         setData("phone", e.target.value)
@@ -206,11 +208,11 @@ function Contact() {
                                 >
                                     {t("contactCompany")}
                                 </label>
-                                <input
+                                <TextField
+                                    fullWidth
+                                    size="small"
                                     type="text"
                                     name="company"
-                                    className="form-control"
-                                    id="company"
                                     value={data.company}
                                     onChange={(e) =>
                                         setData("company", e.target.value)
@@ -225,9 +227,10 @@ function Contact() {
                                 >
                                     Services
                                 </label>
-                                <FormControl fullWidth>
+                                <FormControl fullWidth size="small">
                                     <Select
                                         id="demo-simple-select"
+                                        sx={{ color: theme.palette.custom.white }}
                                         value={data.service_id}
                                         onChange={(e) =>
                                             setData(
@@ -250,10 +253,61 @@ function Contact() {
                                                 )}
                                             </MenuItem>
                                         ))}
+                                        <MenuItem value="Tax Audit Assistance" sx={{color: theme.palette.custom.white, backdropFilter: "blur(20px)"}}>Tax Audit Assistance</MenuItem>
+                                        <MenuItem value="Annual Tax Return Reporting Service For Corporations And Individuals" sx={{color: theme.palette.custom.white, backdropFilter: "blur(20px)"}}>Annual Tax Return Reporting Service For Corporations And Individuals</MenuItem>
+                                        <MenuItem value="Tax Refund Assistance" sx={{color: theme.palette.custom.white, backdropFilter: "blur(20px)"}}>Tax Refund Assistance</MenuItem>
+                                        <MenuItem value="SP2DK Assistance" sx={{color: theme.palette.custom.white, backdropFilter: "blur(20px)"}}>SP2DK Assistance</MenuItem>
+                                        <MenuItem value="Tax Planning" sx={{color: theme.palette.custom.white, backdropFilter: "blur(20px)"}}>Tax Planning</MenuItem>
+                                        <MenuItem value="Authorized Economic Operator" sx={{color: theme.palette.custom.white, backdropFilter: "blur(20px)"}}>Authorized Economic Operator</MenuItem>
                                     </Select>
                                 </FormControl>
                             </div>
-                            <div>
+                            <div className="mb-3">
+                                <label
+                                    htmlFor="source-select"
+                                    className="form-label fw-bold"
+                                >
+                                    {checkLang(
+                                        locale,
+                                        "How did you hear about Ideatax?",
+                                        "Mengetahui Ideatax dari:",
+                                        "Ideataxをどこで知りましたか？",
+                                        "您是如何知道Ideatax的？"
+                                    )}
+                                </label>
+                                <FormControl fullWidth size="small">
+                                    <Select
+                                        id="source-select"
+                                        sx={{ color: theme.palette.custom.white }}
+                                        value={data.source}
+                                        onChange={(e) =>
+                                            setData(
+                                                "source",
+                                                e.target.value,
+                                            )
+                                        }
+                                    >
+                                        <MenuItem value="Website" sx={{color: theme.palette.custom.white, backdropFilter: "blur(20px)"}}>
+                                            {checkLang(locale, "Website", "Website", "ウェブサイト", "网站")}
+                                        </MenuItem>
+                                        <MenuItem value="Generative AI" sx={{color: theme.palette.custom.white, backdropFilter: "blur(20px)"}}>
+                                            {checkLang(locale, "Generative AI (ChatGPT/Gemini/Other)", "Generative AI (ChatGPT/Gemini/Other)", "生成AI (ChatGPT/Gemini/その他)", "生成式AI (ChatGPT/Gemini/其他)")}
+                                        </MenuItem>
+                                        <MenuItem value="Maps" sx={{color: theme.palette.custom.white, backdropFilter: "blur(20px)"}}>
+                                            {checkLang(locale, "Maps", "Maps", "マップ", "地图")}
+                                        </MenuItem>
+                                        <MenuItem value="Social media" sx={{color: theme.palette.custom.white, backdropFilter: "blur(20px)"}}>
+                                            {checkLang(locale, "Social media", "Media Sosial", "ソーシャルメディア", "社交媒体")}
+                                        </MenuItem>
+                                        <MenuItem value="Reference" sx={{color: theme.palette.custom.white, backdropFilter: "blur(20px)"}}>
+                                            {checkLang(locale, "Reference", "Referensi", "リファレンス", "参考")}
+                                        </MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </div>
+                        </div>
+                        <div className="col-12 col-lg-4">
+                            <div className="mb-3">
                                 <label
                                     htmlFor="schedule"
                                     className="form-label fw-bold"
@@ -295,8 +349,6 @@ function Contact() {
                                     {errors.schedule && <div className="text-danger small mt-1">{errors.schedule}</div>}
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-12 col-lg-4">
                             <div className="mb-3">
                                 <label
                                     htmlFor="description"
@@ -304,11 +356,11 @@ function Contact() {
                                 >
                                     {t("contactIssue")}
                                 </label>
-                                <textarea
-                                    className="form-control"
-                                    id="description"
+                                <TextField
+                                    fullWidth
+                                    multiline
+                                    rows={6}
                                     name="description"
-                                    rows="6"
                                     value={data.description}
                                     onChange={(e) =>
                                         setData("description", e.target.value)
