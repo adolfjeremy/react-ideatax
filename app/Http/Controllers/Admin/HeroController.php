@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Inertia\Inertia;
 use App\Models\HeroSlider;
+use App\Models\Advisory;
+use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Http\Requests\HeroRequest;
 use App\Http\Controllers\Controller;
@@ -17,8 +19,13 @@ class HeroController extends Controller
     public function index()
     {
         $heroes = HeroSlider::all();
+        $advisories = Advisory::select('id', 'title_eng')->get();
+        $articles = Article::select('id', 'title_eng')->get();
+
         return Inertia::render('Admin/Hero/Hero', [
-            "heroes" => $heroes
+            "heroes" => $heroes,
+            "advisories" => $advisories,
+            "articles" => $articles,
         ]);
     }
 
@@ -40,6 +47,8 @@ class HeroController extends Controller
         if($request->file('hero'))
         {
             $data['hero'] = $request->file('hero')->store('hero');
+        } else {
+            $data['hero'] = 'relational';
         }
         
         HeroSlider::create($data);

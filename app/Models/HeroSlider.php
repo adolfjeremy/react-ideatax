@@ -15,6 +15,18 @@ class HeroSlider extends Model
         'subtitle', 
         'subtitle_eng', 
         'subtitle_jpn', 
-        'subtitle_ch', 
+        'subtitle_ch',
+        'advisory_id',
+        'article_id',
     ];
+
+    public function advisory()
+    {
+        return $this->belongsTo(Advisory::class);
+    }
+
+    public function article()
+    {
+        return $this->belongsTo(Article::class);
+    }
 }

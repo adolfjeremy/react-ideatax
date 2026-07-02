@@ -40,18 +40,21 @@ function TeamDetail() {
         >
             <Box
                 sx={{
-                    [theme.breakpoints.down("md")]: {
-                        paddingTop: "100px",
+                    height: "70svh",
+                    [theme.breakpoints.up("md")]: {
+                        height: "100svh",
                     },
+                    overflow: "hidden",
+                    position: "relative",
                 }}
-                className="position-relative"
             >
                 <img
                     src={`/storage/${item.profile_picture}`}
                     alt={item.name}
                     fetchPriority="high"
                     loading="eager"
-                    className="w-100"
+                    style={{ objectPosition: "left center" }}
+                    className="w-100 h-100 object-fit-cover"
                 />
                 <Box
                     sx={{
@@ -104,10 +107,10 @@ function TeamDetail() {
                     >
                         {checkLang(
                             locale,
-                            item.position.name_eng,
-                            item.position.name,
-                            item.position.name_jpn,
-                            item.position.name_ch,
+                            item.position?.name_eng,
+                            item.position?.name,
+                            item.position?.name_jpn,
+                            item.position?.name_ch,
                         )}
                     </Typography>
                 </Box>

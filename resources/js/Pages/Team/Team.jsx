@@ -111,7 +111,6 @@ function Team() {
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
                     }}
-                    loading="lazy"
                     className="w-100 h-100 object-fit-cover"
                 />
                 <Box

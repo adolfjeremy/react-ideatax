@@ -1,12 +1,12 @@
 import { useState, useContext } from "react";
 import { useForm } from "@inertiajs/react";
-import { Box, Modal, Button, Typography, TextField, Tabs, Tab, } from "@mui/material";
+import { Box, Modal, Button, Typography, TextField, Tabs, Tab, Select, MenuItem, InputLabel, FormControl } from "@mui/material";
 import { SpinnerContext } from "@/Context/SpinnerContext";
 import { AlertContext } from "@/Context/AlertContext";
 import CustomTabPanel from "@/Components/CustomTabPanel";
 import a11yProps from "@/Components/a11yProps";
 
-function HeroModal() {
+function HeroModal({ advisories = [], articles = [] }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         hero: "",
         title: "",
@@ -17,6 +17,8 @@ function HeroModal() {
         subtitle_eng: "",
         subtitle_jpn: "",
         subtitle_ch: "",
+        advisory_id: "",
+        article_id: "",
     });
     
     const [value, setValue] = useState(0);
@@ -230,9 +232,46 @@ function HeroModal() {
                             variant="outlined"
                             type="file"
                             onChange={(e) => setData("hero", e.target.files[0])}
-                            required
                             sx={{ width: "100%" }}
                         />
+                        <FormControl fullWidth sx={{ mb: 2 }}>
+                            <InputLabel id="advisory-select-label">Select Tax Advisory (Optional)</InputLabel>
+                            <Select
+                                labelId="advisory-select-label"
+                                id="advisory-select"
+                                value={data.advisory_id || ""}
+                                label="Select Tax Advisory (Optional)"
+                                onChange={(e) => setData("advisory_id", e.target.value)}
+                            >
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                {advisories.map((advisory) => (
+                                    <MenuItem key={advisory.id} value={advisory.id}>
+                                        {advisory.title_eng || advisory.title}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
+                        <FormControl fullWidth sx={{ mb: 2 }}>
+                            <InputLabel id="article-select-label">Select Article (Optional)</InputLabel>
+                            <Select
+                                labelId="article-select-label"
+                                id="article-select"
+                                value={data.article_id || ""}
+                                label="Select Article (Optional)"
+                                onChange={(e) => setData("article_id", e.target.value)}
+                            >
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                {articles.map((article) => (
+                                    <MenuItem key={article.id} value={article.id}>
+                                        {article.title_eng || article.title}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
                         <Button
                             component="button"
                             type="submit"

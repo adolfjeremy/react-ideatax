@@ -1,13 +1,13 @@
 import { useState, useContext } from "react";
 import { useForm } from "@inertiajs/react";
-import { Box, Modal, Button, Typography, TextField, Tabs, Tab } from "@mui/material";
+import { Box, Modal, Button, Typography, TextField, Tabs, Tab, Select, MenuItem, InputLabel, FormControl } from "@mui/material";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { SpinnerContext } from "@/Context/SpinnerContext";
 import { AlertContext } from "@/Context/AlertContext";
 import CustomTabPanel from "@/Components/CustomTabPanel";
 import a11yProps from "@/Components/a11yProps";
 
-function HeroEdit({ hero }) {
+function HeroEdit({ hero, advisories = [], articles = [] }) {
     const {
         data,
         setData,
@@ -26,7 +26,8 @@ function HeroEdit({ hero }) {
         subtitle_eng: hero.subtitle_eng || "",
         subtitle_jpn: hero.subtitle_jpn || "",
         subtitle_ch: hero.subtitle_ch || "",
-
+        advisory_id: hero.advisory_id || "",
+        article_id: hero.article_id || "",
     });
 
     const [open, setOpen] = useState(false);
@@ -255,7 +256,46 @@ function HeroEdit({ hero }) {
                             variant="outlined"
                             type="file"
                             onChange={(e) => setData("hero", e.target.files[0])}
+                            sx={{ width: "100%", mb: 2 }}
                         />
+                        <FormControl fullWidth sx={{ mb: 2 }}>
+                            <InputLabel id="edit-advisory-select-label">Select Tax Advisory (Optional)</InputLabel>
+                            <Select
+                                labelId="edit-advisory-select-label"
+                                id="edit-advisory-select"
+                                value={data.advisory_id || ""}
+                                label="Select Tax Advisory (Optional)"
+                                onChange={(e) => setData("advisory_id", e.target.value)}
+                            >
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                {advisories.map((advisory) => (
+                                    <MenuItem key={advisory.id} value={advisory.id}>
+                                        {advisory.title_eng || advisory.title}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
+                        <FormControl fullWidth sx={{ mb: 2 }}>
+                            <InputLabel id="edit-article-select-label">Select Article (Optional)</InputLabel>
+                            <Select
+                                labelId="edit-article-select-label"
+                                id="edit-article-select"
+                                value={data.article_id || ""}
+                                label="Select Article (Optional)"
+                                onChange={(e) => setData("article_id", e.target.value)}
+                            >
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                {articles.map((article) => (
+                                    <MenuItem key={article.id} value={article.id}>
+                                        {article.title_eng || article.title}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
                         <Button
                             component="button"
                             type="submit"

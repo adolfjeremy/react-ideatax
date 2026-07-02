@@ -44,6 +44,8 @@ class HeroRequest extends FormRequest
             'button_link_eng' => 'nullable|string',
             'button_link_jpn' => 'nullable|string',
             'button_link_ch' => 'nullable|string',
+            'advisory_id' => 'nullable|exists:advisories,id',
+            'article_id' => 'nullable|exists:articles,id',
         ];
     }
 }

@@ -32,7 +32,7 @@ class HomeController extends Controller
 
         // Cache heroes, stats, and categorized services
         $heroes = Cache::remember('home_heroes', 3600, function () {
-            return HeroSlider::all();
+            return HeroSlider::with(['advisory.team', 'article'])->get();
         });
 
         $stats = Cache::remember('home_stats', 3600, function () {

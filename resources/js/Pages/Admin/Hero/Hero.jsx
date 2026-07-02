@@ -4,17 +4,17 @@ import HeroModal from "./component/HeroModal";
 import HeroEdit from "./component/HeroEdit";
 
 function Hero() {
-    const { heroes } = usePage().props;
+    const { heroes, advisories, articles } = usePage().props;
 
     return (
         <AuthLayout sectionHeading="Hero - Home">
             <div className="container">
                 <div className="row">
-                    <HeroModal />
+                    <HeroModal advisories={advisories} articles={articles} />
                 </div>
                 <div className="row">
                     {heroes.map((hero) => (
-                        <HeroEdit key={hero.id} hero={hero} />
+                        <HeroEdit key={hero.id} hero={hero} advisories={advisories} articles={articles} />
                     ))}
                 </div>
             </div>

@@ -53,13 +53,14 @@ const Counter = ({ target, duration = 3000 }) => {
                     lineHeight: "1.390625em",
                     textAlign: "center",
                     fontWeight: "700",
+                    whiteSpace: "nowrap",
                     [theme.breakpoints.down("md")]: {
                         fontSize: "1.5rem",
                     },
                 }}
                 className="stat m-0"
             >
-                {Math.floor(count)} +
+                {Math.floor(count)}+
             </Typography>
         </div>
     );
