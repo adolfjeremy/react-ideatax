@@ -227,18 +227,25 @@ function Contact() {
                                 >
                                     Services
                                 </label>
-                                <FormControl fullWidth size="small">
-                                    <Select
-                                        id="demo-simple-select"
-                                        sx={{ color: theme.palette.custom.white }}
-                                        value={data.service_id}
-                                        onChange={(e) =>
-                                            setData(
-                                                "service_id",
-                                                e.target.value,
-                                            )
+                                <TextField
+                                    select
+                                    fullWidth
+                                    size="small"
+                                    id="demo-simple-select"
+                                    value={data.service_id}
+                                    onChange={(e) =>
+                                        setData(
+                                            "service_id",
+                                            e.target.value,
+                                        )
+                                    }
+                                    SelectProps={{
+                                        MenuProps: {
+                                            disableScrollLock: true,
+                                            sx: { zIndex: 6000 }
                                         }
-                                    >
+                                    }}
+                                >
                                         {services.map((item) => (
                                             <MenuItem
                                                 key={item.id}
@@ -259,8 +266,7 @@ function Contact() {
                                         <MenuItem value="SP2DK Assistance" sx={{color: theme.palette.custom.white, backdropFilter: "blur(20px)"}}>SP2DK Assistance</MenuItem>
                                         <MenuItem value="Tax Planning" sx={{color: theme.palette.custom.white, backdropFilter: "blur(20px)"}}>Tax Planning</MenuItem>
                                         <MenuItem value="Authorized Economic Operator" sx={{color: theme.palette.custom.white, backdropFilter: "blur(20px)"}}>Authorized Economic Operator</MenuItem>
-                                    </Select>
-                                </FormControl>
+                                </TextField>
                             </div>
                             <div className="mb-3">
                                 <label
@@ -275,18 +281,25 @@ function Contact() {
                                         "您是如何知道Ideatax的？"
                                     )}
                                 </label>
-                                <FormControl fullWidth size="small">
-                                    <Select
-                                        id="source-select"
-                                        sx={{ color: theme.palette.custom.white }}
-                                        value={data.source}
-                                        onChange={(e) =>
-                                            setData(
-                                                "source",
-                                                e.target.value,
-                                            )
+                                <TextField
+                                    select
+                                    fullWidth
+                                    size="small"
+                                    id="source-select"
+                                    value={data.source}
+                                    onChange={(e) =>
+                                        setData(
+                                            "source",
+                                            e.target.value,
+                                        )
+                                    }
+                                    SelectProps={{
+                                        MenuProps: {
+                                            disableScrollLock: true,
+                                            sx: { zIndex: 6000 }
                                         }
-                                    >
+                                    }}
+                                >
                                         <MenuItem value="Website" sx={{color: theme.palette.custom.white, backdropFilter: "blur(20px)"}}>
                                             {checkLang(locale, "Website", "Website", "ウェブサイト", "网站")}
                                         </MenuItem>
@@ -302,8 +315,7 @@ function Contact() {
                                         <MenuItem value="Reference" sx={{color: theme.palette.custom.white, backdropFilter: "blur(20px)"}}>
                                             {checkLang(locale, "Reference", "Referensi", "リファレンス", "参考")}
                                         </MenuItem>
-                                    </Select>
-                                </FormControl>
+                                </TextField>
                             </div>
                         </div>
                         <div className="col-12 col-lg-4">
@@ -338,6 +350,7 @@ function Contact() {
                                                 },
                                                 popper: {
                                                     sx: {
+                                                        zIndex: 6000,
                                                         "& .MuiMultiSectionDigitalClockSection-item.Mui-disabled": {
                                                             display: "none !important",
                                                         },
