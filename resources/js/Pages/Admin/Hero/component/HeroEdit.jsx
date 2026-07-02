@@ -80,6 +80,16 @@ function HeroEdit({ hero, advisories = [], articles = [] }) {
             },
         });
     };
+
+    const currentArticle = hero.article || (articles && articles.find((a) => a.id === hero.article_id));
+    const currentAdvisory = hero.advisory || (advisories && advisories.find((a) => a.id === hero.advisory_id));
+
+    const imgSrc = currentArticle 
+        ? `/storage/${currentArticle.photo || currentArticle.thumbnail}` 
+        : (currentAdvisory && currentAdvisory.team 
+            ? `/storage/${currentAdvisory.team.profile_picture}` 
+            : `/storage/${hero.hero}`);
+
     return (
         <>
             <Button
@@ -95,7 +105,7 @@ function HeroEdit({ hero, advisories = [], articles = [] }) {
                     },
                 }}
             >
-                <img src={`/storage/${hero.hero}`} className="w-100" />
+                <img src={imgSrc} className="w-100" />
             </Button>
             <Modal
                 open={open}

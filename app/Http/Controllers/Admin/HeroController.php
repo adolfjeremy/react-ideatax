@@ -19,8 +19,8 @@ class HeroController extends Controller
     public function index()
     {
         $heroes = HeroSlider::all();
-        $advisories = Advisory::select('id', 'title_eng')->get();
-        $articles = Article::select('id', 'title_eng')->get();
+        $advisories = Advisory::with('team:id,profile_picture')->select('id', 'title_eng', 'team_id')->get();
+        $articles = Article::select('id', 'title_eng', 'photo', 'thumbnail')->get();
 
         return Inertia::render('Admin/Hero/Hero', [
             "heroes" => $heroes,
