@@ -47,8 +47,10 @@ class RegulationController extends Controller
             $data['slug'] = Str::slug($request->title);
         }
 
-        if ($request->file('document')) {
+        if ($request->hasFile('document') && $request->file('document')->isValid()) {
             $data['document'] = $request->file('document')->store('regulations/pdf');
+        } elseif ($request->hasFile('document')) {
+            return back()->withErrors(['document' => 'Failed to upload document. The file might be too large or corrupted.']);
         }
         
 
@@ -96,11 +98,13 @@ class RegulationController extends Controller
         if($request->title) {
             $data['slug'] = Str::slug($request->title);
         }
-        if ($request->file('document')) {
+        if ($request->hasFile('document') && $request->file('document')->isValid()) {
             if($request->oldDocument) {
                 Storage::delete($request->oldDocument);
             }
             $data['document'] = $request->file('document')->store('regulations/pdf');
+        } elseif ($request->hasFile('document')) {
+            return back()->withErrors(['document' => 'Failed to upload document. The file might be too large or corrupted.']);
         }
 
         $item->update($data);

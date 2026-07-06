@@ -323,7 +323,6 @@ function HeaderBar({ en, id, jp, ch }) {
                                     fontWeight: 400,
                                     letterSpacing: ".009em",
                                     textTransform: "capitalize",
-                                    color: theme.palette.custom.white,
                                     textDecoration: "none",
                                     padding: "0.5rem 0",
                                     "&:hover": {
