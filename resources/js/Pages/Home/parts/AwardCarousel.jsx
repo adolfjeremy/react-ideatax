@@ -47,7 +47,7 @@ export function AwardCarousel({theme}) {
   return (
     <>
     <div className="embla_award relative">
-      <div className="embla__viewport" ref={emblaRef}>
+      <div className="embla__viewport_award" ref={emblaRef}>
         <div className="embla__container_award">
           {slides.map((img, index) => (
             <div

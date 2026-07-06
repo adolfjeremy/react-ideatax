@@ -271,7 +271,7 @@ function Home() {
             </Box>
             <Box sx= {{
                 backgroundColor:theme.palette.custom.gray,
-                py: "2rem",
+                pt: "2rem",
                 mt: 1
             }}>
                 <div className="container">
@@ -310,7 +310,7 @@ function Home() {
                     </div>
                 </div>
             </Box>
-            <Box component="section" sx={{ pt: "3rem", backgroundColor: theme.palette.custom.gray, overflow: "hidden", }}>
+            <Box className="pt-5" component="section" sx={{ backgroundColor: theme.palette.custom.gray, overflow: "hidden", }}>
                 <div className="container-fluid p-0 m-0">
                     <div className="row">
                         <div className="col-12 ">
