@@ -885,10 +885,10 @@ function TaxAudit() {
                                         >
                                             {checkLang(
                                                 locale,
-                                                "Review and analyze audit documents before submission to the tax examiner.",
-                                                "Meninjau dan menganalisa dokumen pemeriksaan untuk diserahkan ke pemeriksa.",
-                                                "税務調査に提出する書類を確認し、分析します。",
-                                                "审查并分析提交给审查员的检查文件"
+                                                "Review and analyze audit documents before submission to the tax auditor.",
+                                                "Meninjau dan menganalisa dokumen pemeriksaan untuk diserahkan ke pemeriksa pajak.",
+                                                "税務調査官に提出する書類を確認・分析します。",
+                                                "审查并分析提交给税务审计员的检查文件"
                                             )}
                                         </Typography>
                                     </Box>

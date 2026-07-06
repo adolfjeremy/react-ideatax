@@ -102,7 +102,7 @@ function TaxReport() {
                     >
                         {checkLang(
                             locale,
-                            "Corporate/Individual",
+                            "Efficient, Accurate, and ",
                             "Pelaporan Pajak",
                             "",
                             "税务报告"
@@ -110,7 +110,7 @@ function TaxReport() {
                         <br />
                         {checkLang(
                             locale,
-                            "Annual Tax Return Filing Efficient, Accurate, and Hassle-Free",
+                            "Annual Tax Return Filing for Corporates and Individuals",
                             "SPT Tahunan Badan/Orang Pribadi Rapih, Cepat dan Tepat",
                             "",
                             "年度企业/个人 SPT 整齐、快速、准确"
@@ -135,7 +135,7 @@ function TaxReport() {
                     >
                         {checkLang(
                             locale,
-                            "Filing your tax return can be stressful with complex calculations and piles of documents. If you miss the deadline, penalties await! But don't worry, we're here to ensure your tax returns are accurate, timely, and risk-free.",
+                            "Hassle-Free Filing your tax return can be stressful with complex calculations and piles of documents. If you miss the deadline, penalties await! But don't worry, we're here to ensure your tax returns are accurate, timely, and risk-free.",
                             "Pelaporan SPT sering kali bikin pusing. hitungannya rumit, dokumennya banyak, dan kalau telat? Denda menanti! Jangan khawatir, kami siap membantu memastikan laporan pajak Anda akurat, tepat waktu, dan bebas risiko.",
                             "",
                             "SPT 报告常常令人头痛。计算复杂，文书工作很多，万一迟到怎么办？罚款等待！不用担心，我们已准备好帮助确保您的税务报告准确、及时且无风险。"

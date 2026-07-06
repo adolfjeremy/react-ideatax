@@ -476,7 +476,7 @@ function Home() {
                                 }}
                                 as="h2"
                             >
-                                Publication
+                                Publications
                             </Typography>
                         </div>
                     </div>
