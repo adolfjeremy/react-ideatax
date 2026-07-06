@@ -1433,7 +1433,7 @@ function TaxAudit() {
                                 </Typography>
                                 {checkLang(
                                     locale,
-                                    " is trusted to resolve and assist with tax issues.",
+                                    " Has Been Trusted for Tax Solutions and Assistance.",
                                     " Telah Dipercaya Menyelesaikan dan Membantu Permasalahan Pajak",
                                     " はさまざまな業界の税務問題解決に信頼されています。",
                                     " 已获得可以解决和帮助解决税务问题的信赖"
@@ -1485,7 +1485,7 @@ function TaxAudit() {
                             >
                                 {checkLang(
                                     locale,
-                                    "Trusted by Diverse Industries for Tax Solutions",
+                                    "Across Various Industries",
                                     "Dari Berbagai Industri",
                                     "さまざまな業界から",
                                     "从各种行业"
