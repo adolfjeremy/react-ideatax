@@ -1213,7 +1213,7 @@ function TaxReport() {
                                     fontSize: "3rem",
                                     letterSpacing: "0.009em",
                                     color: theme.palette.custom.yellow,
-                                    fontFamily: "Lato sans-serif",
+                                    fontFamily: "Lato",
                                     [theme.breakpoints.down("sm")]: {
                                         fontSize: "1.25rem",
                                     },

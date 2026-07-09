@@ -116,7 +116,7 @@ export default function AdvisoryItem ({advisory, image, position, name, title, h
                         marginBottom: "0 !important",
                         fontWeight: 300,
                         color: theme.palette.custom.black,
-                        fontFamily: "Lato, sans-serif",
+                        fontFamily: "Lato",
                         lineHeight: "40px",
                         letterSpacing:"11%",
                         textAlign: "left",

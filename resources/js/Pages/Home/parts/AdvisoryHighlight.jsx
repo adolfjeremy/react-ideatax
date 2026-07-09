@@ -63,7 +63,7 @@ export default function AdvisoryHighlight({advisory, idx}) {
                                 marginBottom: "0 !important",
                                 fontWeight: 300,
                                 color: theme.palette.custom.black,
-                                fontFamily: "Lato, sans-serif",
+                                fontFamily: "Lato",
                                 lineHeight: "30px",
                                 letterSpacing:"14%",
                                 [theme.breakpoints.down("md")]: {
