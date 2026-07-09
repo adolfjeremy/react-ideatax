@@ -25,7 +25,7 @@ const theme = createTheme({
         },
     },
     typography: {
-        fontFamily: "Lato, serif",
+        fontFamily: "Lato",
     },
 });
 
