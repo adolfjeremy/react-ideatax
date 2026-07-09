@@ -11,11 +11,7 @@ export default defineConfig({
         }),
         react(),
     ],
-    // ssr: {
-    //     external: [
-    //         "@ckeditor/ckeditor5-react",
-    //         "@ckeditor/ckeditor5-build-classic",
-    //         /^@ckeditor\/ckeditor5-/,
-    //     ],
-    // },
+    ssr: {
+        noExternal: ['@mui/x-date-pickers'],
+    },
 });
