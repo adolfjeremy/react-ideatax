@@ -25,7 +25,10 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Invalidasi SSR cache jika ada model yang ditambah/diubah/dihapus (misal Publish artikel baru)
+        Event::listen(['eloquent.saved: App\Models\*', 'eloquent.deleted: App\Models\*'], function ($event, $models) {
+            \Illuminate\Support\Facades\Cache::increment('ssr_cache_version');
+        });
     }
 
     /**

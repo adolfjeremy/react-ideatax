@@ -40,6 +40,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\HandleInertiaRequests::class,
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
             \App\Http\Middleware\ChangeLocal::class,
+            \App\Http\Middleware\SsrCacheMiddleware::class,
             // \App\Http\Middleware\DisableSsrForAdmin::class,
         ],
 
