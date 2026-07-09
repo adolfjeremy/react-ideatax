@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { Box, Typography, useTheme, useMediaQuery, Button, Link, Skeleton } from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
@@ -13,16 +13,7 @@ const AdvisoryList = lazy(() => import("./parts/AdvisoryList"));
 const RegulationList = lazy(() => import("./parts/RegulationList"));
 import RegulationBg from "../../assets/images/reguation-bg.png"
 import { MdArrowForwardIos } from "react-icons/md";
-import ComproModal from "./ComproModal";
-import ConsultationButton from "@/Components/ConsultationButton";
-import SubsModal from "./SubsModal";
-import RoundedArticle from "./RoundedArticle";
-import AwardIconMobile from "@/Components/AwardIconMobile";
 const AwardCarousel = lazy(() => import("./parts/AwardCarousel").then(module => ({ default: module.AwardCarousel || module.default })));
-import ValueSlick from "@/Components/ValueSlick";
-import serviceBg from "../../assets/images/service-bg.png";
-import teamImg from "../../assets/images/ideatax-team.png";
-import subs from "../../assets/images/subscribe.webp";
 import professional from "../../assets/images/profesional.png";
 import trustwothy from "../../assets/images/trustworthy.png";
 import creativity from "../../assets/images/creativity.png";
@@ -31,9 +22,6 @@ import checkLang from "@/utils/checkLang";
 import formatDate from "@/utils/formatDate";
 const EventItem = lazy(() => import("@/Components/EventItem"));
 const EventItemMobile = lazy(() => import("@/Components/EventItemMobile"));
-import ServiceAccordion from "@/Components/ServiceAccordion";
-import ArticleSwipeable from "@/Components/ArticleSwipeable";
-import { FaArrowRightLong } from "react-icons/fa6";
 const OurTeamSlider = lazy(() => import("./parts/OurTeamSlider"));
 
 import "./home.scss";
