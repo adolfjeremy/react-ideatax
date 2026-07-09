@@ -30,9 +30,21 @@ class HomeController extends Controller
             return Page::select('id', 'description', 'description_eng', 'description_jpn', 'description_ch', 'SEO_title', 'SEO_title_eng', 'SEO_title_jpn', 'SEO_title_ch')->findOrFail(1);
         });
 
-        // Cache heroes, stats, and categorized services
+        // Cache heroes
         $heroes = Cache::remember('home_heroes', 3600, function () {
-            return HeroSlider::with(['advisory.team', 'article'])->get();
+            return HeroSlider::with([
+                'advisory' => function($query) {
+                    $query->select('id', 'title', 'title_eng', 'title_jpn', 'slug', 'slug_eng', 'slug_jpn', 'team_id');
+                },
+                'advisory.team' => function($query) {
+                    $query->select('id', 'profile_picture');
+                },
+                'article' => function($query) {
+                    $query->select('id', 'title', 'title_eng', 'title_jpn', 'slug', 'slug_eng', 'slug_jpn', 'photo', 'thumbnail');
+                }
+            ])
+            ->select('id', 'hero', 'title_eng', 'subtitle_eng', 'advisory_id', 'article_id')
+            ->get();
         });
 
         $stats = Cache::remember('home_stats', 3600, function () {
@@ -172,7 +184,6 @@ class HomeController extends Controller
         return Inertia::render('Home/Home', [
             "heroes" => $heroes,
             "stats" => $stats,
-            "catogorizedservices" => $catogorizedservices,
             "articles" => $articles,
             "updates" => $updates,
             "events" => $events,

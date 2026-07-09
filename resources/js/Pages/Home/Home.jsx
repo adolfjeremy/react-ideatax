@@ -1,16 +1,16 @@
-import { useState, useRef, useEffect } from "react";
-import { Box, Typography, useTheme, useMediaQuery, Button, Link } from "@mui/material";
+import { useState, useRef, useEffect, lazy, Suspense } from "react";
+import { Box, Typography, useTheme, useMediaQuery, Button, Link, Skeleton } from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
 import Guest from "@/Layout/Guest";
 import Hero from "./parts/Hero";
-import ExpertiseList from "./parts/ExpertiseList";
-import StatCountUp from "./parts/StatCountUp";
-import ArticleList from "./parts/ArticleList";
-import UpdateList from "./parts/UpdateList";
-import AdvisoryHighlight from "./parts/AdvisoryHighlight";
-import AdvisoryList from "./parts/AdvisoryList";
-import RegulationList from "./parts/RegulationList";
+const ExpertiseList = lazy(() => import("./parts/ExpertiseList"));
+const StatCountUp = lazy(() => import("./parts/StatCountUp"));
+const ArticleList = lazy(() => import("./parts/ArticleList"));
+const UpdateList = lazy(() => import("./parts/UpdateList"));
+const AdvisoryHighlight = lazy(() => import("./parts/AdvisoryHighlight"));
+const AdvisoryList = lazy(() => import("./parts/AdvisoryList"));
+const RegulationList = lazy(() => import("./parts/RegulationList"));
 import RegulationBg from "../../assets/images/reguation-bg.png"
 import { MdArrowForwardIos } from "react-icons/md";
 import ComproModal from "./ComproModal";
@@ -18,7 +18,7 @@ import ConsultationButton from "@/Components/ConsultationButton";
 import SubsModal from "./SubsModal";
 import RoundedArticle from "./RoundedArticle";
 import AwardIconMobile from "@/Components/AwardIconMobile";
-import { AwardCarousel } from "./parts/AwardCarousel";
+const AwardCarousel = lazy(() => import("./parts/AwardCarousel").then(module => ({ default: module.AwardCarousel || module.default })));
 import ValueSlick from "@/Components/ValueSlick";
 import serviceBg from "../../assets/images/service-bg.png";
 import teamImg from "../../assets/images/ideatax-team.png";
@@ -29,12 +29,12 @@ import creativity from "../../assets/images/creativity.png";
 import prudent from "../../assets/images/prudent.png";
 import checkLang from "@/utils/checkLang";
 import formatDate from "@/utils/formatDate";
-import EventItem from "@/Components/EventItem";
-import EventItemMobile from "@/Components/EventItemMobile";
+const EventItem = lazy(() => import("@/Components/EventItem"));
+const EventItemMobile = lazy(() => import("@/Components/EventItemMobile"));
 import ServiceAccordion from "@/Components/ServiceAccordion";
 import ArticleSwipeable from "@/Components/ArticleSwipeable";
 import { FaArrowRightLong } from "react-icons/fa6";
-import OurTeamSlider from "./parts/OurTeamSlider";
+const OurTeamSlider = lazy(() => import("./parts/OurTeamSlider"));
 
 import "./home.scss";
 
@@ -112,6 +112,8 @@ function Home() {
             <Box
                 component="section"
                 sx={{
+                    contentVisibility: "auto",
+                    containIntrinsicSize: "0 1000px",
                     padding: "3rem 6rem",
                     [theme.breakpoints.down("md")]: {
                         padding: "2rem 0",
@@ -125,6 +127,7 @@ function Home() {
                     <div className="row px-3 px-md-0 d-flex align-items-center justify-content-between">
                         <div className="col-12 col-md-6 py-4 py-md-0 d-flex flex-column align-items-center justify-content-center">
                             <div className="row mb-md-4">
+                                <Suspense fallback={<Skeleton variant="rectangular" width="100%" height={100} />}>
                                 <StatCountUp
                                 stats={stats}
                                 theme={theme}
@@ -132,6 +135,7 @@ function Home() {
                                 checkLang={checkLang}
                                 isMobile={isMobile}
                             />
+                                </Suspense>
                             </div>
                             <div className="row w-100 py-2">
                                 <div className="col-12">
@@ -145,7 +149,7 @@ function Home() {
                                         px:2,
                                     }
                                 }} className="col-12 relative">
-                                    <AwardCarousel theme={theme}/> 
+                                <Suspense fallback={<Skeleton variant="rectangular" width="100%" height={100} />}><AwardCarousel theme={theme}/></Suspense> 
                                 </Box>
                             </div>
                         </div>
@@ -218,12 +222,14 @@ function Home() {
                             </Typography>
                         </div>
                     </div>
+                    <Suspense fallback={<Skeleton variant="rectangular" width="100%" height={400} />}>
                     <ExpertiseList
                         checkLang={checkLang}
                         locale={locale}
                         t={t}
                         theme={theme}
                     />
+                    </Suspense>
                     <div className="row pb-3">
                         <div className="col-12 text-center mt-3">
                             <Button
@@ -270,6 +276,8 @@ function Home() {
                 </div>
             </Box>
             <Box sx= {{
+                contentVisibility: "auto",
+                containIntrinsicSize: "0 800px",
                 backgroundColor:theme.palette.custom.gray,
                 pt: "2rem",
                 mt: 1
@@ -300,17 +308,19 @@ function Home() {
                             }} 
                             className="col-12 position-relative"
                         >
+                            <Suspense fallback={<Skeleton variant="rectangular" width="100%" height={400} />}>
                             <OurTeamSlider 
                                 checkLang={checkLang}
                                 theme={theme} 
                                 locale={locale}
                                 departments={departments}
                             />
+                            </Suspense>
                         </Box>
                     </div>
                 </div>
             </Box>
-            <Box className="pt-5" component="section" sx={{ backgroundColor: theme.palette.custom.gray, overflow: "hidden", }}>
+            <Box className="pt-5" component="section" sx={{ contentVisibility: "auto", containIntrinsicSize: "0 500px", backgroundColor: theme.palette.custom.gray, overflow: "hidden", }}>
                 <div className="container-fluid p-0 m-0">
                     <div className="row">
                         <div className="col-12 ">
@@ -459,7 +469,7 @@ function Home() {
                     </div>
                 </div>
             </Box>
-            <Box sx={{mx: 1, [theme.breakpoints.up("md")]: {mx: 0,}}}>
+            <Box sx={{contentVisibility: "auto", containIntrinsicSize: "0 800px", mx: 1, [theme.breakpoints.up("md")]: {mx: 0,}}}>
                 <div className="container">
                     <div className="row mt-5">
                         <div className="col-12">
@@ -480,18 +490,20 @@ function Home() {
                             </Typography>
                         </div>
                     </div>
-                    <ArticleList t={t} data={articles} locale={locale} />
+                    <Suspense fallback={<Skeleton variant="rectangular" width="100%" height={300} />}><ArticleList t={t} data={articles} locale={locale} /></Suspense>
                     <div className="row">
                         <div className="col-12">
                             <hr />
                         </div>
                     </div>
-                    <UpdateList t={t} data={updates} locale={locale} />
+                    <Suspense fallback={<Skeleton variant="rectangular" width="100%" height={300} />}><UpdateList t={t} data={updates} locale={locale} /></Suspense>
                 </div>
             </Box>
             {
                 advisories.length > 0 && (
                     <Box sx={{ 
+                                contentVisibility: "auto",
+                                containIntrinsicSize: "0 800px",
                                 backgroundColor: theme.palette.custom.gray, 
                                 py: 10, 
                                 [theme.breakpoints.down("md")]: {
@@ -500,7 +512,7 @@ function Home() {
                                 },}}>
                                 <div className="container">
                                     {advisories.map((advisory, idx) => (
-                                        <AdvisoryHighlight key={advisory.id} advisory={advisory} idx={idx} />
+                                        <Suspense fallback={<Skeleton variant="rectangular" width="100%" height={200} />} key={advisory.id}><AdvisoryHighlight advisory={advisory} idx={idx} /></Suspense>
                                     ))}
                                     <div className="row">
                                         <Box sx={{
@@ -508,7 +520,7 @@ function Home() {
                                                 px: 4
                                             }
                                         }} className="col-12 mt-4 position-relative">
-                                            <AdvisoryList advisories={advisories} />
+                                            <Suspense fallback={<Skeleton variant="rectangular" width="100%" height={300} />}><AdvisoryList advisories={advisories} /></Suspense>
                                         </Box>
                                     </div>
                                 </div>
@@ -518,6 +530,8 @@ function Home() {
                     {
                         regulations.length > 0 && (
                             <Box sx={{ 
+                            contentVisibility: "auto",
+                            containIntrinsicSize: "0 600px",
                             backgroundImage: `url(${RegulationBg})`,
                             backgroundSize: "cover",
                             backgroundPosition: "center top",
@@ -546,7 +560,7 @@ function Home() {
                                     </Typography>
                                 </div>
                             </div>
-                            <RegulationList regulations={regulations} />
+                            <Suspense fallback={<Skeleton variant="rectangular" width="100%" height={400} />}><RegulationList regulations={regulations} /></Suspense>
                             <div className="row">
                                 <div className="col-12 d-flex align-items-center justify-content-start">
                                     <Link href={checkLang(
@@ -575,7 +589,7 @@ function Home() {
                     </Box>
                 )
             }
-            <Box component="section" sx={{ py: "3.5rem" }}>
+            <Box component="section" sx={{ contentVisibility: "auto", containIntrinsicSize: "0 600px", py: "3.5rem" }}>
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
@@ -598,11 +612,11 @@ function Home() {
                     </div>
                     <div className="row">
                         {isMobile ? (
-                            <EventItemMobile events={events} locale={locale} />
+                            <Suspense fallback={<Skeleton variant="rectangular" width="100%" height={300} />}><EventItemMobile events={events} locale={locale} /></Suspense>
                         ) : (
                             events.map((item) => (
+                                <Suspense key={item.id} fallback={<Skeleton variant="rectangular" width="100%" height={300} />}>
                                 <EventItem
-                                    key={item.id}
                                     route={checkLang(
                                         locale,
                                         route("event-detail", item.slug_eng),
@@ -618,6 +632,7 @@ function Home() {
                                     )}
                                     date={formatDate(item.created_at, true)}
                                 />
+                                </Suspense>
                             ))
                         )}
                     </div>
