@@ -12,6 +12,6 @@ export default defineConfig({
         react(),
     ],
     ssr: {
-        noExternal: [/^@mui\//, /^@emotion\//],
+        noExternal: [/^@mui\//, /^@emotion\//, /^@liquidglass\//],
     },
 });

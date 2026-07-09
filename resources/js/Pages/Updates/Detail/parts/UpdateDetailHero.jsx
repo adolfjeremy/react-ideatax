@@ -38,7 +38,7 @@ function UpdateDetailHero({ item, formatDate, checkLang, locale, theme }) {
             >
                 <Typography
                     sx={{
-                        color: theme.palette.custom.black,
+                        color: theme.palette.custom.white,
                         fontSize: "4rem",
                         [theme.breakpoints.down("md")]: {
                             fontSize: "1.5rem",
@@ -74,7 +74,7 @@ function UpdateDetailHero({ item, formatDate, checkLang, locale, theme }) {
                 </Link>
                 <Typography
                     sx={{
-                        color: theme.palette.custom.black,
+                        color: theme.palette.custom.white,
                         fontSize: "2rem",
                         [theme.breakpoints.down("sm")]: {
                             fontSize: "0.625rem",
