@@ -68,10 +68,10 @@ function ExpertiseList({ checkLang, locale, t, theme }) {
                     image={<LuListChecks strokeWidth={0.5} />}
                     route={checkLang(
                         locale,
-                        route("service-detail", "monthly-tax-compliance"),
-                        route("service-detail.id", "Kepatuhan Pajak Bulanan"),
-                        route("service-detail.jp", "syue-ci-shui-wu-konpuraiansu"),
-                        route("service-detail.ch", "monthly-tax-compliance")
+                        route("tax-planning"),
+                        route("tax-planning.id"),
+                        route("tax-planning.jp"),
+                        route("tax-planning.ch")
                     )}
                 />
             </Box>

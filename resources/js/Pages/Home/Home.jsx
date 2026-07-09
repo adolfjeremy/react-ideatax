@@ -225,7 +225,7 @@ function Home() {
                         theme={theme}
                     />
                     <div className="row pb-3">
-                        <div className="col-12 text-center">
+                        <div className="col-12 text-center mt-3">
                             <Button
                                 as="a"
                                 href={checkLang(
