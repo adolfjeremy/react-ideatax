@@ -12,6 +12,6 @@ export default defineConfig({
         react(),
     ],
     ssr: {
-        noExternal: ['@mui/x-date-pickers'],
+        noExternal: ['@mui/x-date-pickers', '@mui/x-internals'],
     },
 });
