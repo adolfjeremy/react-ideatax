@@ -155,7 +155,7 @@ function Home() {
                                 sx={{
                                     color: theme.palette.custom.black,
                                     textAlign: "start",
-                                    PontSize: "3rem",
+                                    fontSize: "3rem",
                                     fontWeight: "300",
                                     lineHeight: "107.3%",
                                     [theme.breakpoints.down("md")]: {
@@ -183,7 +183,7 @@ function Home() {
                                     textAlign: "start",
                                     fontWeight: 300,
                                     [theme.breakpoints.down("md")]: {
-                                        fontSize: "0,6875rem",
+                                        fontSize: "0.6875rem",
                                     }
                                 }}
                             >
