@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { Box, Typography, useTheme, useMediaQuery, Button, Link, Skeleton } from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
@@ -14,10 +14,10 @@ const RegulationList = lazy(() => import("./parts/RegulationList"));
 import RegulationBg from "../../assets/images/reguation-bg.png"
 import { MdArrowForwardIos } from "react-icons/md";
 const AwardCarousel = lazy(() => import("./parts/AwardCarousel").then(module => ({ default: module.AwardCarousel || module.default })));
-import professional from "../../assets/images/profesional.png";
-import trustwothy from "../../assets/images/trustworthy.png";
-import creativity from "../../assets/images/creativity.png";
-import prudent from "../../assets/images/prudent.png";
+import professional from "../../assets/images/profesional.webp";
+import trustwothy from "../../assets/images/trustworthy.webp";
+import creativity from "../../assets/images/creativity.webp";
+import prudent from "../../assets/images/prudent.webp";
 import checkLang from "@/utils/checkLang";
 import formatDate from "@/utils/formatDate";
 const EventItem = lazy(() => import("@/Components/EventItem"));
@@ -27,24 +27,8 @@ const OurTeamSlider = lazy(() => import("./parts/OurTeamSlider"));
 import "./home.scss";
 
 function Home() {
-    const [visible, setIsVisible] = useState(false);
+    const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
 
-    const isMobileQuery = useMediaQuery((theme) => theme.breakpoints.down("md"));
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-        setIsMobile(isMobileQuery);
-    }, [isMobileQuery]);
-
-    const callbackFunction = (entries) => {
-        const [entry] = entries;
-        setIsVisible(entry.isIntersecting);
-    };
-    const options = {
-        root: null,
-        rootMargin: "0px",
-        threshold: 1.0,
-    };
     const { t } = useTranslation();
     const theme = useTheme();
     const {
@@ -340,6 +324,7 @@ function Home() {
                                 src={professional}
                                 alt={t("valueOne")}
                                 className="w-100"
+                                loading="lazy"
                             />
                             <Typography
                                 sx={{
@@ -371,6 +356,7 @@ function Home() {
                                 src={trustwothy}
                                 alt={t("valueTwo")}
                                 className="w-100"
+                                loading="lazy"
                             />
                             <Typography
                                 sx={{
@@ -402,6 +388,7 @@ function Home() {
                                 src={creativity}
                                 alt={t("valueThree")}
                                 className="w-100"
+                                loading="lazy"
                             />
                             <Typography
                                 sx={{
@@ -433,6 +420,7 @@ function Home() {
                                 src={prudent}
                                 alt={t("valueFour")}
                                 className="w-100"
+                                loading="lazy"
                             />
                             <Typography
                                 sx={{
