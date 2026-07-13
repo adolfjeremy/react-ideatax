@@ -37,13 +37,13 @@ export default function ArticleList({data, t, locale}) {
                     }}>
                         {
                         data.map((item, idx) => (
-                            <ArticleItem key={item.id} image={item.thumbnail} title={item.title} description={item.body} date={item.updated_at} idx={idx} route={checkLang(
-                                                    locale,
-                                                    route("article-detail", item.slug_eng),
-                                                    route("article-detail.id", item.slug),
-                                                    route("article-detail.jp", item.slug_jpn),
-                                                    route("article-detail.ch", item.slug_ch? item.slug_ch : item.slug_eng),
-                                                )}/>
+                            <ArticleItem key={item.id} image={item.thumbnail} title={item.title} description={item.body} date={item.created_at} idx={idx} route={checkLang(
+                                locale,
+                                route("article-detail", item.slug_eng),
+                                route("article-detail.id", item.slug),
+                                route("article-detail.jp", item.slug_jpn),
+                                route("article-detail.ch", item.slug_ch? item.slug_ch : item.slug_eng),
+                            )}/>
                         ))
                     }
                     </Box>

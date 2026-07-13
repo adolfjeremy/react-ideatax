@@ -130,7 +130,7 @@ function TaxEventDetail() {
                                             }}
                                             as="span"
                                         >
-                                            {formatDate(event.updated_at)}
+                                            {formatDate(event.created_at)}
                                         </Typography>
                                     </Box>
                                 ))}
@@ -253,7 +253,7 @@ function TaxEventDetail() {
                                     }}
                                     as="span"
                                 >
-                                    {formatDate(event.updated_at)}
+                                    {formatDate(event.created_at)}
                                 </Typography>
                             </Box>
                         ))}

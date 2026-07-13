@@ -299,7 +299,7 @@ function CommentSection({ article_id, comment, shareUrl, likeCount }) {
                                 <CommentItem
                                     key={item.id}
                                     name={item.user?.name}
-                                    time={item.updated_at}
+                                    time={item.created_at}
                                     comment={item.comment}
                                     id={item.id}
                                 />

@@ -38,7 +38,7 @@ export default function UpdateList({data, t, locale}) {
                     }}>
                         {
                         data.map((item, idx) => (
-                            <ArticleItem key={item.id} image={item.thumbnail} title={item.title} description={item.body} date={item.updated_at} idx={idx} type="Updates" route={checkLang(
+                            <ArticleItem key={item.id} image={item.thumbnail} title={item.title} description={item.body} date={item.created_at} idx={idx} type="Updates" route={checkLang(
                         locale,
                         route("update-detail", item.slug_eng),
                         route("update-detail.id", item.slug),

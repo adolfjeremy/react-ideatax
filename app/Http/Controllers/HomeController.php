@@ -101,7 +101,7 @@ class HomeController extends Controller
                 'slug',
                 'slug_eng',
                 'slug_jpn',
-                'updated_at',
+                'created_at',
                 'thumbnail'
             )
             ->latest()
@@ -123,7 +123,7 @@ class HomeController extends Controller
                 'slug',
                 'slug_eng',
                 'slug_jpn',
-                'updated_at',
+                'created_at',
                 'thumbnail'
             )
             ->latest()
@@ -177,7 +177,7 @@ class HomeController extends Controller
         });
 
         $compro = Cache::remember('home_compro', 3600, function () {
-            return CompanyProfile::orderBy('updated_at', 'desc')->first();
+            return CompanyProfile::orderBy('created_at', 'desc')->first();
         });
 
         // Return the data to the Inertia view
