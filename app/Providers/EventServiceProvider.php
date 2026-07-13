@@ -29,6 +29,25 @@ class EventServiceProvider extends ServiceProvider
         Event::listen(['eloquent.saved: App\Models\*', 'eloquent.deleted: App\Models\*'], function ($event, $models) {
             \Illuminate\Support\Facades\Cache::increment('ssr_cache_version');
         });
+
+        // Mendaftarkan HomeCacheObserver untuk invalidasi cache halaman Home
+        $modelsToObserve = [
+            \App\Models\Page::class,
+            \App\Models\HeroSlider::class,
+            \App\Models\Stat::class,
+            \App\Models\ServiceCategory::class,
+            \App\Models\TaxUpdate::class,
+            \App\Models\Article::class,
+            \App\Models\Department::class,
+            \App\Models\Advisory::class,
+            \App\Models\Regulation::class,
+            \App\Models\TaxEvent::class,
+            \App\Models\CompanyProfile::class,
+        ];
+
+        foreach ($modelsToObserve as $model) {
+            $model::observe(\App\Observers\HomeCacheObserver::class);
+        }
     }
 
     /**
