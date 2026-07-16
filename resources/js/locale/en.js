@@ -18,7 +18,7 @@ export default {
         serviceFourDesc:
             "Providing integrated tax planning, corporate restructuring, and transaction advisory to improve tax efficiency, strengthen governance, and support long-term business growth and sustainable compliance.",
         read: "Read More",
-        articleHead: "Articles",
+        articleHead: "News",
         consult: "Consultation Now",
         value: "Core Values",
         valueOne: "Professional",
@@ -36,7 +36,7 @@ export default {
         teamDetailHead2: "Area of Expertise",
         careerHero: "Build Your Dream Career With Ideatax",
         latestArticle: "Latest Articles",
-        updates: "Tax Updates",
+        updates: "Insights",
         next: "Next",
         prev: "Previous",
         careerButton: "More Details",

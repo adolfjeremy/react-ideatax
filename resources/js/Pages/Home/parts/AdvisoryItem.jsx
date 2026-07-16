@@ -4,7 +4,7 @@ import truncate from "truncate-html";
 import { Link, usePage } from "@inertiajs/react";
 import checkLang from "@/utils/checkLang";
 
-export default function AdvisoryItem ({advisory, image, position, name, title, highlight}) {
+export default function AdvisoryItem({ advisory, image, position, name, title, highlight }) {
     const theme = useTheme();
     const { locale } = usePage().props;
 
@@ -31,22 +31,22 @@ export default function AdvisoryItem ({advisory, image, position, name, title, h
                     p: 1,
                 }
             }}>
-                <Box sx={{ 
+                <Box sx={{
                     position: "relative",
-                    display:"flex",
-                    flexDirection:"column",
-                    alignItems:"start",
-                    justifyContent:"end",
-                    
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "start",
+                    justifyContent: "end",
+
                 }}>
                     <Box sx={{
                         borderRadius: "16px !important",
-                        overflow:"hidden",
+                        overflow: "hidden",
                         width: "100%",
                         img: {
                             objectFit: "cover",
                             minHeight: "250px",
-                            objectPosition:"left",
+                            objectPosition: "left",
                             borderRadius: "16px",
                             [theme.breakpoints.down("md")]: {
                                 minHeight: "150px",
@@ -57,11 +57,11 @@ export default function AdvisoryItem ({advisory, image, position, name, title, h
                         <img src={`/storage/${image}`} alt={position} className="w-100" />
                     </Box>
                     <Box sx={{
-                        position:"absolute",
+                        position: "absolute",
                         bottom: 0,
                         left: 0,
                         right: 0,
-                        p:2,
+                        p: 2,
                         background: "linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%)",
                         [theme.breakpoints.down("md")]: {
                             p: 1,
@@ -70,7 +70,7 @@ export default function AdvisoryItem ({advisory, image, position, name, title, h
                         <Typography variant="h3" sx={{
                             color: theme.palette.custom.white,
                             fontSize: "1.5rem",
-                            fontWeight:700,
+                            fontWeight: 700,
                             letterSpacing: "5%",
                             [theme.breakpoints.down("md")]: {
                                 fontSize: "0.75rem",
@@ -79,7 +79,7 @@ export default function AdvisoryItem ({advisory, image, position, name, title, h
                         <Typography variant="p" sx={{
                             color: theme.palette.custom.white,
                             fontSize: "1.5rem",
-                            fontWeight:300,
+                            fontWeight: 300,
                             letterSpacing: "5%",
                             [theme.breakpoints.down("md")]: {
                                 fontSize: "0.5rem",
@@ -90,25 +90,25 @@ export default function AdvisoryItem ({advisory, image, position, name, title, h
                 <Box>
                     <Typography as="h3" sx={{
                         color: theme.palette.custom.black,
-                            fontSize: "1.5rem",
-                            fontWeight:700,
-                            letterSpacing: "5%",
-                            [theme.breakpoints.down("md")]: {
-                                fontSize: "0.625rem",
-                                lineHeight: "15px !"
-                            }
-                    }}>Demurrage and Offshore VAT: How Operational</Typography>
+                        fontSize: "1.5rem",
+                        fontWeight: 700,
+                        letterSpacing: "5%",
+                        [theme.breakpoints.down("md")]: {
+                            fontSize: "0.625rem",
+                            lineHeight: "15px !"
+                        }
+                    }}>{title}</Typography>
                 </Box>
                 <Box sx={{
-                    ".rich_container h3, .rich_container h4":{
-                        fontSize:"1.125rem",
+                    ".rich_container h3, .rich_container h4": {
+                        fontSize: "1.125rem",
                         fontWeight: 300,
                         lineHeight: "15px",
-                        letterSpacing:"11%",
+                        letterSpacing: "11%",
                         [theme.breakpoints.down("md")]: {
                             fontSize: "0.5rem",
                         },
-                        "strong" : {
+                        "strong": {
                             fontWeight: 700
                         }
                     },
@@ -118,7 +118,7 @@ export default function AdvisoryItem ({advisory, image, position, name, title, h
                         color: theme.palette.custom.black,
                         fontFamily: "Lato",
                         lineHeight: "40px",
-                        letterSpacing:"11%",
+                        letterSpacing: "11%",
                         textAlign: "left",
                         textWrap: "balance",
                         [theme.breakpoints.down("md")]: {
@@ -131,11 +131,11 @@ export default function AdvisoryItem ({advisory, image, position, name, title, h
                             [theme.breakpoints.down("md")]: {
                                 fontSize: "0.5rem",
                             },
-                            
+
                         }
                     }
-                    }}>
-                    <RichText className="rich_container" htmlContent={truncate(highlight,250)} />
+                }}>
+                    <RichText className="rich_container" htmlContent={truncate(highlight, 250)} />
                 </Box>
             </Box>
         </Link>

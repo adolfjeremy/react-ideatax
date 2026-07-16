@@ -16,12 +16,10 @@ import {
 
 } from "@mui/material";
 import { usePage, router } from "@inertiajs/react";
-import { MdArrowForwardIos } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
 import Guest from "@/Layout/Guest";
 import CustomDropdown from "../Team/Detail/CustomDropdown";
 import RegulationList from "../Home/parts/RegulationList";
-import LatestCarousel from "./parts/LatestCarousel";
 import ArticleHeroSlider from "./parts/ArticleHeroSlider";
 import ArticleLists from "./parts/ArticleLists";
 import checkLang from "@/utils/checkLang";
@@ -44,13 +42,13 @@ const CustomInput = styled(InputBase)(({ theme }) => ({
         display: "inline-flex",
         alignItems: "center",
         lineHeight: "normal",
-        borderRadius:"4px",
+        borderRadius: "4px",
         fontSize: 16,
         padding: "8px 28px 8px 10px",
         boxShadow: "none !important",
         "&.Mui-focused .MuiInputBase-input": {
-        border: "none !important",
-        outline: "none",
+            border: "none !important",
+            outline: "none",
         },
 
         "&:hover .MuiInputBase-input": {
@@ -79,15 +77,15 @@ function Article() {
     const [taxUpdateCategory, setTaxUpdateCategory] = useState(filters.taxUpdateCategory || "all");
     const publicationsList = [
         {
-            name:"Article",
-            id: "Article",
+            name:"News",
+            id: "News",
         },
         {
-            name:"Tax Update",
-            id: "TaxUpdate",
+            name:"Insight",
+            id: "Insight",
         },
         {
-            name:"Library",
+            name: "Library",
             id: "Library",
         }
     ]
@@ -130,7 +128,7 @@ function Article() {
     const onHandleTaxUpdateCategoryChange = (value) => {
         setTaxUpdateCategory(value);
         fetchArticles({ taxUpdateCategory: value });
-    };  
+    };
 
     return (
         <Guest
@@ -160,7 +158,7 @@ function Article() {
                 route("publications.ch")
             )}
         >
-            <ArticleHeroSlider 
+            <ArticleHeroSlider
                 datas={latest}
                 t={t}
                 theme={theme}
@@ -169,18 +167,18 @@ function Article() {
             />
 
             <Box sx={{
-                    position: { xs: "static", md: "sticky" },
-                    top:"90px",
-                    zIndex:100,
-                    backgroundColor: theme.palette.custom.white,
-                    py: 2,
-                    [theme.breakpoints.down("lg")]: {
-                        top: "80px",
-                    },
-                    [theme.breakpoints.down("md")]: {
-                        top: "80px",
-                    },
-            }} 
+                position: { xs: "static", md: "sticky" },
+                top: "90px",
+                zIndex: 100,
+                backgroundColor: theme.palette.custom.white,
+                py: 2,
+                [theme.breakpoints.down("lg")]: {
+                    top: "80px",
+                },
+                [theme.breakpoints.down("md")]: {
+                    top: "80px",
+                },
+            }}
             >
                 <div className="container-fluid">
                     <Box className="row">
@@ -193,23 +191,23 @@ function Article() {
                                     menuDropdown="Publication Type"
                                 />
                             </Box>
-                            {(publicationType === "Article" || publicationType === "all") && (
+                            {(publicationType === "News" || publicationType === "all") && (
                                 <Box sx={{ width: { xs: "100%", md: "auto" } }}>
                                     <CustomDropdown
                                         list={article_categories}
                                         value={articleCategory}
                                         onChange={onHandleArticleCategoryChange}
-                                        menuDropdown="Article Categories"
+                                        menuDropdown="News Categories"
                                     />
                                 </Box>
                             )}
-                            {(publicationType === "TaxUpdate" || publicationType === "all") && (
+                            {(publicationType === "Insight" || publicationType === "all") && (
                                 <Box sx={{ width: { xs: "100%", md: "auto" } }}>
                                     <CustomDropdown
                                         list={taxupdate_categories}
                                         value={taxUpdateCategory}
                                         onChange={onHandleTaxUpdateCategoryChange}
-                                        menuDropdown="Tax Update Categories"
+                                        menuDropdown="Insight Categories"
                                     />
                                 </Box>
                             )}
@@ -218,7 +216,7 @@ function Article() {
                                     onSubmit={onHandleSearch}
                                     className="d-flex align-items-center justify-content-center bg-white w-100"
                                 >
-                                    <CustomInput sx={{position: "relative", height: "100%", paddingRight: "10px", width: "100%", minHeight: "56px"}} placeholder="search" value={search} onChange={(e) => setSearch(e.target.value)}
+                                    <CustomInput sx={{ position: "relative", height: "100%", paddingRight: "10px", width: "100%", minHeight: "56px" }} placeholder="search" value={search} onChange={(e) => setSearch(e.target.value)}
                                         endAdornment={
                                             <InputAdornment position="end" sx={{
                                                 position: "absolute",
@@ -226,7 +224,7 @@ function Article() {
                                                 top: "50%",
                                                 transform: "translateY(-50%)",
                                             }}>
-                                                <IoSearch size={30} color="#191919"/>
+                                                <IoSearch size={30} color="#191919" />
                                             </InputAdornment>}
                                     />
                                 </form>
@@ -235,9 +233,9 @@ function Article() {
                     </Box>
                 </div>
             </Box>
-            <Box sx={{backgroundColor: theme.palette.custom.gray}} className="py-3 relative">
+            <Box sx={{ backgroundColor: theme.palette.custom.gray }} className="py-3 relative">
                 <div className="container">
-                   {
+                    {
                         filters?.search && (
                             <div className="row">
                                 <div className="col-12 mb-4">
@@ -263,10 +261,10 @@ function Article() {
                                 </div>
                             </div>
                         )
-                   }
-                    
+                    }
+
                     {
-                        (publicationType == "Article" || publicationType == "all") && (
+                        (publicationType == "News" || publicationType == "all") && (
                             <>
                                 <div className="row">
                                     <div className="col-12 col-md-6">
@@ -274,7 +272,7 @@ function Article() {
                                             sx={{
                                                 color: theme.palette.custom.black,
                                                 fontSize: "3rem",
-                                                    fontWeight: 700,
+                                                fontWeight: 700,
                                                 [theme.breakpoints.down("sm")]: {
                                                     fontSize: "1.6rem",
                                                 },
@@ -288,11 +286,11 @@ function Article() {
                                     </div>
                                 </div>
                                 <div className="row">
-                                <ArticleLists
-                                    articles={articles}
-                                    locale={locale}
-                                    theme={theme}
-                                />
+                                    <ArticleLists
+                                        articles={articles}
+                                        locale={locale}
+                                        theme={theme}
+                                    />
                                 </div>
                                 <div className="row my-4">
                                     <ComplexPaginaton
@@ -317,10 +315,10 @@ function Article() {
                                 </div>
                             </>
                         )
-                            
+
                     }
                     {
-                        (publicationType == "TaxUpdate" || publicationType == "all") && (
+                        (publicationType == "Insight" || publicationType == "all") && (
                             <>
                                 <div className="row mt-4">
                                     <div className="col-12 col-md-6">
@@ -328,7 +326,7 @@ function Article() {
                                             sx={{
                                                 color: theme.palette.custom.black,
                                                 fontSize: "3rem",
-                                                    fontWeight: 700,
+                                                fontWeight: 700,
                                                 [theme.breakpoints.down("sm")]: {
                                                     fontSize: "1.6rem",
                                                 },
@@ -378,15 +376,16 @@ function Article() {
                 {
                     (publicationType == "Library" || publicationType == "all") && (
                         <>
-                            <Box sx={{ 
+                            <Box sx={{
                                 backgroundImage: `url(${RegulationBg})`,
                                 backgroundSize: "cover",
                                 backgroundPosition: "center top",
-                                py: 8, 
+                                py: 8,
                                 [theme.breakpoints.down("md")]: {
-                                    py:4,
+                                    py: 4,
                                     mt: 6
-                                },}}>
+                                },
+                            }}>
                                 <div className="container">
                                     <div className="row">
                                         <div className="col-12 ">
@@ -437,7 +436,7 @@ function Article() {
                     )
                 }
             </Box>
-            
+
         </Guest>
     );
 }

@@ -18,7 +18,7 @@ export default {
         serviceFourDesc:
             "Menyediakan perencanaan pajak terintegrasi, restrukturisasi korporasi, dan advisory transaksi untuk meningkatkan efisiensi pajak, memperkuat tata kelola, dan mendukung pertumbuhan bisnis jangka panjang serta kepatuhan yang berkelanjutan.",
         read: "Baca Selengkapnya",
-        articleHead: "Artikel",
+        articleHead: "Berita",
         consult: "Konsultasi Sekarang",
         value: "Core Value",
         valueOne: "Professional",
@@ -35,7 +35,7 @@ export default {
         teamDetailHead1: "Biografi",
         teamDetailHead2: "Area of Expertise",
         latestArticle: "Artikel Terbaru",
-        updates: "Update Pajak",
+        updates: "Wawasan",
         next: " Selanjutnya",
         prev: "Sebelumnya",
         careerHero: "Bangun Karier Impian Anda dengan Ideatax",
