@@ -17,7 +17,7 @@ export default function AdvisoryItem({ advisory, image, position, name, title, h
     ) : "#";
 
     return (
-        <Link href={href} style={{ textDecoration: 'none' }}>
+        <Link href={href} style={{ textDecoration: 'none', display: 'block', height: '100%' }}>
             <Box sx={{
                 display: "flex",
                 flexDirection: "column",

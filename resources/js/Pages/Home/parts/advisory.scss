@@ -13,7 +13,7 @@
   min-width: 0; 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   transition: transform 0.2s linear;
   @media (max-width: 448px) {
     flex: 0 0 calc(50% - 8px);
