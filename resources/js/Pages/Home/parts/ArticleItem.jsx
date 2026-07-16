@@ -9,7 +9,7 @@ export default function ArticleItem({image, title, description, date, route, idx
             gridTemplateColumns: "1fr",
             gridTemplateRows: "repeat(3, 1fr)",
             [theme.breakpoints.down("md")]: {
-                display: idx < 1 ? "none" : "grid",
+                display: idx > 1 ? "none" : "grid",
                 gridTemplateColumns: "1fr",
                 gridTemplateRows: "repeat(2, 1fr)",
             },
